@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import { updateObject, checkValidity } from '../../../shared/utility';
 import { Container, Card, Form, Button } from 'react-bootstrap';
 import Spinner from '../../../components/UI/Spinner/Spinner'
 import Input from '../../../components/UI/Input/Input';
-import { CgUser, CgPassword } from 'react-icons/cg';
+import { CgMail, CgPassword } from 'react-icons/cg';
 
 import classes from './Login.module.css';
 
@@ -18,7 +18,7 @@ const Login = props => {
                 type: 'email',
                 placeholder: 'Ingresa tu email',
             },
-            icon: CgUser,
+            icon: CgMail,
             value: '',
             validation: {
                 required: true,
@@ -32,7 +32,7 @@ const Login = props => {
             elementType: 'group',
             elementConfig: {
                 type: 'password',
-                placeholder: 'Ingresa tu password',
+                placeholder: 'Ingresa tu contraseña',
             },
             icon: CgPassword,
             value: '',
@@ -42,7 +42,7 @@ const Login = props => {
             },
             valid: false,
             touched: false,
-            errorMessage: 'Ingresa un password válido'
+            errorMessage: 'Ingresa una contraseña válida'
         }
     });
     const [loading, setLoading] = useState(false);
@@ -66,10 +66,9 @@ const Login = props => {
         axios.post(
             'https://bedu-api-restaurante.herokuapp.com/v1/usuarios/login',
             { email: loginForm.email.value, password: loginForm.password.value }).then(res => {
-                console.log(res);
-                localStorage.setItem('token', res.data.detail.token);
-                props.history.push(`/${res.data.detail.type}`);
+                localStorage.setItem('token', `Bearer ${res.data.detail.token}`);
                 setLoading(false);
+                props.history.push(`/${res.data.detail.type}`);
             }).catch(err => {
                 setErrorMessage(true)
                 setLoading(false);
@@ -102,11 +101,11 @@ const Login = props => {
         <Container>
             <Card className={classes.Login}>
                 <Card.Body>
-                    <h4 className="card-title text-center mb-4 mt-1">Iniciar sesión</h4>
+                    <h4 className="card-title text-center mb-4 mt-1">Inicio de sesión</h4>
                     <hr />
                     <Form noValidate onSubmit={submitHandler}>
                         {form}
-                        <Button type="submit" variant="primary" size="lg" block disabled={!loginForm.email.valid || !loginForm.password.valid}> Login  </Button>
+                        <Button type="submit" variant="primary" size="lg" block disabled={!loginForm.email.valid || !loginForm.password.valid}> Iniciar Sesión  </Button>
                         {errorMessage && <p className={`${classes.ErrorMessage} text-center mt-2`}>Error: Verifica las credenciales</p>}
                         <p className="text-center mt-4">¿No tienes cuenta? <Link to="/signup">Registrate</Link></p>
                     </Form>
