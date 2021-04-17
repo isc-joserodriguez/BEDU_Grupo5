@@ -51,7 +51,7 @@ const input = (props) => {
             inputElement = (
                 <Form.Control
                     as='select'
-                    className={inputClasses.join(' ')}
+                    className={`${inputClasses.join(' ')} mb-3`}
                     {...props.elementConfig}
                     value={props.value}
                     onChange={props.changed}>
