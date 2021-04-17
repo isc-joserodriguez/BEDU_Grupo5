@@ -1,0 +1,14 @@
+.InputElement:focus {
+    outline: none;
+    background-color: #ccc;
+    box-shadow: none;
+}
+
+.Invalid {
+    border: 1px solid red;
+    background-color: #FDA49A;
+}
+
+.InvalidMessage {
+    color: red;
+}
