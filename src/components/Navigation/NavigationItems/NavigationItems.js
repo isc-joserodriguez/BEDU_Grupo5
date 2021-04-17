@@ -5,7 +5,8 @@ import NavigationItem from './NavigationItem/NavigationItem';
 
 const navigationItems = (props) => (
     <ul className={classes.NavigationItems}>
-        <NavigationItem link="/" exact >Login</NavigationItem>
+        <NavigationItem link="/" exact >Iniciar sesión</NavigationItem>
+        <NavigationItem link="/signup" exact >Registrarse</NavigationItem>
         <NavigationItem link="/admin" exact >Admin</NavigationItem>
         <NavigationItem link="/cliente" exact >Cliente</NavigationItem>
         <NavigationItem link="/chef" exact >Chef</NavigationItem>
