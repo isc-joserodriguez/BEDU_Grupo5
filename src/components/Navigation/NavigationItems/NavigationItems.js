@@ -3,19 +3,20 @@ import React from 'react';
 import classes from './NavigationItems.module.css';
 import NavigationItem from './NavigationItem/NavigationItem';
 
-const navigationItems = (props) => (
-    <ul className={classes.NavigationItems}>
-        <NavigationItem link="/" exact >Iniciar sesión</NavigationItem>
-        <NavigationItem link="/signup" exact >Registrarse</NavigationItem>
-        <NavigationItem link="/admin" exact >Admin</NavigationItem>
-        <NavigationItem link="/cliente" exact >Cliente</NavigationItem>
-        <NavigationItem link="/chef" exact >Chef</NavigationItem>
-        <NavigationItem link="/mesero" exact >Mesero</NavigationItem>
-        {/* {props.isAuthenticated ? <NavigationItem link="/orders" >Orders</NavigationItem> : null}
-        {props.isAuthenticated
-            ? <NavigationItem link="/logout" >Logout</NavigationItem>
-            : <NavigationItem link="/auth" >Authenticate</NavigationItem>} */}
-    </ul>
-);
+const navigationItems = (props) => {
+    const links = [
+        { route: '/', displayName: 'Iniciar sesión' },
+        { route: '/signup', displayName: 'Registrarse' },
+        { route: '/admin', displayName: 'Admin' },
+        { route: '/cliente', displayName: 'Cliente' },
+        { route: '/chef', displayName: 'Chef' },
+        { route: '/mesero', displayName: 'Mesero' },
+    ].map((link, index) => <NavigationItem key={index} link={link.route} exact >{link.displayName}</NavigationItem>);
+    return (
+        <ul className={classes.NavigationItems}>
+            {links}
+        </ul>
+    )
+};
 
 export default navigationItems
