@@ -1,0 +1,22 @@
+form {
+    display: flex;
+    padding: 30px;
+    margin-bottom: 20px;
+    justify-content: space-around;
+  }
+
+  .orangeBtn {
+    color: white !important;
+    border: solid 1px #FF8352 !important;
+    background-color: #FF8352 !important;
+  }
+
+  .orange {
+    color: #FF8352;
+    font-weight: 700;
+  }
+
+  form label {
+    margin-right: 5px;
+    font-weight: lighter;
+  }

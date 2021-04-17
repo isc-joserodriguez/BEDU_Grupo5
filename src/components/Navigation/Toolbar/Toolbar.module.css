@@ -4,7 +4,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #703B09;
+   /* background-color: #00E1DF;*/
+   background-image: radial-gradient(circle at 0% 0%, #b7ffe2 0, #a4fee0 10%, #8ef8df 20%, #73f1de 30%, #51e9de 40%, #00e1de 50%, #00d8df 60%, #00d0e2 70%, #00c8e5 80%, #00c1e9 90%, #00baee 100%);
     display: flex;
     justify-content: space-between;
     align-items: center;
