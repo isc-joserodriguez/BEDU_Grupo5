@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Login = () => {
+const Menu = () => {
     return (
         <div>
-            Login Component
+            Menu Component
         </div>
     )
 }
 
-export default Login
+export default Menu
