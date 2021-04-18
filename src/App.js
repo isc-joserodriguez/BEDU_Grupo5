@@ -12,22 +12,32 @@ function App() {
 
   let routes = (
     <Switch>
-      <Route path="/" exact component={Login} />
-      <Route path="/signup" exact component={SignUp} />
-      <Route path="/admin" exact component={Admin} />
-      <Route path="/cliente" exact component={Cliente} />
-      <Route path="/chef" exact component={Chef} />
-      <Route path="/mesero" exact component={Mesero} />
-      <Redirect to="/" />
+      <Route path="/" exact>
+        <Login />
+      </Route>
+      <Route path="/signup">
+        <SignUp />
+      </Route>
+      <Route path="/admin">
+        <Admin />
+      </Route>
+      <Route path="/cliente">
+        <Cliente />
+      </Route>
+      <Route path="/chef">
+        <Chef />
+      </Route>
+      <Route path="/mesero">
+        <Mesero />
+      </Route>
+      {/* <Redirect to="/" /> */}
     </Switch>
   );
 
   return (
-    <div>
-      <Layout>
-          {routes}
-      </Layout>
-    </div>
+    <Layout>
+      {routes}
+    </Layout>
   );
 }
 
