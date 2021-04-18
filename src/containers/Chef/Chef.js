@@ -1,23 +1,50 @@
-import React from 'react'
-//import { Carousel, Card } from 'react-bootstrap'
-import Carousel from 'react-bootstrap/Carousel'
-import Card from 'react-bootstrap/Card'
-import {ProgressBar} from 'react-bootstrap'
+import React, { useState } from 'react';
+import './chef.css';
+import Filters from './Filters';
+import OrdersList from './OrdersList.js';
 
-import {FaConnectdevelop} from "react-icons/fa";
+function Chef() {
+    const [orders, setOrders] = useState([{ task: 'hola', status: false, id: (Math.random() * 1000).toFixed() }, { task: 'hola2', status: true, id: (Math.random() * 1000).toFixed() }, { task: 'hola3', status: true, id: (Math.random() * 1000).toFixed() }]);
+    const [value, setValue] = useState('');
+    const [show, setShow] = useState(false);
+    const [filteredOrders, setFilteredOrders] = useState([...orders]);
 
+    const changeStatusHandler = (id) => {
+        let arr = [...orders]
+        let indexModif = arr.findIndex(element => element.id === id);
+        arr[indexModif].status = !arr[indexModif].status;
+        setOrders(arr);
+    }
 
-const Chef = () => {
+    const handleClickDelete = (id) => {
+        let arr = [...orders]
+        let indexDelete = arr.findIndex(element => element.id === id);
+        arr.splice(indexDelete, 1);
+        setOrders(arr);
+    }
+
+    const changeValue = (newValue) => {
+        if (newValue === "") setFilteredOrders([...orders]);
+        setValue(newValue);
+    }
+
+    const showHide = () => {
+        setShow(!show);
+    }
+
+    const filterDo = () => {
+        if (value.trim() !== "")
+            setFilteredOrders([...orders].filter(e => (-1 !== e.task.search(value))));
+    }
+
     return (
-        <>
-        <ProgressBar now={30} animated={true} />
-        <div className="progress">
-            <div style={{backgroundColor:'red', width:"30%"}}></div>
+        <div className="wrapper">
+            <div className="card frame">
+                <Filters showHide={showHide} filterDo={filterDo} orders={orders} show={show} value={value} changeValue={changeValue} />
+                <OrdersList change={changeStatusHandler} orders={filteredOrders} show={show} delete={handleClickDelete} filterDo={filterDo} value={value} />
+            </div>
         </div>
-        <FaConnectdevelop style={{fontSize:"300px"}} />
-        </>
-
-    )
-}
+    );
+};
 
 export default Chef
