@@ -1,12 +1,12 @@
 import React from 'react'
+import Comandos from './Comandos'
+import Pedidos from './Pedidos'
 
 const Mesero = () => {
     return (
         <div>
-            Component Mesero
-            {/* <Vista de Mesero>
-            <Pedido tipo={} />
-            <> */}
+            <Comandos></Comandos>
+            <Pedidos></Pedidos>
         </div>
     )
 }
