@@ -67,15 +67,7 @@ function RepeatFoodCards(props) {
 }
 
 function foodCards(props) {
-    if (props.category === "recientes") {
-        return <RepeatFoodCards category={props.category} />
-    } else if (props.category === "favoritos") {
-        return <RepeatFoodCards category={props.category} />
-    } else if (props.category === "") {
-        return (
-            <h1></h1>
-        )
-    }
+    return <RepeatFoodCards category = {props.category}/>
 }
 
 export default foodCards
