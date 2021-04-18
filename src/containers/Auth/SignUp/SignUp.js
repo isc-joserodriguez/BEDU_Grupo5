@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 import { updateObject, checkValidity } from '../../../shared/utility';
@@ -173,4 +173,4 @@ const SignUp = props => {
     )
 }
 
-export default SignUp
+export default withRouter(SignUp)

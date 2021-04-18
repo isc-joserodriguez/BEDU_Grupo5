@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 import { updateObject, checkValidity } from '../../../shared/utility';
@@ -70,6 +70,7 @@ const Login = props => {
                 setLoading(false);
                 props.history.push(`/${res.data.detail.type}`);
             }).catch(err => {
+                console.log(err);
                 setErrorMessage(true)
                 setLoading(false);
             });
@@ -116,4 +117,4 @@ const Login = props => {
     )
 }
 
-export default Login
+export default withRouter(Login)
