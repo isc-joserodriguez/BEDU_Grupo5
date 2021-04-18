@@ -4,7 +4,7 @@ import { Button, Navbar, Nav, NavDropdown, Form, FormControl } from 'react-boots
 
 function Cliente() {
 
-    const [category, setValue] = useState('recientes');
+    const [category, setValue] = useState('');
 
     function menuAppers(e, foodCategory) {
         e.preventDefault();
@@ -15,7 +15,7 @@ function Cliente() {
     return (
         <Fragment>
             <Navbar bg="light" expand="lg">
-                <Navbar.Brand href="#home">Rest - aurante!</Navbar.Brand>
+                <Navbar.Brand href="#home" onClick={(e) => menuAppers(e, "")}>Rest - aurante!</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
