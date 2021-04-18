@@ -15,7 +15,7 @@ function Cliente() {
     return (
         <Fragment>
             <Navbar bg="light" expand="lg">
-                <Navbar.Brand href="#home" onClick={(e) => menuAppers(e, "")}>Rest - aurante!</Navbar.Brand>
+                <Navbar.Brand href="#home" onClick={(e) => menuAppers(e, "recientes")}>Rest - aurante!</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
@@ -39,7 +39,6 @@ function Cliente() {
                 </Navbar.Collapse>
             </Navbar>
             <FoodCards category = {category}/>
-            
         </Fragment>
     );
 }
