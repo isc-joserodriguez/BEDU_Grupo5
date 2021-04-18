@@ -4,7 +4,7 @@ import { Button, Navbar, Nav, NavDropdown, Form, FormControl } from 'react-boots
 
 function Cliente() {
 
-    const [category, setValue] = useState('');
+    const [category, setValue] = useState('recientes');
 
     function menuAppers(e, foodCategory) {
         e.preventDefault();

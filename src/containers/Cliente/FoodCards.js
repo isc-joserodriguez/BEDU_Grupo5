@@ -8,7 +8,7 @@ import platilloFavorito from '../../assets/images/platillo_favorito.jpg';
 import platilloReciente from '../../assets/images/platillo_reciente.jpg';
 
 const arrayRecientes = ["Platiilo 1", "Nuevo Platillo Pruebalo", "Platillo 2", "Platillo Nuevo"]
-const arrayFavorites = ["Platillo 1", "Nuestro Platillo Favorito", "Platillo 2", "Un Clasico"]
+const arrayFavorites = ["Platillo 1", "Nuestro Platillo Favorito", "Platillo 2", "Un Clasico", "Platillo 3", "Muy Rico"]
 
 function DrawFoodCards(props) {
     if(props.category === "recientes"){
@@ -59,6 +59,7 @@ function RepeatFoodCards(props) {
                     <Row className="mt-3">
                         <Col><DrawFoodCards index={index} category = {props.category} /></Col>
                         <Col><DrawFoodCards index={index + 2} category = {props.category} /></Col>
+                        <Col><DrawFoodCards index={index + 4} category = {props.category} /></Col>
                     </Row>
                 </Container>
             )
@@ -67,7 +68,9 @@ function RepeatFoodCards(props) {
 }
 
 function foodCards(props) {
-    return <RepeatFoodCards category = {props.category}/>
+    return(
+         <RepeatFoodCards category = {props.category}/>
+    )
 }
 
 export default foodCards
