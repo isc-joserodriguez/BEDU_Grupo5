@@ -1,8 +1,9 @@
 import React from 'react';
-import './filters.css';
 import Button from 'react-bootstrap/Button'
 import FormControl from 'react-bootstrap/FormControl'
 import InputGroup from 'react-bootstrap/InputGroup';
+
+import classes from './filters.module.css';
 
 function filters(props) {
   let counter = null;
@@ -25,10 +26,10 @@ function filters(props) {
   }
 
   return (
-    <form onSubmit={onSubmit} >
+    <form className={classes.Filter} onSubmit={onSubmit} >
       <div>
         <label>Estatus: </label>
-        <Button className="orangeBtn" onClick={props.showHide} size="sm">{props.show ? "Ver todos": "Ver pendientes"}</Button>
+        <Button className={classes.orangeBtn} onClick={props.showHide} size="sm">{props.show ? "Ver todos": "Ver pendientes"}</Button>
       </div>
       <div>
         <InputGroup className="mb-3" size="sm">
@@ -39,12 +40,12 @@ function filters(props) {
             value={props.value} onChange={onChange}
           />
           <InputGroup.Append>
-            <Button className='orangeBtn' type="submit" size="sm">Buscar</Button>
+            <Button className={classes.orangeBtn} type="submit" size="sm">Buscar</Button>
           </InputGroup.Append>
         </InputGroup>
       </div>
 
-      <label className="orange">Hay {counter} orden(es)</label>
+      <label className={classes.orange}>Hay {counter} orden(es)</label>
     </form>
   )
 };

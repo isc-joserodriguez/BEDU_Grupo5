@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import './chef.css';
 import Filters from './Filters';
 import OrdersList from './OrdersList.js';
+
+import classes from './chef.module.css';
 
 function Chef() {
     const [orders, setOrders] = useState([{ task: 'hola', status: false, id: (Math.random() * 1000).toFixed() }, { task: 'hola2', status: true, id: (Math.random() * 1000).toFixed() }, { task: 'hola3', status: true, id: (Math.random() * 1000).toFixed() }]);
@@ -38,8 +39,8 @@ function Chef() {
     }
 
     return (
-        <div className="wrapper">
-            <div className="card frame">
+        <div className={`${classes.Chef}`}>
+            <div className={classes.card}>
                 <Filters showHide={showHide} filterDo={filterDo} orders={orders} show={show} value={value} changeValue={changeValue} />
                 <OrdersList change={changeStatusHandler} orders={filteredOrders} show={show} delete={handleClickDelete} filterDo={filterDo} value={value} />
             </div>

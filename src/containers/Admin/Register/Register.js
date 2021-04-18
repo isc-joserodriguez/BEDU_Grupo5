@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {withRouter} from 'react-router-dom';
 import axios from 'axios';
 
 import { updateObject, checkValidity } from '../../../shared/utility';
@@ -142,6 +143,8 @@ const Register = props => {
             }
         }).then(res => {
             setLoading(false);
+            alert('Se creó el usuario');
+            props.history.push(`/admin`);
         }).catch(err => {
             setErrorMessage(true)
             setLoading(false);
@@ -188,4 +191,4 @@ const Register = props => {
     )
 }
 
-export default Register
+export default withRouter(Register);

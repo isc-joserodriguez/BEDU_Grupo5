@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './checkmark.css';
 import { BsCheckCircle } from 'react-icons/bs';
 
+import classes from './checkmark.module.css';
 
 
   function Checkmark(props) {
@@ -12,8 +12,8 @@ import { BsCheckCircle } from 'react-icons/bs';
         event.stopPropagation();
     }
     return (
-    <span className={`check ${props.done ? '': 'doneMark'}`}  onClick={ (event) => onChangeTask(event)} >
-      <BsCheckCircle className="green"/>
+    <span className={`${classes.Check} ${props.done ? '': 'doneMark'}`}  onClick={ (event) => onChangeTask(event)} >
+      <BsCheckCircle className={classes.Green}/>
     </span>
   )
 };
