@@ -3,28 +3,28 @@ import './chef.css';
 import Filters from './Filters';
 import OrdersList from './OrdersList.js';
 
-
 function Chef() {
-    const [tasks, setTasks] = useState([{ task: 'hola', status: false, id: (Math.random() * 1000).toFixed() }, { task: 'hola2', status: true, id: (Math.random() * 1000).toFixed() }, { task: 'hola3', status: true, id: (Math.random() * 1000).toFixed() }]);
+    const [orders, setOrders] = useState([{ task: 'hola', status: false, id: (Math.random() * 1000).toFixed() }, { task: 'hola2', status: true, id: (Math.random() * 1000).toFixed() }, { task: 'hola3', status: true, id: (Math.random() * 1000).toFixed() }]);
     const [value, setValue] = useState('');
     const [show, setShow] = useState(false);
-    const [filter, setFilter] = useState(false);
-    const change = (id) => {
-        let arr = [...tasks]
+    const [filteredOrders, setFilteredOrders] = useState([...orders]);
+
+    const changeStatusHandler = (id) => {
+        let arr = [...orders]
         let indexModif = arr.findIndex(element => element.id === id);
         arr[indexModif].status = !arr[indexModif].status;
-        setTasks(arr);
+        setOrders(arr);
     }
 
     const handleClickDelete = (id) => {
-        let arr = [...tasks]
+        let arr = [...orders]
         let indexDelete = arr.findIndex(element => element.id === id);
         arr.splice(indexDelete, 1);
-        setTasks(arr);
+        setOrders(arr);
     }
 
-
     const changeValue = (newValue) => {
+        if (newValue === "") setFilteredOrders([...orders]);
         setValue(newValue);
     }
 
@@ -33,14 +33,15 @@ function Chef() {
     }
 
     const filterDo = () => {
-        setFilter(!filter);
+        if (value.trim() !== "")
+            setFilteredOrders([...orders].filter(e => (-1 !== e.task.search(value))));
     }
 
     return (
         <div className="wrapper">
             <div className="card frame">
-                <Filters showHide = {showHide} filterDo={filterDo} tasks={tasks} show={show} value={value} changeValue={changeValue} />
-                <OrdersList change={change} tasks={tasks} filter={filter} show={show} delete={handleClickDelete} filterDo={filterDo} value={value}/>
+                <Filters showHide={showHide} filterDo={filterDo} orders={orders} show={show} value={value} changeValue={changeValue} />
+                <OrdersList change={changeStatusHandler} orders={filteredOrders} show={show} delete={handleClickDelete} filterDo={filterDo} value={value} />
             </div>
         </div>
     );

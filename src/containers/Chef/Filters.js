@@ -7,10 +7,10 @@ import InputGroup from 'react-bootstrap/InputGroup';
 function filters(props) {
   let counter = null;
   if (props.show) {
-    counter = props.tasks.filter(e => !e.status).length;
+    counter = props.orders.filter(e => !e.status).length;
   }
   else {
-    counter = props.tasks.length;
+    counter = props.orders.length;
   }
 
   function onChange(e) {
@@ -21,7 +21,6 @@ function filters(props) {
   function onSubmit(e){
     e.preventDefault();
     e.stopPropagation();
-    props.changeValue(e.target.value)
     props.filterDo();
   }
 
