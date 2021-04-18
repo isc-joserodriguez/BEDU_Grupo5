@@ -11,6 +11,7 @@ import { CgMail, CgPassword } from 'react-icons/cg';
 import classes from './Login.module.css';
 
 const Login = props => {
+    console.log(props)
     const [loginForm, setLoginForm] = useState({
         email: {
             elementType: 'group',

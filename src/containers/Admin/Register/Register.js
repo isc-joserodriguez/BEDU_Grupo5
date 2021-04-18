@@ -141,11 +141,13 @@ const Register = props => {
                 'Authorization': localStorage.getItem('token')
             }
         }).then(res => {
+            alert('Usuario creado')
             setLoading(false);
         }).catch(err => {
             setErrorMessage(true)
             setLoading(false);
         });
+        
     }
 
     const formElementsArray = [];
