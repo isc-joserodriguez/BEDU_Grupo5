@@ -108,10 +108,10 @@ const Register = props => {
     const [errorMessage, setErrorMessage] = useState(false);
 
     const inputChangedHandler = (event, controlName) => {
-        let updatedControls = updateObject(signupForm, {
-            [controlName]: updateObject(signupForm[controlName], {
+        let updatedControls = updateObject(registerForm, {
+            [controlName]: updateObject(registerForm[controlName], {
                 value: event.target.value,
-                valid: (controlName === 'confirmPassword') ? event.target.value === signupForm.password.value : checkValidity(event.target.value, signupForm[controlName].validation),
+                valid: (controlName === 'confirmPassword') ? event.target.value === registerForm.password.value : checkValidity(event.target.value, registerForm[controlName].validation),
                 touched: true
             })
         });
@@ -122,7 +122,7 @@ const Register = props => {
                 })
             });
         }
-        setSignupForm(updatedControls);
+        setRegisterForm(updatedControls);
     }
 
     const submitHandler = (event) => {
@@ -130,13 +130,17 @@ const Register = props => {
         setLoading(true);
         setErrorMessage(false)
         const data = {
-            firstName: signupForm.firstName.value,
-            lastName: signupForm.lastName.value,
-            email: signupForm.email.value,
-            password: signupForm.password.value,
-            type: signupForm.type.value
+            firstName: registerForm.firstName.value,
+            lastName: registerForm.lastName.value,
+            email: registerForm.email.value,
+            password: registerForm.password.value,
+            type: registerForm.type.value
         }
-        axios.post('https://bedu-api-restaurante.herokuapp.com/v1/usuarios/signup', data).then(res => {
+        axios.post('https://bedu-api-restaurante.herokuapp.com/v1/usuarios/signup', data, {
+            headers: {
+                'Authorization': localStorage.getItem('token')
+            }
+        }).then(res => {
             setLoading(false);
         }).catch(err => {
             setErrorMessage(true)
@@ -170,11 +174,11 @@ const Register = props => {
         <Container>
             <Card className={classes.Register}>
                 <Card.Body>
-                    <h4 className="card-title text-center mb-4 mt-1">Registro</h4>
+                    <h4 className="card-title text-center mb-4 mt-1">Nuevo usuario</h4>
                     <hr />
                     <Form noValidate onSubmit={submitHandler}>
                         {form}
-                        <Button type="submit" variant="primary" size="lg" block disabled={!registerForm.email.valid || !registerForm.password.valid}> Registrarse  </Button>
+                        <Button type="submit" variant="primary" size="lg" block disabled={!registerForm.firstName.valid || !registerForm.lastName.valid || !registerForm.email.valid || !registerForm.password.valid || !registerForm.confirmPassword.valid}> Registrar  </Button>
                         {errorMessage && <p className={`${classes.ErrorMessage} text-center mt-2`}>Error: Verifica los datos ingresados</p>}
                     </Form>
                 </Card.Body>
