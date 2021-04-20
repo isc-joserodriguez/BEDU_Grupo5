@@ -1,31 +1,38 @@
 import React from 'react';
 import { Link, Route, Switch, useRouteMatch } from 'react-router-dom';
 
-import Register from './Register/Register'
-import Menu from './Menu/Menu'
+import Register from './Register/Register';
+import Menu from './Menu/Menu';
+import Chef from '../Chef/Chef';
 
 const Admin = () => {
     const { path, url } = useRouteMatch();
 
     return (
         <>
-        <h3>Admin Component</h3>
-                <ul>
-                    <li>
-                        <Link to={`${url}/new-user`}>New User</Link>
-                    </li>
-                    <li>
-                        <Link to={`${url}/menu`}>Menu</Link>
-                    </li>
-                </ul>
-        <Switch>
-            <Route path={`${path}/new-user`}>
-                <Register />
-            </Route>
-            <Route path={`${path}/menu`}>
-                <Menu />
-            </Route>
-        </Switch>
+            <h3>Admin Component</h3>
+            <ul>
+                <li>
+                    <Link to={`${url}/new-user`}>New User</Link>
+                </li>
+                <li>
+                    <Link to={`${url}/pedidos`}>Pedidos</Link>
+                </li>
+                <li>
+                    <Link to={`${url}/menu`}>Menu</Link>
+                </li>
+            </ul>
+            <Switch>
+                <Route path={`${path}/new-user`}>
+                    <Register />
+                </Route>
+                <Route path={`${path}/menu`}>
+                    <Menu />
+                </Route>
+                <Route path={`${path}/pedidos`}>
+                    <Chef />
+                </Route>
+            </Switch>
         </>
     )
 }
