@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/BEDU_Grupo5/static/css/main.92c27fdd.chunk.css",
-    "main.js": "/BEDU_Grupo5/static/js/main.d1fd47cc.chunk.js",
-    "main.js.map": "/BEDU_Grupo5/static/js/main.d1fd47cc.chunk.js.map",
+    "main.js": "/BEDU_Grupo5/static/js/main.9b6330c6.chunk.js",
+    "main.js.map": "/BEDU_Grupo5/static/js/main.9b6330c6.chunk.js.map",
     "runtime-main.js": "/BEDU_Grupo5/static/js/runtime-main.2127a08b.js",
     "runtime-main.js.map": "/BEDU_Grupo5/static/js/runtime-main.2127a08b.js.map",
     "static/css/2.4c97ca4f.chunk.css": "/BEDU_Grupo5/static/css/2.4c97ca4f.chunk.css",
@@ -23,6 +23,6 @@
     "static/css/2.4c97ca4f.chunk.css",
     "static/js/2.112c7c0b.chunk.js",
     "static/css/main.92c27fdd.chunk.css",
-    "static/js/main.d1fd47cc.chunk.js"
+    "static/js/main.9b6330c6.chunk.js"
   ]
 }
