@@ -9,12 +9,12 @@ import reportWebVitals from './reportWebVitals';
 //Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-//Pendiente agregar .env
-const NODE_ENV = 'development';
+//Pendiente agregar .env const NODE_ENV = 'development';
+const NODE_ENV = false;
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>{/*  basename={`/${NODE_ENV === 'development' ? '' : 'BEDU_Grupo5'}`}> */}
+    <BrowserRouter basename={`${NODE_ENV ? '/' : '/BEDU_Grupo5'}`}>
       <App />
     </BrowserRouter>
   </React.StrictMode>,
