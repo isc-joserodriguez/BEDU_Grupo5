@@ -14,7 +14,7 @@ const NODE_ENV = 'development';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter basename={`/${NODE_ENV === 'development' ? '' : 'BEDU_Grupo5'}`}>
+    <BrowserRouter>{/*  basename={`/${NODE_ENV === 'development' ? '' : 'BEDU_Grupo5'}`}> */}
       <App />
     </BrowserRouter>
   </React.StrictMode>,
