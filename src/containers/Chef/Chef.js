@@ -13,6 +13,14 @@ function Chef() {
     const [show, setShow] = useState(false);
     const [filteredOrders, setFilteredOrders] = useState([]);
 
+    const filterDo = () => {
+        if (value.trim() !== "") {
+            setFilteredOrders([...orders].filter(e => (-1 !== e.task.search(value))));
+        } else {
+            setFilteredOrders([...orders]);
+        }
+    };
+
     useEffect(() => {
         axios.post(
             'https://bedu-api-restaurante.herokuapp.com/v1/pedido/filtrar', {}, {
@@ -30,7 +38,8 @@ function Chef() {
 
     useEffect(() => {
         filterDo();
-    }, [orders])
+        console.log('actualiza')
+    }, [orders]);
 
     const newPedidoHandler = (e, status) => {
         e.preventDefault();
@@ -78,8 +87,10 @@ function Chef() {
             }
         }).then(res => {
             setOrders([...ordersArray]);
+            alert('Pedido eliminado');
         }).catch(err => {
             console.log(err);
+            alert('No se puede eliminar un pedido que no está cancelado')
         });
     }
 
@@ -90,14 +101,6 @@ function Chef() {
 
     const showHide = () => {
         setShow(!show);
-    }
-
-    const filterDo = () => {
-        if (value.trim() !== "") {
-            setFilteredOrders([...orders].filter(e => (-1 !== e.task.search(value))));
-        } else {
-            setFilteredOrders([...orders]);
-        }
     }
 
     return (

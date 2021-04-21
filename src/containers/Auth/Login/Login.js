@@ -48,6 +48,8 @@ const Login = props => {
     const [loading, setLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState(false);
 
+    if (props.isAuthenticated) props.history.push(`/${localStorage.getItem('type')}`);
+
     const inputChangedHandler = (event, controlName) => {
         const updatedControls = updateObject(loginForm, {
             [controlName]: updateObject(loginForm[controlName], {
@@ -67,8 +69,10 @@ const Login = props => {
             'https://bedu-api-restaurante.herokuapp.com/v1/usuarios/login',
             { email: loginForm.email.value, password: loginForm.password.value }).then(res => {
                 localStorage.setItem('token', `Bearer ${res.data.detail.token}`);
+                localStorage.setItem('type', res.data.detail.type);
                 setLoading(false);
-                props.history.push(`/${res.data.detail.type}`);
+                props.setToken(res.data.detail.token);
+                //props.history.push(`/${res.data.detail.type}`);
             }).catch(err => {
                 console.log(err);
                 setErrorMessage(true)
@@ -77,6 +81,7 @@ const Login = props => {
     }
 
     const formElementsArray = [];
+
     for (let key in loginForm) {
         formElementsArray.push({
             id: key,

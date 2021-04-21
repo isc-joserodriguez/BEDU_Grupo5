@@ -93,6 +93,8 @@ const SignUp = props => {
     });
     const [loading, setLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState(false);
+    
+    if (props.isAuthenticated) props.history.push(`/${localStorage.getItem('type')}`);
 
     const inputChangedHandler = (event, controlName) => {
         let updatedControls = updateObject(signupForm, {
@@ -124,8 +126,10 @@ const SignUp = props => {
         }
         axios.post('https://bedu-api-restaurante.herokuapp.com/v1/usuarios/signup', data).then(res => {
             localStorage.setItem('token', `Bearer ${res.data.detail.token}`);
+            localStorage.setItem('type', res.data.detail.type);
             setLoading(false);
-            props.history.push(`/${res.data.detail.type}`);
+            props.setToken(res.data.detail.token);
+            //props.history.push(`/${res.data.detail.type}`);
         }).catch(err => {
             setErrorMessage(true)
             setLoading(false);
@@ -162,7 +166,7 @@ const SignUp = props => {
                     <hr />
                     <Form noValidate onSubmit={submitHandler}>
                         {form}
-                        <Button type="submit" variant="primary" size="lg" block disabled={!signupForm.firstName.valid || !signupForm.lastName.valid ||!signupForm.email.valid || !signupForm.password.valid || !signupForm.confirmPassword.valid}> Registrarse  </Button>
+                        <Button type="submit" variant="primary" size="lg" block disabled={!signupForm.firstName.valid || !signupForm.lastName.valid || !signupForm.email.valid || !signupForm.password.valid || !signupForm.confirmPassword.valid}> Registrarse  </Button>
                         {errorMessage && <p className={`${classes.ErrorMessage} text-center mt-2`}>Error: Verifica los datos ingresados</p>}
                         <p className="text-center mt-4">Ya estás registrado? <Link to="/login">Inicia sesión</Link></p>
                     </Form>
