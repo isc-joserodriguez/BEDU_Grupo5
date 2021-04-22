@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
+import { Route, Switch, Link, withRouter } from 'react-router-dom'
 
 import Layout from './hoc/Layout/Layout';
 import Login from './containers/Auth/Login/Login';
@@ -9,6 +9,8 @@ import Admin from './containers/Admin/Admin';
 import Cliente from './containers/Cliente/Cliente';
 import Chef from './containers/Chef/Chef';
 import Mesero from './containers/Mesero/Mesero';
+import NotFound from './components/NotFound/NotFound';
+
 
 function App(props) {
   const [token, setToken] = useState(null);
@@ -23,6 +25,8 @@ function App(props) {
 
   let component = null;
 
+
+
   let routes = (
     <Switch>
       <Route path="/" exact>
@@ -31,7 +35,9 @@ function App(props) {
       <Route path="/signup">
         <SignUp setToken={setToken} isAuthenticated={!!token} />
       </Route>
-      <Redirect to="/" />
+      <Route>
+        <NotFound />
+      </Route>
     </Switch>
   )
 
@@ -59,7 +65,9 @@ function App(props) {
         <Route path="/logout">
           <Logout setToken={setToken} />
         </Route>
-        <Redirect to={`/${localStorage.getItem('type')}`} />
+        <Route>
+          <NotFound />
+        </Route>
       </Switch>
     )
 
