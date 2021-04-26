@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { updateObject, checkValidity } from '../../../shared/utility';
 import { Container, Card, Form, Button } from 'react-bootstrap';
@@ -114,6 +115,11 @@ const Login = props => {
         </Container>
 
     )
+}
+
+Login.propTypes = {
+    isAuthenticated: PropTypes.bool.isRequired,
+    setToken: PropTypes.func.isRequired,
 }
 
 export default withRouter(Login)

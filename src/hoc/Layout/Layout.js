@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
@@ -27,6 +28,10 @@ const Layout = props => {
         </>
 
     );
+}
+
+Layout.propTypes = {
+    isAuthenticated: PropTypes.bool.isRequired
 }
 
 export default Layout;

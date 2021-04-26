@@ -20,7 +20,8 @@ const toolbar = (props) => (
 );
 
 toolbar.propTypes = {
-    drawerToggleClicked: PropTypes.func.isRequired
+    drawerToggleClicked: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool,
 }
 
 export default toolbar;

@@ -16,7 +16,7 @@ const Register = props => {
             elementType: 'group',
             elementConfig: {
                 type: 'text',
-                placeholder: 'Ingresa tu(s) nombre(s)',
+                placeholder: 'Ingresa nombre(s)',
             },
             icon: CgUser,
             value: '',
@@ -31,7 +31,7 @@ const Register = props => {
             elementType: 'group',
             elementConfig: {
                 type: 'text',
-                placeholder: 'Ingresa tu(s) apellido(s)',
+                placeholder: 'Ingresa apellido(s)',
             },
             icon: CgUser,
             value: '',
@@ -46,7 +46,7 @@ const Register = props => {
             elementType: 'group',
             elementConfig: {
                 type: 'email',
-                placeholder: 'Ingresa tu email',
+                placeholder: 'Ingresa el email',
             },
             icon: CgMail,
             value: '',
@@ -62,7 +62,7 @@ const Register = props => {
             elementType: 'group',
             elementConfig: {
                 type: 'password',
-                placeholder: 'Ingresa tu contraseña',
+                placeholder: 'Ingresa la contraseña',
             },
             icon: CgPassword,
             value: '',
@@ -78,7 +78,7 @@ const Register = props => {
             elementType: 'group',
             elementConfig: {
                 type: 'password',
-                placeholder: 'Confirma tu contraseña',
+                placeholder: 'Confirma la contraseña',
             },
             icon: CgPassword,
             value: '',

@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import classes from './NavigationItems.module.css';
 import NavigationItem from './NavigationItem/NavigationItem';
 
-const navigationItems = (props) => {
+const NavigationItems = (props) => {
     let links = [
         { route: '/', displayName: 'Iniciar sesión' },
         { route: '/signup', displayName: 'Registrarse' }
@@ -47,4 +48,8 @@ const navigationItems = (props) => {
     )
 };
 
-export default navigationItems
+NavigationItems.propTypes = {
+    isAuthenticated: PropTypes.bool
+  }
+
+export default NavigationItems

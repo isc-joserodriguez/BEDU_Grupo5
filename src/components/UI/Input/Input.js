@@ -1,9 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { Form, InputGroup } from 'react-bootstrap';
 
 import classes from './Input.module.css'
 
-const input = (props) => {
+const Input = (props) => {
     let inputElement = null;
     let errorMessage = null;
     const inputClasses = [classes.InputElement];
@@ -77,4 +79,16 @@ const input = (props) => {
     );
 };
 
-export default input;
+Input.propTypes = {
+    changed: PropTypes.func.isRequired,
+    elementConfig: PropTypes.object.isRequired,
+    elementType: PropTypes.string.isRequired,
+    errorMessage: PropTypes.string,
+    icon: PropTypes.func,
+    invalid: PropTypes.bool.isRequired,
+    shouldValidate: PropTypes.object.isRequired,
+    touched: PropTypes.bool,
+    value: PropTypes.string.isRequired
+}
+
+export default Input;
