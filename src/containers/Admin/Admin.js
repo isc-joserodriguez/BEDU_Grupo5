@@ -10,18 +10,6 @@ const Admin = () => {
 
     return (
         <>
-            <h3>Admin Component</h3>
-            <ul>
-                <li>
-                    <Link to={`${url}/new-user`}>New User</Link>
-                </li>
-                <li>
-                    <Link to={`${url}/pedidos`}>Pedidos</Link>
-                </li>
-                <li>
-                    <Link to={`${url}/menu`}>Menu</Link>
-                </li>
-            </ul>
             <Switch>
                 <Route path={`${path}/new-user`}>
                     <Register />

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Switch, Link, withRouter } from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
 
 import Layout from './hoc/Layout/Layout';
 import Login from './containers/Auth/Login/Login';

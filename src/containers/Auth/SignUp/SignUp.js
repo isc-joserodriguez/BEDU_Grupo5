@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import axios from 'axios';
 
 import { updateObject, checkValidity } from '../../../shared/utility';
 import { Container, Card, Form, Button } from 'react-bootstrap';
 import Spinner from '../../../components/UI/Spinner/Spinner'
 import Input from '../../../components/UI/Input/Input';
 import { CgUser, CgMail, CgPassword } from 'react-icons/cg';
+import { signup } from '../../../services'
 
 import classes from './SignUp.module.css';
 
@@ -93,7 +93,7 @@ const SignUp = props => {
     });
     const [loading, setLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState(false);
-    
+
     if (props.isAuthenticated) props.history.push(`/${localStorage.getItem('type')}`);
 
     const inputChangedHandler = (event, controlName) => {
@@ -124,15 +124,13 @@ const SignUp = props => {
             email: signupForm.email.value,
             password: signupForm.password.value
         }
-        axios.post('https://bedu-api-restaurante.herokuapp.com/v1/usuarios/signup', data).then(res => {
-            localStorage.setItem('token', `Bearer ${res.data.detail.token}`);
-            localStorage.setItem('type', res.data.detail.type);
-            setLoading(false);
-            props.setToken(res.data.detail.token);
-            //props.history.push(`/${res.data.detail.type}`);
-        }).catch(err => {
-            setErrorMessage(true)
-            setLoading(false);
+
+        signup({
+            data,
+            setLoading,
+            setToken: props.setToken,
+            setErrorMessage,
+            register: false
         });
     }
 
@@ -168,7 +166,7 @@ const SignUp = props => {
                         {form}
                         <Button type="submit" variant="primary" size="lg" block disabled={!signupForm.firstName.valid || !signupForm.lastName.valid || !signupForm.email.valid || !signupForm.password.valid || !signupForm.confirmPassword.valid}> Registrarse  </Button>
                         {errorMessage && <p className={`${classes.ErrorMessage} text-center mt-2`}>Error: Verifica los datos ingresados</p>}
-                        <p className="text-center mt-4">Ya estás registrado? <Link to="/login">Inicia sesión</Link></p>
+                        <p className="text-center mt-4">Ya estás registrado? <Link to="/">Inicia sesión</Link></p>
                     </Form>
                 </Card.Body>
             </Card>

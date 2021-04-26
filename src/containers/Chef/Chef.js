@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Filters from './Filters';
 import OrdersList from './OrdersList.js';
-import axios from 'axios'
 
 import { Button } from 'react-bootstrap';
+import { filterOrders, newOrder, deleteOrder } from '../../services';
 
 import classes from './chef.module.css';
 
@@ -22,23 +22,11 @@ function Chef() {
     };
 
     useEffect(() => {
-        axios.post(
-            'https://bedu-api-restaurante.herokuapp.com/v1/pedido/filtrar', {}, {
-            headers: {
-                'Authorization': localStorage.getItem('token')
-            }
-        }).then(res => {
-            let ordersArray = res.data.detail.map(el => { return { task: el.status !== 0 ? `hola ${el._id}` : 'Pedido Cancelado', status: el.status > 1, id: el._id } });
-            setOrders([...ordersArray]);
-            setFilteredOrders([...ordersArray]);
-        }).catch(err => {
-            console.log(err);
-        });
+        filterOrders({ setOrders, setFilteredOrders, filter: {} })
     }, []);
 
     useEffect(() => {
         filterDo();
-        console.log('actualiza')
     }, [orders]);
 
     const newPedidoHandler = (e, status) => {
@@ -54,18 +42,7 @@ function Chef() {
             cost: 0,
             status
         }
-        axios.post(
-            'https://bedu-api-restaurante.herokuapp.com/v1/pedido', data, {
-            headers: {
-                'Authorization': localStorage.getItem('token')
-            }
-        }).then(res => {
-            let ordersArray = [...orders];
-            ordersArray.push({ task: res.data.detail.status !== 0 ? `hola ${res.data.detail._id}` : 'Pedido Cancelado', status: false, id: res.data.detail._id });
-            setOrders([...ordersArray]);
-        }).catch(err => {
-            console.log(err);
-        });
+        newOrder({ data, orders, setOrders })
     }
 
     const changeStatusHandler = (id) => {
@@ -80,18 +57,12 @@ function Chef() {
         let ordersArray = [...orders]
         let indexDelete = ordersArray.findIndex(element => element.id === id);
         ordersArray.splice(indexDelete, 1);
-        axios.delete(
-            `https://bedu-api-restaurante.herokuapp.com/v1/pedido/${id}`, {
-            headers: {
-                'Authorization': localStorage.getItem('token')
-            }
-        }).then(res => {
-            setOrders([...ordersArray]);
-            alert('Pedido eliminado');
-        }).catch(err => {
-            console.log(err);
-            alert('No se puede eliminar un pedido que no está cancelado')
-        });
+
+        deleteOrder({
+            id,
+            setOrders,
+            ordersArray
+        })
     }
 
     const changeValue = (newValue) => {

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import {withRouter} from 'react-router-dom';
-import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 
 import { updateObject, checkValidity } from '../../../shared/utility';
 import { Container, Card, Form, Button } from 'react-bootstrap';
 import Spinner from '../../../components/UI/Spinner/Spinner'
 import Input from '../../../components/UI/Input/Input';
 import { CgUser, CgMail, CgPassword } from 'react-icons/cg';
+import { signup } from '../../../services';
 
 import classes from './Register.module.css';
 
@@ -137,17 +137,12 @@ const Register = props => {
             password: registerForm.password.value,
             type: registerForm.type.value
         }
-        axios.post('https://bedu-api-restaurante.herokuapp.com/v1/usuarios/signup', data, {
-            headers: {
-                'Authorization': localStorage.getItem('token')
-            }
-        }).then(res => {
-            setLoading(false);
-            alert('Se creó el usuario');
-            props.history.push(`/admin`);
-        }).catch(err => {
-            setErrorMessage(true)
-            setLoading(false);
+        signup({
+            data,
+            setLoading,
+            setErrorMessage,
+            register: true,
+            history: props.history
         });
     }
 

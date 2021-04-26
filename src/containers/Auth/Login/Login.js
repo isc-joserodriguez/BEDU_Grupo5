@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import axios from 'axios';
 
 import { updateObject, checkValidity } from '../../../shared/utility';
 import { Container, Card, Form, Button } from 'react-bootstrap';
 import Spinner from '../../../components/UI/Spinner/Spinner'
 import Input from '../../../components/UI/Input/Input';
 import { CgMail, CgPassword } from 'react-icons/cg';
+import { login } from '../../../services';
 
 import classes from './Login.module.css';
 
@@ -65,19 +65,13 @@ const Login = props => {
         event.preventDefault();
         setLoading(true);
         setErrorMessage(false)
-        axios.post(
-            'https://bedu-api-restaurante.herokuapp.com/v1/usuarios/login',
-            { email: loginForm.email.value, password: loginForm.password.value }).then(res => {
-                localStorage.setItem('token', `Bearer ${res.data.detail.token}`);
-                localStorage.setItem('type', res.data.detail.type);
-                setLoading(false);
-                props.setToken(res.data.detail.token);
-                //props.history.push(`/${res.data.detail.type}`);
-            }).catch(err => {
-                console.log(err);
-                setErrorMessage(true)
-                setLoading(false);
-            });
+        let data = { email: loginForm.email.value, password: loginForm.password.value }
+        login({
+            data,
+            setLoading,
+            setToken: props.setToken,
+            setErrorMessage
+        });
     }
 
     const formElementsArray = [];
