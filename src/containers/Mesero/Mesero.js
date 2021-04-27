@@ -3,10 +3,12 @@ import Comandos from './Comandos'
 import Pedidos from './Pedidos'
 
 const Mesero = () => {
+
+
     return (
         <div>
             <Comandos></Comandos>
-            <Pedidos></Pedidos>
+            <Pedidos></Pedidos>           
         </div>
     )
 }
