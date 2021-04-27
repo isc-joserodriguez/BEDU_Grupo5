@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const filterOrders = ({ setOrders, setFilteredOrders, filter }) => {
     axios.post(
-        'https://bedu-api-restaurante.herokuapp.com/v1/pedido/filtrar', filter, {
+        `${process.env.REACT_APP_API_Connect}/pedido/filtrar`, filter, {
         headers: {
             'Authorization': localStorage.getItem('token')
         }
@@ -17,7 +17,7 @@ export const filterOrders = ({ setOrders, setFilteredOrders, filter }) => {
 
 export const newOrder = ({ setOrders, data, orders }) => {
     axios.post(
-        'https://bedu-api-restaurante.herokuapp.com/v1/pedido', data, {
+        `${process.env.REACT_APP_API_Connect}/pedido`, data, {
         headers: {
             'Authorization': localStorage.getItem('token')
         }
@@ -32,7 +32,7 @@ export const newOrder = ({ setOrders, data, orders }) => {
 
 export const deleteOrder = ({ id, setOrders, ordersArray }) => {
     axios.delete(
-        `https://bedu-api-restaurante.herokuapp.com/v1/pedido/${id}`, {
+        `${process.env.REACT_APP_API_Connect}/pedido/${id}`, {
         headers: {
             'Authorization': localStorage.getItem('token')
         }
