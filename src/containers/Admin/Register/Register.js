@@ -144,6 +144,7 @@ const Register = props => {
             register: true,
             history: props.history
         });
+        
     }
 
     const formElementsArray = [];
