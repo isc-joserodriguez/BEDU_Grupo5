@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 export const filterOrders = ({ setOrders, setFilteredOrders, filter }) => {
     axios.post(
         `${process.env.REACT_APP_API_Connect}/pedido/filtrar`, filter, {
@@ -14,7 +13,6 @@ export const filterOrders = ({ setOrders, setFilteredOrders, filter }) => {
         console.log(err);
     });
 }
-
 export const newOrder = ({ setOrders, data, orders }) => {
     axios.post(
         `${process.env.REACT_APP_API_Connect}/pedido`, data, {
@@ -29,7 +27,6 @@ export const newOrder = ({ setOrders, data, orders }) => {
         console.log(err);
     });
 }
-
 export const deleteOrder = ({ id, setOrders, ordersArray }) => {
     axios.delete(
         `${process.env.REACT_APP_API_Connect}/pedido/${id}`, {
@@ -42,5 +39,32 @@ export const deleteOrder = ({ id, setOrders, ordersArray }) => {
     }).catch(err => {
         console.log(err);
         alert('No se puede eliminar un pedido que no está cancelado')
+    });
+}
+export const getOrdersHistory = ({ setOrders, setFilteredOrders, setLoading }) => {
+    axios.get(
+        'https://bedu-api-restaurante.herokuapp.com/v1/pedido/verHistorial/999', {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        }
+    }).then(res => {
+        console.log(res);
+        setOrders(res.data.detail);
+        setLoading(false);
+    }).catch(err => {
+        setLoading(false);
+        console.log(err);
+    });
+}
+export const getOrderById = ({ id, setOrder }) => {
+    axios.get(
+        `https://bedu-api-restaurante.herokuapp.com/v1/pedido/${id}`, {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        }
+    }).then(res => {
+        setOrder(res.data.detail);
+    }).catch(err => {
+        console.log(err);
     });
 }

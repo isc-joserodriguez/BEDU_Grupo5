@@ -1,29 +1,42 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Card, Button } from 'react-bootstrap'
 
 
-export class Pedido extends Component {
-    state = {
-        visible: true
-    }
+function Pedido (props) {
+    function orderStatus (status) {
+            switch (status){
+                case 0: return 'Cancelado';
+                case 1: return 'Pendiente';
+                case 2: return 'Preparando';
+                case 3: return 'Preparado';
+                case 4: return 'Entregado';
+                default: return 'Pendiente';
+            }
 
-    render() {
+        }
+
+        function orderDetails(){
+            props.orderDetail()
+            props.handleShow()
+        }
+
         return (
-            <div className={`col mb-3 ${this.state.visible ? '' : 'd-none'}`}>
+            <div className={'col mb-3'}>
                 <Card className='text-center'>
-                    <Card.Header className=''><h4>Pedido #{this.props.number}</h4></Card.Header>
+                    <Card.Header className=''><h4>Pedido #{props.idPedido}</h4></Card.Header>
                     <Card.Body>
                         <Card.Text className='text-break text-center'>
                             <h6>Estado: </h6>
-                            {this.props.estado}
+                            {orderStatus(props.status)}
                         </Card.Text>
-                        <Button variant="info" className='is-centered' block >Ver pedido</Button>
+                        <Button variant="info" className='is-centered' block onClick={() => orderDetails()}>Ver pedido</Button>
                     </Card.Body>
                 </Card>
+                
             </div>
         )
     }
-}
+
 
 
 export default Pedido

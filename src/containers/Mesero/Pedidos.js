@@ -1,43 +1,76 @@
-import React, { Component } from 'react'
-import Pedido from './Pedido'
-import Container from 'react-bootstrap/Container'
-
-
-export class Pedidos extends Component {
-    render() {
-        return (
-            <div className='overflow-auto'>
-                <Container className='overflow-auto vh-75'>
-                    <div className='row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 overflow-auto'>
-                        
-                            <Pedido number={1} estado={'Pendiente'} ></Pedido>
-                            <Pedido number={2} estado={'En preparación'} ></Pedido>
-                            <Pedido number={3} estado={'Entregado'} ></Pedido>
-                            <Pedido number={4} estado={'Pendiente'} ></Pedido>
-                            <Pedido number={5} estado={'En preparación'} ></Pedido>
-                            <Pedido number={6} estado={'Entregado'} ></Pedido>
-                            <Pedido number={7} estado={'Pendiente'} ></Pedido>
-                            <Pedido number={8} estado={'En preparación'} ></Pedido>
-                            <Pedido number={9} estado={'Entregado'} ></Pedido>
-                            <Pedido number={10} estado={'Pendiente'} ></Pedido>
-                            <Pedido number={11} estado={'En preparación'} ></Pedido>
-                            <Pedido number={12} estado={'Entregado'} ></Pedido>
-                            <Pedido number={13} estado={'Pendiente'} ></Pedido>
-                            <Pedido number={14} estado={'En preparación'} ></Pedido>
-                            <Pedido number={15} estado={'Entregado'} ></Pedido>
-                            <Pedido number={16} estado={'Preparado'} ></Pedido>
-                            <Pedido number={17} estado={'Preparado'} ></Pedido>
-                            <Pedido number={18} estado={'Preparado'} ></Pedido>
-                            <Pedido number={19} estado={'En preparación'} ></Pedido>
-                            <Pedido number={20} estado={'Entregado'} ></Pedido>
-                            <Pedido number={21} estado={'Pendiente'} ></Pedido>
-
-                    </div>    
-                </Container>
-           </div>
-        )
-    }
+import React, { useState, useEffect } from "react";
+import Pedido from "./Pedido";
+import Container from "react-bootstrap/Container";
+import OrderModal from "./OrderModal";
+import Spinner from '../../components/UI/Spinner/Spinner';
+import { getOrdersHistory, getOrderById } from '../../services'
+function Pedidos() {
+  const [show, setShow] = useState(false);
+  const [orders, setOrders] = useState([]);
+  const [filteredOrders, setFilteredOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [order, setOrder] = useState({});
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  useEffect(()=>{
+    getOrdersHistory({ setOrders, setFilteredOrders, setLoading });
+  },[])
+  /* const ordersTest = (
+            {
+                idPedido: '1',
+                idCliente: '1',
+                idChef: '',
+                idMesero: '',
+                info: ['chilaquiles','jugo de naranja'],
+                cost: 75.50,
+                status: 1
+                Status
+                0 -Cancelado
+                1 - Pendiete
+                2 - Preparando
+                3 - Preparado
+                4 - Entregado
+            }
+    ) */
+  const orderDetail = (orderId) => {
+    getOrderById(
+      {
+        id:orderId, 
+        setOrder
+      }
+      )
+  };
+  const ordersMap = orders.map(order => (
+    <Pedido
+      key={order.idPedido}
+      idPedido={order._id.substring(order._id.length-7)}
+      idCliente={order.idCliente}
+      idChef={order.idChef}
+      idMesero={order.idMesero}
+      info={order.info}
+      cost={order.cost}
+      status={order.status}
+      orderDetail={() => orderDetail(order._id)} 
+      handleShow={() => handleShow()}
+      handleClose={() => handleClose()}
+    />
+  ));
+  return (
+    <div className="overflow-auto">
+      <Container className="overflow-auto vh-75">
+        {loading?
+        <Spinner />:
+        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 overflow-auto">
+          {ordersMap}
+        </div>}
+      </Container>
+      <OrderModal
+      order={order}
+        show={show}
+        handleShow={() => handleShow()}
+        handleClose={() => handleClose()}
+      ></OrderModal>
+    </div>
+  );
 }
-
-
-export default Pedidos
+export default Pedidos;
