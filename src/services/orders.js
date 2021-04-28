@@ -43,7 +43,7 @@ export const deleteOrder = ({ id, setOrders, ordersArray }) => {
 }
 export const getOrdersHistory = ({ setOrders, setFilteredOrders, setLoading }) => {
     axios.get(
-        'https://bedu-api-restaurante.herokuapp.com/v1/pedido/verHistorial/999', {
+        `${process.env.REACT_APP_API_Connect}/pedido/verHistorial/999`, {
         headers: {
             'Authorization': localStorage.getItem('token')
         }
@@ -58,7 +58,7 @@ export const getOrdersHistory = ({ setOrders, setFilteredOrders, setLoading }) =
 }
 export const getOrderById = ({ id, setOrder }) => {
     axios.get(
-        `https://bedu-api-restaurante.herokuapp.com/v1/pedido/${id}`, {
+        `${process.env.REACT_APP_API_Connect}/pedido/${id}`, {
         headers: {
             'Authorization': localStorage.getItem('token')
         }
