@@ -28,6 +28,12 @@ const Admin = () => {
                 <Route path={`${path}/users`}>
                     <Users />
                 </Route>
+                <Route path={`${path}/users/:id`}>
+                    <User />
+                </Route>
+                <Route path={`${path}/users`}>
+                    <Users />
+                </Route>
             </Switch>
         </>
     )
