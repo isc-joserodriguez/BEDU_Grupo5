@@ -1,11 +1,7 @@
 import React from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
-
 const OrderModal = (props) => {
-
-
-
     function orderStatus (status) {
         switch (status){
             case 0: return 'Cancelado';
@@ -15,22 +11,27 @@ const OrderModal = (props) => {
             case 4: return 'Entregado';
             default: return 'Pendiente';
         }
-
     }
+
+    /*/{* <p>Info: {(props.order.info)}</p> */
+
+    console.log(props.order)
 
     return (
         <>
+        
+        
             <Modal show={props.show} onHide={props.handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Pedido #{props.key}</Modal.Title>
+                    <Modal.Title>Pedido #{props.order._id}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <p>Estatus: {orderStatus(props.status)}</p>
-                    <p>Cliente: {(props.idCliente)}</p>
-                    <p>Chef: {(props.idChef)}</p>
-                    <p>Mesero: {(props.idMesero)}</p>
-                    <p>Info: {(props.info)}</p>
-                    <p>Costo: ${(props.cost)}</p>
+                    <p>Estatus: {orderStatus(props.order.status)}</p>
+                    <p>Cliente: {(props.order.idCliente)}</p>
+                    <p>Chef: {(props.order.idChef)}</p>
+                    <p>Mesero: {(props.order.idMesero)}</p>
+                   
+                    <p>Costo: ${(props.order.cost)}</p>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="primary" className='float-left' onClick={props.handleClose}>
@@ -44,8 +45,11 @@ const OrderModal = (props) => {
                     </Button>
                 </Modal.Footer>
              </Modal>
+        
+        <div>
+            Modal
+        </div>
         </>
     )
 }
-
-export default OrderModal
+export default OrderModal;

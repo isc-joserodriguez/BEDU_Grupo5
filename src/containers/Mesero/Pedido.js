@@ -3,8 +3,7 @@ import { Card, Button } from 'react-bootstrap'
 
 
 function Pedido (props) {
-
-        function orderStatus (status) {
+    function orderStatus (status) {
             switch (status){
                 case 0: return 'Cancelado';
                 case 1: return 'Pendiente';

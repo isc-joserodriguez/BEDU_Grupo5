@@ -2,9 +2,10 @@ export {
     login,
     signup
 } from './auth';
-
 export {
     filterOrders,
     newOrder,
-    deleteOrder
+    deleteOrder,
+    getOrdersHistory,
+    getOrderById
 } from './orders';
