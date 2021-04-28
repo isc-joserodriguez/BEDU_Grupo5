@@ -1,12 +1,14 @@
 import React from 'react';
-import { Link, Route, Switch, useRouteMatch } from 'react-router-dom';
+import { Route, Switch, useRouteMatch } from 'react-router-dom';
 
 import Register from './Register/Register';
 import Menu from './Menu/Menu';
 import Chef from '../Chef/Chef';
+import Users from './Users/Users';
+import User from './Users/User/User';
 
 const Admin = () => {
-    const { path, url } = useRouteMatch();
+    const { path } = useRouteMatch();
 
     return (
         <>
@@ -17,8 +19,14 @@ const Admin = () => {
                 <Route path={`${path}/menu`}>
                     <Menu />
                 </Route>
-                <Route path={`${path}/pedidos`}>
+                <Route path={`${path}/orders`}>
                     <Chef />
+                </Route>
+                <Route path={`${path}/users/:id`}>
+                    <User />
+                </Route>
+                <Route path={`${path}/users`}>
+                    <Users />
                 </Route>
             </Switch>
         </>

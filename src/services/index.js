@@ -8,3 +8,8 @@ export {
     newOrder,
     deleteOrder
 } from './orders';
+
+export {
+    getUsers,
+    getUserById
+} from './users';
