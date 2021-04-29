@@ -15,3 +15,7 @@ export {
     getUsers,
     getUserById
 } from './users';
+
+export{
+    getFoods
+} from './foods';
