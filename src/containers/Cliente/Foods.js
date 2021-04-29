@@ -54,10 +54,10 @@ function Foods() {
       </div>
       <div className='col d-flex flex-wrap mb-4 align-content-center justify-content-center'>
         <Button variant="outline-primary" className='p-2 m-2' onClick={() => getFoodsByCategory({ setFoods, setFilteredFoods, setLoading, data: '604d7d8445a6de761e3d91bb'})}>Jugos Naturales</Button>
-        <Button variant="outline-warning" className='p-2 m-2' >En preparación</Button>
+        <Button variant="outline-warning" className='p-2 m-2' onClick={() => getFoodsByCategory({ setFoods, setFilteredFoods, setLoading, data: '604d7d6e45a6de761e3d91ba'})}>Desayunos</Button>
         <Button variant="outline-success" className='p-2 m-2' >Preparado</Button>
         <Button variant="outline-danger" className='p-2  m-2' >Entregado</Button>
-        <Button variant="outline-secondary" className='p-2 m-2' >Todos</Button>
+        <Button variant="outline-secondary" className='p-2 m-2'onClick={() => getFoods({ setFoods, setFilteredFoods, setLoading })} >Todos</Button>
       </div>
 
       <div className="overflow-auto">
