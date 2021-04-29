@@ -47,8 +47,13 @@ function Chef() {
 
     const changeStatusHandler = (id) => {
         let ordersArray = [...orders];
-        let indexModif = ordersArray.findIndex(element => element.id === id);
-        ordersArray[indexModif].status = !ordersArray[indexModif].status;
+        let indexModif = ordersArray.findIndex(element => element.id === id);///////////////////AQUI DEBO CAMBIAR LO DE LOS ESTATUS PARA QUE EN BD PONGA EL QUE ES 
+        if (ordersArray[indexModif].status === 1) {
+            ordersArray[indexModif].status = 2;
+        }
+        else if (ordersArray[indexModif].status === 2) {
+            ordersArray[indexModif].status = 3;
+        }
         setOrders(ordersArray);
         filterDo();
     }
@@ -79,8 +84,13 @@ function Chef() {
             <div className={classes.card}>
                 <Filters showHide={showHide} filterDo={filterDo} orders={orders} show={show} value={value} changeValue={changeValue} />
                 <OrdersList change={changeStatusHandler} orders={filteredOrders} show={show} delete={handleClickDelete} filterDo={filterDo} value={value} />
-                <Button variant="outline-success" className='p-2 m-2' onClick={(e) => newPedidoHandler(e, 1)}>Agregar Pedido En Espera</Button>
-                <Button variant="outline-danger" className='p-2 m-2' onClick={(e) => newPedidoHandler(e, 0)}>Agregar Pedido Cancelado</Button>
+                {
+                    localStorage.getItem("type") === "admin" &&
+                        <>
+                            <Button variant="outline-success" className='p-2 m-2' onClick={(e) => newPedidoHandler(e, 1)}>Agregar Pedido En Espera</Button>
+                            <Button variant="outline-danger" className='p-2 m-2' onClick={(e) => newPedidoHandler(e, 0)}>Agregar Pedido Cancelado</Button>
+                        </> 
+                }
             </div>
         </div>
     );

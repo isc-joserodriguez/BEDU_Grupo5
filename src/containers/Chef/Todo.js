@@ -18,25 +18,29 @@ function Todo(props) {
   }
 
   return (
-    <tr className={`list-item ${props.done ? 'done' : ''}`}>
+    <tr>
       <td>
-        <Check done={props.done} change={props.change} id={props.id} />
+        <Check status={props.status} change={props.change} id={props.id} status={props.status} />
       </td>
       <td>
         {props.id}
       </td>
       <td>
-        {props.task}
+        {props.order}
       </td>
       <td>
-        None
+        {props.cost}
       </td>
       <td>
-        <ImEye className="blue is-pulled-right" onClick={open}/>
+        <ImEye className="blue is-pulled-right" onClick={open} />
       </td>
-      <td>
-        <RiDeleteBin2Fill className="orange is-pulled-right" onClick={onDelete}/>
-      </td>
+      {
+        localStorage.getItem("type") === "admin" &&
+        <td>
+          <RiDeleteBin2Fill className="orange is-pulled-right" onClick={onDelete} />
+        </td>
+      }
+
     </tr>
   )
 }

@@ -6,7 +6,7 @@ export const filterOrders = ({ setOrders, setFilteredOrders, filter }) => {
             'Authorization': localStorage.getItem('token')
         }
     }).then(res => {
-        let ordersArray = res.data.detail.map(el => { return { task: el.status !== 0 ? `hola ${el._id}` : 'Pedido Cancelado', status: el.status > 1, id: el._id } });
+        let ordersArray = res.data.detail;
         setOrders([...ordersArray]);
         setFilteredOrders([...ordersArray]);
     }).catch(err => {
