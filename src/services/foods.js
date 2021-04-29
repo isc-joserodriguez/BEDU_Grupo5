@@ -28,9 +28,9 @@ export const getFoodById = ({ id, setFood }) => {
     });
 }
 
-export const getFoodsByCategory = ({ setFoods, setFilteredOrders, setLoading}) => {
+export const getFoodsByCategory = ({ setFoods, setFilteredOrders, setLoading, data}) => {
     axios.post(
-        `${process.env.REACT_APP_API_Connect}/productos/filtrar`, {cost: '30'}, {
+        `${process.env.REACT_APP_API_Connect}/productos/filtrar`, {idCategoria: data}, {
         headers: {
             'Authorization': localStorage.getItem('token')
         },
