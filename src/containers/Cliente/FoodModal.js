@@ -32,9 +32,6 @@ const FoodModal = (props) => {
                 </Modal.Footer>
              </Modal>
         
-        <div>
-            Modal
-        </div>
         </>
     )
 }

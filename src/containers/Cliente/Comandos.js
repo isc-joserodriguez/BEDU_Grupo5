@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import {Button, Container, Form, Col} from 'react-bootstrap'
+import Foods from './Foods'
 
 export class Comandos extends Component {
 
@@ -11,7 +12,7 @@ export class Comandos extends Component {
                 <div className='d-flex align-items-center mb-4 justify-content-center'>
                     <Form>
                         <Col> 
-                            <Form.Control type="text" placeholder="No. de pedido" />
+                            <Form.Control type="text" placeholder="Nombre Del Platillo" />
                         </Col>
                     </Form>
                     <Button variant="dark" className='p-2' >Buscar</Button>
@@ -23,8 +24,8 @@ export class Comandos extends Component {
                     <Button variant="outline-success" className='p-2 m-2' >Preparado</Button>
                     <Button variant="outline-danger" className='p-2  m-2' >Entregado</Button>
                     <Button variant="outline-secondary" className='p-2 m-2' >Todos</Button>
-                </div>
-                
+                </div> 
+
             </Container>
         )
     }

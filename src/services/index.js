@@ -17,5 +17,6 @@ export {
 } from './users';
 
 export{
-    getFoods
+    getFoods,
+    getFoodsByCategory
 } from './foods';
