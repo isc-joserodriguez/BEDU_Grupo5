@@ -15,8 +15,9 @@ const NavigationItems = (props) => {
             case 'admin':
                 links = [
                     { route: '/admin', displayName: 'Inicio' },
+                    { route: '/admin/users', displayName: 'Usuarios' },
                     { route: '/admin/new-user', displayName: 'Registrar Nuevo Usuario' },
-                    { route: '/admin/pedidos', displayName: 'Ver Pedidos' },
+                    { route: '/admin/orders', displayName: 'Ver Pedidos' },
                     { route: '/admin/menu', displayName: 'Menú' },
                     { route: '/logout', displayName: 'Cerrar Sesión' }
                 ]
@@ -54,6 +55,6 @@ const NavigationItems = (props) => {
 
 NavigationItems.propTypes = {
     isAuthenticated: PropTypes.bool
-  }
+}
 
 export default NavigationItems

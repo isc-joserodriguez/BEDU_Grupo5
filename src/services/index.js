@@ -10,3 +10,8 @@ export {
     getOrderById,
     updateState
 } from './orders';
+
+export {
+    getUsers,
+    getUserById
+} from './users';
