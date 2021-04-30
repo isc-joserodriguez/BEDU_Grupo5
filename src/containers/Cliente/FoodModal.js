@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import { createPedido } from '../../services/foods'
 const FoodModal = (props) => {
 
     const [cart, setCart] = useState([]);
+    const [cartName, setCartName] = useState([]);
     const [costCart, setCostCart] = useState([]);
+
 
     console.log(cart)
 
@@ -13,6 +15,11 @@ const FoodModal = (props) => {
         return total + num;
     }
 
+    const listItems = cartName.map((cart) => costCart.map((cost) =>
+    <>
+    <li>Producto: {cart} Precio: {cost}</li>
+    </>
+    ));
 
     return (
         <>
@@ -26,16 +33,27 @@ const FoodModal = (props) => {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button variant="primary" className='float-left' onClick={() => {setCart(cart.concat(props.food._id)); createPedido({ info: cart, cost: costCart.reduce(myFunc)}) }}>
-                        Ordenar.
+                    <Button variant="primary" className='float-left' onClick={() => { createPedido({ info: [props.food._id], cost: props.food.cost }) }}>
+                        Ordenar Solo Este Platillo.
                     </Button>
-                    <Button variant="success" className='float-left' onClick={() => {setCart(cart.concat(props.food._id)); setCostCart(costCart.concat(props.food.cost)) }}>
+                    <Button variant="success" className='float-left' onClick={() => { setCart(cart.concat(props.food._id)); setCartName(cartName.concat(props.food.name)); setCostCart(costCart.concat(props.food.cost)) }}>
                         Carrito.
                     </Button>
                     <Button variant="secondary" onClick={props.handleClose}>
                         Salir.
                     </Button>
                 </Modal.Footer>
+                {/* Show the food that are in the Cart */}
+                {cart.length > 0 &&
+                    <>
+                    <h3>Tu Pedido.</h3>
+                    <ul>{listItems}</ul>
+                    <ul><strong>Total:</strong> {costCart.reduce(myFunc)}</ul>
+                    <Button variant="primary" className='float-left' onClick={() => { createPedido({ info: cart, cost: costCart.reduce(myFunc) }) }}>
+                        Ordenar Carrito.
+                    </Button>
+                    </>
+                }
             </Modal>
 
         </>
