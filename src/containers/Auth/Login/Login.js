@@ -12,6 +12,7 @@ import { login } from '../../../services';
 import classes from './Login.module.css';
 
 const Login = props => {
+    console.log(props)
     const [loginForm, setLoginForm] = useState({
         email: {
             elementType: 'group',
