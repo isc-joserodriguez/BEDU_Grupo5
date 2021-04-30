@@ -45,10 +45,6 @@ const OrderModal = (props) => {
                     </Button>
                 </Modal.Footer>
              </Modal>
-        
-        <div>
-            Modal
-        </div>
         </>
     )
 }

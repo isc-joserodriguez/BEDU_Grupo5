@@ -4,39 +4,56 @@ import './todo.css';
 import PropTypes from 'prop-types';
 import { RiDeleteBin2Fill } from 'react-icons/ri';
 import { ImEye } from 'react-icons/im';
+import { getProductById } from '../../services';
 
 function Todo(props) {
 
+
   const onDelete = (event) => {
-    props.delete(props.id);
+    props.delete(props.order._id);
     event.preventDefault();
     event.stopPropagation();
   }
 
   const open = (event) => {
-
+    props.handleShow()
+    props.setOrder({_id: ""})
+    console.log(props.order)
   }
+  const date = new Date(props.order.createdAt);
 
   return (
-    <tr className={`list-item ${props.done ? 'done' : ''}`}>
+    <tr>
       <td>
-        <Check done={props.done} change={props.change} id={props.id} />
+        <Check status={props.order.status} change={props.change} id={props.order._id}/>
       </td>
       <td>
-        {props.id}
+        {props.order._id.substring(props.order._id.length-7)}
       </td>
       <td>
-        {props.task}
+        {`${date.getDate()+1}/${date.getMonth()+1}/${date.getFullYear()}`}
       </td>
       <td>
-        None
+        {`${props.order.idCliente.firstName} ${props.order.idCliente.lastName}`}
       </td>
       <td>
-        <ImEye className="blue is-pulled-right" onClick={open}/>
+        {
+        `${props.order.info.length} productos` 
+        }
       </td>
       <td>
-        <RiDeleteBin2Fill className="orange is-pulled-right" onClick={onDelete}/>
+        {`$${props.order.cost.toFixed(2)}`}
       </td>
+      <td>
+        <ImEye className="blue is-pulled-right" onClick={open} />
+      </td>
+      {
+        localStorage.getItem("type") === "admin" &&
+        <td>
+          <RiDeleteBin2Fill className="orange is-pulled-right" onClick={onDelete} />
+        </td>
+      }
+
     </tr>
   )
 }
