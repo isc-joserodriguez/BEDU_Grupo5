@@ -3,9 +3,9 @@ import Button from 'react-bootstrap/Button'
 import FormControl from 'react-bootstrap/FormControl'
 import InputGroup from 'react-bootstrap/InputGroup';
 
-import classes from './filters.module.css';
+import classes from './Filters.module.css';
 
-function filters(props) {
+const filters = (props) => {
   let counter = null;
   if (props.show) {
     counter = props.orders.filter(e => !e.status).length;
@@ -14,33 +14,33 @@ function filters(props) {
     counter = props.orders.length;
   }
 
-  function onChange(e) {
+  const onChange = (e) => {
     e.preventDefault();
     e.stopPropagation();
     props.changeValue(e.target.value)
   }
-  function onSubmit(e){
+  const onSubmit = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    props.filterDo();
+    props.filterHandler();
   }
 
   return (
     <form className={classes.Filter} onSubmit={onSubmit} >
       <div>
         <label>Estatus: </label>
-        <Button className={classes.orangeBtn} onClick={props.showHide} size="sm">{props.show ? "Ver todos": "Ver pendientes"}</Button>
+        <Button className={classes.orangeBtn} onClick={props.showHide} size='sm'>{props.show ? 'Ver todos' : 'Ver pendientes'}</Button>
       </div>
       <div>
-        <InputGroup className="mb-3" size="sm">
-          <FormControl 
-            placeholder="Buscar una orden..."
-            aria-label="search"
-            aria-describedby="basic-addon2"
+        <InputGroup className='mb-3' size='sm'>
+          <FormControl
+            placeholder='Buscar una orden...'
+            aria-label='search'
+            aria-describedby='basic-addon2'
             value={props.value} onChange={onChange}
           />
           <InputGroup.Append>
-            <Button className={classes.orangeBtn} type="submit" size="sm">Buscar</Button>
+            <Button className={classes.orangeBtn} type='submit' size='sm'>Buscar</Button>
           </InputGroup.Append>
         </InputGroup>
       </div>

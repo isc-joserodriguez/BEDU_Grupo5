@@ -1,11 +1,10 @@
-.container-list {
+.OrdersList {
     max-height: 200px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /*border: solid 1px #FF458F;*/
     border-radius: 2px 2px 5px 5px;
   }
   

@@ -102,13 +102,13 @@ const Login = props => {
         <Container>
             <Card className={classes.Login}>
                 <Card.Body>
-                    <h4 className="card-title text-center mb-4 mt-1">Inicio de sesión</h4>
+                    <h4 className='card-title text-center mb-4 mt-1'>Inicio de sesión</h4>
                     <hr />
                     <Form noValidate onSubmit={submitHandler}>
                         {form}
-                        <Button type="submit" variant="primary" size="lg" block disabled={!loginForm.email.valid || !loginForm.password.valid}> Iniciar Sesión  </Button>
+                        <Button type='submit' variant='primary' size='lg' block disabled={!loginForm.email.valid || !loginForm.password.valid}> Iniciar Sesión  </Button>
                         {errorMessage && <p className={`${classes.ErrorMessage} text-center mt-2`}>Error: Verifica las credenciales</p>}
-                        <p className="text-center mt-4">¿No tienes cuenta? <Link to="/signup">Registrate</Link></p>
+                        <p className='text-center mt-4'>¿No tienes cuenta? <Link to='/signup'>Registrate</Link></p>
                     </Form>
                 </Card.Body>
             </Card>

@@ -161,13 +161,13 @@ const SignUp = props => {
         <Container>
             <Card className={classes.Signup}>
                 <Card.Body>
-                    <h4 className="card-title text-center mb-4 mt-1">Registro</h4>
+                    <h4 className='card-title text-center mb-4 mt-1'>Registro</h4>
                     <hr />
                     <Form noValidate onSubmit={submitHandler}>
                         {form}
-                        <Button type="submit" variant="primary" size="lg" block disabled={!signupForm.firstName.valid || !signupForm.lastName.valid || !signupForm.email.valid || !signupForm.password.valid || !signupForm.confirmPassword.valid}> Registrarse  </Button>
+                        <Button type='submit' variant='primary' size='lg' block disabled={!signupForm.firstName.valid || !signupForm.lastName.valid || !signupForm.email.valid || !signupForm.password.valid || !signupForm.confirmPassword.valid}> Registrarse  </Button>
                         {errorMessage && <p className={`${classes.ErrorMessage} text-center mt-2`}>Error: Verifica los datos ingresados</p>}
-                        <p className="text-center mt-4">Ya estás registrado? <Link to="/">Inicia sesión</Link></p>
+                        <p className='text-center mt-4'>Ya estás registrado? <Link to='/'>Inicia sesión</Link></p>
                     </Form>
                 </Card.Body>
             </Card>

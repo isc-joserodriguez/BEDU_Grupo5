@@ -94,10 +94,10 @@ const Register = props => {
             elementType: 'select',
             elementConfig: {
                 options: [
-                    { value: 'admin', displayValue: "Administrador" },
-                    { value: 'chef', displayValue: "Chef" },
-                    { value: 'mesero', displayValue: "Mesero" },
-                    { value: 'cliente', displayValue: "Cliente" },
+                    { value: 'admin', displayValue: 'Administrador' },
+                    { value: 'chef', displayValue: 'Chef' },
+                    { value: 'mesero', displayValue: 'Mesero' },
+                    { value: 'cliente', displayValue: 'Cliente' },
                 ]
             },
             value: 'admin',
@@ -173,11 +173,11 @@ const Register = props => {
         <Container>
             <Card className={classes.Register}>
                 <Card.Body>
-                    <h4 className="card-title text-center mb-4 mt-1">Nuevo usuario</h4>
+                    <h4 className='card-title text-center mb-4 mt-1'>Nuevo usuario</h4>
                     <hr />
                     <Form noValidate onSubmit={submitHandler}>
                         {form}
-                        <Button type="submit" variant="primary" size="lg" block disabled={!registerForm.firstName.valid || !registerForm.lastName.valid || !registerForm.email.valid || !registerForm.password.valid || !registerForm.confirmPassword.valid}> Registrar  </Button>
+                        <Button type='submit' variant='primary' size='lg' block disabled={!registerForm.firstName.valid || !registerForm.lastName.valid || !registerForm.email.valid || !registerForm.password.valid || !registerForm.confirmPassword.valid}> Registrar  </Button>
                         {errorMessage && <p className={`${classes.ErrorMessage} text-center mt-2`}>Error: Verifica los datos ingresados</p>}
                     </Form>
                 </Card.Body>

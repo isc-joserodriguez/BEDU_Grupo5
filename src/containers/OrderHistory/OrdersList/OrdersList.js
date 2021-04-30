@@ -1,12 +1,12 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table'
 
-import Order from './Order';
-import './ordersList.css';
-function OrdersList(props) {
+import Order from './Order/Order';
+import classes from './OrdersList.module.css';
+const OrdersList = (props) => {
   let elements = null;
   if (props.show) {
-    elements = [...props.orders].filter(e => e.status == 1);
+    elements = [...props.orders].filter(e => e.status === 1);
   }
   else {
     elements = [...props.orders];
@@ -25,7 +25,7 @@ function OrdersList(props) {
 
 
   return (
-    <div className="container-list">
+    <div className={classes.OrdersList}>
       <Table responsive>
         <thead>
           <tr>
@@ -37,7 +37,7 @@ function OrdersList(props) {
             <th>Costo</th>
             <th>Detalles</th>
             {
-              localStorage.getItem("type") === "admin" ? <th>Cancelar</th> : null
+              localStorage.getItem('type') === 'admin' ? <th>Cancelar</th> : null
             }
           </tr>
         </thead>
