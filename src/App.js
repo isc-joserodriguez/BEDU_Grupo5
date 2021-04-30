@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Switch, withRouter, useRouteMatch } from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
 
 import Layout from './hoc/Layout/Layout';
 import Login from './containers/Auth/Login/Login';
@@ -14,25 +14,24 @@ import NotFound from './components/NotFound/NotFound';
 
 function App(props) {
   const [token, setToken] = useState(null);
-  const { history } = props;
+  const { history, location: { pathname } } = props;
 
   useEffect(() => {
     if (!!localStorage.getItem('type')) {
       setToken(localStorage.getItem('token'));
-      history.push(`/${localStorage.getItem('type')}`);
+      if (!pathname.includes(`/${localStorage.getItem('type')}`))
+        history.push(`/${localStorage.getItem('type')}`);
     }
   }, [history, token]);
 
   let component = null;
 
-
-
   let routes = (
     <Switch>
-      <Route path="/" exact>
+      <Route path='/' exact>
         <Login setToken={setToken} isAuthenticated={!!token} />
       </Route>
-      <Route path="/signup">
+      <Route path='/signup'>
         <SignUp setToken={setToken} isAuthenticated={!!token} />
       </Route>
       <Route>
@@ -62,7 +61,7 @@ function App(props) {
         <Route path={`/${localStorage.getItem('type')}`}>
           {component}
         </Route>
-        <Route path="/logout">
+        <Route path='/logout'>
           <Logout setToken={setToken} />
         </Route>
         <Route>
