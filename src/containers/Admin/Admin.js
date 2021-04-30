@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link, Route, Switch, useRouteMatch } from 'react-router-dom';
+import { Route, Switch, useRouteMatch } from 'react-router-dom';
 
 import Register from './Register/Register';
 import Menu from './Menu/Menu';
-import Chef from '../Chef/Chef';
+import OrderHistory from '../OrderHistory/OrderHistory';
 
 const Admin = () => {
-    const { path, url } = useRouteMatch();
+    const { path } = useRouteMatch();
 
     return (
         <>
@@ -18,7 +18,7 @@ const Admin = () => {
                     <Menu />
                 </Route>
                 <Route path={`${path}/pedidos`}>
-                    <Chef />
+                    <OrderHistory />
                 </Route>
             </Switch>
         </>

@@ -1,11 +1,13 @@
 import React from 'react';
-import Check from './Checkmark';
-import './Order.css';
 import PropTypes from 'prop-types';
+
 import { RiDeleteBin2Fill } from 'react-icons/ri';
 import { ImEye } from 'react-icons/im';
+import Checkmark from './Checkmark/Checkmark';
 
-function Order(props) {
+import classes from './Order.module.css';
+
+const Order = (props) => {
 
 
   const onDelete = (event) => {
@@ -23,32 +25,32 @@ function Order(props) {
   return (
     <tr>
       <td>
-        <Check status={props.order.status} change={props.change} id={props.order._id}/>
+        <Checkmark status={props.order.status} change={props.change} id={props.order._id} />
       </td>
       <td>
-        {props.order._id.substring(props.order._id.length-7)}
+        {props.order._id.substring(props.order._id.length - 7)}
       </td>
       <td>
-        {`${date.getDate()+1}/${date.getMonth()+1}/${date.getFullYear()}`}
+        {`${date.getDate() + 1}/${date.getMonth() + 1}/${date.getFullYear()}`}
       </td>
       <td>
         {`${props.order.idCliente.firstName} ${props.order.idCliente.lastName}`}
       </td>
       <td>
         {
-        `${props.order.info.length} productos` 
+          `${props.order.info.length} productos`
         }
       </td>
       <td>
         {`$${props.order.cost.toFixed(2)}`}
       </td>
-      <td>
-        <ImEye className="blue is-pulled-right" onClick={open} />
+      <td >
+        <ImEye className={`${classes.blue} is-pulled-right`} onClick={open} />
       </td>
       {
-        localStorage.getItem("type") === "admin" &&
+        localStorage.getItem('type') === 'admin' &&
         <td>
-          <RiDeleteBin2Fill className="orange is-pulled-right" onClick={onDelete} />
+          <RiDeleteBin2Fill className={`${classes.orange} is-pulled-right`} onClick={onDelete} />
         </td>
       }
 

@@ -24,12 +24,16 @@ const NavigationItems = (props) => {
             case 'chef':
                 links = [
                     { route: '/chef', displayName: 'Inicio' },
+                    { route: '/chef/new-orders', displayName: 'Ordenes nuevas' },
+                    { route: '/chef/my-orders', displayName: 'Mis pedidos' },
                     { route: '/logout', displayName: 'Cerrar Sesión' }
                 ]
                 break;
             case 'mesero':
                 links = [
                     { route: '/mesero', displayName: 'Inicio' },
+                    { route: '/mesero/new-orders', displayName: 'Ordenes nuevas' },
+                    { route: '/mesero/my-orders', displayName: 'Mis pedidos' },
                     { route: '/logout', displayName: 'Cerrar Sesión' }
                 ]
                 break;

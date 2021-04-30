@@ -1,4 +1,4 @@
-.Chef {
+.OrderHistory {
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -8,12 +8,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.Chef code {
+.OrderHistory code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 
-.Chef .card {
+.OrderHistory .card {
   width: 100%;
   max-width: 70%;
   height: fit-content;

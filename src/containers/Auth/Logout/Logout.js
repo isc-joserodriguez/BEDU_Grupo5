@@ -7,7 +7,7 @@ const Logout = (props) => {
     localStorage.clear();
     props.setToken(null);
     return (
-        <Redirect to="/" />
+        <Redirect to='/' />
     )
 }
 

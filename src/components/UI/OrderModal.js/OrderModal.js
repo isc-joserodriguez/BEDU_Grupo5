@@ -2,7 +2,7 @@ import React from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 const OrderModal = (props) => {
-    function getStatus(status) {
+    const getStatus = (status) => {
         switch (status) {
             case 0: return 'Cancelado';
             case 1: return 'Pendiente';
@@ -49,10 +49,10 @@ const OrderModal = (props) => {
             </Modal.Body>
             <Modal.Footer>
                 {'NA' !== status &&
-                    <Button variant="primary" className='float-left' onClick={()=>props.changeStatusHandler(props.order._id)} disabled={props.loading}>
+                    <Button variant='primary' className='float-left' onClick={() => props.changeStatusHandler(props.order._id)} disabled={props.loading}>
                         {getAction(props.order.status)}
                     </Button>}
-                <Button variant="secondary" onClick={props.handleClose}>
+                <Button variant='secondary' onClick={props.handleClose}>
                     Cerrar
                     </Button>
             </Modal.Footer>
