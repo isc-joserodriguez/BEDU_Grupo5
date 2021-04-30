@@ -17,7 +17,7 @@ function Food (props) {
                     </Card.Header>
                     <Card.Body>
                         <Card.Text className='text-break text-center'>
-                        <img style={{width: "50%", heigth: "20%"}} src={props.image}/>
+                        <img style={{width: "50%", heigth: "20%"}} src={props.image} alt="Platillos De Comida"/>
                         </Card.Text>
                         <Button variant="info" className='is-centered' block onClick={() => foodDetails()}>Ver Platillo</Button>
                     </Card.Body>

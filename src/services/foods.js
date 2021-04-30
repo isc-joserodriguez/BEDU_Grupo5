@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getFoods = ({ setFoods, setFilteredOrders, setLoading }) => {
+export const getFoods = ({ setFoods,  setLoading }) => {
     axios.get(
         `${process.env.REACT_APP_API_Connect}/productos`, {
         headers: {
@@ -28,9 +28,9 @@ export const getFoodById = ({ id, setFood }) => {
     });
 }
 
-export const getFoodsByCategory = ({ setFoods, setFilteredOrders, setLoading, data}) => {
+export const getFoodsByCategory = ({ setFoods, setLoading, data }) => {
     axios.post(
-        `${process.env.REACT_APP_API_Connect}/productos/filtrar`, {idCategoria: data}, {
+        `${process.env.REACT_APP_API_Connect}/productos/filtrar`, { idCategoria: data }, {
         headers: {
             'Authorization': localStorage.getItem('token')
         },
@@ -42,5 +42,27 @@ export const getFoodsByCategory = ({ setFoods, setFilteredOrders, setLoading, da
     }).catch(err => {
         setLoading(false);
         console.log(err);
+    });
+}
+
+export const createPedido = ({ setLoading, info, cost }) => {
+    console.log(info)
+    var payload = {
+        idCliente: localStorage.getItem('id'),
+        info: info,
+        cost: cost
+    };
+
+    axios.post(
+        `${process.env.REACT_APP_API_Connect}/pedido`, payload, {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        },
+
+    }).then(res => {
+        console.log("Insertado Correctamente")
+        console.log(res);
+    }).catch(err => {
+        console.log(err.message);
     });
 }
