@@ -6,6 +6,7 @@ export {
     filterOrders,
     newOrder,
     deleteOrder,
-    getOrdersHistory,
-    getOrderById
+    getOwnOrders,
+    getOrderById,
+    updateState
 } from './orders';

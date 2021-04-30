@@ -2,50 +2,61 @@ import React from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 const OrderModal = (props) => {
-    function orderStatus (status) {
-        switch (status){
+    function getStatus(status) {
+        switch (status) {
             case 0: return 'Cancelado';
             case 1: return 'Pendiente';
             case 2: return 'Preparando';
             case 3: return 'Preparado';
-            case 4: return 'Entregado';
-            default: return 'Pendiente';
+            default: return 'Entregado';
+        }
+    }
+    const getAction = (status) => {
+        switch (localStorage.getItem('type')) {
+            case 'admin':
+                if (status === 1) {
+                    return 'Cancelar';
+                }
+                return 'NA'
+            case 'chef':
+                switch (status) {
+                    case 1: return 'Preparar';
+                    case 2: return 'Terminar';
+                    default: return 'NA';
+                }
+            default:
+                if (status === 3) {
+                    return 'Entregar';
+                }
+                return 'NA';
         }
     }
 
-    /*/{* <p>Info: {(props.order.info)}</p> */
-
-    console.log(props.order)
+    let status = 'NA';
+    status = getAction(props.order.status);
 
     return (
-        <>
-        
-        
-            <Modal show={props.show} onHide={props.handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Pedido #{props.order._id}</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <p>Estatus: {orderStatus(props.order.status)}</p>
-                    <p>Cliente: {(props.order.idCliente)}</p>
-                    <p>Chef: {(props.order.idChef)}</p>
-                    <p>Mesero: {(props.order.idMesero)}</p>
-                   
-                    <p>Costo: ${(props.order.cost)}</p>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="primary" className='float-left' onClick={props.handleClose}>
-                        Accion 1
+        <Modal show={props.show} onHide={props.handleClose}>
+            <Modal.Header closeButton>
+                <Modal.Title>Pedido #{props.order._id}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <p>Estado: {getStatus(props.order.status)}</p>
+                <p>Cliente: {`${props.order.idCliente.firstName} ${props.order.idCliente.lastName}`}</p>
+                <p>Chef: {!!props.order.idChef ? `${props.order.idChef?.firstName} ${props.order.idChef?.lastName}` : 'Sin asignar'}</p>
+                <p>Mesero: {!!props.order.idMesero ? `${props.order.idMesero?.firstName} ${props.order.idMesero?.lastName}` : 'Sin asignar'}</p>
+                <p>Costo: ${(props.order.cost)}</p>
+            </Modal.Body>
+            <Modal.Footer>
+                {'NA' !== status &&
+                    <Button variant="primary" className='float-left' onClick={()=>props.changeStatusHandler(props.order._id)} disabled={props.loading}>
+                        {getAction(props.order.status)}
+                    </Button>}
+                <Button variant="secondary" onClick={props.handleClose}>
+                    Cerrar
                     </Button>
-                    <Button variant="success" className='float-left' onClick={props.handleClose}>
-                        Acción 2
-                    </Button>
-                    <Button variant="secondary" onClick={props.handleClose}>
-                        Cerrar
-                    </Button>
-                </Modal.Footer>
-             </Modal>
-        </>
+            </Modal.Footer>
+        </Modal>
     )
 }
 export default OrderModal;

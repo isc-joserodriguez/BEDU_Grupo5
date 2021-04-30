@@ -1,5 +1,5 @@
 import axios from 'axios';
-export const filterOrders = ({ setOrders, setFilteredOrders, filter }) => {
+export const filterOrders = ({ setOrders, setFilteredOrders, setLoading, filter }) => {
     axios.post(
         `${process.env.REACT_APP_API_Connect}/pedido/filtrar`, filter, {
         headers: {
@@ -9,7 +9,9 @@ export const filterOrders = ({ setOrders, setFilteredOrders, filter }) => {
         let ordersArray = res.data.detail;
         setOrders([...ordersArray]);
         setFilteredOrders([...ordersArray]);
+        setLoading(false)
     }).catch(err => {
+        setLoading(false)
         console.log(err);
     });
 }
@@ -41,9 +43,9 @@ export const deleteOrder = ({ id, setOrders, ordersArray }) => {
         alert('No se puede eliminar un pedido que no está cancelado')
     });
 }
-export const getOrdersHistory = ({ setOrders, setFilteredOrders, setLoading }) => {
+export const getOwnOrders = ({ setOrders, setFilteredOrders, setLoading }) => {
     axios.get(
-        `${process.env.REACT_APP_API_Connect}/pedido/verHistorial/999`, {
+        `${process.env.REACT_APP_API_Connect}/pedido`, {
         headers: {
             'Authorization': localStorage.getItem('token')
         }
@@ -65,6 +67,23 @@ export const getOrderById = ({ id, setOrder }) => {
     }).then(res => {
         setOrder(res.data.detail);
     }).catch(err => {
+        console.log(err);
+    });
+}
+
+export const updateState = ({ id, data, setLoading, setOrder }) => {
+    axios.put(
+        `${process.env.REACT_APP_API_Connect}/pedido/cambiarEstatus/${id}`, data, {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        }
+    }).then(res => {
+        if (setOrder) {
+            setOrder(res.data.detail);
+        }
+        setLoading(false)
+    }).catch(err => {
+        setLoading(false)
         console.log(err);
     });
 }

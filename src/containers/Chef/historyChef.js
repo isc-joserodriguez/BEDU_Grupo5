@@ -22,7 +22,7 @@ function Chef() {
     };
 
     useEffect(() => {
-        filterOrders({ setOrders, setFilteredOrders, filter: {} })
+        filterOrders({ setOrders, setFilteredOrders, filter: {},setLoading })
     }, []);
 
     useEffect(() => {

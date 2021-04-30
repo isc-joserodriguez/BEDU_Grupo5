@@ -1,8 +1,8 @@
 import React from 'react';
-import Todo from './Todo';
-import './ordersList.css';
 import Table from 'react-bootstrap/Table'
 
+import Order from './Order';
+import './ordersList.css';
 function OrdersList(props) {
   let elements = null;
   if (props.show) {
@@ -11,15 +11,16 @@ function OrdersList(props) {
   else {
     elements = [...props.orders];
   }
-  
-  elements = elements.map(order => <Todo 
-    key={order._id} 
+
+  elements = elements.map(order => <Order
+    key={order._id}
     order={order}
-    change={props.change} 
-    delete={props.delete} 
-    handleClose = {props.handleClose} 
-    handleShow={props.handleShow} 
-    setOrder={props.setOrder}/>)
+    change={props.change}
+    delete={props.delete}
+    handleClose={props.handleClose}
+    handleShow={props.handleShow}
+    setOrder={props.setOrder}
+  />)
 
 
 
@@ -36,7 +37,7 @@ function OrdersList(props) {
             <th>Costo</th>
             <th>Detalles</th>
             {
-              localStorage.getItem("type") === "admin"? <th>Cancelar</th>:null
+              localStorage.getItem("type") === "admin" ? <th>Cancelar</th> : null
             }
           </tr>
         </thead>

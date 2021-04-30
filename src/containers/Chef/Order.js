@@ -1,12 +1,11 @@
 import React from 'react';
 import Check from './Checkmark';
-import './todo.css';
+import './Order.css';
 import PropTypes from 'prop-types';
 import { RiDeleteBin2Fill } from 'react-icons/ri';
 import { ImEye } from 'react-icons/im';
-import { getProductById } from '../../services';
 
-function Todo(props) {
+function Order(props) {
 
 
   const onDelete = (event) => {
@@ -17,8 +16,7 @@ function Todo(props) {
 
   const open = (event) => {
     props.handleShow()
-    props.setOrder({_id: ""})
-    console.log(props.order)
+    props.setOrder(props.order)
   }
   const date = new Date(props.order.createdAt);
 
@@ -58,9 +56,9 @@ function Todo(props) {
   )
 }
 
-Todo.propTypes = {
+Order.propTypes = {
   done: PropTypes.bool,
 
 }
 
-export default Todo;
+export default Order;
