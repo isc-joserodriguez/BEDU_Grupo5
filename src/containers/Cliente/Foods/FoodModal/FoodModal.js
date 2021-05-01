@@ -4,22 +4,25 @@ import Button from 'react-bootstrap/Button'
 import { createPedido } from '../../../../services/foods'
 const FoodModal = (props) => {
     const [cart, setCart] = useState([]);
-    const [cartName, setCartName] = useState([]);
-    const [costCart, setCostCart] = useState([]);
+    const myFunc = (total, num) => total + num;
 
-    function myFunc(total, num) {
-        return total + num;
+    const createOrder = (info, cost) => {
+        createPedido({ info, cost });
+        props.handleClose();
+        setCart([]);
     }
 
-    const listItems = cartName.map((cart) =>`Producto: ${cart}`).map((text,index) =>(
-        <li key={index}>{`${text} Precio: ${costCart[index]}`}</li>
-        )
-        );
+    const addFood = () => {
+        setCart(cart.concat({
+            _id: props.food._id,
+            name: props.food.name,
+            cost: props.food.cost
+        }
+        ));
+    }
 
-    
+    const listItems = cart.map(food => <li key={food._id}>{`Producto: ${food.name} Precio: ${food.cost}`}</li>);
 
-    
-    
     return (
         <Modal show={props.show} onHide={props.handleClose}>
             <Modal.Header closeButton>
@@ -31,30 +34,27 @@ const FoodModal = (props) => {
             </Modal.Body>
 
             <Modal.Footer>
-                <Button variant="primary" className='float-left' onClick={() => {
-                    createPedido({ info: [props.food._id], cost: props.food.cost })
-                }}>
-                    Ordenar Solo Este Platillo.
+                {
+                    (cart.length < 2) &&
+                    <Button variant="primary" className='float-left' onClick={() => { createOrder([props.food._id], props.food.cost) }}>
+                        Ordenar Solo Este Platillo
                     </Button>
-                <Button variant="success" className='float-left' onClick={() => {
-                    setCart(cart.concat(props.food._id));
-                    setCartName(cartName.concat(props.food.name));
-                    setCostCart(costCart.concat(props.food.cost));
-                }}>
-                    Carrito.
-                    </Button>
-                <Button variant="secondary" onClick={props.handleClose}>
-                    Salir.
-                    </Button>
+                }
+
+                <Button variant="success" className='float-left' onClick={addFood}>
+                    Agregar a Carrito
+                </Button>
+                <Button variant="secondary" onClick={props.handleClose}> Salir. </Button>
             </Modal.Footer>
             {/* Show the food that are in the Cart */}
             {cart.length > 0 &&
                 <>
                     <h3>Tu Pedido.</h3>
                     <ul>{listItems}</ul>
-                    <ul><strong>Total:</strong> {costCart.reduce(myFunc)}</ul>
-                    <Button variant="primary" className='float-left' onClick={() => { createPedido({ info: cart, cost: costCart.reduce(myFunc) }) }}>
-                        Ordenar Carrito.
+                    <ul><strong>Total:</strong> {cart.map(el => el.cost).reduce(myFunc)}</ul>
+
+                    <Button variant="primary" className='float-left' onClick={() => { createOrder(cart.map(el => el._id), cart.map(el => el.cost).reduce(myFunc)) }}>
+                        Ordenar Carrito
                     </Button>
                 </>
             }
