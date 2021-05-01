@@ -12,4 +12,3 @@ export const getProductById = ({ id, setProduct }) => {
         console.log(err);
     });
 }
-
