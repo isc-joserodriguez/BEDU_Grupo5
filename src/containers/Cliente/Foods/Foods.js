@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Food from "./Food";
-import {Button, Container, Form, Col} from 'react-bootstrap'
-import FoodModal from "./FoodModal";
-import Spinner from '../../components/UI/Spinner/Spinner';
-import { getFoods, getFoodById, getFoodsByCategory } from '../../services/foods'
+import Food from "./Food/Food";
+import { Button, Container, Form, Col } from 'react-bootstrap'
+import FoodModal from "./FoodModal/FoodModal";
+import Spinner from '../../../components/UI/Spinner/Spinner';
+import { getFoods, getFoodById, getFoodsByCategory } from '../../../services/foods'
 
 function Foods() {
   const [show, setShow] = useState(false);
@@ -52,11 +52,11 @@ function Foods() {
 
       </div>
       <div className='col d-flex flex-wrap mb-4 align-content-center justify-content-center'>
-        <Button variant="outline-primary" className='p-2 m-2' onClick={() => getFoodsByCategory({ setFoods, setLoading, data: '604d7d8445a6de761e3d91bb'})}>Jugos Naturales</Button>
-        <Button variant="outline-warning" className='p-2 m-2' onClick={() => getFoodsByCategory({ setFoods, setLoading, data: '604d7d6e45a6de761e3d91ba'})}>Desayunos</Button>
+        <Button variant="outline-primary" className='p-2 m-2' onClick={() => getFoodsByCategory({ setFoods, setLoading, data: '604d7d8445a6de761e3d91bb' })}>Jugos Naturales</Button>
+        <Button variant="outline-warning" className='p-2 m-2' onClick={() => getFoodsByCategory({ setFoods, setLoading, data: '604d7d6e45a6de761e3d91ba' })}>Desayunos</Button>
         <Button variant="outline-success" className='p-2 m-2' >Preparado</Button>
         <Button variant="outline-danger" className='p-2  m-2' >Entregado</Button>
-        <Button variant="outline-secondary" className='p-2 m-2'onClick={() => getFoods({ setFoods, setLoading })} >Todos</Button>
+        <Button variant="outline-secondary" className='p-2 m-2' onClick={() => getFoods({ setFoods, setLoading })} >Todos</Button>
       </div>
 
       <div className="overflow-auto">
@@ -72,7 +72,7 @@ function Foods() {
           show={show}
           handleShow={() => handleShow()}
           handleClose={() => handleClose()}
-        ></FoodModal>
+        />
       </div>
 
     </Container>

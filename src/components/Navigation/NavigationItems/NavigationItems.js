@@ -41,6 +41,8 @@ const NavigationItems = (props) => {
             default:
                 links = [
                     { route: '/cliente', displayName: 'Inicio' },
+                    { route: '/cliente/menu', displayName: 'Menú' },
+                    { route: '/cliente/my-orders', displayName: 'Mis pedidos' },
                     { route: '/logout', displayName: 'Cerrar Sesión' }
                 ]
                 break;

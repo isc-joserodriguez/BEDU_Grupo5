@@ -3,8 +3,6 @@ import {Button, Container, Form, Col} from 'react-bootstrap'
 import Foods from './Foods'
 
 export class Comandos extends Component {
-
-
     render() {
         return (
 

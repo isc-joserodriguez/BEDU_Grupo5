@@ -8,16 +8,14 @@ const Mesero = () => {
   const { path } = useRouteMatch();
 
   return (
-    <>
-      <Switch>
+    <Switch>
       <Route path={`${path}/new-orders`}>
-          <NewOrders />
-        </Route>
-        <Route path={`${path}/my-orders`}>
-          <OrderHistory />
-        </Route>
-      </Switch>
-    </>
+        <NewOrders />
+      </Route>
+      <Route path={`${path}/my-orders`}>
+        <OrderHistory />
+      </Route>
+    </Switch>
   )
 };
 

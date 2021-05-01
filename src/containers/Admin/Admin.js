@@ -11,31 +11,29 @@ const Admin = () => {
     const { path } = useRouteMatch();
 
     return (
-        <>
-            <Switch>
-                <Route path={`${path}/new-user`}>
-                    <Register />
-                </Route>
-                <Route path={`${path}/menu`}>
-                    <Menu />
-                </Route>
-                <Route path={`${path}/orders`}>
-                    <OrderHistory />
-                </Route>
-                <Route path={`${path}/users/:id`}>
-                    <User />
-                </Route>
-                <Route path={`${path}/users`}>
-                    <Users />
-                </Route>
-                <Route path={`${path}/users/:id`}>
-                    <User />
-                </Route>
-                <Route path={`${path}/users`}>
-                    <Users />
-                </Route>
-            </Switch>
-        </>
+        <Switch>
+            <Route path={`${path}/new-user`}>
+                <Register />
+            </Route>
+            <Route path={`${path}/menu`}>
+                <Menu />
+            </Route>
+            <Route path={`${path}/orders`}>
+                <OrderHistory />
+            </Route>
+            <Route path={`${path}/users/:id`}>
+                <User />
+            </Route>
+            <Route path={`${path}/users`}>
+                <Users />
+            </Route>
+            <Route path={`${path}/users/:id`}>
+                <User />
+            </Route>
+            <Route path={`${path}/users`}>
+                <Users />
+            </Route>
+        </Switch>
     )
 }
 
