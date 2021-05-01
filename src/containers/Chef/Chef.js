@@ -8,16 +8,14 @@ const Chef = () => {
     const { path } = useRouteMatch();
 
     return (
-        <>
-            <Switch>
-                <Route path={`${path}/new-orders`}>
-                    <NewOrders />
-                </Route>
-                <Route path={`${path}/my-orders`}>
-                    <OrderHistory />
-                </Route>
-            </Switch>
-        </>
+        <Switch>
+            <Route path={`${path}/new-orders`}>
+                <NewOrders />
+            </Route>
+            <Route path={`${path}/my-orders`}>
+                <OrderHistory />
+            </Route>
+        </Switch>
     )
 };
 
