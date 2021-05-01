@@ -86,6 +86,7 @@ const OrderHistory = () => {
     }
 
     const deleteOrderHandler = (id) => {
+        console.log(orders.length);
         let ordersArray = [...orders]
         let indexDelete = ordersArray.findIndex(element => element.id === id);
         ordersArray.splice(indexDelete, 1);

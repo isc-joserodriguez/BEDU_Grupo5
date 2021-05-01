@@ -37,12 +37,13 @@ export const deleteOrder = ({ id, setOrders, ordersArray }) => {
         }
     }).then(res => {
         setOrders([...ordersArray]);
-        alert('Pedido eliminado');
+        console.log(ordersArray.length);
     }).catch(err => {
         console.log(err);
         alert('No se puede eliminar un pedido que no está cancelado')
     });
 }
+
 export const getOwnOrders = ({ setOrders, setFilteredOrders, setLoading }) => {
     axios.get(
         `${process.env.REACT_APP_API_Connect}/pedido`, {
