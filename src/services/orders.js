@@ -29,7 +29,7 @@ export const newOrder = ({ setOrders, data, orders }) => {
         console.log(err);
     });
 }
-export const deleteOrder = ({ id, setOrders, ordersArray }) => {
+export const deleteOrder = ({ id, setOrders, ordersArray, setLoading }) => {
     axios.delete(
         `${process.env.REACT_APP_API_Connect}/pedido/${id}`, {
         headers: {
@@ -37,9 +37,9 @@ export const deleteOrder = ({ id, setOrders, ordersArray }) => {
         }
     }).then(res => {
         setOrders([...ordersArray]);
-        console.log(ordersArray.length);
+        setLoading(false)
     }).catch(err => {
-        console.log(err);
+        /* console.log(err.toJSON()); */
         alert('No se puede eliminar un pedido que no está cancelado')
     });
 }

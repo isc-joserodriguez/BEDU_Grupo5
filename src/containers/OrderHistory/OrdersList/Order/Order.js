@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { RiDeleteBin2Fill } from 'react-icons/ri';
-import { ImEye } from 'react-icons/im';
+import { RiDeleteBin2Fill as DeleteIcon } from 'react-icons/ri';
+import { TiCancel as CancelIcon } from 'react-icons/ti'
+import { ImEye as DetailIcon } from 'react-icons/im';
 import Checkmark from './Checkmark/Checkmark';
 
 import classes from './Order.module.css';
 
 const Order = (props) => {
-
 
   const onDelete = (event) => {
     props.delete(props.order._id);
@@ -16,9 +16,17 @@ const Order = (props) => {
     event.stopPropagation();
   }
 
+  const onChangeStatus = (event) => {
+    props.change(props.order._id);
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
   const open = (event) => {
     props.handleShow()
     props.setOrder(props.order)
+    event.preventDefault();
+    event.stopPropagation();
   }
   const date = new Date(props.order.createdAt);
 
@@ -45,14 +53,27 @@ const Order = (props) => {
         {`$${props.order.cost.toFixed(2)}`}
       </td>
       <td >
-        <ImEye className={`${classes.blue} is-pulled-right`} onClick={open} />
+        <DetailIcon className={`${classes.blue} is-pulled-right`} onClick={open} />
       </td>
-      {
-        localStorage.getItem('type') === 'admin' &&
-        <td>
-          <RiDeleteBin2Fill className={`${classes.orange} is-pulled-right`} onClick={onDelete} />
-        </td>
-      }
+      <td>
+        {
+          localStorage.getItem('type') === 'admin' ? (
+            props.order.status === 1 ? (
+              <CancelIcon className={`${classes.orange} is-pulled-right`} onClick={onChangeStatus} />
+            ) : (
+              props.order.status === 0 ? (
+                <DeleteIcon className={`${classes.orange} is-pulled-right`} onClick={onDelete} />
+              ) : null
+            )
+          ) : (
+            localStorage.getItem('type') === 'cliente' ? (
+              props.order.status === 1 ?
+                <CancelIcon className={`${classes.orange} is-pulled-right`} onClick={onChangeStatus} /> :
+                null
+            ) : null
+          )
+        }
+      </td>
 
     </tr>
   )
