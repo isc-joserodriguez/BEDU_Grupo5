@@ -1,9 +1,8 @@
-import React, { useState, useEffect} from 'react'
-
-import { Button } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react'
 
 import Filters from './Filters/Filters';
 import OrdersList from './OrdersList/OrdersList.js';
+import SearchPanel from '../SearchPanel/searchPanel';
 import OrderModal from '../../components/UI/OrderModal.js/OrderModal';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
@@ -43,25 +42,7 @@ const OrderHistory = () => {
         filterHandler();
     }, [orders]);
 
-    const newPedidoHandler = (e, status) => {
-        e.preventDefault();
-        let data = {
-            idCliente: '604d7b10b3cc2474fa21ac0c',
-            info: [
-                '604d7f9d9b0f2b78e3d59910',
-                '604d801d22885b79ebd38297',
-                '604d80911cad697a4c8bb044',
-                '604d80ae1cad697a4c8bb046'
-            ],
-            cost: 0,
-            status
-        }
-        newOrder({ data, orders, setOrders })
-    }
-
-    const setOrderHandler = (order) => {
-        setOrder(order);
-    }
+    const setOrderHandler = (order) => setOrder(order);
 
     const changeStatusHandler = (id) => {
         let ordersArray = [...orders];
@@ -87,13 +68,16 @@ const OrderHistory = () => {
 
     const deleteOrderHandler = (id) => {
         let ordersArray = [...orders]
-        let indexDelete = ordersArray.findIndex(element => element.id === id);
+        console.log(ordersArray[0]);
+        let indexDelete = ordersArray.findIndex(element => element._id === id);
+        console.log(indexDelete);
         ordersArray.splice(indexDelete, 1);
-
+        /* setLoading(true); */
         deleteOrder({
             id,
             setOrders,
-            ordersArray
+            ordersArray,
+            setLoading
         })
     }
 
@@ -109,6 +93,7 @@ const OrderHistory = () => {
     return (
         <>
             <div className={`${classes.OrderHistory}`}>
+                <SearchPanel />
                 <div className={classes.card}>
                     <Filters
                         showHide={showHide}
@@ -129,14 +114,7 @@ const OrderHistory = () => {
                             value={value}
                             setOrder={setOrderHandler}
                             handleShow={handleShow}
-                        />}
-
-                    {
-                        localStorage.getItem('type') === 'admin' &&
-                        <>
-                            <Button variant='outline-success' className='p-2 m-2' onClick={(e) => newPedidoHandler(e, 1)}>Agregar Pedido En Espera</Button>
-                            <Button variant='outline-danger' className='p-2 m-2' onClick={(e) => newPedidoHandler(e, 0)}>Agregar Pedido Cancelado</Button>
-                        </>
+                        />
                     }
                 </div>
             </div>
