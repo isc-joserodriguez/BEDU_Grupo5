@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import Filter from '../../../components/Filter/Filter';
+import SearchPanel from '../../SearchPanel/searchPanel';
 import TableInfo from '../../../components/UI/TableInfo/TableInfo';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 
@@ -22,7 +22,7 @@ const Categories = () => {
 
     return (
         <div className={`${classes.Categories}`}>
-            <Filter />
+            <SearchPanel />
             <Card className={classes.Card}>
                 {loading ?
                     <Spinner /> :

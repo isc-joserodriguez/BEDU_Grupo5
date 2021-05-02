@@ -11,10 +11,14 @@ import classes from './Checkmark.module.css';
 const Checkmark = (props) => {
 
   const isClient = localStorage.getItem('type') === 'cliente';
+  const isChef = localStorage.getItem('type') === 'chef';
+  const isMesero = localStorage.getItem('type') === 'mesero';
   let icon = null;
 
   const onChangeTask = (event) => {
     if (isClient) return;
+    if (isChef && props.status !== 1 && props.status !== 2) return;
+    if (isMesero && props.status !== 3) return;
     props.change(props.id);
     event.preventDefault();
     event.stopPropagation();

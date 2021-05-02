@@ -49,13 +49,13 @@ const OrderHistory = () => {
         let indexModif = ordersArray.findIndex(element => element._id === id);
         switch (ordersArray[indexModif].status) {
             case 1:
-                ordersArray[indexModif].status = localStorage.getItem('type') === 'admin' ? 0 : 2;
+                ordersArray[indexModif].status = (localStorage.getItem('type') === 'admin' || localStorage.getItem('type') === 'cliente') ? 0 : 2;
                 break;
             default:
-                ordersArray[indexModif].status = localStorage.getItem('type') === 'admin' ? ordersArray[indexModif].status : ordersArray[indexModif].status + 1;
+                ordersArray[indexModif].status++;
                 break;
         }
-        setLoading(true);
+        /* setLoading(true); */
         updateState({
             id: ordersArray[indexModif]._id,
             data: { status: ordersArray[indexModif].status },

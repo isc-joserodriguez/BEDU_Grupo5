@@ -8,30 +8,20 @@
 
 .Check:active {
   animation-name: parpadeo;
-  animation-duration: 0.5s;
+  animation-duration: 1s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 
   -webkit-animation-name:parpadeo;
-  -webkit-animation-duration: 0.5s;
+  -webkit-animation-duration: 1s;
   -webkit-animation-timing-function: linear;
-}
-
-@-moz-keyframes parpadeo{  
-  0% { opacity: 1.0; }
-  50% { opacity: 0.0; }
-  100% { opacity: 1.0; }
-}
-
-@-webkit-keyframes parpadeo {  
-  0% { opacity: 1.0; }
-  50% { opacity: 0.0; }
-   100% { opacity: 1.0; }
-}
+} 
 
 @keyframes parpadeo {  
   0% { opacity: 1.0; }
-   50% { opacity: 0.0; }
+  25% { opacity: .5; }
+  50% { opacity: 0.0; }
+  75% { opacity: .5; }
   100% { opacity: 1.0; }
 }
 

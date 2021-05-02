@@ -36,9 +36,16 @@ const OrdersList = (props) => {
             <th>Cant. productos</th>
             <th>Costo</th>
             <th>Detalles</th>
-            {
-              localStorage.getItem('type') === 'admin' ? <th>Cancelar/Eliminar</th> : null
-            }
+            <th>
+              {
+                localStorage.getItem('type') === 'admin' ?
+                  'Cancelar/Eliminar' :
+                  localStorage.getItem('type') === 'cliente' ?
+                    'Cancelar' : null
+              }
+
+            </th>
+
           </tr>
         </thead>
         <tbody>

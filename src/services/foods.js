@@ -48,7 +48,6 @@ export const getFoodsByCategory = ({ setFoods, setLoading, data }) => {
 }
 export const createPedido = ({ setLoading, info, cost }) => {
     var payload = {
-        idCliente: localStorage.getItem('id'),
         info: info,
         cost: cost
     };
