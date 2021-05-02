@@ -5,6 +5,7 @@ import { TiCancel as CanceledIcon } from 'react-icons/ti'
 import { BsCheckCircle as ReadyIcon } from 'react-icons/bs';
 import { AiFillClockCircle as WaitingIcon } from 'react-icons/ai';
 import { RiLoader2Line as CreatingIcon } from 'react-icons/ri';
+import { GoPackage as DeliveredIcon } from 'react-icons/go';
 
 import classes from './Checkmark.module.css';
 
@@ -38,7 +39,7 @@ const Checkmark = (props) => {
       icon = <ReadyIcon className={classes.Green} />
       break
     default:
-      icon = null;
+      icon = <DeliveredIcon className={classes.Green} />
   }
   return (
     <span className={(!isClient && props.status !== 0) ? classes.Check : ''} onClick={onChangeTask} >

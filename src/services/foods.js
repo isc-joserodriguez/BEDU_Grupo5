@@ -7,13 +7,6 @@ export const getFoods = ({ setFoods, setLoading, setCategories }) => {
         }
     }).then(res => {
         setFoods(res.data.detail);
-
-        setCategories(
-            res.data.detail.map(el => {
-                return { _id: el.idCategoria._id, name: el.idCategoria.name }
-            })
-
-        );
         setLoading(false);
     }).catch(err => {
         setLoading(false);
@@ -60,5 +53,22 @@ export const createPedido = ({ setLoading, info, cost }) => {
         console.log(res);
     }).catch(err => {
         console.log(err.message);
+    });
+}
+
+export const getCategoriesCommands = ({ setCategories, setLoading }) => {
+    axios.get(
+        `${process.env.REACT_APP_API_Connect}/categoria`, {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        }
+    }).then(res => {
+        setCategories(
+            res.data.detail.map(el => ({ _id: el._id, name: el.name }))
+        );
+        setLoading(false);
+    }).catch(err => {
+        setLoading(false)
+        console.log(err);
     });
 }

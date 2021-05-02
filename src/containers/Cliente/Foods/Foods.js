@@ -3,7 +3,7 @@ import Food from "./Food/Food";
 import { Button, Container, Form, Col } from 'react-bootstrap'
 import FoodModal from "./FoodModal/FoodModal";
 import Spinner from '../../../components/UI/Spinner/Spinner';
-import { getFoods, getFoodById, getFoodsByCategory } from '../../../services/foods'
+import { getFoods, getFoodById, getFoodsByCategory, getCategoriesCommands } from '../../../services/foods'
 function Foods() {
   const [show, setShow] = useState(false);
   const [foods, setFoods] = useState([]);
@@ -24,7 +24,8 @@ const orderArrayNames = [...new Set(arrayOfNames)]
 const orderArrayId = [...new Set(arrayOfId)]
 
   useEffect(() => {
-    getFoods({ setFoods, setLoading, setCategories });
+    getFoods({ setFoods, setLoading });
+    getCategoriesCommands({setCategories, setLoading })
   }, [])
   const foodDetail = (foodId) => {
     getFoodById(

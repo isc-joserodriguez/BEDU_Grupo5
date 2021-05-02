@@ -35,7 +35,7 @@ const OrderHistory = () => {
     };
 
     useEffect(() => {
-        filterOrders({ setOrders, setFilteredOrders, filter: {}, setLoading })
+        filterOrders({ setOrders, setFilteredOrders, filter: { special: true }, setLoading })
     }, []);
 
     useEffect(() => {
@@ -65,7 +65,7 @@ const OrderHistory = () => {
             setOrder,
             setOrders,
             setFilteredOrders,
-            filter: {}
+            filter: { special: (localStorage.getItem('type') === 'chef' || localStorage.getItem('type') === 'mesero') ? true : false }
         })
     }
 

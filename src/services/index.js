@@ -6,7 +6,6 @@ export {
     filterOrders,
     newOrder,
     deleteOrder,
-    getOwnOrders,
     getOrderById,
     updateState
 } from './orders';
@@ -18,7 +17,8 @@ export {
 
 export {
     getFoods,
-    getFoodsByCategory
+    getFoodsByCategory,
+    getCategoriesCommands
 } from './foods';
 
 export {

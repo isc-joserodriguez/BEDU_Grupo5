@@ -3,6 +3,10 @@ import axios from 'axios';
 export const login = ({ data, setLoading, setToken, setErrorMessage }) => {
     axios.post(
         `${process.env.REACT_APP_API_Connect}/usuarios/login`, data).then(res => {
+            if(!res.data.detail.status){
+                alert('Usuario desactivado');
+                return;
+            }
             localStorage.setItem('token', `Bearer ${res.data.detail.token}`);
             localStorage.setItem('type', res.data.detail.type);
             setLoading(false);

@@ -1,6 +1,5 @@
 import axios from 'axios';
 export const filterOrders = ({ setOrders, setFilteredOrders, setLoading, filter }) => {
-    console.log(filter);
     axios.post(
         `${process.env.REACT_APP_API_Connect}/pedido/filtrar`, filter, {
         headers: {
@@ -42,22 +41,6 @@ export const deleteOrder = ({ id, setOrders, ordersArray, setLoading }) => {
     }).catch(err => {
         /* console.log(err.toJSON()); */
         alert('No se puede eliminar un pedido que no está cancelado')
-    });
-}
-
-export const getOwnOrders = ({ setOrders, setFilteredOrders, setLoading }) => {
-    axios.get(
-        `${process.env.REACT_APP_API_Connect}/pedido`, {
-        headers: {
-            'Authorization': localStorage.getItem('token')
-        }
-    }).then(res => {
-        console.log(res);
-        setOrders(res.data.detail);
-        setLoading(false);
-    }).catch(err => {
-        setLoading(false);
-        console.log(err);
     });
 }
 export const getOrderById = ({ id, setOrder }) => {
