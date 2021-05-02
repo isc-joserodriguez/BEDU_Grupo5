@@ -13,11 +13,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const NODE_ENV = false;
 
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter basename={`${NODE_ENV ? '/' : '/BEDU_Grupo5'}`}>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>,
+  <BrowserRouter basename={`${NODE_ENV ? '/' : '/BEDU_Grupo5'}`}>
+    <App />
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
