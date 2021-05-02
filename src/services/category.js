@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export const getCategories = ({ setFoods,  setLoading }) => {
+export const getCategories = ({ setCategories,  setLoading }) => {
     axios.get(
-        `${process.env.REACT_APP_API_Connect}/productos`, {
+        `${process.env.REACT_APP_API_Connect}/categoria`, {
         headers: {
             'Authorization': localStorage.getItem('token')
         }

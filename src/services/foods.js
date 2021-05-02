@@ -10,12 +10,10 @@ export const getFoods = ({ setFoods, setLoading, setCategories }) => {
 
         setCategories(
             res.data.detail.map(el => {
+                console.log([el.idCategoria.name])
                 return { _id: el.idCategoria._id, name: el.idCategoria.name }
-            }).sort((a, b) => {
-                if (a.name < b.name) return -1
-                if (a.name > b.name) return 1
-                return 0
             })
+
         );
         setLoading(false);
     }).catch(err => {
@@ -42,7 +40,6 @@ export const getFoodsByCategory = ({ setFoods, setLoading, data }) => {
             'Authorization': localStorage.getItem('token')
         },
     }).then(res => {
-        console.log("Aqui")
         console.log(res);
         setFoods(res.data.detail);
         setLoading(false);

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
+import Table from 'react-bootstrap/Table'
 import { createPedido } from '../../../../services/foods'
 const FoodModal = (props) => {
     const [cart, setCart] = useState([]);
@@ -21,7 +22,33 @@ const FoodModal = (props) => {
         ));
     }
 
-    const listItems = cart.map(food => <li key={food._id}>{`Producto: ${food.name} Precio: ${food.cost}`}</li>);
+    const deleteFoodFromCart = (i) => {
+        console.log('el index es: '+ i)
+        var newarray = [...cart]
+        if(i !== 0){
+            newarray.splice(0, i)
+        }else{
+            newarray.shift()
+        } 
+        setCart(newarray)
+    }
+
+
+    const listItems = cart.map((food, index) =>
+        <>
+        <Table>
+        <tbody>
+        <tr>
+        <td>{index}</td>
+        <td>{food.name}</td>
+        <td>{food.cost}</td>
+        <td><Button variant="success" className='float-left' onClick={() => { deleteFoodFromCart(index) }}>Eliminar De Carrito</Button></td>
+        </tr>
+        </tbody>
+        </Table>
+        </>
+        //  <li key={food._id}>{`Producto: ${food.name} Precio: ${food.cost}`}</li>
+    );
 
     return (
         <Modal show={props.show} onHide={props.handleClose}>
@@ -50,6 +77,16 @@ const FoodModal = (props) => {
             {cart.length > 0 &&
                 <>
                     <h3>Tu Pedido.</h3>
+                    <Table striped bordered hover>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Producto:</th>
+                                <th>Precio:</th>
+                                <th>Eliminar:</th>
+                            </tr>
+                        </thead>
+                    </Table>
                     <ul>{listItems}</ul>
                     <ul><strong>Total:</strong> {cart.map(el => el.cost).reduce(myFunc)}</ul>
 
