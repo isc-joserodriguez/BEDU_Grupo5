@@ -1,7 +1,7 @@
 import React from 'react'
 import ProgressBar from 'react-bootstrap/ProgressBar'
 
-function OderProgress(props) {
+function OrderProgress(props) {
     let status = props.status
     function progress(s) {
         let variant = ''
@@ -26,5 +26,5 @@ function OderProgress(props) {
     )
 }
 
-export default OderProgress
+export default OrderProgress
 

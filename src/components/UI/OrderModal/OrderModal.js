@@ -1,7 +1,7 @@
 import React from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
-import OrderProgress from '../../../containers/Mesero/OderProgress'
+import OrderProgress from '../OrderProgress/OrderProgress'
 
 const OrderModal = (props) => {
     const getStatus = (status) => {
@@ -53,14 +53,15 @@ const OrderModal = (props) => {
             </Modal.Body>
             <Modal.Footer>
                 {'NA' !== status &&
-                    <Button variant='primary' className='float-left' onClick={() => props.changeStatusHandler(props.order._id)} disabled={props.loading}>
+                    <Button variant='primary' className='float-left' onClick={() => { props.changeStatusHandler(props.order._id); props.handleClose();  }} disabled={props.loading}>
                         {getAction(props.order.status)}
                     </Button>}
+
                 <Button variant='secondary' onClick={props.handleClose}>
                     Cerrar
                     </Button>
             </Modal.Footer>
-        </Modal>
+        </Modal >
     )
 }
 export default OrderModal;

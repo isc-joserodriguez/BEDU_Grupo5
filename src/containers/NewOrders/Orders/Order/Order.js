@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card, Button } from 'react-bootstrap'
-import OrderProgress from '../../../Mesero/OderProgress'
+import OrderProgress from '../../../../components/UI/OrderProgress/OrderProgress'
 
 
 const Order = (props) => {
@@ -29,7 +29,8 @@ const Order = (props) => {
                 </Card.Header>
                 <Card.Body>
                     <Card.Text className='text-break text-center'>
-                        <h6>Estado: </h6>
+                        <span className='h6'>Estado:</span>
+                        <br />
                         {orderStatus(props.status)}
                     </Card.Text>
                     <Button variant='info' className='is-centered' block onClick={() => orderDetails()}>Ver pedido</Button>

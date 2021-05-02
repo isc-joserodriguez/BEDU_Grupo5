@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import Filters from './Filters/Filters';
 import OrdersList from './OrdersList/OrdersList.js';
 import SearchPanel from '../SearchPanel/searchPanel';
-import OrderModal from '../../components/UI/OrderModal.js/OrderModal';
+import OrderModal from '../../components/UI/OrderModal/OrderModal';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
 import { filterOrders, deleteOrder, updateState, getOrderById } from '../../services';

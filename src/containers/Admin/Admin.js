@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import OrderHistory from '../OrderHistory/OrderHistory';
+import NewOrders from '../NewOrders/NewOrders'
 import Users from './Users/Users';
 import User from './Users/User/User';
 import Register from './Register/Register';
@@ -13,6 +14,9 @@ const Admin = () => {
     return (
         <Switch>
             <Route path={`${path}/`} exact>
+                <NewOrders />
+            </Route>
+            <Route path={`${path}/orders-history`} >
                 <OrderHistory />
             </Route>
             <Route path={`${path}/new-user`}>

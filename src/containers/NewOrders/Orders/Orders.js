@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Order from './Order/Order';
 import Container from 'react-bootstrap/Container';
-import OrderModal from '../../../components/UI/OrderModal.js/OrderModal';
+import OrderModal from '../../../components/UI/OrderModal/OrderModal';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import { filterOrders, getOrderById, updateState } from '../../../services'
 const Orders = () => {
@@ -18,7 +18,13 @@ const Orders = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   useEffect(() => {
-    filterOrders({ setOrders, setFilteredOrders, setLoading, filter: { status: localStorage.getItem('type') === 'chef' ? 1 : 3 } });
+    filterOrders({
+      setOrders, setFilteredOrders, setLoading, filter: {
+        status: localStorage.getItem('type') === 'chef' ?
+          1 :
+          localStorage.getItem('type') === 'mesero' ? 3 : -1
+      }
+    });
   }, [])
   const orderDetail = (orderId) => {
     getOrderById(
@@ -48,14 +54,17 @@ const Orders = () => {
       setFilteredOrders: setOrders,
       ordersArray,
       setOrder,
-      setOrders, 
-      setFilteredOrders,
-      filter: { status: localStorage.getItem('type') === 'chef' ? 1 : 3 }
+      setOrders,
+      filter: {
+        status: localStorage.getItem('type') === 'chef' ?
+          1 :
+          localStorage.getItem('type') === 'mesero' ? 3 : -1
+      }
     })
   }
   const ordersMap = orders.map(order => (
     <Order
-      key={order.idPedido}
+      key={order._id}
       idPedido={order._id.substring(order._id.length - 7)}
       idCliente={order.idCliente}
       idChef={order.idChef}
