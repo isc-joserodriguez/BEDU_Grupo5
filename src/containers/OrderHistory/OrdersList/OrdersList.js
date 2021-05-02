@@ -37,7 +37,7 @@ const OrdersList = (props) => {
             <th>Costo</th>
             <th>Detalles</th>
             {
-              localStorage.getItem('type') === 'admin' ? <th>Cancelar</th> : null
+              localStorage.getItem('type') === 'admin' ? <th>Cancelar/Eliminar</th> : null
             }
           </tr>
         </thead>

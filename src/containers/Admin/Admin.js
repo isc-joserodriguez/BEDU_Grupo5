@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
-
-import Register from './Register/Register';
-import Menu from './Menu/Menu';
 import OrderHistory from '../OrderHistory/OrderHistory';
 import Users from './Users/Users';
 import User from './Users/User/User';
+import Register from './Register/Register';
+import Menu from './Menu/Menu';;
+
 
 const Admin = () => {
     const { path } = useRouteMatch();

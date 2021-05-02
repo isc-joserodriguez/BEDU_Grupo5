@@ -1,0 +1,18 @@
+.Categories {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.Categories .Card {
+    width: 100%;
+    max-width: 70%;
+    height: 70vh;
+    border: solid 1px #DEE500;
+    padding: 20px;
+}
+
+.Categories .Card .Table {
+    max-height: 60vh;
+    overflow-y: auto;
+}

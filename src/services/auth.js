@@ -4,10 +4,7 @@ export const login = ({ data, setLoading, setToken, setErrorMessage }) => {
     axios.post(
         `${process.env.REACT_APP_API_Connect}/usuarios/login`, data).then(res => {
             localStorage.setItem('token', `Bearer ${res.data.detail.token}`);
-            localStorage.setItem('type', res.data.detail.type);
-            localStorage.setItem('id', res.data.detail._id)
-            console.log(localStorage.getItem('token'))
-            console.log(localStorage.getItem('id'))
+            localStorage.setItem('id', res.data.detail._id);
             setLoading(false);
             setToken(res.data.detail.token);
         }).catch(err => {
