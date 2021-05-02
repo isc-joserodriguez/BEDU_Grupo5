@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getUsers = ({ setUsers, setFilteredUsers, setLoading }) => {
+export const getUsers = ({ setUsers, setLoading }) => {
     axios.get(
         `${process.env.REACT_APP_API_Connect}/usuarios`, {
         headers: {
@@ -8,7 +8,6 @@ export const getUsers = ({ setUsers, setFilteredUsers, setLoading }) => {
         }
     }).then(res => {
         setUsers([...res.data.detail]);
-        setFilteredUsers([...res.data.detail]);
         setLoading(false);
     }).catch(err => {
         setLoading(false)

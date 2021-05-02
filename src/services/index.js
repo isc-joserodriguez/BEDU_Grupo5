@@ -16,7 +16,16 @@ export {
     getUserById
 } from './users';
 
-export{
+export {
     getFoods,
     getFoodsByCategory
 } from './foods';
+
+export {
+    getCategories
+} from './categories';
+
+export {
+    getProducts,
+    getCategoriesSelector
+} from './products';

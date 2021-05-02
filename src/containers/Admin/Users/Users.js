@@ -1,46 +1,38 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 
-import { Container, Table } from 'react-bootstrap';
-
+import Filter from '../../../components/Filter/Filter';
+import TableInfo from '../../../components/UI/TableInfo/TableInfo';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 
+import { Card } from 'react-bootstrap'
+
 import { getUsers } from '../../../services';
+
+import classes from './Users.module.css';
 
 const Users = () => {
 
     const [users, setUsers] = useState([]);
-    const [filteredUsers, setFilteredUsers] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        getUsers({ setUsers, setFilteredUsers, setLoading });
+        getUsers({ setUsers, setLoading });
     }, [])
 
 
     return (
-        <Container>
-            {
-                loading ?
-                    <div>
-                        <Spinner />
-                    </div> :
-                    <Table striped bordered hover>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Tipo</th>
-                                <th>Nombre(s)</th>
-                                <th>Apellido(s)</th>
-                                <th>email</th>
-                                <th>Estado</th>
-                                <th>Detalles</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {users.map(el => (
+        <div className={classes.Users}>
+            <Filter />
+            <Card className={classes.Card}>
+                {loading ?
+                    <Spinner /> :
+                    <div className={classes.Table}>
+                        <TableInfo
+                            headers={['ID', 'Tipo', 'Nombre(s)', 'Apellido(s)', 'Email', 'Estado', 'Detalles']}
+                            rows={users.map(el => (
                                 <tr key={el._id}>
-                                    <td>{el._id}</td>
+                                    <td>{el._id.substring(el._id.length - 7)}</td>
                                     <td>{el.type}</td>
                                     <td>{el.firstName}</td>
                                     <td>{el.lastName}</td>
@@ -48,13 +40,14 @@ const Users = () => {
                                     <td>{el.status ? 'Activo' : 'Desactivado'}</td>
                                     <td><Link to={`/admin/users/${el._id}`}>Ver</Link></td>
                                 </tr>
-                            ))}
-                        </tbody>
-
-                    </Table>
-            }
-        </Container>
+                            ))
+                            }
+                        />
+                    </div>
+                }
+            </Card>
+        </div>
     )
 }
 
-export default Users
+export default Users;

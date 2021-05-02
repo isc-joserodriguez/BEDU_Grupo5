@@ -71,7 +71,6 @@ export const getOrderById = ({ id, setOrder }) => {
         console.log(err);
     });
 }
-
 export const updateState = ({ id, data, setLoading, setOrder }) => {
     axios.put(
         `${process.env.REACT_APP_API_Connect}/pedido/cambiarEstatus/${id}`, data, {
