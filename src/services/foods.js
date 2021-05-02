@@ -10,7 +10,6 @@ export const getFoods = ({ setFoods, setLoading, setCategories }) => {
 
         setCategories(
             res.data.detail.map(el => {
-                console.log([el.idCategoria.name])
                 return { _id: el.idCategoria._id, name: el.idCategoria.name }
             })
 

@@ -19,11 +19,10 @@ const FoodModal = (props) => {
             name: props.food.name,
             cost: props.food.cost
         }
-        ));
+        ))
     }
 
     const deleteFoodFromCart = (i) => {
-        console.log('el index es: '+ i)
         var newarray = [...cart]
         if(i !== 0){
             newarray.splice(0, i)
@@ -42,7 +41,7 @@ const FoodModal = (props) => {
         <td>{index}</td>
         <td>{food.name}</td>
         <td>{food.cost}</td>
-        <td><Button variant="success" className='float-left' onClick={() => { deleteFoodFromCart(index) }}>Eliminar De Carrito</Button></td>
+        <td><Button variant="danger" className='float-left' onClick={() => { deleteFoodFromCart(index) }}>Eliminar De Carrito</Button></td>
         </tr>
         </tbody>
         </Table>
@@ -51,14 +50,16 @@ const FoodModal = (props) => {
     );
 
     return (
+        
         <Modal show={props.show} onHide={props.handleClose}>
+
             <Modal.Header closeButton>
-                <Modal.Title>Nombre: {props.food.name}</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <p>Descripcion: {(props.food.description)}</p>
-                <p>Costo: ${(props.food.cost)}</p>
-            </Modal.Body>
+                    <Modal.Title>Nombre: {props.food.name}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                        <p>Descripcion: {(props.food.description)}</p>
+                        <p>Costo: ${(props.food.cost)}</p>
+                </Modal.Body>
 
             <Modal.Footer>
                 {
