@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from 'react-bootstrap/InputGroup';
+
 import classes from './searchPanel.module.css';
 
-const searchPanel = (props) => {
+import DatePicker, { registerLocale } from 'react-datepicker';
+import es from 'date-fns/locale/es';
+registerLocale('es', es);
+
+const SearchPanel = (props) => {
+  const [startDate, setStartDate] = useState(new Date());
+
   const onChange = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -21,6 +29,9 @@ const searchPanel = (props) => {
       <form className={classes.Filter} onSubmit={onSubmit} >
         <div>
           <label className={classes.orange}>Fecha: </label>
+
+          <DatePicker locale='es' selected={startDate} onChange={date => setStartDate(date)} />
+
           <section>
             <label>Desde:</label>
             <InputGroup className='mb-3' size='sm'>
@@ -122,7 +133,7 @@ const searchPanel = (props) => {
               value={props.value} onChange={onChange}
             />
             <InputGroup.Append>
-            <Button className={classes.orangeBtn} type='submit' size='sm'>Buscar</Button>
+              <Button className={classes.orangeBtn} type='submit' size='sm'>Buscar</Button>
             </InputGroup.Append>
           </InputGroup>
         </div>
@@ -159,4 +170,4 @@ const searchPanel = (props) => {
   )
 };
 
-export default searchPanel;
+export default SearchPanel;
