@@ -1,5 +1,6 @@
 import axios from 'axios';
 export const filterOrders = ({ setOrders, setFilteredOrders, setLoading, filter }) => {
+    console.log(filter);
     axios.post(
         `${process.env.REACT_APP_API_Connect}/pedido/filtrar`, filter, {
         headers: {
@@ -71,16 +72,15 @@ export const getOrderById = ({ id, setOrder }) => {
         console.log(err);
     });
 }
-export const updateState = ({ id, data, setLoading, setOrder }) => {
+export const updateState = ({ id, data, setLoading, setOrder, setOrders, setFilteredOrders, filter }) => {
     axios.put(
         `${process.env.REACT_APP_API_Connect}/pedido/cambiarEstatus/${id}`, data, {
         headers: {
             'Authorization': localStorage.getItem('token')
         }
     }).then(res => {
-        if (setOrder) {
-            setOrder(res.data.detail);
-        }
+        setOrder(res.data.detail);
+        filterOrders({ setOrders, setFilteredOrders, setLoading, filter });
         setLoading(false)
     }).catch(err => {
         setLoading(false)

@@ -9,7 +9,7 @@ const Chef = () => {
 
     return (
         <Switch>
-            <Route path={`${path}/new-orders`}>
+            <Route path={`${path}/`} exact>
                 <NewOrders />
             </Route>
             <Route path={`${path}/my-orders`}>

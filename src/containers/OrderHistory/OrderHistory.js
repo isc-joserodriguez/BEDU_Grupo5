@@ -6,7 +6,7 @@ import SearchPanel from '../SearchPanel/searchPanel';
 import OrderModal from '../../components/UI/OrderModal.js/OrderModal';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
-import { filterOrders, newOrder, deleteOrder, updateState } from '../../services';
+import { filterOrders, deleteOrder, updateState, getOrderById } from '../../services';
 
 import classes from './OrderHistory.module.css';
 
@@ -42,7 +42,9 @@ const OrderHistory = () => {
         filterHandler();
     }, [orders]);
 
-    const setOrderHandler = (order) => setOrder(order);
+    const orderDetail = (id) => {
+        getOrderById({ id, setOrder })
+    };
 
     const changeStatusHandler = (id) => {
         let ordersArray = [...orders];
@@ -59,11 +61,12 @@ const OrderHistory = () => {
         updateState({
             id: ordersArray[indexModif]._id,
             data: { status: ordersArray[indexModif].status },
+            setLoading,
             setOrder,
-            setLoading
+            setOrders,
+            setFilteredOrders,
+            filter: {}
         })
-
-        setOrders(ordersArray);
     }
 
     const deleteOrderHandler = (id) => {
@@ -106,14 +109,14 @@ const OrderHistory = () => {
                     {loading ?
                         <Spinner /> :
                         <OrdersList
+                            show={show}
+                            handleShow={handleShow}
                             change={changeStatusHandler}
                             orders={filteredOrders}
-                            show={show}
+                            setOrder={orderDetail}
                             delete={deleteOrderHandler}
                             filterHandler={filterHandler}
                             value={value}
-                            setOrder={setOrderHandler}
-                            handleShow={handleShow}
                         />
                     }
                 </div>

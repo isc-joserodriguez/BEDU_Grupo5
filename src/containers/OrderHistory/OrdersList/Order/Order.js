@@ -24,7 +24,7 @@ const Order = (props) => {
 
   const open = (event) => {
     props.handleShow()
-    props.setOrder(props.order)
+    props.setOrder(props.order._id)
     event.preventDefault();
     event.stopPropagation();
   }

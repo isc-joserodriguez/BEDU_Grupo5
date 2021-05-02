@@ -9,7 +9,7 @@ const Mesero = () => {
 
     return (
         <Switch>
-            <Route path={`${path}/menu`}>
+            <Route path={`${path}/`} exact>
                 <Foods />
             </Route>
             <Route path={`${path}/my-orders`}>

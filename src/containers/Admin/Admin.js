@@ -12,14 +12,14 @@ const Admin = () => {
 
     return (
         <Switch>
+            <Route path={`${path}/`} exact>
+                <OrderHistory />
+            </Route>
             <Route path={`${path}/new-user`}>
                 <Register />
             </Route>
             <Route path={`${path}/menu`}>
                 <Menu />
-            </Route>
-            <Route path={`${path}/orders`}>
-                <OrderHistory />
             </Route>
             <Route path={`${path}/users/:id`}>
                 <User />

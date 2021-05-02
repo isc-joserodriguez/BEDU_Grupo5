@@ -3,7 +3,7 @@ import Order from './Order/Order';
 import Container from 'react-bootstrap/Container';
 import OrderModal from '../../../components/UI/OrderModal.js/OrderModal';
 import Spinner from '../../../components/UI/Spinner/Spinner';
-import { filterOrders, getOrderById } from '../../../services'
+import { filterOrders, getOrderById, updateState } from '../../../services'
 const Orders = () => {
   const [show, setShow] = useState(false);
   const [orders, setOrders] = useState([]);
@@ -18,7 +18,7 @@ const Orders = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   useEffect(() => {
-    filterOrders({ setOrders, setFilteredOrders, setLoading, filter: { status: 1 } });
+    filterOrders({ setOrders, setFilteredOrders, setLoading, filter: { status: localStorage.getItem('type') === 'chef' ? 1 : 3 } });
   }, [])
   const orderDetail = (orderId) => {
     getOrderById(
@@ -28,6 +28,31 @@ const Orders = () => {
       }
     )
   };
+
+  const changeStatusHandler = (id) => {
+    let ordersArray = [...orders];
+    let indexModif = ordersArray.findIndex(element => element._id === id);
+    switch (ordersArray[indexModif].status) {
+      case 1:
+        ordersArray[indexModif].status = (localStorage.getItem('type') === 'admin' || localStorage.getItem('type') === 'cliente') ? 0 : 2;
+        break;
+      default:
+        ordersArray[indexModif].status++;
+        break;
+    }
+    /* setLoading(true); */
+    updateState({
+      id: ordersArray[indexModif]._id,
+      data: { status: ordersArray[indexModif].status },
+      setLoading,
+      setFilteredOrders: setOrders,
+      ordersArray,
+      setOrder,
+      setOrders, 
+      setFilteredOrders,
+      filter: { status: localStorage.getItem('type') === 'chef' ? 1 : 3 }
+    })
+  }
   const ordersMap = orders.map(order => (
     <Order
       key={order.idPedido}
@@ -57,7 +82,9 @@ const Orders = () => {
         show={show}
         handleShow={() => handleShow()}
         handleClose={() => handleClose()}
-      ></OrderModal>
+        changeStatusHandler={changeStatusHandler}
+        loading={loading}
+      />
     </div>
   );
 }
