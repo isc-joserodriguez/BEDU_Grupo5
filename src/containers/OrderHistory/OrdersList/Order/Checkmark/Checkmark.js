@@ -35,9 +35,9 @@ const Checkmark = (props) => {
       break
     default:
       icon = null;
-  }  
+  }
   return (
-    <span className={!isClient? classes.Check:''} >
+    <span className={(!isClient && props.status !== 0) ? classes.Check : ''} onClick={onChangeTask} >
       {icon}
     </span>
   )

@@ -35,8 +35,6 @@ export const getFoodsByCategory = ({ setFoods, setLoading, data }) => {
             'Authorization': localStorage.getItem('token')
         },
     }).then(res => {
-        console.log("Aqui")
-        console.log(res);
         setFoods(res.data.detail);
         setLoading(false);
     }).catch(err => {
@@ -46,7 +44,6 @@ export const getFoodsByCategory = ({ setFoods, setLoading, data }) => {
 }
 
 export const createPedido = ({ setLoading, info, cost }) => {
-    console.log(info)
     var payload = {
         idCliente: localStorage.getItem('id'),
         info: info,
@@ -60,7 +57,6 @@ export const createPedido = ({ setLoading, info, cost }) => {
         },
 
     }).then(res => {
-        console.log("Insertado Correctamente")
         console.log(res);
     }).catch(err => {
         console.log(err.message);
