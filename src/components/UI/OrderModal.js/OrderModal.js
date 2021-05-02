@@ -1,6 +1,8 @@
 import React from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
+import OrderProgress from '../../../containers/Mesero/OderProgress'
+
 const OrderModal = (props) => {
     const getStatus = (status) => {
         switch (status) {
@@ -36,11 +38,13 @@ const OrderModal = (props) => {
     status = getAction(props.order.status);
 
     return (
-        <Modal show={props.show} onHide={props.handleClose}>
+        <Modal show={props.show} onHide={props.handleClose} animation={false}>
             <Modal.Header closeButton>
-                <Modal.Title>Pedido #{props.order._id}</Modal.Title>
+                <Modal.Title><h4>Pedido #{props.order._id}</h4></Modal.Title>
             </Modal.Header>
             <Modal.Body>
+                <OrderProgress status={props.order.status} ></OrderProgress>
+                <br></br>
                 <p>Estado: {getStatus(props.order.status)}</p>
                 <p>Cliente: {`${props.order.idCliente.firstName} ${props.order.idCliente.lastName}`}</p>
                 <p>Chef: {!!props.order.idChef ? `${props.order.idChef?.firstName} ${props.order.idChef?.lastName}` : 'Sin asignar'}</p>

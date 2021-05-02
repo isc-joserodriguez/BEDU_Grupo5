@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card, Button } from 'react-bootstrap'
+import OrderProgress from '../../../Mesero/OderProgress'
 
 
 const Order = (props) => {
@@ -22,7 +23,10 @@ const Order = (props) => {
     return (
         <div className={'col mb-3'}>
             <Card className='text-center'>
-                <Card.Header className=''><h4>Pedido #{props.idPedido}</h4></Card.Header>
+                <Card.Header className=''>
+                    <h4>Pedido #{props.idPedido}</h4>
+                    <OrderProgress status={props.status}></OrderProgress>
+                </Card.Header>
                 <Card.Body>
                     <Card.Text className='text-break text-center'>
                         <h6>Estado: </h6>
