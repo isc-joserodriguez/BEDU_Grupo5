@@ -1,6 +1,5 @@
 import axios from 'axios';
-
-export const getFoods = ({ setFoods,  setLoading }) => {
+export const getFoods = ({ setFoods, setLoading, setCategories }) => {
     axios.get(
         `${process.env.REACT_APP_API_Connect}/productos`, {
         headers: {
@@ -8,13 +7,19 @@ export const getFoods = ({ setFoods,  setLoading }) => {
         }
     }).then(res => {
         setFoods(res.data.detail);
+
+        setCategories(
+            res.data.detail.map(el => {
+                return { _id: el.idCategoria._id, name: el.idCategoria.name }
+            })
+
+        );
         setLoading(false);
     }).catch(err => {
         setLoading(false);
         console.log(err);
     });
 }
-
 export const getFoodById = ({ id, setFood }) => {
     axios.get(
         `${process.env.REACT_APP_API_Connect}/productos/${id}`, {
@@ -27,7 +32,6 @@ export const getFoodById = ({ id, setFood }) => {
         console.log(err);
     });
 }
-
 export const getFoodsByCategory = ({ setFoods, setLoading, data }) => {
     axios.post(
         `${process.env.REACT_APP_API_Connect}/productos/filtrar`, { idCategoria: data }, {
@@ -42,20 +46,17 @@ export const getFoodsByCategory = ({ setFoods, setLoading, data }) => {
         console.log(err);
     });
 }
-
 export const createPedido = ({ setLoading, info, cost }) => {
     var payload = {
         idCliente: localStorage.getItem('id'),
         info: info,
         cost: cost
     };
-
     axios.post(
         `${process.env.REACT_APP_API_Connect}/pedido`, payload, {
         headers: {
             'Authorization': localStorage.getItem('token')
         },
-
     }).then(res => {
         console.log(res);
     }).catch(err => {
