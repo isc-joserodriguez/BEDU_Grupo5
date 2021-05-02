@@ -1,9 +1,10 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { Button } from 'react-bootstrap';
 
 import Filters from './Filters/Filters';
 import OrdersList from './OrdersList/OrdersList.js';
+import SearchPanel from '../SearchPanel/searchPanel';
 import OrderModal from '../../components/UI/OrderModal.js/OrderModal';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
@@ -109,6 +110,7 @@ const OrderHistory = () => {
     return (
         <>
             <div className={`${classes.OrderHistory}`}>
+                <SearchPanel />
                 <div className={classes.card}>
                     <Filters
                         showHide={showHide}
