@@ -27,11 +27,11 @@ const filters = (props) => {
 
   return (
     <form className={classes.Filter} onSubmit={onSubmit} >
-      <div>
+      <div className={classes.FilterItems}> 
         <label>Estatus: </label>
         <Button className={classes.orangeBtn} onClick={props.showHide} size='sm'>{props.show ? 'Ver todos' : 'Ver pendientes'}</Button>
       </div>
-      <div>
+      <div className={classes.FilterItems}>
         <InputGroup className='mb-3' size='sm'>
           <FormControl
             placeholder='Buscar una orden...'
@@ -44,8 +44,9 @@ const filters = (props) => {
           </InputGroup.Append>
         </InputGroup>
       </div>
-
-      <label className={classes.orange}>Hay {counter} orden(es)</label>
+      <div className={classes.FilterItems}>
+        <label className={classes.orange}>Hay {counter} orden(es)</label>
+      </div>
     </form>
   )
 };

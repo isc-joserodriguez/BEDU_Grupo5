@@ -1,0 +1,31 @@
+.ordercard {
+    max-width: 500px; 
+    margin:10px auto 3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 15px;
+}
+
+h4 {
+    text-align: center;
+    padding-top: 5px;
+    color: #00c3af;
+    margin-bottom: 15px;
+}
+
+.actionButton{
+    color: #fff;
+    background-color: #00c3af !important;
+    border-color: #00c3af !important;
+}
+
+.actionButton:hover {
+    background-color: #00e6cf !important;
+    border-color: #00e6cf !important;
+}
+
+.orderFooter{
+    width: 100%;
+}

@@ -33,7 +33,7 @@ const Order = (props) => {
                         <br />
                         {orderStatus(props.status)}
                     </Card.Text>
-                    <Button variant='info' className='is-centered' block onClick={() => orderDetails()}>Ver pedido</Button>
+                    <Button variant='info' className='is-centered orderBtn' block onClick={() => orderDetails()}>Ver pedido</Button>
                 </Card.Body>
             </Card>
 
