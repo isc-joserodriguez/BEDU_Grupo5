@@ -5,7 +5,7 @@ import { Container, Card, Form, Button } from 'react-bootstrap';
 import Spinner from '../../../../components/UI/Spinner/Spinner'
 import Input from '../../../../components/UI/Input/Input';
 import { IoFastFoodOutline } from 'react-icons/io5';
-import { MdGroupWork, MdSubtitles, MdAttachMoney, MdImage } from 'react-icons/md'
+import { MdSubtitles, MdAttachMoney, MdImage } from 'react-icons/md'
 import { createProduct, getCategoriesSelector } from '../../../../services';
 
 import { Image } from 'react-bootstrap';
@@ -87,7 +87,7 @@ const NewProduct = props => {
     });
     const [loading, setLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState(false);
-    let validImage=false;
+
 
     useEffect(() => {
         getCategoriesSelector({ newProductForm, setNewProductForm, setLoading, updateObject });
@@ -109,24 +109,22 @@ const NewProduct = props => {
         setLoading(true);
         setErrorMessage(false)
         const data = {
-            firstName: newProductForm.firstName.value,
-            lastName: newProductForm.lastName.value,
-            email: newProductForm.email.value,
-            password: newProductForm.password.value
+            name: newProductForm.name.value,
+            idCategoria: newProductForm.category.value,
+            description: newProductForm.description.value,
+            cost: newProductForm.cost.value,
+            image: newProductForm.image.value
         }
 
-        /* signup({
+        createProduct({
             data,
             setLoading,
-            setToken: props.setToken,
-            setErrorMessage,
-            register: false
-        }); */
+            setErrorMessage
+        }); 
     }
 
     const imageErrorHandler = (event) => {
         event.target.src = 'https://www.ninjaseo.com.au/wp-content/uploads/2016/07/placeholder4.png'
-        let validImage=false;
     }
 
     const formElementsArray = [];
@@ -155,14 +153,22 @@ const NewProduct = props => {
         <Container>
             <Card className={classes.NewProduct}>
                 <Card.Body>
-                    <h4 className='card-title text-center mb-4 mt-1'>Registro</h4>
+                    <h4 className='card-title text-center mb-4 mt-1'>Nuevo Producto</h4>
                     <hr />
-                    <Form noValidate onSubmit={submitHandler}>
+                    <Form noValidate onSubmit={submitHandler} className="d-flex flex-column">
                         {form}
-                        {/* <Button type='submit' variant='primary' size='lg' block disabled={!newProductForm.firstName.valid || !newProductForm.lastName.valid || !newProductForm.email.valid || !newProductForm.password.valid || !newProductForm.confirmPassword.valid}> Registrarse  </Button> */}
+                        <Image style={{ maxWidth: '50%', margin: '5px auto' }} src={newProductForm.image.value} onError={imageErrorHandler} thumbnail />
+                        <Button
+                            type='submit'
+                            variant='primary'
+                            size='lg'
+                            block
+                            disabled={!newProductForm.name.valid || !newProductForm.category.valid || !newProductForm.description.valid || !newProductForm.cost.valid || !newProductForm.image.valid}
+                        >
+                            Guardar
+                        </Button>
                         {errorMessage && <p className={`${classes.ErrorMessage} text-center mt-2`}>Error: Verifica los datos ingresados</p>}
                     </Form>
-                    <Image style={{ maxWidth: '50%' }} src={newProductForm.image.value} onError={imageErrorHandler} thumbnail />
                 </Card.Body>
             </Card>
         </Container>

@@ -4,9 +4,16 @@ import OrderHistory from '../OrderHistory/OrderHistory';
 import NewOrders from '../NewOrders/NewOrders'
 import Users from './Users/Users';
 import User from './Users/User/User';
-import Register from './Register/Register';
-import Menu from './Menu/Menu';;
-
+import EditUser from './Users/EditUser/EditUser';
+import NewUser from './Users/NewUser/NewUser';
+import Products from './Products/Products';
+import Product from './Products/Product/Product';
+import EditProduct from './Products/EditProduct/EditProduct';
+import NewProduct from './Products/NewProduct/NewProduct';
+import Categories from './Categories/Categories';
+import Category from './Categories/Category/Category';
+import EditCategory from './Categories/EditCategory/EditCategory';
+import NewCategory from './Categories/NewCategory/NewCategory';
 
 const Admin = () => {
     const { path } = useRouteMatch();
@@ -19,23 +26,41 @@ const Admin = () => {
             <Route path={`${path}/orders-history`} >
                 <OrderHistory />
             </Route>
-            <Route path={`${path}/new-user`}>
-                <Register />
+            <Route path={`${path}/users/edit/:id`}>
+                <EditUser />
             </Route>
-            <Route path={`${path}/menu`}>
-                <Menu />
-            </Route>
-            <Route path={`${path}/users/:id`}>
-                <User />
-            </Route>
-            <Route path={`${path}/users`}>
-                <Users />
+            <Route path={`${path}/users/new-user`}>
+                <NewUser />
             </Route>
             <Route path={`${path}/users/:id`}>
                 <User />
             </Route>
             <Route path={`${path}/users`}>
                 <Users />
+            </Route>
+            <Route path={`${path}/products/edit/:id`}>
+                <EditProduct />
+            </Route>
+            <Route path={`${path}/products/new-product`}>
+                <NewProduct />
+            </Route>
+            <Route path={`${path}/products/:id`}>
+                <Product />
+            </Route>
+            <Route path={`${path}/products`}>
+                <Products />
+            </Route>
+            <Route path={`${path}/categories/edit/:id`}>
+                <EditCategory />
+            </Route>
+            <Route path={`${path}/categories/new-category`}>
+                <NewCategory />
+            </Route>
+            <Route path={`${path}/categories/:id`}>
+                <Category />
+            </Route>
+            <Route path={`${path}/categories`}>
+                <Categories />
             </Route>
         </Switch>
     )

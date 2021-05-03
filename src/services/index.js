@@ -12,7 +12,9 @@ export {
 
 export {
     getUsers,
-    getUserById
+    getUserById,
+    getUserByIdForm,
+    editUser
 } from './users';
 
 export {
@@ -22,10 +24,18 @@ export {
 } from './foods';
 
 export {
-    getCategories
+    getCategories,
+    getCategoryById,
+    createCategory,
+    getCategoryByIdForm,
+    editCategory
 } from './categories';
 
 export {
     getProducts,
-    getCategoriesSelector
+    getCategoriesSelector,
+    createProduct,
+    getProductById,
+    editProduct,
+    getProductByIdForm
 } from './products';

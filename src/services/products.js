@@ -1,6 +1,23 @@
 import axios from 'axios';
 
-export const getProductById = ({ id, setProduct }) => {
+export const createProduct = ({ data, setLoading, setErrorMessage }) => {
+    axios.post(
+        `${process.env.REACT_APP_API_Connect}/productos/`, data, {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        }
+    }).then(res => {
+        alert('producto creado')
+        setLoading(false);
+        setErrorMessage(false)
+    }).catch(err => {
+        console.log(err);
+        setErrorMessage(true)
+        setLoading(false);
+    });
+}
+
+export const getProductById = ({ id, setProduct, setLoading }) => {
     axios.get(
         `${process.env.REACT_APP_API_Connect}/productos/${id}`, {
         headers: {
@@ -8,8 +25,10 @@ export const getProductById = ({ id, setProduct }) => {
         }
     }).then(res => {
         setProduct(res.data.detail);
+        setLoading(false);
     }).catch(err => {
         console.log(err);
+        setLoading(false);
     });
 }
 
@@ -28,7 +47,7 @@ export const getProducts = ({ setProducts, setLoading }) => {
     });
 }
 
-export const getCategoriesSelector = ({ newProductForm, setNewProductForm, setLoading, updateObject }) => {
+export const getCategoriesSelector = ({ editForm, setEditForm, setLoading, updateObject }) => {
     axios.get(
         `${process.env.REACT_APP_API_Connect}/categoria`, {
         headers: {
@@ -40,10 +59,10 @@ export const getCategoriesSelector = ({ newProductForm, setNewProductForm, setLo
             displayValue: category.name
         }))
 
-        setNewProductForm(
-            updateObject(newProductForm, {
-                category: updateObject(newProductForm.category, {
-                    value: categories[0],
+        setEditForm(
+            updateObject(editForm, {
+                category: updateObject(editForm.category, {
+                    value: categories[0].value,
                     elementConfig: {
                         options: categories
                     }
@@ -51,6 +70,58 @@ export const getCategoriesSelector = ({ newProductForm, setNewProductForm, setLo
             })
         );
         setLoading(false);
+    }).catch(err => {
+        setLoading(false)
+        console.log(err);
+    });
+}
+
+export const editProduct = ({ id, data, setLoading, setErrorMessage, history }) => {
+    axios.put(
+        `${process.env.REACT_APP_API_Connect}/productos/editar/${id}`, data, {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        }
+    }).then(res => {
+        setLoading(false);
+        history.push(`/${localStorage.getItem('type')}/products`)
+    }).catch(err => {
+        console.log(err);
+        setLoading(false);
+        setErrorMessage(true);
+    });
+}
+
+export const getProductByIdForm = ({ id, editForm, setEditForm, updateObject, setLoading }) => {
+    axios.get(
+        `${process.env.REACT_APP_API_Connect}/productos/${id}`, {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        }
+    }).then(res => {
+        let updatedControls = updateObject(editForm, {
+            name: updateObject(editForm.name, {
+                value: res.data.detail.name,
+                valid: true,
+                touched: true
+            }),
+            description: updateObject(editForm.description, {
+                value: res.data.detail.description,
+                valid: true,
+                touched: true
+            }),
+            cost: updateObject(editForm.cost, {
+                value: res.data.detail.cost,
+                valid: true,
+                touched: true
+            }),
+            image: updateObject(editForm.image, {
+                value: res.data.detail.image,
+                valid: true,
+                touched: true
+            })
+        });
+        getCategoriesSelector({ editForm:updatedControls, setEditForm, setLoading, updateObject })
     }).catch(err => {
         setLoading(false)
         console.log(err);

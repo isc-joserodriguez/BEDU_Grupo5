@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { updateObject, checkValidity } from '../../../shared/utility';
+import { updateObject, checkValidity } from '../../../../shared/utility';
 import { Container, Card, Form, Button } from 'react-bootstrap';
-import Spinner from '../../../components/UI/Spinner/Spinner'
-import Input from '../../../components/UI/Input/Input';
+import Spinner from '../../../../components/UI/Spinner/Spinner'
+import Input from '../../../../components/UI/Input/Input';
 import { CgUser, CgMail, CgPassword } from 'react-icons/cg';
-import { signup } from '../../../services';
+import { signup } from '../../../../services';
 
-import classes from './Register.module.css';
+import classes from './NewUser.module.css';
 
-const Register = props => {
-    const [registerForm, setRegisterForm] = useState({
+const NewUser = props => {
+    const [newUserForm, setNewUserForm] = useState({
         firstName: {
             elementType: 'group',
             elementConfig: {
@@ -109,10 +109,10 @@ const Register = props => {
     const [errorMessage, setErrorMessage] = useState(false);
 
     const inputChangedHandler = (event, controlName) => {
-        let updatedControls = updateObject(registerForm, {
-            [controlName]: updateObject(registerForm[controlName], {
+        let updatedControls = updateObject(newUserForm, {
+            [controlName]: updateObject(newUserForm[controlName], {
                 value: event.target.value,
-                valid: (controlName === 'confirmPassword') ? event.target.value === registerForm.password.value : checkValidity(event.target.value, registerForm[controlName].validation),
+                valid: (controlName === 'confirmPassword') ? event.target.value === newUserForm.password.value : checkValidity(event.target.value, newUserForm[controlName].validation),
                 touched: true
             })
         });
@@ -123,7 +123,7 @@ const Register = props => {
                 })
             });
         }
-        setRegisterForm(updatedControls);
+        setNewUserForm(updatedControls);
     }
 
     const submitHandler = (event) => {
@@ -131,11 +131,11 @@ const Register = props => {
         setLoading(true);
         setErrorMessage(false)
         const data = {
-            firstName: registerForm.firstName.value,
-            lastName: registerForm.lastName.value,
-            email: registerForm.email.value,
-            password: registerForm.password.value,
-            type: registerForm.type.value
+            firstName: newUserForm.firstName.value,
+            lastName: newUserForm.lastName.value,
+            email: newUserForm.email.value,
+            password: newUserForm.password.value,
+            type: newUserForm.type.value
         }
         signup({
             data,
@@ -148,10 +148,10 @@ const Register = props => {
     }
 
     const formElementsArray = [];
-    for (let key in registerForm) {
+    for (let key in newUserForm) {
         formElementsArray.push({
             id: key,
-            config: registerForm[key]
+            config: newUserForm[key]
         })
     }
 
@@ -171,13 +171,13 @@ const Register = props => {
 
     return (
         <Container>
-            <Card className={classes.Register}>
+            <Card className={classes.NewUser}>
                 <Card.Body>
                     <h4 className='card-title text-center mb-4 mt-1'>Nuevo usuario</h4>
                     <hr />
                     <Form noValidate onSubmit={submitHandler}>
                         {form}
-                        <Button type='submit' variant='primary' size='lg' block disabled={!registerForm.firstName.valid || !registerForm.lastName.valid || !registerForm.email.valid || !registerForm.password.valid || !registerForm.confirmPassword.valid}> Registrar  </Button>
+                        <Button type='submit' variant='primary' size='lg' block disabled={!newUserForm.firstName.valid || !newUserForm.lastName.valid || !newUserForm.email.valid || !newUserForm.password.valid || !newUserForm.confirmPassword.valid}> Registrar  </Button>
                         {errorMessage && <p className={`${classes.ErrorMessage} text-center mt-2`}>Error: Verifica los datos ingresados</p>}
                     </Form>
                 </Card.Body>
@@ -187,4 +187,4 @@ const Register = props => {
     )
 }
 
-export default withRouter(Register);
+export default withRouter(NewUser);

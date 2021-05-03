@@ -15,10 +15,10 @@ const NavigationItems = (props) => {
             case 'admin':
                 links = [
                     { route: '/admin', displayName: 'Ver Pedidos' },
-                    { route: '/admin/orders-history', displayName: 'Ver Historial' },
+                    { route: '/admin/products', displayName: 'Productos' },
+                    { route: '/admin/categories', displayName: 'Categorías' },
                     { route: '/admin/users', displayName: 'Usuarios' },
-                    { route: '/admin/new-user', displayName: 'Registrar Nuevo Usuario' },
-                    { route: '/admin/menu', displayName: 'Menú' },
+                    { route: '/admin/orders-history', displayName: 'Ver Historial' },
                     { route: '/logout', displayName: 'Cerrar Sesión' }
                 ]
                 break;

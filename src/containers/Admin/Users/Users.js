@@ -45,6 +45,7 @@ const Users = () => {
                         />
                     </div>
                 }
+                <Link to='/admin/users/new-user'>Agregar nuevo usuario</Link>
             </Card>
         </div>
     )

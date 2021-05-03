@@ -9,6 +9,7 @@ export const login = ({ data, setLoading, setToken, setErrorMessage }) => {
             }
             localStorage.setItem('token', `Bearer ${res.data.detail.token}`);
             localStorage.setItem('type', res.data.detail.type);
+            localStorage.setItem('id', res.data.detail._id);
             setLoading(false);
             setToken(res.data.detail.token);
         }).catch(err => {
@@ -31,6 +32,7 @@ export const signup = ({ data, setLoading, setToken, setErrorMessage, history, r
         } else {
             localStorage.setItem('token', `Bearer ${res.data.detail.token}`);
             localStorage.setItem('type', res.data.detail.type);
+            localStorage.setItem('id', res.data.detail._id);
             setLoading(false);
             setToken(res.data.detail.token);
         }
