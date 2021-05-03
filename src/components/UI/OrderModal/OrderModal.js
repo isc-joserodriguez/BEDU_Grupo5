@@ -29,17 +29,17 @@ const OrderModal = (props) => {
                     case 2: return 'Terminar';
                     default: return 'NA';
                 }
-            default:
+            case 'mesero':
                 if (status === 3) {
                     return 'Entregar';
                 }
+            default:
                 return 'NA';
         }
     }
 
     let status = 'NA';
     status = getAction(props.order.status);
-
     return (
         <Modal show={props.show} onHide={props.handleClose} animation={false} className={classes.ordercard}>
             <Modal.Header closeButton>

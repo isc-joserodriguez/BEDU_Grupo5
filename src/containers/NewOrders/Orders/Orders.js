@@ -14,6 +14,7 @@ const Orders = () => {
     idCliente: {},
     idChef: {},
     idMesero: {},
+    status:0
   });
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);

@@ -28,6 +28,7 @@ const OrderHistory = () => {
     idCliente: {},
     idChef: {},
     idMesero: {},
+    status: 0
   });
 
   const handleClose = () => setShowModal(false);
@@ -64,7 +65,7 @@ const OrderHistory = () => {
       case 1:
         ordersArray[indexModif].status =
           localStorage.getItem("type") === "admin" ||
-          localStorage.getItem("type") === "cliente"
+            localStorage.getItem("type") === "cliente"
             ? 0
             : 2;
         break;
@@ -83,7 +84,7 @@ const OrderHistory = () => {
       filter: {
         special:
           localStorage.getItem("type") === "chef" ||
-          localStorage.getItem("type") === "mesero"
+            localStorage.getItem("type") === "mesero"
             ? true
             : false,
       },
@@ -92,9 +93,7 @@ const OrderHistory = () => {
 
   const deleteOrderHandler = (id) => {
     let ordersArray = [...orders];
-    console.log(ordersArray[0]);
     let indexDelete = ordersArray.findIndex((element) => element._id === id);
-    console.log(indexDelete);
     ordersArray.splice(indexDelete, 1);
     /* setLoading(true); */
     deleteOrder({
