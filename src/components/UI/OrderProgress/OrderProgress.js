@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import ProgressBar from 'react-bootstrap/ProgressBar'
 
-function OrderProgress(props) {
+const OrderProgress = (props) => {
     let status = props.status
-    function progress(s) {
+    const progress = (s) => {
         let variant = ''
         let completion = 0
         switch (s) {
@@ -14,7 +14,7 @@ function OrderProgress(props) {
             case 2: variant = 'primary'; completion = 50; break
             case 3: variant = 'info '; completion = 75; break
             case 4: variant = 'success'; completion = 100; break
-            default:variant = 'light '; completion = 0
+            default: variant = 'light '; completion = 0
         }
         return [variant, completion]
     }
@@ -23,7 +23,7 @@ function OrderProgress(props) {
 
     return (
         <div >
-            <ProgressBar animated={status < 4 ? true : false} striped={status === 4 ? true : false} variant={progressBarStatus[0]} now={progressBarStatus[1]} /> 
+            <ProgressBar animated={status < 4 ? true : false} striped={status === 4 ? true : false} variant={progressBarStatus[0]} now={progressBarStatus[1]} />
         </div>
     )
 }

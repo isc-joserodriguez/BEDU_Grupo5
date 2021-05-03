@@ -4,7 +4,7 @@ import { Button, Container, Form, Col } from 'react-bootstrap'
 import FoodModal from "./FoodModal/FoodModal";
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import { getFoods, getFoodById, getFoodsByCategory, getCategoriesCommands } from '../../../services/foods'
-function Foods() {
+const Foods = () => {
   const [show, setShow] = useState(false);
   const [foods, setFoods] = useState([]);
   const [loading, setLoading] = useState(true);

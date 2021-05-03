@@ -5,9 +5,9 @@ import { Card, Button } from 'react-bootstrap'
 import classes from './Food.module.css'
 
 
-function Food(props) {
+const Food = (props) => {
 
-    function foodDetails() {
+    const foodDetails = () => {
         props.foodDetail()
         props.handleShow()
     }

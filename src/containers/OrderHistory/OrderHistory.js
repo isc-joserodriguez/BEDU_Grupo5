@@ -113,7 +113,7 @@ const OrderHistory = () => {
     setShow(!show);
   };
 
-  function showFilters() {
+  const showFilters = () => {
     console.log("Boton");
     setShowFilter(!showFilter);
   }
