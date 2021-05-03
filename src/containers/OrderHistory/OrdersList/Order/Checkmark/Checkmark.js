@@ -27,19 +27,19 @@ const Checkmark = (props) => {
 
   switch (props.status) {
     case 0:
-      icon = <CanceledIcon className={classes.Green} />
+      icon = <CanceledIcon className={classes.Grey} />
       break;
     case 1:
-      icon = <WaitingIcon className={classes.Green} />
+      icon = <WaitingIcon className={classes.Yellow} />
       break
     case 2:
-      icon = <CreatingIcon className={classes.Green} />
+      icon = <CreatingIcon className={classes.GreenBlue} />
       break
     case 3:
       icon = <ReadyIcon className={classes.Green} />
       break
     default:
-      icon = <DeliveredIcon className={classes.Green} />
+      icon = <DeliveredIcon className={classes.Pink} />
   }
   return (
     <span className={(!isClient && props.status !== 0) ? classes.Check : ''} onClick={onChangeTask} >

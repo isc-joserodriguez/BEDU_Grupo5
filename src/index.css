@@ -1,0 +1,10 @@
+.orderBtn{
+    background-color: #00E1DF !important; 
+    border-color: #00E1DF !important;
+    font-weight: bold !important;
+}
+
+.orderBtn:hover{
+    background-color: #00fffb !important;
+    border-color: #00fffb !important;
+}

@@ -8,7 +8,7 @@ function OrderProgress(props) {
         let completion = 0
         switch (s) {
             case 0: variant = 'secondary'; completion = 0; break
-            case 1: variant = 'secondary '; completion = 25; break
+            case 1: variant = 'warning '; completion = 25; break
             case 2: variant = 'primary'; completion = 50; break
             case 3: variant = 'info '; completion = 75; break
             case 4: variant = 'success'; completion = 100; break

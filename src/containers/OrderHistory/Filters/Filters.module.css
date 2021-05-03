@@ -1,5 +1,6 @@
 .Filter {
   display: flex;
+  flex-wrap: wrap;
   padding: 30px;
   margin-bottom: 20px;
   justify-content: space-around;
@@ -19,4 +20,9 @@
 .Filter .orange {
   color: #FF8352;
   font-weight: 700;
+}
+
+.FilterItems{
+  margin: 0.5rem auto;
+  padding: 0 10px;
 }

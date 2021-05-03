@@ -27,8 +27,29 @@
 
 .Green {
   color: #00C3AF;
+  
 }
 
 .Blue {
-  color: #00E1DF;
+  color: #007BFF;
+}
+
+.Yellow {
+  color: #FFC900;
+}
+
+.GreenBlue{
+  color: #b65dd6;
+}
+
+.Grey{
+  color: #bebebe;
+  width: 22px;
+  height: 22px;
+  text-align: center;
+}
+
+.Pink{
+  color: #FF458F;
+ 
 }
