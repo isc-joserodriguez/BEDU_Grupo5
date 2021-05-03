@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import { withRouter, useParams } from 'react-router-dom';
 
 import { updateObject, checkValidity } from '../../../../shared/utility';
 import { Container, Card, Form, Button } from 'react-bootstrap';
@@ -7,13 +7,14 @@ import Spinner from '../../../../components/UI/Spinner/Spinner'
 import Input from '../../../../components/UI/Input/Input';
 import { IoFastFoodOutline } from 'react-icons/io5';
 import { MdSubtitles } from 'react-icons/md'
+import { editCategory, getCategoryByIdForm } from '../../../../services';
 
-import { createCategory } from '../../../../services';
+import classes from './EditCategory.module.css';
 
-import classes from './NewCategory.module.css';
-
-const NewCategory = props => {
-    const [newCategoryForm, setNewCategoryForm] = useState({
+const EditCategory = props => {
+    const { id } = useParams();
+    const owner = id === localStorage.getItem('id');
+    const [editForm, setEditForm] = useState({
         name: {
             elementType: 'group',
             elementConfig: {
@@ -45,18 +46,29 @@ const NewCategory = props => {
             errorMessage: 'Ingresa una descripción'
         }
     });
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState(false);
 
+    useEffect(() => {
+        getCategoryByIdForm({ id, editForm, setEditForm, updateObject, setLoading, owner })
+    }, [])
+
     const inputChangedHandler = (event, controlName) => {
-        const updatedControls = updateObject(newCategoryForm, {
-            [controlName]: updateObject(newCategoryForm[controlName], {
+        let updatedControls = updateObject(editForm, {
+            [controlName]: updateObject(editForm[controlName], {
                 value: event.target.value,
-                valid: checkValidity(event.target.value, newCategoryForm[controlName].validation),
+                valid: (controlName === 'confirmPassword') ? event.target.value === editForm.password.value : checkValidity(event.target.value, editForm[controlName].validation),
                 touched: true
             })
         });
-        setNewCategoryForm(updatedControls);
+        if (controlName === 'password' && updatedControls.confirmPassword.value) {
+            updatedControls = updateObject(updatedControls, {
+                confirmPassword: updateObject(updatedControls.confirmPassword, {
+                    valid: event.target.value === updatedControls.confirmPassword.value
+                })
+            });
+        }
+        setEditForm(updatedControls);
     }
 
     const submitHandler = (event) => {
@@ -64,27 +76,24 @@ const NewCategory = props => {
         setLoading(true);
         setErrorMessage(false)
         const data = {
-            name: newCategoryForm.name.value,
-            description: newCategoryForm.description.value,
+            name: editForm?.name?.value,
+            description: editForm?.description?.value
         }
-
-        createCategory({
+        editCategory({
+            id,
             data,
-            history: props.history,
             setLoading,
-            setErrorMessage
+            setErrorMessage,
+            history: props.history
         });
-    }
 
-    const imageErrorHandler = (event) => {
-        event.target.src = 'https://www.ninjaseo.com.au/wp-content/uploads/2016/07/placeholder4.png'
     }
 
     const formElementsArray = [];
-    for (let key in newCategoryForm) {
+    for (let key in editForm) {
         formElementsArray.push({
             id: key,
-            config: newCategoryForm[key]
+            config: editForm[key]
         })
     }
 
@@ -104,19 +113,13 @@ const NewCategory = props => {
 
     return (
         <Container>
-            <Card className={classes.NewCategory}>
+            <Card className={classes.EditCategory}>
                 <Card.Body>
-                    <h4 className='card-title text-center mb-4 mt-1'>Nueva Categoría</h4>
+                    <h4 className='card-title text-center mb-4 mt-1'>Editar Categoria</h4>
                     <hr />
-                    <Form noValidate onSubmit={submitHandler} className="d-flex flex-column">
+                    <Form noValidate onSubmit={submitHandler}>
                         {form}
-                        <Button
-                            type='submit'
-                            variant='primary'
-                            size='lg'
-                            block
-                            disabled={!newCategoryForm.name.valid || !newCategoryForm.description.valid}
-                        >
+                        <Button type='submit' variant='primary' size='lg' block disabled={!editForm?.name?.valid || !editForm?.description?.valid} >
                             Guardar
                         </Button>
                         {errorMessage && <p className={`${classes.ErrorMessage} text-center mt-2`}>Error: Verifica los datos ingresados</p>}
@@ -124,7 +127,8 @@ const NewCategory = props => {
                 </Card.Body>
             </Card>
         </Container>
+
     )
 }
 
-export default withRouter(NewCategory)
+export default withRouter(EditCategory);
