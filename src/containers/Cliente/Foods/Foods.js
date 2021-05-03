@@ -16,16 +16,16 @@ function Foods() {
   //No-Repeat-Categories.
   const arrayOfId = [];
   const arrayOfNames = [];
-  categories.map(el => {
+  /* categories.map(el => {
     arrayOfId.push(el._id)
     arrayOfNames.push(el.name)
-})
-const orderArrayNames = [...new Set(arrayOfNames)]
-const orderArrayId = [...new Set(arrayOfId)]
+  }) */
+  const orderArrayNames = [...new Set(arrayOfNames)]
+  const orderArrayId = [...new Set(arrayOfId)]
 
   useEffect(() => {
     getFoods({ setFoods, setLoading });
-    getCategoriesCommands({setCategories, setLoading })
+    getCategoriesCommands({ setCategories, setLoading })
   }, [])
   const foodDetail = (foodId) => {
     getFoodById(

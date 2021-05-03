@@ -4,7 +4,7 @@ import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import Foods from './Foods/Foods';
 import OrderHistory from '../OrderHistory/OrderHistory'
 
-const Mesero = () => {
+const Client = () => {
     const { path } = useRouteMatch();
 
     return (
@@ -19,4 +19,4 @@ const Mesero = () => {
     )
 }
 
-export default Mesero;
+export default Client;

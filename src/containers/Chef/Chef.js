@@ -5,6 +5,7 @@ import OrderCard from '../../components/UI/OrderCard/OrderCard'
 
 import OrderHistory from '../OrderHistory/OrderHistory';
 import NewOrders from '../NewOrders/NewOrders';
+import NotFound from '../../components/NotFound/NotFound';
 
 import { filterOrders, updateState } from '../../services';
 
@@ -50,6 +51,9 @@ const Chef = () => {
                 </Route>
                 <Route path={`${path}/my-orders`}>
                     <OrderHistory />
+                </Route>
+                <Route>
+                    <NotFound />
                 </Route>
             </Switch>
         </>

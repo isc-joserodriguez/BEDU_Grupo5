@@ -14,6 +14,7 @@ import Categories from './Categories/Categories';
 import Category from './Categories/Category/Category';
 import EditCategory from './Categories/EditCategory/EditCategory';
 import NewCategory from './Categories/NewCategory/NewCategory';
+import NotFound from '../../components/NotFound/NotFound';
 
 const Admin = () => {
     const { path } = useRouteMatch();
@@ -61,6 +62,9 @@ const Admin = () => {
             </Route>
             <Route path={`${path}/categories`}>
                 <Categories />
+            </Route>
+            <Route>
+                <NotFound />
             </Route>
         </Switch>
     )

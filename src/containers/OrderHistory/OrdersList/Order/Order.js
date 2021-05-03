@@ -9,7 +9,6 @@ import Checkmark from './Checkmark/Checkmark';
 import classes from './Order.module.css';
 
 const Order = (props) => {
-
   const onDelete = (event) => {
     props.delete(props.order._id);
     event.preventDefault();
@@ -80,8 +79,11 @@ const Order = (props) => {
 }
 
 Order.propTypes = {
-  done: PropTypes.bool,
-
+  change: PropTypes.func.isRequired,
+  delete: PropTypes.func.isRequired,
+  handleShow: PropTypes.func.isRequired,
+  order: PropTypes.object.isRequired,
+  setOrder: PropTypes.func.isRequired,
 }
 
 export default Order;

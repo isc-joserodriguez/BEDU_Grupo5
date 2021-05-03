@@ -76,10 +76,6 @@ const NewCategory = props => {
         });
     }
 
-    const imageErrorHandler = (event) => {
-        event.target.src = 'https://www.ninjaseo.com.au/wp-content/uploads/2016/07/placeholder4.png'
-    }
-
     const formElementsArray = [];
     for (let key in newCategoryForm) {
         formElementsArray.push({

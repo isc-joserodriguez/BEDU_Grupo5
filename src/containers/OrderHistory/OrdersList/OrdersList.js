@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import Table from 'react-bootstrap/Table'
 
 import Order from './Order/Order';
@@ -17,7 +19,6 @@ const OrdersList = (props) => {
     order={order}
     change={props.change}
     delete={props.delete}
-    handleClose={props.handleClose}
     handleShow={props.handleShow}
     setOrder={props.setOrder}
   />)
@@ -56,7 +57,15 @@ const OrdersList = (props) => {
   )
 }
 
-
-
+OrdersList.propTypes = {
+  change: PropTypes.func.isRequired,
+  delete: PropTypes.func.isRequired,
+  filterHandler: PropTypes.func.isRequired,
+  handleShow: PropTypes.func.isRequired,
+  orders: PropTypes.array.isRequired,
+  setOrder: PropTypes.func.isRequired,
+  show: PropTypes.bool.isRequired,
+  value: PropTypes.string.isRequired
+}
 
 export default OrdersList;

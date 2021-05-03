@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types';
+
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import OrderProgress from '../OrderProgress/OrderProgress'
@@ -54,7 +56,7 @@ const OrderModal = (props) => {
             </Modal.Body>
             <Modal.Footer className={classes.orderFooter}>
                 {'NA' !== status &&
-                    <Button variant='primary' className={classes.actionButton} onClick={() => { props.changeStatusHandler(props.order._id); props.handleClose();  }} disabled={props.loading}>
+                    <Button variant='primary' className={classes.actionButton} onClick={() => { props.changeStatusHandler(props.order._id); props.handleClose(); }} disabled={props.loading}>
                         {getAction(props.order.status)}
                     </Button>}
 
@@ -64,5 +66,11 @@ const OrderModal = (props) => {
             </Modal.Footer>
         </Modal >
     )
+}
+OrderModal.propTypes = {
+    order: PropTypes.object.isRequired,
+    handleShow: PropTypes.func.isRequired,
+    handleClose: PropTypes.func.isRequired,
+    changeStatusHandler: PropTypes.func.isRequired
 }
 export default OrderModal;

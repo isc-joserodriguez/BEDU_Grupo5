@@ -10,7 +10,6 @@ import { GoPackage as DeliveredIcon } from 'react-icons/go';
 import classes from './Checkmark.module.css';
 
 const Checkmark = (props) => {
-
   const isClient = localStorage.getItem('type') === 'cliente';
   const isChef = localStorage.getItem('type') === 'chef';
   const isMesero = localStorage.getItem('type') === 'mesero';
@@ -49,7 +48,9 @@ const Checkmark = (props) => {
 };
 
 Checkmark.propTypes = {
-  done: PropTypes.bool
+  status: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
+  change: PropTypes.func.isRequired,
 }
 
 export default Checkmark

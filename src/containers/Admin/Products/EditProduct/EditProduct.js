@@ -7,7 +7,7 @@ import Spinner from '../../../../components/UI/Spinner/Spinner'
 import Input from '../../../../components/UI/Input/Input';
 import { IoFastFoodOutline } from 'react-icons/io5';
 import { MdSubtitles, MdAttachMoney, MdImage } from 'react-icons/md'
-import { editProduct, getCategoriesSelector, getProductByIdForm } from '../../../../services';
+import { editProduct, getProductByIdForm } from '../../../../services';
 
 import { Image } from 'react-bootstrap';
 
@@ -93,7 +93,7 @@ const EditProduct = props => {
 
     useEffect(() => {
         getProductByIdForm({ id, editForm, setEditForm, updateObject, setLoading })
-        //getCategoriesSelector({ editForm, setEditForm, setLoading, updateObject });
+        
     }, [])
 
     const inputChangedHandler = (event, controlName) => {

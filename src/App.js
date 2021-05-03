@@ -21,10 +21,17 @@ function App(props) {
       setToken(localStorage.getItem('token'));
       if (!pathname.includes(`/${localStorage.getItem('type')}`))
         history.push(`/${localStorage.getItem('type')}`);
+    }else{
+      setToken(null);
     }
-  }, [history, token]);
+  }, [history, token, pathname]);
 
   let component = null;
+
+  const logout = () => {
+    localStorage.clear();
+    props.history.push('/');
+  }
 
   let routes = (
     <Switch>
@@ -62,7 +69,7 @@ function App(props) {
           {component}
         </Route>
         <Route path='/logout'>
-          <Logout setToken={setToken} />
+          <Logout logout={logout} />
         </Route>
         <Route>
           <NotFound />

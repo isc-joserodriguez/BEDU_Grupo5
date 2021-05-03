@@ -13,7 +13,6 @@ import classes from './EditCategory.module.css';
 
 const EditCategory = props => {
     const { id } = useParams();
-    const owner = id === localStorage.getItem('id');
     const [editForm, setEditForm] = useState({
         name: {
             elementType: 'group',
@@ -50,7 +49,7 @@ const EditCategory = props => {
     const [errorMessage, setErrorMessage] = useState(false);
 
     useEffect(() => {
-        getCategoryByIdForm({ id, editForm, setEditForm, updateObject, setLoading, owner })
+        getCategoryByIdForm({ id, editForm, setEditForm, updateObject, setLoading });
     }, [])
 
     const inputChangedHandler = (event, controlName) => {

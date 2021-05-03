@@ -1,18 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 
-import { Redirect } from 'react-router-dom'
-
 const Logout = (props) => {
-    localStorage.clear();
-    props.setToken(null);
+    props.logout();
     return (
-        <Redirect to='/' />
+        <div>Cerrando Sesión</div>
     )
 }
 
 Logout.propTypes = {
-    setToken: PropTypes.func.isRequired
+    logout: PropTypes.func.isRequired
 }
 
 export default Logout

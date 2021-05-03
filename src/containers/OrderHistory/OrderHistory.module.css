@@ -9,11 +9,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.OrderHistory code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-}
-
-
 .OrderHistory .card {
   width: 100%;
   max-width: 95%;
@@ -36,13 +31,16 @@
   font-weight: bold !important;
 }
 
-
 @media screen and (max-width:600px) {
-  .searchPanel {display:none}
+  .searchPanel {
+    display: none
   }
+}
 
 @media screen and (max-width: 600px) {
-  .searchPanel.responsive {position: relative;}
+  .searchPanel.responsive {
+    position: relative;
+  }
   .searchPanel.responsive a.icon {
     position: absolute;
     right: 0;

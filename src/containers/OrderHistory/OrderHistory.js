@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import Button from "react-bootstrap/Button";
-
 import Filters from "./Filters/Filters";
 import OrdersList from "./OrdersList/OrdersList.js";
 import SearchPanel from "../SearchPanel/searchPanel";

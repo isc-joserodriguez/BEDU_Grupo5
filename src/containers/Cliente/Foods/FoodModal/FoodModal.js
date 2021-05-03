@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import PropTypes from 'prop-types';
+
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import Table from 'react-bootstrap/Table'
@@ -24,42 +26,42 @@ const FoodModal = (props) => {
 
     const deleteFoodFromCart = (i) => {
         var newarray = [...cart]
-        if(i !== 0){
+        if (i !== 0) {
             newarray.splice(0, i)
-        }else{
+        } else {
             newarray.shift()
-        } 
+        }
         setCart(newarray)
     }
 
 
     const listItems = cart.map((food, index) =>
         <>
-        <Table>
-        <tbody>
-        <tr>
-        <td>{index}</td>
-        <td>{food.name}</td>
-        <td>{food.cost}</td>
-        <td><Button variant="danger" className='float-left' onClick={() => { deleteFoodFromCart(index) }}>Eliminar De Carrito</Button></td>
-        </tr>
-        </tbody>
-        </Table>
+            <Table>
+                <tbody>
+                    <tr>
+                        <td>{index}</td>
+                        <td>{food.name}</td>
+                        <td>{food.cost}</td>
+                        <td><Button variant="danger" className='float-left' onClick={() => { deleteFoodFromCart(index) }}>Eliminar De Carrito</Button></td>
+                    </tr>
+                </tbody>
+            </Table>
         </>
         //  <li key={food._id}>{`Producto: ${food.name} Precio: ${food.cost}`}</li>
     );
 
     return (
-        
+
         <Modal show={props.show} onHide={props.handleClose}>
 
             <Modal.Header closeButton>
-                    <Modal.Title>Nombre: {props.food.name}</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                        <p>Descripcion: {(props.food.description)}</p>
-                        <p>Costo: ${(props.food.cost)}</p>
-                </Modal.Body>
+                <Modal.Title>Nombre: {props.food.name}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <p>Descripcion: {(props.food.description)}</p>
+                <p>Costo: ${(props.food.cost)}</p>
+            </Modal.Body>
 
             <Modal.Footer>
                 {
@@ -99,4 +101,11 @@ const FoodModal = (props) => {
         </Modal>
     )
 }
+
+FoodModal.propTypes = {
+    food: PropTypes.object.isRequired,
+    handleClose: PropTypes.func.isRequired,
+    handleShow: PropTypes.func.isRequired
+}
+
 export default FoodModal;

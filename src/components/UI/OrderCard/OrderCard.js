@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types';
+
 import { Card } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
 import OrderProgress from '../OrderProgress/OrderProgress'
@@ -60,4 +62,9 @@ const OrderCard = (props) => {
             </Card > : null
     )
 }
+OrderCard.propTypes = {
+    order: PropTypes.object.isRequired,
+    changeStatusHandler: PropTypes.func.isRequired
+}
+
 export default OrderCard;

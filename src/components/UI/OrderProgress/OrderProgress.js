@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types';
+
 import ProgressBar from 'react-bootstrap/ProgressBar'
 
 function OrderProgress(props) {
@@ -24,6 +26,10 @@ function OrderProgress(props) {
             <ProgressBar animated={status < 4 ? true : false} striped={status === 4 ? true : false} variant={progressBarStatus[0]} now={progressBarStatus[1]} /> 
         </div>
     )
+}
+
+OrderProgress.propTypes = {
+    status: PropTypes.number.isRequired
 }
 
 export default OrderProgress

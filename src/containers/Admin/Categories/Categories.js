@@ -5,7 +5,7 @@ import SearchPanel from '../../SearchPanel/searchPanel';
 import TableInfo from '../../../components/UI/TableInfo/TableInfo';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 
-import { Card, Button } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 
 import { getCategories } from '../../../services';
 

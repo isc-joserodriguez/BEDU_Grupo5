@@ -1,7 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types';
+
 import { Card, Button } from 'react-bootstrap'
 import OrderProgress from '../../../../components/UI/OrderProgress/OrderProgress'
-
 
 const Order = (props) => {
     const orderStatus = (status) => {
@@ -41,6 +42,16 @@ const Order = (props) => {
     )
 }
 
-
+Order.propTypes = {
+    cost: PropTypes.number.isRequired,
+    handleClose: PropTypes.func.isRequired,
+    handleShow: PropTypes.func.isRequired,
+    idChef: PropTypes.object.isRequired,
+    idCliente: PropTypes.object.isRequired,
+    idPedido: PropTypes.string.isRequired,
+    info: PropTypes.array.isRequired,
+    orderDetail: PropTypes.func.isRequired,
+    status: PropTypes.number.isRequired
+}
 
 export default Order
