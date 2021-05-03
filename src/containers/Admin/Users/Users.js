@@ -23,7 +23,9 @@ const Users = () => {
 
     return (
         <div className={classes.Users}>
-            <SearchPanel />
+            <div>
+                <SearchPanel />
+            </div>
             <Card className={classes.Card}>
                 {loading ?
                     <Spinner /> :
