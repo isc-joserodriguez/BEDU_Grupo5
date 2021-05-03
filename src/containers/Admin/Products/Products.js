@@ -20,8 +20,6 @@ const Products = () => {
         getProducts({ setProducts, setLoading });
     }, []);
 
-    console.log(products[0])
-
     return (
         <div className={`${classes.Products}`}>
             <SearchPanel />
@@ -30,7 +28,7 @@ const Products = () => {
                     <Spinner /> :
                     <div className={classes.Table}>
                         <TableInfo
-                            headers={['ID', 'Foto', 'Nombre', 'Descripción', 'Costo', 'Categoria', 'Estado']}
+                            headers={['ID', 'Foto', 'Nombre', 'Descripción', 'Costo', 'Categoria', 'Estado', 'Ver']}
                             rows={products.map((el, index) => (
                                 <tr key={index}>
                                     <td>{el._id.substring(el._id.length - 7)}</td>
@@ -40,6 +38,7 @@ const Products = () => {
                                     <td>{el.cost}</td>
                                     <td>{el.idCategoria.name}</td>
                                     <td>{el.status ? 'Activo' : 'Inactivo'}</td>
+                                    <td><Link to={`/admin/products/${el._id}`}>Ver</Link></td>
                                 </tr>
 
                             ))
@@ -47,6 +46,7 @@ const Products = () => {
                         />
                     </div>
                 }
+                <Link to='/admin/products/new-product'>Agregar nuevo producto</Link>
             </Card>
         </div>
     )

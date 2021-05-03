@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { withRouter, useParams } from 'react-router-dom';
 
 import { updateObject, checkValidity } from '../../../../shared/utility';
 import { Container, Card, Form, Button } from 'react-bootstrap';
@@ -6,14 +7,15 @@ import Spinner from '../../../../components/UI/Spinner/Spinner'
 import Input from '../../../../components/UI/Input/Input';
 import { IoFastFoodOutline } from 'react-icons/io5';
 import { MdSubtitles, MdAttachMoney, MdImage } from 'react-icons/md'
-import { createProduct, getCategoriesSelector } from '../../../../services';
+import { editProduct, getCategoriesSelector, getProductByIdForm } from '../../../../services';
 
 import { Image } from 'react-bootstrap';
 
-import classes from './NewProduct.module.css';
+import classes from './EditProduct.module.css';
 
-const NewProduct = props => {
-    const [newProductForm, setNewProductForm] = useState({
+const EditProduct = props => {
+    const { id } = useParams();
+    const [editForm, setEditForm] = useState({
         name: {
             elementType: 'group',
             elementConfig: {
@@ -90,18 +92,19 @@ const NewProduct = props => {
 
 
     useEffect(() => {
-        getCategoriesSelector({ newProductForm, setNewProductForm, setLoading, updateObject });
+        getProductByIdForm({ id, editForm, setEditForm, updateObject, setLoading })
+        //getCategoriesSelector({ editForm, setEditForm, setLoading, updateObject });
     }, [])
 
     const inputChangedHandler = (event, controlName) => {
-        const updatedControls = updateObject(newProductForm, {
-            [controlName]: updateObject(newProductForm[controlName], {
+        const updatedControls = updateObject(editForm, {
+            [controlName]: updateObject(editForm[controlName], {
                 value: event.target.value,
-                valid: checkValidity(event.target.value, newProductForm[controlName].validation),
+                valid: checkValidity(event.target.value, editForm[controlName].validation),
                 touched: true
             })
         });
-        setNewProductForm(updatedControls);
+        setEditForm(updatedControls);
     }
 
     const submitHandler = (event) => {
@@ -109,18 +112,20 @@ const NewProduct = props => {
         setLoading(true);
         setErrorMessage(false)
         const data = {
-            name: newProductForm.name.value,
-            idCategoria: newProductForm.category.value,
-            description: newProductForm.description.value,
-            cost: newProductForm.cost.value,
-            image: newProductForm.image.value
+            name: editForm.name.value,
+            idCategoria: editForm.category.value,
+            description: editForm.description.value,
+            cost: editForm.cost.value,
+            image: editForm.image.value
         }
 
-        createProduct({
+        editProduct({
+            id,
             data,
             setLoading,
-            setErrorMessage
-        }); 
+            setErrorMessage,
+            history: props.history
+        });
     }
 
     const imageErrorHandler = (event) => {
@@ -128,10 +133,10 @@ const NewProduct = props => {
     }
 
     const formElementsArray = [];
-    for (let key in newProductForm) {
+    for (let key in editForm) {
         formElementsArray.push({
             id: key,
-            config: newProductForm[key]
+            config: editForm[key]
         })
     }
 
@@ -151,19 +156,19 @@ const NewProduct = props => {
 
     return (
         <Container>
-            <Card className={classes.NewProduct}>
+            <Card className={classes.EditProduct}>
                 <Card.Body>
-                    <h4 className='card-title text-center mb-4 mt-1'>Nuevo Producto</h4>
+                    <h4 className='card-title text-center mb-4 mt-1'>Editar Producto</h4>
                     <hr />
                     <Form noValidate onSubmit={submitHandler} className="d-flex flex-column">
                         {form}
-                        <Image style={{ maxWidth: '50%', margin: '5px auto' }} src={newProductForm.image.value} onError={imageErrorHandler} thumbnail />
+                        <Image style={{ maxWidth: '50%', margin: '5px auto' }} src={editForm.image.value} onError={imageErrorHandler} thumbnail />
                         <Button
                             type='submit'
                             variant='primary'
                             size='lg'
                             block
-                            disabled={!newProductForm.name.valid || !newProductForm.category.valid || !newProductForm.description.valid || !newProductForm.cost.valid || !newProductForm.image.valid}
+                            disabled={!editForm.name.valid || !editForm.description.valid || !editForm.cost.valid || !editForm.image.valid}
                         >
                             Guardar
                         </Button>
@@ -175,4 +180,4 @@ const NewProduct = props => {
     )
 }
 
-export default NewProduct
+export default withRouter(EditProduct)
