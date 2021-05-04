@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/BEDU_Grupo5/static/css/main.9aa6153a.chunk.css",
-    "main.js": "/BEDU_Grupo5/static/js/main.7ef99571.chunk.js",
-    "main.js.map": "/BEDU_Grupo5/static/js/main.7ef99571.chunk.js.map",
-    "runtime-main.js": "/BEDU_Grupo5/static/js/runtime-main.ac878407.js",
-    "runtime-main.js.map": "/BEDU_Grupo5/static/js/runtime-main.ac878407.js.map",
+    "main.css": "/BEDU_Grupo5/static/css/main.0790850a.chunk.css",
+    "main.js": "/BEDU_Grupo5/static/js/main.b8eee910.chunk.js",
+    "main.js.map": "/BEDU_Grupo5/static/js/main.b8eee910.chunk.js.map",
+    "runtime-main.js": "/BEDU_Grupo5/static/js/runtime-main.7cba05ef.js",
+    "runtime-main.js.map": "/BEDU_Grupo5/static/js/runtime-main.7cba05ef.js.map",
     "static/css/2.01ca705e.chunk.css": "/BEDU_Grupo5/static/css/2.01ca705e.chunk.css",
-    "static/js/2.cc9bd357.chunk.js": "/BEDU_Grupo5/static/js/2.cc9bd357.chunk.js",
-    "static/js/2.cc9bd357.chunk.js.map": "/BEDU_Grupo5/static/js/2.cc9bd357.chunk.js.map",
-    "static/js/3.02ce9934.chunk.js": "/BEDU_Grupo5/static/js/3.02ce9934.chunk.js",
-    "static/js/3.02ce9934.chunk.js.map": "/BEDU_Grupo5/static/js/3.02ce9934.chunk.js.map",
+    "static/js/2.9cecd110.chunk.js": "/BEDU_Grupo5/static/js/2.9cecd110.chunk.js",
+    "static/js/2.9cecd110.chunk.js.map": "/BEDU_Grupo5/static/js/2.9cecd110.chunk.js.map",
+    "static/js/3.4198a3c0.chunk.js": "/BEDU_Grupo5/static/js/3.4198a3c0.chunk.js",
+    "static/js/3.4198a3c0.chunk.js.map": "/BEDU_Grupo5/static/js/3.4198a3c0.chunk.js.map",
     "index.html": "/BEDU_Grupo5/index.html",
     "static/css/2.01ca705e.chunk.css.map": "/BEDU_Grupo5/static/css/2.01ca705e.chunk.css.map",
-    "static/css/main.9aa6153a.chunk.css.map": "/BEDU_Grupo5/static/css/main.9aa6153a.chunk.css.map",
-    "static/js/2.cc9bd357.chunk.js.LICENSE.txt": "/BEDU_Grupo5/static/js/2.cc9bd357.chunk.js.LICENSE.txt",
+    "static/css/main.0790850a.chunk.css.map": "/BEDU_Grupo5/static/css/main.0790850a.chunk.css.map",
+    "static/js/2.9cecd110.chunk.js.LICENSE.txt": "/BEDU_Grupo5/static/js/2.9cecd110.chunk.js.LICENSE.txt",
     "static/media/Error404.260cc172.png": "/BEDU_Grupo5/static/media/Error404.260cc172.png",
     "static/media/restaurant-logo.969e6013.jpg": "/BEDU_Grupo5/static/media/restaurant-logo.969e6013.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.ac878407.js",
+    "static/js/runtime-main.7cba05ef.js",
     "static/css/2.01ca705e.chunk.css",
-    "static/js/2.cc9bd357.chunk.js",
-    "static/css/main.9aa6153a.chunk.css",
-    "static/js/main.7ef99571.chunk.js"
+    "static/js/2.9cecd110.chunk.js",
+    "static/css/main.0790850a.chunk.css",
+    "static/js/main.b8eee910.chunk.js"
   ]
 }
