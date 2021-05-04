@@ -53,6 +53,17 @@ const OrderModal = (props) => {
                 <p><b>Chef: </b>{!!props.order.idChef ? `${props.order.idChef?.firstName} ${props.order.idChef?.lastName}` : 'Sin asignar'}</p>
                 <p><b>Mesero: </b>{!!props.order.idMesero ? `${props.order.idMesero?.firstName} ${props.order.idMesero?.lastName}` : 'Sin asignar'}</p>
                 <p><b>Costo: </b>${(props.order.cost)}</p>
+                <hr></hr>
+                <h5><b>Detalle del pedido:</b></h5>
+                <br/>
+                {props.order.info ? props.order.info.map((order, index) => (
+                    <p key={index}><b>{order.name}</b> 
+                        <br/>
+                        {order.description}
+                    </p>
+                )) : null
+            }
+                
             </Modal.Body>
             <Modal.Footer className={classes.orderFooter}>
                 {'NA' !== status &&

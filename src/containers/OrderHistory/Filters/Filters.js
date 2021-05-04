@@ -31,7 +31,7 @@ const Filters = (props) => {
         <label>Estatus: </label>
         <Button className={classes.orangeBtn} onClick={props.showHide} size='sm'>{props.show ? 'Ver todos' : 'Ver pendientes'}</Button>
       </div>
-      <div className={classes.FilterItems}>
+{/*       <div className={classes.FilterItems}>
         <InputGroup className='mb-3' size='sm'>
           <FormControl
             placeholder='Buscar una orden...'
@@ -43,7 +43,7 @@ const Filters = (props) => {
             <Button className={classes.orangeBtn} type='submit' size='sm'>Buscar</Button>
           </InputGroup.Append>
         </InputGroup>
-      </div>
+      </div> */}
       <div className={classes.FilterItems}>
         <label className={classes.orange}>Hay {counter} orden(es)</label>
       </div>
