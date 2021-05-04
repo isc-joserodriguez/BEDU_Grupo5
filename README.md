@@ -1,22 +1,22 @@
 # BEDU | Grupo 5 | RESTaurant
 ----
 ## Contenido
+- [Descripción del proyecto](#descripcion)
 - [Usuarios de ejemplo](#usuarios)
 - [Entregables](#entregables)
 - [Autores](#autores)
 
-Para el avance, hay que tomar algunos puntos en cuenta:
+<a name="descripcion"></a>
 
-- Actualmente tiene peticiones a la API para la autenticación y registro de usuarios.
-- En root ```/``` tenemos el login (abajo están 4 usuarios por defecto con sus credenciales).
-- El registro "general"  en ```/signup``` está pensado para que un cliente pueda registrarse sin necesidad de algún permiso.
-- Para usar el componente "New User" de "Admin" en ```/admin/new-user```, debe estar autenticado como administrador (sólo el administrador puede crear a otros usuarios no clientes).
-- En el componente "Cliente" se muestra un ejemplo del menú que puede ser filtrado por favoritos y por recientes
-- En el componente "Chef" se muestran algunos pedidos que pueden ser filtrados con el buscador o con el botón del estatus.
-- En el componente "Mesero" se muestra un grid con algunos ejemplos de pedidos con sus estatus.
-- Casi todos los componentes son responsivos y se le agregó un Side Drawer para reemplazar el Nav en pantallas pequeñas.
+### Descripción del proyecto
+
+Este proyecto fue hecho con React.js en el front y con mongo, express y node en el back (Retomando la [API de la fase anterior](https://github.com/joanrodriguezhe/BEDU_Grupo11_Backend)).
+
+El objetivo de este proyecto es llevar a cabo todas las fases de un restaurante, tomando los roles de Administrador, Chef, Mesero y Cliente.
 
 <a name="usuarios"></a>
+
+### Usuarios de ejemplo
 
 | Tipo de usuario | Correo | Contraseña |
 | ------------- | ------------- | ------------- |
