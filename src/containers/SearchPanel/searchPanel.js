@@ -24,6 +24,7 @@ const SearchPanel = (props) => {
     props.filterHandler();
   };
 
+  return (null)
   return (
     <section className={classes.searchPanel} id={'Filters'}>
       <form className={classes.Filter} onSubmit={onSubmit}>
