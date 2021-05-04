@@ -50,7 +50,7 @@ export const createPedido = ({ setLoading, info, cost }) => {
             'Authorization': localStorage.getItem('token')
         },
     }).then(res => {
-        console.log(res);
+        
     }).catch(err => {
         console.log(err.message);
     });

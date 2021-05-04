@@ -58,7 +58,6 @@ export const getCategoriesSelector = ({ editForm, setEditForm, setLoading, updat
             value: category._id,
             displayValue: category.name
         }))
-        console.log(editForm);
 
         setEditForm(
             updateObject(editForm, {

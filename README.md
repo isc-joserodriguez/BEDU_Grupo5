@@ -2,9 +2,8 @@
 ----
 ## Contenido
 - [Usuarios de ejemplo](#usuarios)
+- [Entregables](#entregables)
 - [Autores](#autores)
-
-### [--- Abrir Deploy ---](https://joanrodriguezhe.github.io/BEDU_Grupo5)
 
 Para el avance, hay que tomar algunos puntos en cuenta:
 
@@ -27,6 +26,13 @@ Para el avance, hay que tomar algunos puntos en cuenta:
 | Cliente | cliente2@cliente.com | 123456 |
 
 
+<a name="entregables"></a>
+
+### Entregables
+
+[Deploy](https://joanrodriguezhe.github.io/BEDU_Grupo5)
+
+[Video](https://youtu.be/GhKABlcTc2c)
 
 <a name="autores"></a>
 

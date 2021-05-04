@@ -114,7 +114,7 @@ const OrderHistory = () => {
   };
 
   const showFilters = () => {
-    console.log("Boton");
+    /* console.log("Boton"); */
     setShowFilter(!showFilter);
   }
 

@@ -24,13 +24,11 @@ const Filters = (props) => {
   }
 
   const onChange = (e) => {
-    console.log('onchange')
     e.preventDefault();
     e.stopPropagation();
     props.changeValue(e.target.value)
   }
   const onSubmit = (e) => {
-    console.log('onsubmit')
     e.preventDefault();
     e.stopPropagation();
     props.filterHandler();

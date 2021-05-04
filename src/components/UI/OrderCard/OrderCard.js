@@ -44,7 +44,6 @@ const OrderCard = (props) => {
     let showed = false;
     switch (localStorage.getItem('type')) {
         case 'chef':
-            console.log(showed);
             showed = (props.order.status === 1 || props.order.status === 2);
             break;
         case 'cliente':
