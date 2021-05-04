@@ -8,7 +8,18 @@ import classes from './Filters.module.css';
 const Filters = (props) => {
   let counter = null;
   if (props.show) {
-    counter = props.orders.filter(e => !e.status).length;
+    counter = props.orders.filter(e => {
+      switch (localStorage.getItem('type')) {
+        case 'chef':
+          return (e.status === 1 || e.status === 1);
+        case 'mesero':
+          return e.status === 3
+        case 'admin':
+          return (e.status !== 4 || e.status !== 0)
+        default:
+          return e.status !== 4
+      }
+    }).length;
   }
   else {
     counter = props.orders.length;
@@ -31,19 +42,6 @@ const Filters = (props) => {
         <label>Estatus: </label>
         <Button className={classes.orangeBtn} onClick={props.showHide} size='sm'>{props.show ? 'Ver todos' : 'Ver pendientes'}</Button>
       </div>
-{/*       <div className={classes.FilterItems}>
-        <InputGroup className='mb-3' size='sm'>
-          <FormControl
-            placeholder='Buscar una orden...'
-            aria-label='search'
-            aria-describedby='basic-addon2'
-            value={props.value} onChange={onChange}
-          />
-          <InputGroup.Append>
-            <Button className={classes.orangeBtn} type='submit' size='sm'>Buscar</Button>
-          </InputGroup.Append>
-        </InputGroup>
-      </div> */}
       <div className={classes.FilterItems}>
         <label className={classes.orange}>Hay {counter} orden(es)</label>
       </div>
