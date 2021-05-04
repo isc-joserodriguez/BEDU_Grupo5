@@ -1,15 +1,15 @@
 import axios from 'axios';
 
-export const createProduct = ({ data, setLoading, setErrorMessage }) => {
+export const createProduct = ({ data, setLoading, setErrorMessage, history }) => {
     axios.post(
         `${process.env.REACT_APP_API_Connect}/productos/`, data, {
         headers: {
             'Authorization': localStorage.getItem('token')
         }
     }).then(res => {
-        alert('producto creado')
         setLoading(false);
         setErrorMessage(false)
+        history.push('/admin/products');
     }).catch(err => {
         console.log(err);
         setErrorMessage(true)
@@ -58,6 +58,7 @@ export const getCategoriesSelector = ({ editForm, setEditForm, setLoading, updat
             value: category._id,
             displayValue: category.name
         }))
+        console.log(editForm);
 
         setEditForm(
             updateObject(editForm, {
@@ -121,7 +122,7 @@ export const getProductByIdForm = ({ id, editForm, setEditForm, updateObject, se
                 touched: true
             })
         });
-        getCategoriesSelector({ editForm:updatedControls, setEditForm, setLoading, updateObject })
+        getCategoriesSelector({ editForm: updatedControls, setEditForm, setLoading, updateObject })
     }).catch(err => {
         setLoading(false)
         console.log(err);

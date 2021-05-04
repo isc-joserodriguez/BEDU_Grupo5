@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
 
 import { updateObject, checkValidity } from '../../../../shared/utility';
 import { Container, Card, Form, Button } from 'react-bootstrap';
@@ -12,7 +13,7 @@ import { Image } from 'react-bootstrap';
 
 import classes from './NewProduct.module.css';
 
-const NewProduct = props => {
+const NewProduct = (props) => {
     const [newProductForm, setNewProductForm] = useState({
         name: {
             elementType: 'group',
@@ -90,7 +91,7 @@ const NewProduct = props => {
 
 
     useEffect(() => {
-        getCategoriesSelector({ newProductForm, setNewProductForm, setLoading, updateObject });
+        getCategoriesSelector({ editForm: newProductForm, setEditForm: setNewProductForm, setLoading, updateObject });
     }, [])
 
     const inputChangedHandler = (event, controlName) => {
@@ -118,9 +119,10 @@ const NewProduct = props => {
 
         createProduct({
             data,
+            history: props.history,
             setLoading,
             setErrorMessage
-        }); 
+        });
     }
 
     const imageErrorHandler = (event) => {
@@ -175,4 +177,4 @@ const NewProduct = props => {
     )
 }
 
-export default NewProduct
+export default withRouter(NewProduct)
