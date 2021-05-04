@@ -15,7 +15,7 @@ const OrdersList = (props) => {
         case 'mesero':
           return e.status === 3
         default:
-          return e.status !== 4
+          return (e.status === 1 || e.status === 2 || e.status === 3)
       }
     });
   }

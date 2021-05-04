@@ -14,8 +14,8 @@ const Filters = (props) => {
           return (e.status === 1 || e.status === 2);
         case 'mesero':
           return e.status === 3
-        case 'admin':
-          return e.status !== 4
+        default:
+          return (e.status === 1 || e.status === 2 || e.status === 3)
       }
     }).length;
   }

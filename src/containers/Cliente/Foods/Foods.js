@@ -40,14 +40,14 @@ const Foods = () => {
   ));
   return (
     <Container className='mb-4'>
-      <div className='d-flex align-items-center mb-4 justify-content-center'>
+      {/* <div className='d-flex align-items-center mb-4 justify-content-center'>
         <Form>
           <Col>
             <Form.Control type="text" placeholder="Nombre Del Platillo" />
           </Col>
         </Form>
         <Button variant="dark" className='p-2' >Buscar</Button>
-      </div>
+      </div> */}
       <div className='col d-flex flex-wrap mb-4 align-content-center justify-content-center'>
         <Button variant="outline-secondary" className='p-2 m-2' onClick={() => getFoods({ setFoods, setLoading })} >Todos</Button>
         {

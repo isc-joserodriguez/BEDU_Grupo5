@@ -47,7 +47,7 @@ Order.propTypes = {
     cost: PropTypes.number.isRequired,
     handleClose: PropTypes.func.isRequired,
     handleShow: PropTypes.func.isRequired,
-    idChef: PropTypes.object.isRequired,
+    idChef: PropTypes.object,
     idCliente: PropTypes.object.isRequired,
     idPedido: PropTypes.string.isRequired,
     info: PropTypes.array.isRequired,
