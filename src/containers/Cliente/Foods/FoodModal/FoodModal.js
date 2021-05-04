@@ -35,21 +35,14 @@ const FoodModal = (props) => {
     }
 
 
-    const listItems = cart.map((food, index) =>
-        <>
-            <Table>
-                <tbody>
-                    <tr>
-                        <td>{index}</td>
-                        <td>{food.name}</td>
-                        <td>{food.cost}</td>
-                        <td><Button variant="danger" className='float-left' onClick={() => { deleteFoodFromCart(index) }}>Eliminar De Carrito</Button></td>
-                    </tr>
-                </tbody>
-            </Table>
-        </>
-        //  <li key={food._id}>{`Producto: ${food.name} Precio: ${food.cost}`}</li>
-    );
+    const listItems = cart.map((food, index) => (
+        <tr key={index}>
+            <td>{index + 1}</td>
+            <td>{food.name}</td>
+            <td>{food.cost}</td>
+            <td><Button variant="danger" className='float-left' onClick={() => { deleteFoodFromCart(index) }}>Eliminar De Carrito</Button></td>
+        </tr>
+    ));
 
     return (
 
@@ -89,8 +82,10 @@ const FoodModal = (props) => {
                                 <th>Eliminar:</th>
                             </tr>
                         </thead>
+                        <tbody>
+                            {listItems}
+                        </tbody>
                     </Table>
-                    <ul>{listItems}</ul>
                     <ul><strong>Total:</strong> {cart.map(el => el.cost).reduce(myFunc)}</ul>
 
                     <Button variant="primary" className='float-left' onClick={() => { createOrder(cart.map(el => el._id), cart.map(el => el.cost).reduce(myFunc)) }}>

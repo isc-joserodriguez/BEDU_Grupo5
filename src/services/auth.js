@@ -26,9 +26,8 @@ export const signup = ({ data, setLoading, setToken, setErrorMessage, history, r
         }
     }).then(res => {
         setLoading(false);
-        alert('Se creó el usuario');
         if (register) {
-            history.push(`/admin`);
+            history.push(`/admin/users`);
         } else {
             localStorage.setItem('token', `Bearer ${res.data.detail.token}`);
             localStorage.setItem('type', res.data.detail.type);

@@ -16,10 +16,6 @@ const Foods = () => {
   //No-Repeat-Categories.
   const arrayOfId = [];
   const arrayOfNames = [];
-  /* categories.map(el => {
-    arrayOfId.push(el._id)
-    arrayOfNames.push(el.name)
-  }) */
   const orderArrayNames = [...new Set(arrayOfNames)]
   const orderArrayId = [...new Set(arrayOfId)]
 
