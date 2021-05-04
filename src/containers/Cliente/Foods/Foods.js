@@ -33,7 +33,7 @@ const Foods = () => {
   };
   const foodsMap = foods.map(foods => (
     <Food
-      key={foods.idFood}
+      key={foods._id}
       idFood={foods._id.substring(foods._id.length - 7)}
       name={foods.name}
       descripcion={foods.description}
