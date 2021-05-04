@@ -27,7 +27,7 @@ const FoodModal = (props) => {
     const deleteFoodFromCart = (i) => {
         var newarray = [...cart]
         if (i !== 0) {
-            newarray.splice(0, i)
+            newarray.splice(i)
         } else {
             newarray.shift()
         }
