@@ -8,7 +8,16 @@ import classes from './OrdersList.module.css';
 const OrdersList = (props) => {
   let elements = null;
   if (props.show) {
-    elements = [...props.orders].filter(e => e.status === 1);
+    elements = [...props.orders].filter(e => {
+      switch (localStorage.getItem('type')) {
+        case 'chef':
+          return (e.status === 1 || e.status === 2);
+        case 'mesero':
+          return e.status === 3
+        default:
+          return e.status !== 4
+      }
+    });
   }
   else {
     elements = [...props.orders];

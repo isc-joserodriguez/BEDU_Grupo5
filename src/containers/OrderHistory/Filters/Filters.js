@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Button, FormControl, InputGroup } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 
 import classes from './Filters.module.css';
 
@@ -11,12 +11,10 @@ const Filters = (props) => {
     counter = props.orders.filter(e => {
       switch (localStorage.getItem('type')) {
         case 'chef':
-          return (e.status === 1 || e.status === 1);
+          return (e.status === 1 || e.status === 2);
         case 'mesero':
           return e.status === 3
         case 'admin':
-          return (e.status !== 4 || e.status !== 0)
-        default:
           return e.status !== 4
       }
     }).length;
@@ -26,11 +24,13 @@ const Filters = (props) => {
   }
 
   const onChange = (e) => {
+    console.log('onchange')
     e.preventDefault();
     e.stopPropagation();
     props.changeValue(e.target.value)
   }
   const onSubmit = (e) => {
+    console.log('onsubmit')
     e.preventDefault();
     e.stopPropagation();
     props.filterHandler();

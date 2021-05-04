@@ -13,18 +13,6 @@ const Foods = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  //No-Repeat-Categories.
-  const arrayCats = foods.map((food) => (
-    {
-      name: food.idCategoria,
-      _id: food.idCategoria
-    }
-  ));
-  const arrayOfId = [];
-  const arrayOfNames = [];
-  const orderArrayNames = [...new Set(arrayOfNames)]
-  const orderArrayId = [...new Set(arrayOfId)]
-
   useEffect(() => {
     getFoods({ setFoods, setLoading });
     getCategoriesCommands({ setCategories, setLoading })
