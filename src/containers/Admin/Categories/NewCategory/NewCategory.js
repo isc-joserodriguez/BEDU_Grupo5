@@ -107,6 +107,7 @@ const NewCategory = props => {
                     <Form noValidate onSubmit={submitHandler} className="d-flex flex-column">
                         {form}
                         <Button
+                            className = {classes.saveBtn}
                             type='submit'
                             variant='primary'
                             size='lg'

@@ -163,7 +163,7 @@ const EditProduct = props => {
                     <Form noValidate onSubmit={submitHandler} className="d-flex flex-column">
                         {form}
                         <Image style={{ maxWidth: '50%', margin: '5px auto' }} src={editForm.image.value} onError={imageErrorHandler} thumbnail />
-                        <Button
+                        <Button className={classes.saveBtn}
                             type='submit'
                             variant='primary'
                             size='lg'

@@ -118,7 +118,7 @@ const EditCategory = props => {
                     <hr />
                     <Form noValidate onSubmit={submitHandler}>
                         {form}
-                        <Button type='submit' variant='primary' size='lg' block disabled={!editForm?.name?.valid || !editForm?.description?.valid} >
+                        <Button type='submit' className={classes.saveBtn} variant='primary' size='lg' block disabled={!editForm?.name?.valid || !editForm?.description?.valid} >
                             Guardar
                         </Button>
                         {errorMessage && <p className={`${classes.ErrorMessage} text-center mt-2`}>Error: Verifica los datos ingresados</p>}

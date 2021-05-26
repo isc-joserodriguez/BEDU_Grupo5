@@ -177,7 +177,7 @@ const NewUser = props => {
                     <hr />
                     <Form noValidate onSubmit={submitHandler}>
                         {form}
-                        <Button type='submit' variant='primary' size='lg' block disabled={!newUserForm.firstName.valid || !newUserForm.lastName.valid || !newUserForm.email.valid || !newUserForm.password.valid || !newUserForm.confirmPassword.valid}> Registrar  </Button>
+                        <Button className = {classes.saveBtn} type='submit' variant='primary' size='lg' block disabled={!newUserForm.firstName.valid || !newUserForm.lastName.valid || !newUserForm.email.valid || !newUserForm.password.valid || !newUserForm.confirmPassword.valid}> Registrar  </Button>
                         {errorMessage && <p className={`${classes.ErrorMessage} text-center mt-2`}>Error: Verifica los datos ingresados</p>}
                     </Form>
                 </Card.Body>

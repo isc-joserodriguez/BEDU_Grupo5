@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 
 import Spinner from '../../../../components/UI/Spinner/Spinner';
 import { getUserById } from '../../../../services';
-
+import { FiEdit3 } from 'react-icons/fi';
 import { Card } from 'react-bootstrap';
 
 import classes from './User.module.css';
@@ -43,7 +43,7 @@ const User = () => {
                     <small className="text-muted">
                         {`Ultima actualización el ${new Date(user.updatedAt).getDate()}/${new Date(user.updatedAt).getMonth() + 1}/${new Date(user.updatedAt).getFullYear()}`}
                         <br />
-                        <Link to={`/admin/users/edit/${user._id}`}>Editar</Link>
+                        <Link className={classes.orange} to={`/admin/users/edit/${user._id}`}>Editar <FiEdit3/></Link>
                     </small>
                 </Card.Footer>
             </Card>

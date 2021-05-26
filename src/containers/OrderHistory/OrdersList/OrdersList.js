@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Table from 'react-bootstrap/Table'
+import Table from 'react-bootstrap/Table' 
 
 import Order from './Order/Order';
 import classes from './OrdersList.module.css';
@@ -36,7 +36,7 @@ const OrdersList = (props) => {
 
   return (
     <div className={classes.OrdersList}>
-      <Table responsive>
+      <Table responsive bordered hover>
         <thead>
           <tr>
             <th>Listo</th>

@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 
 import Spinner from '../../../../components/UI/Spinner/Spinner';
 import { getProductById } from '../../../../services';
-
+import { FiEdit3 } from 'react-icons/fi';
 import { Card } from 'react-bootstrap';
 
 import classes from './Product.module.css';
@@ -35,7 +35,7 @@ const Product = () => {
                     <small className="text-muted">
                         {`Ultima actualización el ${new Date(product.updatedAt).getDate()}/${new Date(product.updatedAt).getMonth() + 1}/${new Date(product.updatedAt).getFullYear()}`}
                         <br />
-                        <Link to={`/admin/products/edit/${product._id}`}>Editar</Link>
+                        <Link className={classes.orange}  to={`/admin/products/edit/${product._id}`}>Editar <FiEdit3/></Link>
                     </small>
                 </Card.Footer>
             </Card>

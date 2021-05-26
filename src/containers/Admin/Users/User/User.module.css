@@ -1,4 +1,13 @@
 .User {
     max-width: 500px;
     margin: 10px auto;
+    border: solid 1px #DEE500 !important;
 }
+
+.User .orange {
+    color: #FF8352;
+    font-weight: 600;
+}
+.User .orange:hover {
+    color:  #ff9f7a;
+  }

@@ -2,8 +2,20 @@
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;
+    border: solid 1px #DEE500 !important;
 }
 
 .ErrorMessage {
     color: red
 }
+
+.EditUser .saveBtn {
+    color: #fff;
+    background-color: #00c3af !important;
+    border-color: #00c3af !important;
+  }
+  
+  .EditUser .saveBtn:hover {
+    background-color: #00e6cf !important;
+    border-color: #00e6cf !important;
+  }

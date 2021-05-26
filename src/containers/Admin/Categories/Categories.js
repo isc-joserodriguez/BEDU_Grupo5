@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import SearchPanel from '../../SearchPanel/searchPanel';
 import TableInfo from '../../../components/UI/TableInfo/TableInfo';
 import Spinner from '../../../components/UI/Spinner/Spinner';
-
+import { ImEye as DetailIcon } from 'react-icons/im';
+import { Button } from 'react-bootstrap';
 import { Card } from 'react-bootstrap';
 
 import { getCategories } from '../../../services';
@@ -24,6 +25,9 @@ const Categories = () => {
         <div className={`${classes.Categories}`}>
             <SearchPanel />
             <Card className={classes.Card}>
+                <section className={classes.buttonContainer}>
+                    <Link to='/admin/categories/new-category'><Button className={classes.orangeBtn} size='sm'><p className={classes.big}>+</p> Nueva categoría</Button></Link>
+                </section>
                 {loading ?
                     <Spinner /> :
                     <div className={classes.Table}>
@@ -35,14 +39,14 @@ const Categories = () => {
                                     <td>{el.name}</td>
                                     <td>{el.description}</td>
                                     <td>{el.status}</td>
-                                    <td><Link to={`/admin/categories/${el._id}`}>Ver</Link></td>
+                                    <td><Link to={`/admin/categories/${el._id}`}><DetailIcon className={`${classes.blue}`} /></Link></td>
                                 </tr>
                             ))
                             }
                         />
                     </div>
                 }
-                <Link to='/admin/categories/new-category'>Agregar nueva categoría</Link>
+
             </Card>
         </div>
     )

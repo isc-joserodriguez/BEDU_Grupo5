@@ -31,6 +31,19 @@
   font-weight: bold !important;
 }
 
+.orangeBtn:hover {
+  color: white !important;
+  border: solid 1px #ff8e61 !important;
+  background-color: #ff8e61 !important;
+  width: 95%;
+  text-align: center;
+  margin: 0 auto 15px auto;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: large;
+  font-weight: bold !important;
+}
+
 @media screen and (max-width:600px) {
   .searchPanel {
     display: none

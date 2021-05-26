@@ -183,7 +183,7 @@ const EditUser = props => {
                     <hr />
                     <Form noValidate onSubmit={submitHandler}>
                         {form}
-                        <Button type='submit' variant='primary' size='lg' block disabled={
+                        <Button className={classes.saveBtn} type='submit' variant='primary' size='lg' block disabled={
                             owner ?
                                 (!editForm?.firstName?.valid || !editForm?.lastName?.valid || !editForm?.email?.valid || !editForm?.password?.valid || !editForm?.confirmPassword?.valid) :
                                 (!editForm?.password?.valid || !editForm?.confirmPassword?.valid)}> Guardar  </Button>
