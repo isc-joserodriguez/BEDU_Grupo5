@@ -5,6 +5,8 @@ import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import Table from 'react-bootstrap/Table'
 import { createPedido } from '../../../../services/foods'
+import classes from './FoodModal.module.css'
+
 const FoodModal = (props) => {
     const [cart, setCart] = useState([]);
     const myFunc = (total, num) => total + num;
@@ -52,22 +54,22 @@ const FoodModal = (props) => {
                 <Modal.Title>Nombre: {props.food.name}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <p>Descripcion: {(props.food.description)}</p>
+                <p>Descripción: {(props.food.description)}</p>
                 <p>Costo: ${(props.food.cost)}</p>
             </Modal.Body>
 
             <Modal.Footer>
                 {
                     (cart.length < 2) &&
-                    <Button variant="primary" className='float-left' onClick={() => { createOrder([props.food._id], props.food.cost) }}>
+                    <Button variant="primary" className={`${classes.orderThis} float-left`} onClick={() => { createOrder([props.food._id], props.food.cost) }}>
                         Ordenar Solo Este Platillo
                     </Button>
                 }
 
-                <Button variant="success" className='float-left' onClick={addFood}>
+                <Button variant="success" className={`${classes.addCart} float-left`} onClick={addFood}>
                     Agregar a Carrito
                 </Button>
-                <Button variant="secondary" onClick={props.handleClose}> Salir. </Button>
+                <Button className={classes.exitBtn}  variant="secondary" onClick={props.handleClose}> Salir </Button>
             </Modal.Footer>
             {/* Show the food that are in the Cart */}
             {cart.length > 0 &&
