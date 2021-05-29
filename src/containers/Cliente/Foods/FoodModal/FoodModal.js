@@ -51,11 +51,22 @@ const FoodModal = (props) => {
         <Modal show={props.show} onHide={props.handleClose}>
 
             <Modal.Header closeButton>
-                <Modal.Title>Nombre: {props.food.name}</Modal.Title>
+                <Modal.Title style={{color: '#FF8352'}}>{props.food.name}</Modal.Title>
             </Modal.Header>
-            <Modal.Body>
-                <p>Descripción: {(props.food.description)}</p>
-                <p>Costo: ${(props.food.cost)}</p>
+            <Modal.Body >
+                <div>
+                    <img className={classes.FoodModalImage} src={props.food.image} alt="Platillo" />
+                </div>
+                <div className={classes.FoodModalBody}>
+                    <div className={classes.FoodModalBodyDescription}>
+                        <p style={{color: '#FF8352'}}><b>Descripción:</b></p>
+                        <p>{(props.food.description)}</p>
+                    </div>
+                    <div className={classes.FoodModalBodyCost}>
+                        <p style={{color: '#FF8352'}}><b>Costo:</b></p>
+                        <h4>${(props.food.cost)}</h4>
+                    </div>
+                </div>
             </Modal.Body>
 
             <Modal.Footer>
@@ -102,7 +113,8 @@ const FoodModal = (props) => {
 FoodModal.propTypes = {
     food: PropTypes.object.isRequired,
     handleClose: PropTypes.func.isRequired,
-    handleShow: PropTypes.func.isRequired
+    handleShow: PropTypes.func.isRequired,
+    image: PropTypes.string.isRequired,
 }
 
 export default FoodModal;

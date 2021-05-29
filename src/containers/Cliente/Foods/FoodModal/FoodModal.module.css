@@ -30,3 +30,27 @@
     background-color: #9b9e9e !important;
     border-color: #9b9e9e !important;
   }
+
+  .FoodModalImage{
+    display: block;
+    max-width: 95%;
+    margin: auto;
+    text-align: center;
+    max-height: 230px;
+  }
+
+  .FoodModalBody{
+    display: flex;
+  }
+
+
+  .FoodModalBodyDescription{
+    margin-top: 1rem;
+    width: 75%;
+    padding-right: 20px;
+  }
+
+  .FoodModalBodyCost{
+    margin-top: 1rem;
+  }
+

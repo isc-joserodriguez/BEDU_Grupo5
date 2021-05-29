@@ -2,3 +2,27 @@
    background-color: #00E1DF !important;
    border-color: #00E1DF !important;
 }
+
+.FoodCard {
+   width: "50%";
+   height: "20%";
+   max-height: 100px;
+   min-height: 100px;
+   max-width: 90%;
+   background-color: blueviolet;
+}
+
+.FoodCardBody{
+   height: 194px;
+}
+
+.FoodCardHeader{
+   height: 94px;
+   display: flex;
+   
+}
+
+.FoodCardHeaderText{
+   padding-bottom: 5px;
+   margin: auto;
+}
