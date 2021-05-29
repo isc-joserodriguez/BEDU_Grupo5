@@ -15,12 +15,12 @@ const Food = (props) => {
     return (
         <div className={'col mb-3'}>
             <Card className='text-center'>
-                <Card.Header className=''><h4>Nombre: </h4>
-                    {props.name}
+                <Card.Header className={classes.FoodCardHeader}><h4  className={classes.FoodCardHeaderText}>{props.name}</h4>
+                    
                 </Card.Header>
-                <Card.Body>
+                <Card.Body className={classes.FoodCardBody}>
                     <Card.Text className='text-break text-center'>
-                        <img style={{ width: "50%", heigth: "20%" }} src={props.image} alt="Platillos De Comida" />
+                        <img className={classes.FoodCard} src={props.image} alt="Platillos De Comida" />
                     </Card.Text>
                     <Button variant="info" className={classes.Button} block onClick={() => foodDetails()}>Ver Platillo</Button>
                 </Card.Body>

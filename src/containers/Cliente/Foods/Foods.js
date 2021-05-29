@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Food from "./Food/Food";
-import { Button, Container, Form, Col } from 'react-bootstrap'
+import { Button, Container } from 'react-bootstrap'
 import FoodModal from "./FoodModal/FoodModal";
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import { getFoods, getFoodById, getFoodsByCategory, getCategoriesCommands } from '../../../services/foods'
