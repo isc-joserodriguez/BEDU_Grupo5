@@ -1,0 +1,12 @@
+.actionIconMore {
+    cursor: pointer;
+    font-size: 42px;
+    transition: all .5s
+}
+
+.actionIconLess {
+    cursor: pointer;
+    font-size: 42px;
+    transform: rotate(-0.5turn);
+    transition: all .5s
+}
