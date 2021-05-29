@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 
-import OrderCard from '../../components/UI/OrderCard/OrderCard'
+import OrderCard from '../OrderCard/OrderCard'
 
 import OrderHistory from '../OrderHistory/OrderHistory';
 import NewOrders from '../NewOrders/NewOrders';
