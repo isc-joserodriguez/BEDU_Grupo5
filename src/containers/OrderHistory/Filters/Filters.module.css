@@ -12,6 +12,12 @@
   background-color: #FF8352 !important;
 }
 
+.Filter .orangeBtn:hover {
+  color: white !important;
+  border: solid 1px #ff9f7a !important;
+  background-color: #ff9f7a !important;
+}
+
 .Filter label {
   margin-right: 5px;
   font-weight: lighter;

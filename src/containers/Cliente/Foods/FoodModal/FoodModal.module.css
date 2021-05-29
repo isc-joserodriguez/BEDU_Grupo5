@@ -1,0 +1,32 @@
+.orderThis {
+    color: #fff;
+    background-color: #00E1DF !important;
+    border-color: #00E1DF !important;
+  }
+  
+  .orderThis:hover {
+    background-color: #00c1e9 !important;
+    border-color: #00c1e9 !important;
+  }
+
+  .addCart {
+    color: #fff;
+    background-color: #00c3af !important;
+    border-color: #00c3af !important;
+  }
+  
+  .addCart:hover {
+    background-color: #00e6cf !important;
+    border-color: #00e6cf !important;
+  }
+
+  .exitBtn {
+    color: #fff;
+    background-color: #afb4b4 !important;
+    border-color: #afb4b4 !important;
+  }
+  
+  .exitBtn:hover {
+    background-color: #9b9e9e !important;
+    border-color: #9b9e9e !important;
+  }

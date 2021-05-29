@@ -161,6 +161,7 @@ const NewProduct = (props) => {
                         {form}
                         <Image style={{ maxWidth: '50%', margin: '5px auto' }} src={newProductForm.image.value} onError={imageErrorHandler} thumbnail />
                         <Button
+                            className = {classes.saveBtn}
                             type='submit'
                             variant='primary'
                             size='lg'
