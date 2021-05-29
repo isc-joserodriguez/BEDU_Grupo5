@@ -12,7 +12,7 @@ registerLocale("es", es);
 
 const SearchPanel = (props) => {
   const [startDate, setStartDate] = useState(new Date());
-
+  
   const onChange = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -24,7 +24,6 @@ const SearchPanel = (props) => {
     props.filterHandler();
   };
 
-  return (null)
   return (
     <section className={classes.searchPanel} id={'Filters'}>
       <form className={classes.Filter} onSubmit={onSubmit}>
@@ -32,7 +31,7 @@ const SearchPanel = (props) => {
           <label className={classes.orange}>Fecha: </label>
 
           <section className={classes.DateElements}>
-            
+
             <label className={classes.Dates}>Desde:</label>
             <DatePicker
               className={classes.DatePicker}
@@ -40,7 +39,7 @@ const SearchPanel = (props) => {
               selected={startDate}
               onChange={(date) => setStartDate(date)}
             />
-           <br></br>
+            <br></br>
             <label className={classes.Dates}>Hasta:</label>
             <DatePicker
               className={classes.DatePicker}
@@ -48,7 +47,7 @@ const SearchPanel = (props) => {
               selected={startDate}
               onChange={(date) => setStartDate(date)}
             />
-            
+
             <Button className={classes.orangeBtn} type="submit" size="sm">
               Buscar
             </Button>
@@ -112,7 +111,7 @@ const SearchPanel = (props) => {
               Cat 3
             </li>
             <li
-              className={(classes.orangeLink, classes.last)}
+              className={`${classes.orangeLink} ${classes.last}`}
               onClick={props.showHide}
               size="sm"
             >
@@ -177,7 +176,7 @@ const SearchPanel = (props) => {
             </InputGroup.Append>
           </InputGroup>
         </div>
-        
+
         <div className={classes.ChefCommands}>
           <label className={classes.orange}>Chef: </label>
           <InputGroup className="mb-3" size="sm">
@@ -227,7 +226,7 @@ const SearchPanel = (props) => {
             </InputGroup.Append>
           </InputGroup>
         </div>
-        
+
       </form>
     </section>
   );

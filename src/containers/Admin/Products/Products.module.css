@@ -7,7 +7,7 @@
 
 .Products .Card {
     width: 100%;
-    max-width: 70%;
+    max-width: 95%;
     height: 70vh;
     border: solid 1px #DEE500;
     padding: 20px;
@@ -20,32 +20,32 @@
 
 .Products .blue {
     color: #00E1DF;
-    cursor:pointer
-  }
+    cursor: pointer
+}
 
-  .Products  .buttonContainer {
-      display:flex;
-      justify-content: flex-end;
-      width: 100%;
-      margin-bottom: 15px;
-  }
+.Products .buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-bottom: 15px;
+}
 
-  .Products .orangeBtn {
+.Products .orangeBtn {
     color: white !important;
     border: solid 1px #FF8352 !important;
     background-color: #FF8352 !important;
     margin-bottom: 1%;
-  }
-  
-  .Products .orangeBtn:hover {
+}
+
+.Products .orangeBtn:hover {
     color: white !important;
     border: solid 1px #ff9f7a !important;
     background-color: #ff9f7a !important;
     margin-bottom: 1%;
-  }
+}
 
-  .Products .big {
-      font-weight:600;
-      font-size: 20px;
-      display: inline;
-  }
+.Products .big {
+    font-weight: 600;
+    font-size: 20px;
+    display: inline;
+}

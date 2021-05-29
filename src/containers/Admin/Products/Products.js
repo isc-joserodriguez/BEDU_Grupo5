@@ -24,6 +24,7 @@ const Products = () => {
     return (
         <div className={`${classes.Products}`}>
             <SearchPanel />
+            <br />
             <Card className={classes.Card}>
                 <section className={classes.buttonContainer}>
                     <Link to='/admin/products/new-product'><Button className={classes.orangeBtn} size='sm'><p className={classes.big}>+</p> Nuevo producto</Button></Link>

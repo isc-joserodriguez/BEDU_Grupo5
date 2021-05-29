@@ -7,7 +7,7 @@
 
 .Categories .Card {
     width: 100%;
-    max-width: 70%;
+    max-width: 95%;
     height: 70vh;
     border: solid 1px #DEE500;
     padding: 20px;
@@ -18,35 +18,34 @@
     overflow-y: auto;
 }
 
-
 .Categories .blue {
     color: #00E1DF;
-    cursor:pointer
-  }
+    cursor: pointer
+}
 
-  .Categories .buttonContainer {
-      display:flex;
-      justify-content: flex-end;
-      width: 100%;
-      margin-bottom: 15px;
-  }
+.Categories .buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-bottom: 15px;
+}
 
-  .Categories .orangeBtn {
+.Categories .orangeBtn {
     color: white !important;
     border: solid 1px #FF8352 !important;
     background-color: #FF8352 !important;
     margin-bottom: 1%;
-  }
-  
-  .Categories .orangeBtn:hover {
+}
+
+.Categories .orangeBtn:hover {
     color: white !important;
     border: solid 1px #ff9f7a !important;
     background-color: #ff9f7a !important;
     margin-bottom: 1%;
-  }
+}
 
-  .Categories .big {
-      font-weight:600;
-      font-size: 20px;
-      display: inline;
-  }
+.Categories .big {
+    font-weight: 600;
+    font-size: 20px;
+    display: inline;
+}

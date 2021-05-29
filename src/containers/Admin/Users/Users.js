@@ -24,11 +24,10 @@ const Users = () => {
 
     return (
         <div className={classes.Users}>
-            <div>
-                <SearchPanel />
-            </div>
+            <SearchPanel />
+            <br />
             <Card className={classes.Card}>
-            <section className={classes.buttonContainer}>
+                <section className={classes.buttonContainer}>
                     <Link to='/admin/users/new-user'><Button className={classes.orangeBtn} size='sm'><p className={classes.big}>+</p> Nuevo usuario</Button></Link>
                 </section>
                 {loading ?
@@ -51,7 +50,7 @@ const Users = () => {
                         />
                     </div>
                 }
-                
+
             </Card>
         </div>
     )

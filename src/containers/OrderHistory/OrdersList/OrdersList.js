@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Table from 'react-bootstrap/Table' 
+import Table from 'react-bootstrap/Table'
 
 import Order from './Order/Order';
 import classes from './OrdersList.module.css';
@@ -36,7 +36,7 @@ const OrdersList = (props) => {
 
   return (
     <div className={classes.OrdersList}>
-      <Table responsive bordered hover>
+      <Table responsive bordered hover className='text-center'>
         <thead>
           <tr>
             <th>Listo</th>
@@ -46,16 +46,13 @@ const OrdersList = (props) => {
             <th>Cant. productos</th>
             <th>Costo</th>
             <th>Detalles</th>
-            <th>
-              {
-                localStorage.getItem('type') === 'admin' ?
-                  'Cancelar/Eliminar' :
-                  localStorage.getItem('type') === 'cliente' ?
-                    'Cancelar' : null
-              }
-
-            </th>
-
+            {
+              localStorage.getItem('type') === 'admin' ?
+                <th> Cancelar/Eliminar </th> :
+                localStorage.getItem('type') === 'cliente' ?
+                  <th> Cancelar </th>
+                  : null
+            }
           </tr>
         </thead>
         <tbody>

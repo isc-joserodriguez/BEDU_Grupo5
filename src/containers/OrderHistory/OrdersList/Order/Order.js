@@ -51,28 +51,34 @@ const Order = (props) => {
       <td>
         {`$${props.order.cost.toFixed(2)}`}
       </td>
-      <td >
-        <DetailIcon className={`${classes.blue} is-pulled-right`} onClick={open} />
-      </td>
       <td>
-        {
-          localStorage.getItem('type') === 'admin' ? (
-            props.order.status === 1 ? (
-              <CancelIcon className={`${classes.orange} is-pulled-right`} onClick={onChangeStatus} />
-            ) : (
-              props.order.status === 0 ? (
-                <DeleteIcon className={`${classes.orange} is-pulled-right`} onClick={onDelete} />
-              ) : null
-            )
-          ) : (
-            localStorage.getItem('type') === 'cliente' ? (
-              props.order.status === 1 ?
-                <CancelIcon className={`${classes.orange} is-pulled-right`} onClick={onChangeStatus} /> :
-                null
-            ) : null
-          )
-        }
+        <DetailIcon className={classes.blue} onClick={open} />
       </td>
+
+      {
+        localStorage.getItem('type') === 'admin' ? (
+          props.order.status === 1 ? (
+            <td>
+              <CancelIcon className={classes.orange} onClick={onChangeStatus} />
+            </td>
+          ) : (
+            props.order.status === 0 ? (
+              <td>
+                <DeleteIcon className={classes.orange} onClick={onDelete} />
+              </td>
+            ) : <td></td>
+          )
+        ) : (
+          localStorage.getItem('type') === 'cliente' ? (
+            props.order.status === 1 ?
+              <td>
+                <CancelIcon className={classes.orange} onClick={onChangeStatus} />
+              </td> :
+              <td></td>
+          ) : null
+        )
+      }
+
 
     </tr>
   )

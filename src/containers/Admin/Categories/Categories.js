@@ -24,6 +24,7 @@ const Categories = () => {
     return (
         <div className={`${classes.Categories}`}>
             <SearchPanel />
+            <br />
             <Card className={classes.Card}>
                 <section className={classes.buttonContainer}>
                     <Link to='/admin/categories/new-category'><Button className={classes.orangeBtn} size='sm'><p className={classes.big}>+</p> Nueva categoría</Button></Link>
