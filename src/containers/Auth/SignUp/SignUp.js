@@ -7,7 +7,8 @@ import { Container, Card, Form, Button } from 'react-bootstrap';
 import Spinner from '../../../components/UI/Spinner/Spinner'
 import Input from '../../../components/UI/Input/Input';
 import { CgUser, CgMail, CgPassword } from 'react-icons/cg';
-import { signup } from '../../../services'
+import { signup } from '../../../services';
+import LoginBackground4 from '../../../assets/images/backLogin4.jpg';
 
 import classes from './SignUp.module.css';
 
@@ -158,21 +159,22 @@ const SignUp = props => {
     )) : <Spinner />;
 
     return (
-        <Container>
-            <Card className={classes.Signup}>
-                <Card.Body>
-                    <h4 className='card-title text-center mb-4 mt-1'>Registro</h4>
-                    <hr />
-                    <Form noValidate onSubmit={submitHandler}>
-                        {form}
-                        <Button type='submit' variant='primary' size='lg' block disabled={!signupForm.firstName.valid || !signupForm.lastName.valid || !signupForm.email.valid || !signupForm.password.valid || !signupForm.confirmPassword.valid}> Registrarse  </Button>
-                        {errorMessage && <p className={`${classes.ErrorMessage} text-center mt-2`}>Error: Verifica los datos ingresados</p>}
-                        <p className='text-center mt-4'>Ya estás registrado? <Link to='/'>Inicia sesión</Link></p>
-                    </Form>
-                </Card.Body>
-            </Card>
-        </Container>
-
+        <section className={classes.LoginBackground} style={{ backgroundImage: `url(${LoginBackground4})` }}>
+            <Container>
+                <Card className={classes.Signup}>
+                    <Card.Body>
+                        <h4 className='card-title text-center mb-4 mt-1'>Registro</h4>
+                        <hr />
+                        <Form noValidate onSubmit={submitHandler}>
+                            {form}
+                            <Button type='submit' variant='primary' size='lg' block disabled={!signupForm.firstName.valid || !signupForm.lastName.valid || !signupForm.email.valid || !signupForm.password.valid || !signupForm.confirmPassword.valid}> Registrarse  </Button>
+                            {errorMessage && <p className={`${classes.ErrorMessage} text-center mt-2`}>Error: Verifica los datos ingresados</p>}
+                            <p className='text-center mt-4'>Ya estás registrado? <Link to='/'>Inicia sesión</Link></p>
+                        </Form>
+                    </Card.Body>
+                </Card>
+            </Container>
+        </section>
     )
 }
 

@@ -3,6 +3,8 @@ import Food from "./Food/Food";
 import { Button, Container } from 'react-bootstrap'
 import FoodModal from "./FoodModal/FoodModal";
 import Spinner from '../../../components/UI/Spinner/Spinner';
+import classes from './Foods.module.css';
+
 import { getFoods, getFoodById, getFoodsByCategory, getCategoriesCommands } from '../../../services/foods'
 const Foods = () => {
   const [show, setShow] = useState(false);
@@ -49,7 +51,7 @@ const Foods = () => {
         <Button variant="dark" className='p-2' >Buscar</Button>
       </div> */}
       <div className='col d-flex flex-wrap mb-4 align-content-center justify-content-center'>
-        <Button variant="outline-secondary" className='p-2 m-2' onClick={() => getFoods({ setFoods, setLoading })} >Todos</Button>
+        <Button className={`${classes.CategoryBtn} p-2 m-2`} variant="outline-secondary" onClick={() => getFoods({ setFoods, setLoading })} >Todos</Button>
         {
           categories.map((el, index) => (
             <Button

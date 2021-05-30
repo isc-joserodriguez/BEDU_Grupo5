@@ -8,6 +8,10 @@ import Spinner from '../../../components/UI/Spinner/Spinner'
 import Input from '../../../components/UI/Input/Input';
 import { CgMail, CgPassword } from 'react-icons/cg';
 import { login } from '../../../services';
+import LoginBackground from '../../../assets/images/backLogin.jpeg';
+import LoginBackground2 from '../../../assets/images/backLogin2.jpg';
+import LoginBackground4 from '../../../assets/images/backLogin4.jpg';
+import LoginBackground5 from '../../../assets/images/backLogin5.jpg';
 
 import classes from './Login.module.css';
 
@@ -99,21 +103,21 @@ const Login = props => {
     )) : <Spinner />;
 
     return (
-        <Container>
-            <Card className={classes.Login}>
-                <Card.Body>
-                    <h4 className='card-title text-center mb-4 mt-1'>Inicio de sesión</h4>
-                    <hr />
-                    <Form noValidate onSubmit={submitHandler}>
-                        {form}
-                        <Button type='submit' variant='primary' size='lg' block disabled={!loginForm.email.valid || !loginForm.password.valid}> Iniciar Sesión  </Button>
-                        {errorMessage && <p className={`${classes.ErrorMessage} text-center mt-2`}>Error: Verifica las credenciales</p>}
-                        <p className='text-center mt-4'>¿No tienes cuenta? <Link to='/signup'>Registrate</Link></p>
-                    </Form>
-                </Card.Body>
-            </Card>
-        </Container>
-
+        
+            <div className={classes.LoginBackground} style={{ backgroundImage: `url(${LoginBackground4})`}}>
+                <Card className={classes.Login} >
+                    <Card.Body>
+                        <h4 className='card-title text-center mb-4 mt-1'>Inicio de sesión</h4>
+                        <hr />
+                        <Form noValidate onSubmit={submitHandler}>
+                            {form}
+                            <Button type='submit' variant='primary' size='lg' block disabled={!loginForm.email.valid || !loginForm.password.valid}> Iniciar Sesión  </Button>
+                            {errorMessage && <p className={`${classes.ErrorMessage} text-center mt-2`}>Error: Verifica las credenciales</p>}
+                            <p className='text-center mt-4'>¿No tienes cuenta? <Link to='/signup'>Registrate</Link></p>
+                        </Form>
+                    </Card.Body>
+                </Card>
+            </div>
     )
 }
 
