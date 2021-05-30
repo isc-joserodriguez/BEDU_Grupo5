@@ -48,7 +48,7 @@ const OrderModal = (props) => {
             {!!!props.order.status ?
             <Spinner /> :
             <>
-                <Modal.Header closeButton>
+                <Modal.Header closeButton className={classes.orangeBackground}>
                     <Modal.Title><h4>Pedido #{props.order._id}</h4></Modal.Title>
                 </Modal.Header>
                 <Modal.Body className={classes.orderBody}>
@@ -63,7 +63,7 @@ const OrderModal = (props) => {
                     <h5><b>Detalle del pedido:</b></h5>
                     <br />
                     {props.order.info ? props.order.info.map((order, index) => (
-                        <p key={index}><b>{order.name}</b>
+                        <p key={index}><b className={classes.nameOrange}>{order.name}</b>
                             <br />
                             {order.description}
                         </p>

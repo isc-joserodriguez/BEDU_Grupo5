@@ -7,10 +7,11 @@
   line-height: 15px;
 }
 
-h4 {
+.ordercard h4 {
+  display: inline;
   text-align: center;
   padding-top: 5px;
-  color: #00c3af;
+  color: #fff;
   margin-bottom: 15px;
 }
 
@@ -38,4 +39,13 @@ h4 {
   color: #fff;
   background-color: #cecece !important;
   border-color: #cecece !important;
+}
+
+.ordercard .nameOrange {
+  color: #ff8352;
+}
+
+.ordercard .orangeBackground {
+  background-color: #ff8352;
+
 }
