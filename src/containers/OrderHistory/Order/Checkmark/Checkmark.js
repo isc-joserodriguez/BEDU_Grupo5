@@ -13,7 +13,14 @@ const Checkmark = (props) => {
   const isClient = localStorage.getItem('type') === 'cliente';
   const isChef = localStorage.getItem('type') === 'chef';
   const isMesero = localStorage.getItem('type') === 'mesero';
-  let icon = null;
+  const icons = {
+    0: <CanceledIcon className={classes.Grey} />,
+    1: <WaitingIcon className={classes.Yellow} />,
+    2: <CreatingIcon className={classes.GreenBlue} />,
+    3: <ReadyIcon className={classes.Green} />,
+    4: <DeliveredIcon className={classes.Pink} />
+  }
+  let icon = icons[props.status];
 
   const onChangeTask = (event) => {
     if (isClient) return;
@@ -24,22 +31,6 @@ const Checkmark = (props) => {
     event.stopPropagation();
   }
 
-  switch (props.status) {
-    case 0:
-      icon = <CanceledIcon className={classes.Grey} />
-      break;
-    case 1:
-      icon = <WaitingIcon className={classes.Yellow} />
-      break
-    case 2:
-      icon = <CreatingIcon className={classes.GreenBlue} />
-      break
-    case 3:
-      icon = <ReadyIcon className={classes.Green} />
-      break
-    default:
-      icon = <DeliveredIcon className={classes.Pink} />
-  }
   return (
     <span className={(!isClient && props.status !== 0) ? classes.Check : ''} onClick={onChangeTask} >
       {icon}

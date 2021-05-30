@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import Food from "./Food/Food";
-import { Button, Container } from 'react-bootstrap'
-import FoodModal from "./FoodModal/FoodModal";
+import React, { useState, useEffect } from 'react';
+import Food from './Food/Food';
+import { Button, Container, Form, Col } from 'react-bootstrap'
+import FoodModal from './FoodModal/FoodModal';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import classes from './Foods.module.css';
 
@@ -42,21 +42,13 @@ const Foods = () => {
   ));
   return (
     <Container className='mb-4'>
-      {/* <div className='d-flex align-items-center mb-4 justify-content-center'>
-        <Form>
-          <Col>
-            <Form.Control type="text" placeholder="Nombre Del Platillo" />
-          </Col>
-        </Form>
-        <Button variant="dark" className='p-2' >Buscar</Button>
-      </div> */}
       <div className='col d-flex flex-wrap mb-4 align-content-center justify-content-center'>
         <Button className={`${classes.CategoryBtn} p-2 m-2`} variant="outline-secondary" onClick={() => getFoods({ setFoods, setLoading })} >Todos</Button>
         {
           categories.map((el, index) => (
             <Button
               key={index}
-              variant="outline-primary"
+              variant='outline-primary'
               className='p-2 m-2'
               onClick={() => getFoodsByCategory({ setFoods, setLoading, data: el._id })}
             >
@@ -65,11 +57,11 @@ const Foods = () => {
           ))
         }
       </div>
-      <div className="overflow-auto">
-        <Container className="overflow-auto vh-75">
+      <div className='overflow-auto'>
+        <Container className='overflow-auto vh-75'>
           {loading ?
             <Spinner /> :
-            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 overflow-auto">
+            <div className='row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 overflow-auto'>
               {foodsMap}
             </div>}
         </Container>

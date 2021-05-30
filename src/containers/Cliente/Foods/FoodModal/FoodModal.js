@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Modal from 'react-bootstrap/Modal'
@@ -42,7 +42,7 @@ const FoodModal = (props) => {
             <td>{index + 1}</td>
             <td>{food.name}</td>
             <td>{food.cost}</td>
-            <td><Button variant="danger" className='float-left' onClick={() => { deleteFoodFromCart(index) }}>Eliminar De Carrito</Button></td>
+            <td><Button variant='danger' className='float-left' onClick={() => { deleteFoodFromCart(index) }}>Eliminar De Carrito</Button></td>
         </tr>
     ));
 
@@ -72,17 +72,16 @@ const FoodModal = (props) => {
             <Modal.Footer>
                 {
                     (cart.length < 2) &&
-                    <Button variant="primary" className={`${classes.orderThis} float-left`} onClick={() => { createOrder([props.food._id], props.food.cost) }}>
+                    <Button variant='primary' className={`${classes.orderThis} float-left`} onClick={() => { createOrder([props.food._id], props.food.cost) }}>
                         Ordenar Solo Este Platillo
                     </Button>
                 }
 
-                <Button variant="success" className={`${classes.addCart} float-left`} onClick={addFood}>
+                <Button variant='success' className={`${classes.addCart} float-left`} onClick={addFood}>
                     Agregar a Carrito
                 </Button>
-                <Button className={classes.exitBtn}  variant="secondary" onClick={props.handleClose}> Salir </Button>
+                <Button className={classes.exitBtn}  variant='secondary' onClick={props.handleClose}> Salir </Button>
             </Modal.Footer>
-            {/* Show the food that are in the Cart */}
             {cart.length > 0 &&
                 <>
                     <h3>Tu Pedido.</h3>
@@ -101,7 +100,7 @@ const FoodModal = (props) => {
                     </Table>
                     <ul><strong>Total:</strong> {cart.map(el => el.cost).reduce(myFunc)}</ul>
 
-                    <Button variant="primary" className='float-left' onClick={() => { createOrder(cart.map(el => el._id), cart.map(el => el.cost).reduce(myFunc)) }}>
+                    <Button variant='primary' className='float-left' onClick={() => { createOrder(cart.map(el => el._id), cart.map(el => el.cost).reduce(myFunc)) }}>
                         Ordenar Carrito
                     </Button>
                 </>

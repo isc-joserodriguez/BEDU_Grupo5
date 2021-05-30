@@ -22,7 +22,7 @@ const Categories = () => {
     }, []);
 
     return (
-        <div className={`${classes.Categories}`}>
+        <div className={classes.Categories}>
             <SearchPanel />
             <br />
             <Card className={classes.Card}>

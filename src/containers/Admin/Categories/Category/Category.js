@@ -28,7 +28,7 @@ const Category = () => {
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer>
-                    <small className="text-muted">
+                    <small className='text-muted'>
                         {`Ultima actualización el ${new Date(category.updatedAt).getDate()}/${new Date(category.updatedAt).getMonth() + 1}/${new Date(category.updatedAt).getFullYear()}`}
                         <br />
                         <Link className={classes.orange} to={`/admin/categories/edit/${category._id}`}>Editar <FiEdit3/></Link>
