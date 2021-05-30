@@ -1,21 +1,22 @@
 .OrderHistory {
-  width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  justify-items: center;
-  margin: 0 auto;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
 }
 
-.OrderHistory .card {
+.OrderHistory .Card {
   width: 100%;
   max-width: 95%;
   height: fit-content;
   padding: 20px;
   border: solid 1px #DEE500 !important;
   margin: 0 auto;
+}
+
+.OrderHistory .Card .Table {
+  max-height: 60vh;
+  overflow-y: auto;
 }
 
 .orangeBtn {

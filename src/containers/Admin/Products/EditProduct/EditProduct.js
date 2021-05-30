@@ -160,7 +160,7 @@ const EditProduct = props => {
                 <Card.Body>
                     <h4 className='card-title text-center mb-4 mt-1'>Editar Producto</h4>
                     <hr />
-                    <Form noValidate onSubmit={submitHandler} className="d-flex flex-column">
+                    <Form noValidate onSubmit={submitHandler} className='d-flex flex-column'>
                         {form}
                         <Image style={{ maxWidth: '50%', margin: '5px auto' }} src={editForm.image.value} onError={imageErrorHandler} thumbnail />
                         <Button className={classes.saveBtn}

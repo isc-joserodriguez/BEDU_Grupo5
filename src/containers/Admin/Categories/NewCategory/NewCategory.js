@@ -104,7 +104,7 @@ const NewCategory = props => {
                 <Card.Body>
                     <h4 className='card-title text-center mb-4 mt-1'>Nueva Categoría</h4>
                     <hr />
-                    <Form noValidate onSubmit={submitHandler} className="d-flex flex-column">
+                    <Form noValidate onSubmit={submitHandler} className='d-flex flex-column'>
                         {form}
                         <Button
                             className = {classes.saveBtn}

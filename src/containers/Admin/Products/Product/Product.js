@@ -22,7 +22,7 @@ const Product = () => {
             <Spinner /> :
             <Card className={classes.Product}>
                 <Card.Img
-                    variant="top"
+                    variant='top'
                     src={product.image}
                 />
                 <Card.Body>
@@ -32,7 +32,7 @@ const Product = () => {
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer>
-                    <small className="text-muted">
+                    <small className='text-muted'>
                         {`Ultima actualización el ${new Date(product.updatedAt).getDate()}/${new Date(product.updatedAt).getMonth() + 1}/${new Date(product.updatedAt).getFullYear()}`}
                         <br />
                         <Link className={classes.orange}  to={`/admin/products/edit/${product._id}`}>Editar <FiEdit3/></Link>

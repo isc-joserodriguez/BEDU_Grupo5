@@ -20,13 +20,6 @@ const Order = (props) => {
     event.preventDefault();
     event.stopPropagation();
   }
-
-  const open = (event) => {
-    props.handleShow()
-    props.setOrder(props.order._id)
-    event.preventDefault();
-    event.stopPropagation();
-  }
   const date = new Date(props.order.createdAt);
 
   return (
@@ -52,7 +45,7 @@ const Order = (props) => {
         {`$${props.order.cost.toFixed(2)}`}
       </td>
       <td>
-        <DetailIcon className={classes.blue} onClick={open} />
+        <DetailIcon className={classes.blue} onClick={() => { props.setOrder(props.order); props.handleShow(); }} />
       </td>
 
       {

@@ -1,6 +1,6 @@
 .ordercard {
-    max-width: 500px; 
-    margin:10px auto 3%;
+    max-width: 500px;
+    margin: 10px auto 3%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,7 +15,7 @@ h4 {
     margin-bottom: 15px;
 }
 
-.actionButton{
+.actionButton {
     color: #fff;
     background-color: #00c3af !important;
     border-color: #00c3af !important;
@@ -24,8 +24,4 @@ h4 {
 .actionButton:hover {
     background-color: #00e6cf !important;
     border-color: #00e6cf !important;
-}
-
-.orderFooter{
-    width: 100%;
 }

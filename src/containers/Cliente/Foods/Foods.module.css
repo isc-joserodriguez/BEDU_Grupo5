@@ -1,18 +1,18 @@
 .CategoryBtn {
-    border-color: #FF8352 !important;
-    color: #FF8352  !important;
+  border-color: #FF8352 !important;
+  color: #FF8352 !important;
 }
 
 .CategoryBtn:hover {
-    background-color:  #FF8352 !important;
-    border-color: #FF8352 !important;
-    color: #FFF  !important;
-  }
+  background-color: #FF8352 !important;
+  border-color: #FF8352 !important;
+  color: #FFF !important;
+}
 
-  .CategoryBtn:focus, .CategoryBtn:active {
-    box-shadow: 2px 2px 10px rgb(238, 172, 29) !important;
-    border-color: #FF8352 !important;
-    -webkit-box-shadow:  rgb(238, 172, 29);
-    -moz-box-shadow:  rgb(238, 172, 29);
-    box-shadow: rgb(238, 172, 29);
-  }
+.CategoryBtn:focus, .CategoryBtn:active {
+  box-shadow: 2px 2px 10px rgb(238, 172, 29) !important;
+  border-color: #FF8352 !important;
+  -webkit-box-shadow: rgb(238, 172, 29);
+  -moz-box-shadow: rgb(238, 172, 29);
+  box-shadow: rgb(238, 172, 29);
+}

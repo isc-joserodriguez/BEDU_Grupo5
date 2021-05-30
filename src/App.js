@@ -16,12 +16,19 @@ function App(props) {
   const [token, setToken] = useState(null);
   const { history, location: { pathname } } = props;
 
+  const components = {
+    'admin': <Admin />,
+    'cliente': <Cliente />,
+    'chef': <Chef />,
+    'mesero': <Mesero />
+  }
+
   useEffect(() => {
     if (!!localStorage.getItem('type')) {
       setToken(localStorage.getItem('token'));
       if (!pathname.includes(`/${localStorage.getItem('type')}`))
         history.push(`/${localStorage.getItem('type')}`);
-    }else{
+    } else {
       setToken(null);
     }
   }, [history, token, pathname]);
@@ -48,21 +55,8 @@ function App(props) {
   )
 
   if (!!token) {
-    switch (localStorage.getItem('type')) {
-      case 'admin':
-        component = <Admin />;
-        break;
-      case 'cliente':
-        component = <Cliente />;
-        break;
-      case 'chef':
-        component = <Chef />;
-        break;
-      default:
-        component = <Mesero />;
-        break;
-    }
-
+    component = components[localStorage.getItem('type')];
+    
     routes = (
       <Switch>
         <Route path={`/${localStorage.getItem('type')}`}>
