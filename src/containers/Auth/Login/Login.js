@@ -103,9 +103,9 @@ const Login = props => {
     )) : <Spinner />;
 
     return (
-        <section className={classes.LoginBackground} style={{ backgroundImage: `url(${LoginBackground4})`}}>
-            <Container >
-                <Card className={classes.Login}>
+        
+            <div className={classes.LoginBackground} style={{ backgroundImage: `url(${LoginBackground4})`}}>
+                <Card className={classes.Login} >
                     <Card.Body>
                         <h4 className='card-title text-center mb-4 mt-1'>Inicio de sesión</h4>
                         <hr />
@@ -117,8 +117,7 @@ const Login = props => {
                         </Form>
                     </Card.Body>
                 </Card>
-            </Container>
-        </section>
+            </div>
     )
 }
 
