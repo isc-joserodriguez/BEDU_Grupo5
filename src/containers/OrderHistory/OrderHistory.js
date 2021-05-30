@@ -1,163 +1,112 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-import Filters from "./Filters/Filters";
-import OrdersList from "./OrdersList/OrdersList.js";
-import SearchPanel from "../SearchPanel/searchPanel";
-import OrderModal from "../../components/UI/OrderModal/OrderModal";
-import Spinner from "../../components/UI/Spinner/Spinner";
+import Order from './Order/Order.js';
+import SearchPanel from '../SearchPanel/searchPanel';
+import OrderModal from '../OrderModal/OrderModal';
+import TableInfo from '../../components/UI/TableInfo/TableInfo';
+import Spinner from '../../components/UI/Spinner/Spinner';
+import { Card } from 'react-bootstrap';
 
 import {
-  filterOrders,
-  deleteOrder,
-  updateState,
-  getOrderById,
-} from "../../services";
+    filterOrders,
+    deleteOrder,
+    updateState,
+} from '../../services';
 
-import classes from "./OrderHistory.module.css";
+import classes from './OrderHistory.module.css';
 
 const OrderHistory = () => {
-  const [orders, setOrders] = useState([]);
-  const [value, setValue] = useState("");
-  const [show, setShow] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const [filteredOrders, setFilteredOrders] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [showFilter, setShowFilter] = useState(false);
-  const [order, setOrder] = useState({
-    _id: "",
-    idCliente: {},
-    idChef: {},
-    idMesero: {},
-    status: 0
-  });
+    const [show, setShow] = useState(false);
+    const [orders, setOrders] = useState([]);
+    const [order, setOrder] = useState({});
+    const [loading, setLoading] = useState(true);
 
-  const handleClose = () => setShowModal(false);
-  const handleShow = () => setShowModal(true);
-  const filterHandler = () => {
-    if (value.trim() !== "") {
-      setFilteredOrders([...orders].filter((e) => -1 !== e.task.search(value)));
-    } else {
-      setFilteredOrders([...orders]);
-    }
-  };
+    const headers = ['Listo', 'ID', 'Fecha', 'Cliente', 'Cant.productos', 'Costo', 'Detalles'];
+    if (localStorage.getItem('type') === 'admin') headers.push('Cancelar/Eliminar');
+    else if (localStorage.getItem('type') === 'cliente') headers.push('Cancelar');
 
-  useEffect(() => {
-    filterOrders({
-      setOrders,
-      setFilteredOrders,
-      filter: { special: true },
-      setLoading,
-    });
-  }, []);
 
-  useEffect(() => {
-    filterHandler();
-  }, [orders]);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
-  const orderDetail = (id) => {
-    getOrderById({ id, setOrder });
-  };
+    useEffect(() => {
+        filterOrders({
+            setOrders,
+            setLoading,
+            filter: { special: true },
+        });
+    }, []);
 
-  const changeStatusHandler = (id) => {
-    let ordersArray = [...orders];
-    let indexModif = ordersArray.findIndex((element) => element._id === id);
-    switch (ordersArray[indexModif].status) {
-      case 1:
-        ordersArray[indexModif].status =
-          localStorage.getItem("type") === "admin" ||
-            localStorage.getItem("type") === "cliente"
-            ? 0
-            : 2;
-        break;
-      default:
-        ordersArray[indexModif].status++;
-        break;
-    }
-    /* setLoading(true); */
-    updateState({
-      id: ordersArray[indexModif]._id,
-      data: { status: ordersArray[indexModif].status },
-      setLoading,
-      setOrder,
-      setOrders,
-      setFilteredOrders,
-      filter: {
-        special:
-          localStorage.getItem("type") === "chef" ||
-            localStorage.getItem("type") === "mesero"
-            ? true
-            : false,
-      },
-    });
-  };
+    const changeStatusHandler = async (id) => {
+        let ordersArray = [...orders];
+        let indexModif = ordersArray.findIndex(element => element._id === id);
 
-  const deleteOrderHandler = (id) => {
-    let ordersArray = [...orders];
-    let indexDelete = ordersArray.findIndex((element) => element._id === id);
-    ordersArray.splice(indexDelete, 1);
-    /* setLoading(true); */
-    deleteOrder({
-      id,
-      setOrders,
-      ordersArray,
-      setLoading,
-    });
-  };
+        ordersArray[indexModif].status = ordersArray[indexModif].status === 1 ?
+            (localStorage.getItem('type') === 'admin' || localStorage.getItem('type') === 'cliente' ? 0 : 2) :
+            ordersArray[indexModif].status + 1;
 
-  const changeValue = (newValue) => {
-    if (newValue === "") setFilteredOrders([...orders]);
-    setValue(newValue);
-  };
+        await updateState({
+            id: ordersArray[indexModif]._id,
+            data: { status: ordersArray[indexModif].status },
+            setLoading,
+            setOrder,
+            filter: {
+                special:
+                    localStorage.getItem('type') === 'chef' ||
+                        localStorage.getItem('type') === 'mesero'
+                        ? true
+                        : false,
+            },
+        });
+        return ordersArray[indexModif];
+    };
 
-  const showHide = () => {
-    setShow(!show);
-  };
+    const deleteOrderHandler = (id) => {
+        let ordersArray = [...orders];
+        let indexDelete = ordersArray.findIndex((element) => element._id === id);
+        ordersArray.splice(indexDelete, 1);
+        deleteOrder({
+            id,
+            setOrders,
+            ordersArray,
+            setLoading,
+        });
+    };
 
-  const showFilters = () => {
-    /* console.log("Boton"); */
-    setShowFilter(!showFilter);
-  }
-
-  return (
-    <>
-      <div className={classes.OrderHistory}>
-        <SearchPanel />
-        <div className={classes.card}>
-          <Filters
-            showHide={showHide}
-            filterHandler={filterHandler}
-            orders={orders}
-            show={show}
-            value={value}
-            changeValue={changeValue}
-          />
-          {loading ? (
-            <Spinner />
-          ) : (
-            <OrdersList
-              show={show}
-              handleShow={handleShow}
-              change={changeStatusHandler}
-              orders={filteredOrders}
-              setOrder={orderDetail}
-              delete={deleteOrderHandler}
-              filterHandler={filterHandler}
-              value={value}
+    return (
+        <>
+            <div className={classes.OrderHistory}>
+                <SearchPanel />
+                <br />
+                <Card className={classes.Card}>
+                    {loading ?
+                        <Spinner /> :
+                        <div className={classes.Table}>
+                            <TableInfo
+                                headers={headers}
+                                rows={orders.map(order => (
+                                    < Order
+                                        key={order._id}
+                                        order={order}
+                                        change={changeStatusHandler}
+                                        delete={deleteOrderHandler}
+                                        handleShow={handleShow}
+                                        setOrder={setOrder}
+                                    />
+                                )
+                                )}
+                            />
+                        </div>}
+                </Card>
+            </div>
+            <OrderModal
+                orderID={order?._id}
+                show={show}
+                handleClose={handleClose}
+                changeStatusHandler={changeStatusHandler}
             />
-          )}
-        </div>
-      </div>
-
-      <OrderModal
-        order={order}
-        show={showModal}
-        handleShow={handleShow}
-        handleClose={handleClose}
-        changeStatusHandler={changeStatusHandler}
-        loading={loading}
-      />
-    </>
-  );
+        </>
+    );
 };
 
 export default OrderHistory;

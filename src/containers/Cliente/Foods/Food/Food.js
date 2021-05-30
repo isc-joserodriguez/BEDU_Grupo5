@@ -20,9 +20,9 @@ const Food = (props) => {
                 </Card.Header>
                 <Card.Body>
                     <Card.Text className='text-break text-center'>
-                        <img style={{ width: "50%", heigth: "20%" }} src={props.image} alt="Platillos De Comida" />
+                        <img style={{ width: '50%', heigth: '20%' }} src={props.image} alt='Platillos De Comida' />
                     </Card.Text>
-                    <Button variant="info" className={classes.Button} block onClick={() => foodDetails()}>Ver Platillo</Button>
+                    <Button variant='info' className={classes.Button} block onClick={() => foodDetails()}>Ver Platillo</Button>
                 </Card.Body>
             </Card>
 

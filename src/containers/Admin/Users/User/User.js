@@ -22,7 +22,7 @@ const User = () => {
             <Spinner /> :
             <Card className={classes.User}>
                 <Card.Img
-                    variant="top"
+                    variant='top'
                     src={
                         user.type === 'admin' ?
                             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW4CH2TTTQuYDIpSsN8yIpiCEG6YgBVAkbpQ&usqp=CAU' :
@@ -40,7 +40,7 @@ const User = () => {
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer>
-                    <small className="text-muted">
+                    <small className='text-muted'>
                         {`Ultima actualización el ${new Date(user.updatedAt).getDate()}/${new Date(user.updatedAt).getMonth() + 1}/${new Date(user.updatedAt).getFullYear()}`}
                         <br />
                         <Link className={classes.orange} to={`/admin/users/edit/${user._id}`}>Editar <FiEdit3/></Link>

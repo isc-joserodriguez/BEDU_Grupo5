@@ -10,32 +10,26 @@ import { filterOrders, updateState } from '../../services';
 
 const Client = () => {
     const { path } = useRouteMatch();
-    const [loading, setLoading] = useState(false);
-    const [filteredOrders, setFilteredOrders] = useState([]);
     const [order, setOrder] = useState({})
     const [orders, setOrders] = useState([]);
-    const changeStatusHandler = (id) => {
+
+    const changeStatusHandler = async (id) => {
         let ordersArray = [...orders];
         let indexModif = ordersArray.findIndex(element => element._id === id);
-        ordersArray[indexModif].status++;
-        updateState({
+        await updateState({
             id: ordersArray[indexModif]._id,
-            data: { status: ordersArray[indexModif].status },
-            setLoading,
-            setFilteredOrders: setOrders,
-            ordersArray,
-            setOrder,
-            setOrders,
-            filter: {
-                status: -1
-            }
-        })
+            data: { status: 0 },
+            setOrder
+        });
+        await filterOrders({
+            setOrders, filter: { status: -1 }
+        });
     }
 
     useEffect(() => {
         const interval = setInterval(() => {
             filterOrders({
-                setLoading, setFilteredOrders, setOrders, filter: { status: -1 }
+                setOrders, filter: { status: -1 }
             });
         }, 5000);
         return () => clearInterval(interval);
