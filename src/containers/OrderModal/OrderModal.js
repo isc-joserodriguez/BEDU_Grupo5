@@ -18,7 +18,7 @@ const OrderModal = (props) => {
     const status = getAction(localStorage.getItem('type'), order?.status);
 
     const actionHandler = () => {
-        props.changeStatusHandler(order._id).then(res=>{
+        props.changeStatusHandler(order._id).then(res => {
             setOrder(res)
         })
         props.handleClose();
@@ -44,7 +44,7 @@ const OrderModal = (props) => {
             {loading ?
                 <Spinner /> :
                 <>
-                    <Modal.Header closeButton>
+                    <Modal.Header closeButton className={classes.orangeBackground}>
                         <Modal.Title><h4>Pedido #{order._id}</h4></Modal.Title>
                     </Modal.Header>
                     <Modal.Body className={classes.orderBody}>
@@ -59,7 +59,7 @@ const OrderModal = (props) => {
                         <h5><b>Detalle del pedido:</b></h5>
                         <br />
                         {order.info ? order.info.map((order, index) => (
-                            <p key={index}><b>{order.name}</b>
+                            <p key={index}><b className={classes.nameOrange}>{order.name}</b>
                                 <br />
                                 {order.description}
                             </p>

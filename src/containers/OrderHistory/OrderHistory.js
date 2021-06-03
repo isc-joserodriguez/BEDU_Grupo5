@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import Order from './Order/Order.js';
-import SearchPanel from '../SearchPanel/searchPanel';
+import SearchPanel from '../SearchPanel/SearchPanel';
 import OrderModal from '../OrderModal/OrderModal';
 import TableInfo from '../../components/UI/TableInfo/TableInfo';
 import Spinner from '../../components/UI/Spinner/Spinner';
@@ -36,6 +36,16 @@ const OrderHistory = () => {
             filter: { special: true },
         });
     }, []);
+
+    const filterOrdersHandler = (filter) => {
+        filter = { ...filter, special: true };
+        setLoading(true);
+        filterOrders({
+            setOrders,
+            setLoading,
+            filter
+        });
+    }
 
     const changeStatusHandler = async (id) => {
         let ordersArray = [...orders];
@@ -76,7 +86,7 @@ const OrderHistory = () => {
     return (
         <>
             <div className={classes.OrderHistory}>
-                <SearchPanel />
+                <SearchPanel filterOrders={filterOrdersHandler} />
                 <br />
                 <Card className={classes.Card}>
                     {loading ?

@@ -27,6 +27,9 @@ const Client = () => {
     }
 
     useEffect(() => {
+        filterOrders({
+            setOrders, filter: { status: -1 }
+        });
         const interval = setInterval(() => {
             filterOrders({
                 setOrders, filter: { status: -1 }

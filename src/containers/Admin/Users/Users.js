@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 
-import SearchPanel from '../../SearchPanel/searchPanel';
+import SearchPanel from '../../SearchPanel/SearchPanel';
 import TableInfo from '../../../components/UI/TableInfo/TableInfo';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import { ImEye as DetailIcon } from 'react-icons/im';

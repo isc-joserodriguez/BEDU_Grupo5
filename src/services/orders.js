@@ -9,7 +9,6 @@ export const filterOrders = async ({ setOrders, setLoading, filter }) => {
         let ordersArray = res.data.detail;
         setOrders(ordersArray);
         if (setLoading) setLoading(false);
-        console.log('filterOrders')
     }).catch(err => {
         if (setLoading) setLoading(false);
         console.log(err);
@@ -66,7 +65,6 @@ export const updateState = async ({ id, data, setLoading, setOrder }) => {
     }).then(res => {
         setOrder(res.data.detail);
         if (setLoading) setLoading(false)
-        console.log('updateState')
     }).catch(err => {
         if (setLoading) setLoading(false)
         console.log(err);

@@ -46,21 +46,21 @@
 }
 
 @media screen and (max-width:600px) {
-  .searchPanel {
+  .SearchPanel {
     display: none
   }
 }
 
 @media screen and (max-width: 600px) {
-  .searchPanel.responsive {
+  .SearchPanel.responsive {
     position: relative;
   }
-  .searchPanel.responsive a.icon {
+  .SearchPanel.responsive a.icon {
     position: absolute;
     right: 0;
     top: 0;
   }
-  .searchPanel.responsive a {
+  .SearchPanel.responsive a {
     float: none;
     display: block;
     text-align: left;
