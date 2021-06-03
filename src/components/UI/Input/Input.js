@@ -3,7 +3,13 @@ import PropTypes from 'prop-types';
 
 import { Form, InputGroup } from 'react-bootstrap';
 
+import DatePicker, { registerLocale } from 'react-datepicker';
+import es from 'date-fns/locale/es';
+
 import classes from './Input.module.css'
+
+registerLocale('es', es);
+
 
 const Input = (props) => {
     let inputElement = null;
@@ -39,14 +45,14 @@ const Input = (props) => {
                 </Form.Group>
             )
             break;
-        case ('textarea'):
+        case ('check'):
             inputElement = (
-                <Form.Control
-                    as='textarea'
-                    className={inputClasses.join(' ')}
-                    {...props.elementConfig}
-                    value={props.value}
-                    onChange={props.changed} />
+                <Form.Check
+                    key={props.label}
+                    type='checkbox'
+                    label={props.label}
+                    onChange={props.changed}
+                />
             )
             break;
         case ('select'):
@@ -67,6 +73,16 @@ const Input = (props) => {
                 </Form.Control>
             )
             break;
+        case ('datepicker'):
+            inputElement = (
+                <DatePicker
+                    className={`${inputClasses.join(' ')} mb-3 form-control`}
+                    locale='es'
+                    selected={props.value}
+                    onChange={props.changed}
+                />
+            )
+            break;
         default:
             inputElement = <Form.Control className={inputClasses.join(' ')}  {...props.elementConfig} value={props.value} />
     }
@@ -81,14 +97,18 @@ const Input = (props) => {
 
 Input.propTypes = {
     changed: PropTypes.func.isRequired,
-    elementConfig: PropTypes.object.isRequired,
+    elementConfig: PropTypes.object,
     elementType: PropTypes.string.isRequired,
     errorMessage: PropTypes.string,
     icon: PropTypes.func,
     invalid: PropTypes.bool.isRequired,
-    shouldValidate: PropTypes.object.isRequired,
+    shouldValidate: PropTypes.object,
     touched: PropTypes.bool,
-    value: PropTypes.string.isRequired
+    value: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.bool,
+        PropTypes.instanceOf(Date)
+    ])
 }
 
 export default Input;

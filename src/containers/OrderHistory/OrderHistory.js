@@ -37,6 +37,10 @@ const OrderHistory = () => {
         });
     }, []);
 
+    /* const filterOrders = (filter) => {
+        console.log(filter);
+    } */
+
     const changeStatusHandler = async (id) => {
         let ordersArray = [...orders];
         let indexModif = ordersArray.findIndex(element => element._id === id);
@@ -76,7 +80,7 @@ const OrderHistory = () => {
     return (
         <>
             <div className={classes.OrderHistory}>
-                <SearchPanel />
+                <SearchPanel filterOrders={filterOrders} />
                 <br />
                 <Card className={classes.Card}>
                     {loading ?

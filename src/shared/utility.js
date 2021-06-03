@@ -38,20 +38,10 @@ export const checkValidity = (value, rules) => {
 
 export const getAction = (type, status) => {
     let actions = {
-        'admin': status === 1 ?
-            'Cancelar' :
-            'NA',
-        'chef': status === 1 ?
-            'Preparar' :
-            status === 2 ?
-                'Terminar' :
-                'NA',
-        'mesero': status === 3 ?
-            'Entregar' :
-            'NA',
-        'cliente': status === 1 ?
-            'Cancelar' :
-            'NA',
+        'admin': status === 1 ? 'Cancelar' : 'NA',
+        'chef': status === 1 ? 'Preparar' : (status === 2 ? 'Terminar' : 'NA'),
+        'mesero': status === 3 ? 'Entregar' : 'NA',
+        'cliente': status === 1 ? 'Cancelar' : 'NA',
     }
     return actions[type];
 }

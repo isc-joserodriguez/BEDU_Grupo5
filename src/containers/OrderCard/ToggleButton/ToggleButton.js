@@ -5,9 +5,7 @@ import { MdExpandMore } from 'react-icons/md';
 import classes from './ToggleButton.module.css';
 
 const ToggleButton = ({ eventKey, toggleShowCard, showed }) => {
-    const toggler = useAccordionToggle(eventKey, () =>
-        console.log('totally custom!'),
-    );
+    const toggler = useAccordionToggle(eventKey, () => { });
     return (
         <MdExpandMore
             onClick={() => {
