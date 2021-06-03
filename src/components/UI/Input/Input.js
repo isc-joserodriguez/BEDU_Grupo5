@@ -77,6 +77,7 @@ const Input = (props) => {
             inputElement = (
                 <DatePicker
                     className={`${inputClasses.join(' ')} mb-3 form-control`}
+                    placeholderText={props.elementConfig.placeholder}
                     locale='es'
                     selected={props.value}
                     onChange={props.changed}

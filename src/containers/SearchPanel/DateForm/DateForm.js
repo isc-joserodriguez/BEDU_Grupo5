@@ -39,13 +39,9 @@ const DateForm = ({ dateForm, setDateForm }) => {
             changed={(date) => inputChangedHandler(date, formElement.id)} />
     ));
     return (
-        <div className={classes.DateCommands}>
-            <label className={classes.orange}>Fecha: </label>
-            <section className={classes.DateElements}>
-                {form}
-            </section>
-
-        </div>
+        <>
+            {form}
+        </>
 
     )
 }
