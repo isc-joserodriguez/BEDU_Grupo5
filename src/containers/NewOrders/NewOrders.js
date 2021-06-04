@@ -3,7 +3,7 @@ import Order from './Order/Order';
 import Container from 'react-bootstrap/Container';
 import OrderModal from '../OrderModal/OrderModal';
 import Spinner from '../../components/UI/Spinner/Spinner';
-import { filterOrders, updateState } from '../../services'
+import { getPending, updateState } from '../../services'
 const NewOrders = () => {
     const [show, setShow] = useState(false);
     const [orders, setOrders] = useState([]);
@@ -13,13 +13,7 @@ const NewOrders = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     useEffect(() => {
-        filterOrders({
-            setOrders, setLoading, filter: {
-                status: localStorage.getItem('type') === 'chef' ?
-                    1 :
-                    localStorage.getItem('type') === 'mesero' ? 3 : -1
-            }
-        });
+        getPending({ setOrders, setLoading });
     }, [])
 
     const changeStatusHandler = async (id) => {
@@ -37,13 +31,7 @@ const NewOrders = () => {
             setOrder
         })
 
-        await filterOrders({
-            setOrders, setLoading, filter: {
-                status: localStorage.getItem('type') === 'chef' ?
-                    1 :
-                    localStorage.getItem('type') === 'mesero' ? 3 : -1
-            }
-        });
+        await getPending({ setOrders, setLoading });
 
         return ordersArray[indexModif];
     }
