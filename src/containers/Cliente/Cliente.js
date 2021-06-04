@@ -6,7 +6,7 @@ import Foods from './Foods/Foods';
 import OrderHistory from '../OrderHistory/OrderHistory';
 import NotFound from '../../components/NotFound/NotFound';
 
-import { filterOrders, updateState } from '../../services';
+import { getProcessing, updateState } from '../../services';
 
 const Client = () => {
     const { path } = useRouteMatch();
@@ -21,19 +21,13 @@ const Client = () => {
             data: { status: 0 },
             setOrder
         });
-        await filterOrders({
-            setOrders, filter: { status: -1 }
-        });
+        await getProcessing({ setOrders });
     }
 
     useEffect(() => {
-        filterOrders({
-            setOrders, filter: { status: -1 }
-        });
+        getProcessing({ setOrders });
         const interval = setInterval(() => {
-            filterOrders({
-                setOrders, filter: { status: -1 }
-            });
+            getProcessing({ setOrders });
         }, 5000);
         return () => clearInterval(interval);
     }, [])

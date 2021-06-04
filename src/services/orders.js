@@ -14,6 +14,53 @@ export const filterOrders = async ({ setOrders, setLoading, filter }) => {
         console.log(err);
     });
 }
+export const getProcessing = async ({ setOrders, setLoading }) => {
+    await axios.get(
+        `${process.env.REACT_APP_API_Connect}/pedido/procesando`, {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        }
+    }).then(res => {
+        let ordersArray = res.data.detail;
+        setOrders(ordersArray);
+        if (setLoading) setLoading(false);
+    }).catch(err => {
+        if (setLoading) setLoading(false);
+        console.log(err);
+    });
+}
+
+export const getOwners = async ({ setOrders, setLoading }) => {
+    await axios.get(
+        `${process.env.REACT_APP_API_Connect}/pedido/propios`, {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        }
+    }).then(res => {
+        let ordersArray = res.data.detail;
+        setOrders(ordersArray);
+        if (setLoading) setLoading(false);
+    }).catch(err => {
+        if (setLoading) setLoading(false);
+        console.log(err);
+    });
+}
+
+export const getPending = async ({ setOrders, setLoading }) => {
+    await axios.get(
+        `${process.env.REACT_APP_API_Connect}/pedido/pendientes`, {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        }
+    }).then(res => {
+        let ordersArray = res.data.detail;
+        setOrders(ordersArray);
+        if (setLoading) setLoading(false);
+    }).catch(err => {
+        if (setLoading) setLoading(false);
+        console.log(err);
+    });
+}
 export const newOrder = ({ setOrders, data, orders }) => {
     axios.post(
         `${process.env.REACT_APP_API_Connect}/pedido`, data, {

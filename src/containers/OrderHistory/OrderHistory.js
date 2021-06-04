@@ -9,6 +9,7 @@ import { Card } from 'react-bootstrap';
 
 import {
     filterOrders,
+    getOwners,
     deleteOrder,
     updateState,
 } from '../../services';
@@ -30,20 +31,23 @@ const OrderHistory = () => {
     const handleShow = () => setShow(true);
 
     useEffect(() => {
-        filterOrders({
-            setOrders,
-            setLoading,
-            filter: { special: true },
-        });
+        getOwners({ setOrders, setLoading });
     }, []);
 
     const filterOrdersHandler = (filter) => {
-        filter = { ...filter, special: true };
         setLoading(true);
         filterOrders({
             setOrders,
             setLoading,
             filter
+        });
+    }
+
+    const clearFilterOrdersHandler = () => {
+        setLoading(true);
+        getOwners({
+            setOrders,
+            setLoading
         });
     }
 
@@ -86,7 +90,7 @@ const OrderHistory = () => {
     return (
         <>
             <div className={classes.OrderHistory}>
-                <SearchPanel filterOrders={filterOrdersHandler} />
+                <SearchPanel filterOrders={filterOrdersHandler} clearFilterOrdersHandler={clearFilterOrdersHandler} />
                 <br />
                 <Card className={classes.Card}>
                     {loading ?

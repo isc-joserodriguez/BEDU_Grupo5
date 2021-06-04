@@ -7,7 +7,10 @@ export {
     newOrder,
     deleteOrder,
     getOrderById,
-    updateState
+    updateState,
+    getProcessing,
+    getOwners,
+    getPending
 } from './orders';
 
 export {

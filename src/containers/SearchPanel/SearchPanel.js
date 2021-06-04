@@ -63,7 +63,7 @@ const SearchPanel = (props) => {
       elementType: 'input',
       elementConfig: {
         type: 'number',
-        placeholder: 'Precio máximo',
+        placeholder: 'Precio minimo',
       },
       value: '',
       valid: true
@@ -72,7 +72,7 @@ const SearchPanel = (props) => {
       elementType: 'input',
       elementConfig: {
         type: 'number',
-        placeholder: 'Precio minimo',
+        placeholder: 'Precio máximo',
       },
       value: '',
       valid: true
@@ -178,11 +178,17 @@ const SearchPanel = (props) => {
       minDate: {
         elementType: 'datepicker',
         value: '',
+        elementConfig: {
+          placeholder: 'Fecha Inicial'
+        },
         valid: true
       },
       maxDate: {
         elementType: 'datepicker',
         value: '',
+        elementConfig: {
+          placeholder: 'Fecha Final'
+        },
         valid: true
       }
     });
@@ -191,7 +197,7 @@ const SearchPanel = (props) => {
         elementType: 'input',
         elementConfig: {
           type: 'number',
-          placeholder: 'Precio máximo',
+          placeholder: 'Precio minimo',
         },
         value: '',
         valid: true
@@ -200,7 +206,7 @@ const SearchPanel = (props) => {
         elementType: 'input',
         elementConfig: {
           type: 'number',
-          placeholder: 'Precio minimo',
+          placeholder: 'Precio máximo',
         },
         value: '',
         valid: true
@@ -250,7 +256,7 @@ const SearchPanel = (props) => {
         valid: true
       }
     });
-    props.filterOrders({});
+    props.clearFilterOrdersHandler();
   }
 
   return (
