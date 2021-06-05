@@ -5,7 +5,7 @@ import ProductModal from './ProductModal/ProductModal';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import classes from './Products.module.css';
 
-import { getProducts, getProductById, getProductsByCategory, getCategoriesCommands } from '../../../services';
+import { getProducts, getProductsByCategory, getCategoriesCommands } from '../../../services';
 const Products = () => {
   const [show, setShow] = useState(false);
   const [products, setProducts] = useState([]);
@@ -18,28 +18,17 @@ const Products = () => {
   useEffect(() => {
     getProducts({ setProducts, setLoading });
     getCategoriesCommands({ setCategories, setLoading })
-  }, [])
-  const productDetail = (productId) => {
-    getProductById(
-      {
-        id: productId,
-        setProduct
-      }
-    )
-  };
-  const productMap = products.map(products => (
+  }, []);
+
+  const productMap = products.map(product => (
     <Product
-      key={products._id}
-      idProduct={products._id.substring(products._id.length - 7)}
-      name={products.name}
-      descripcion={products.description}
-      cost={products.cost}
-      image={products.image}
-      productDetail={() => productDetail(products._id)}
-      handleShow={() => handleShow()}
-      handleClose={() => handleClose()}
+      key={product._id}
+      product={product}
+      handleShow={handleShow}
+      setProduct={setProduct}
     />
   ));
+  
   return (
     <Container className='mb-4'>
       <div className='col d-flex flex-wrap mb-4 align-content-center justify-content-center'>
@@ -66,10 +55,9 @@ const Products = () => {
             </div>}
         </Container>
         <ProductModal
-          product={product}
+          productID={product?._id}
           show={show}
-          handleShow={() => handleShow()}
-          handleClose={() => handleClose()}
+          handleClose={handleClose}
         />
       </div>
     </Container>

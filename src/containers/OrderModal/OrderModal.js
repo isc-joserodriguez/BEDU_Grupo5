@@ -24,11 +24,11 @@ const OrderModal = (props) => {
         props.handleClose();
     }
 
-    const orderDetail = (orderId) => {
+    const orderDetail = (id) => {
         setLoading(true);
         getOrderById(
             {
-                id: orderId,
+                id,
                 setOrder,
                 setLoading
             }
