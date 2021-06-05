@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/BEDU_Grupo5/static/css/main.43a758bf.chunk.css",
-    "main.js": "/BEDU_Grupo5/static/js/main.731740b5.chunk.js",
-    "main.js.map": "/BEDU_Grupo5/static/js/main.731740b5.chunk.js.map",
+    "main.js": "/BEDU_Grupo5/static/js/main.72a7003e.chunk.js",
+    "main.js.map": "/BEDU_Grupo5/static/js/main.72a7003e.chunk.js.map",
     "runtime-main.js": "/BEDU_Grupo5/static/js/runtime-main.bd77d142.js",
     "runtime-main.js.map": "/BEDU_Grupo5/static/js/runtime-main.bd77d142.js.map",
     "static/css/2.01ca705e.chunk.css": "/BEDU_Grupo5/static/css/2.01ca705e.chunk.css",
@@ -15,10 +15,7 @@
     "static/css/main.43a758bf.chunk.css.map": "/BEDU_Grupo5/static/css/main.43a758bf.chunk.css.map",
     "static/js/2.d313e74a.chunk.js.LICENSE.txt": "/BEDU_Grupo5/static/js/2.d313e74a.chunk.js.LICENSE.txt",
     "static/media/Error404.260cc172.png": "/BEDU_Grupo5/static/media/Error404.260cc172.png",
-    "static/media/backLogin.c8d92d96.jpeg": "/BEDU_Grupo5/static/media/backLogin.c8d92d96.jpeg",
-    "static/media/backLogin2.6f04b8f2.jpg": "/BEDU_Grupo5/static/media/backLogin2.6f04b8f2.jpg",
     "static/media/backLogin4.6922ad1d.jpg": "/BEDU_Grupo5/static/media/backLogin4.6922ad1d.jpg",
-    "static/media/backLogin5.67425db9.jpg": "/BEDU_Grupo5/static/media/backLogin5.67425db9.jpg",
     "static/media/restaurant-logo.969e6013.jpg": "/BEDU_Grupo5/static/media/restaurant-logo.969e6013.jpg"
   },
   "entrypoints": [
@@ -26,6 +23,6 @@
     "static/css/2.01ca705e.chunk.css",
     "static/js/2.d313e74a.chunk.js",
     "static/css/main.43a758bf.chunk.css",
-    "static/js/main.731740b5.chunk.js"
+    "static/js/main.72a7003e.chunk.js"
   ]
 }
