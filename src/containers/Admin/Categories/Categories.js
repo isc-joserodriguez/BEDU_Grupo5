@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import SearchPanel from '../../SearchPanel/SearchPanel';
+import SearchPanel from '../SearchPanel/SearchPanel';
 import TableInfo from '../../../components/UI/TableInfo/TableInfo';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import { ImEye as DetailIcon } from 'react-icons/im';
 import { Button } from 'react-bootstrap';
 import { Card } from 'react-bootstrap';
 
-import { getCategories } from '../../../services';
+import { getCategories, filterCategories } from '../../../services';
 
 import classes from './Categories.module.css';
 
@@ -17,13 +17,116 @@ const Categories = () => {
     const [categories, setCategories] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    const [statusForm, setStatusForm] = useState({
+        inactivo: {
+            elementType: 'check',
+            label: 'Inactivo',
+            value: false,
+            valid: true
+        },
+        activo: {
+            elementType: 'check',
+            label: 'Activo',
+            value: false,
+            valid: true
+        }
+    });
+    const [nombreForm, setNombreForm] = useState({
+        nombre: {
+            elementType: 'input',
+            elementConfig: {
+                type: 'text',
+                placeholder: 'Nombre',
+            },
+            value: '',
+            valid: true
+        }
+    });
+    const [descripcionForm, setDescripcionForm] = useState({
+        descripcion: {
+            elementType: 'input',
+            elementConfig: {
+                type: 'text',
+                placeholder: 'Descripción',
+            },
+            value: '',
+            valid: true
+        }
+    });
+
+    const filterHandler = () => {
+        const filter = {};
+        const forms = [
+            statusForm,
+            nombreForm,
+            descripcionForm
+        ];
+        forms.forEach(form => {
+            for (let input in form) {
+                filter[input] = form[input].value;
+            }
+        });
+        setLoading(true)
+        filterCategories({ setCategories, setLoading, filter });
+    }
+
+    const clearFilter = () => {
+        setStatusForm({
+            inactivo: {
+                elementType: 'check',
+                label: 'Inactivo',
+                value: false,
+                valid: true
+            },
+            activo: {
+                elementType: 'check',
+                label: 'Activo',
+                value: false,
+                valid: true
+            }
+        });
+        setNombreForm({
+            nombre: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Nombre',
+                },
+                value: '',
+                valid: true
+            }
+        });
+        setDescripcionForm({
+            descripcion: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Descripción',
+                },
+                value: '',
+                valid: true
+            }
+        });
+        setLoading(true)
+        getCategories({ setCategories, setLoading });
+    }
+
     useEffect(() => {
         getCategories({ setCategories, setLoading });
     }, []);
 
     return (
         <div className={classes.Categories}>
-            <SearchPanel />
+            <SearchPanel
+                statusForm={statusForm}
+                setStatusForm={setStatusForm}
+                nombreForm={nombreForm}
+                setNombreForm={setNombreForm}
+                descripcionForm={descripcionForm}
+                setDescripcionForm={setDescripcionForm}
+                filterHandler={filterHandler}
+                clearFilter={clearFilter}
+            />
             <br />
             <Card className={classes.Card}>
                 <section className={classes.buttonContainer}>
@@ -39,7 +142,7 @@ const Categories = () => {
                                     <td>{el._id.substring(el._id.length - 7)}</td>
                                     <td>{el.name}</td>
                                     <td>{el.description}</td>
-                                    <td>{el.status}</td>
+                                    <td>{el.status ? 'Activo' : 'Inactivo'}</td>
                                     <td><Link to={`/admin/categories/${el._id}`}><DetailIcon className={`${classes.blue}`} /></Link></td>
                                 </tr>
                             ))

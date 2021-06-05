@@ -46,6 +46,21 @@ export const getProducts = ({ setProducts, setLoading }) => {
     });
 }
 
+export const filterProducts = ({ setProducts, setLoading, filter }) => {
+    axios.post(
+        `${process.env.REACT_APP_API_Connect}/productos/filtrar`, filter, {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        },
+    }).then(res => {
+        setProducts(res.data.detail);
+        setLoading(false);
+    }).catch(err => {
+        setLoading(false);
+        console.log(err);
+    });
+}
+
 export const getCategoriesSelector = ({ editForm, setEditForm, setLoading, updateObject }) => {
     axios.get(
         `${process.env.REACT_APP_API_Connect}/categoria`, {
