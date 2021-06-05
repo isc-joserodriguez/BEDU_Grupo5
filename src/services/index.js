@@ -2,6 +2,7 @@ export {
     login,
     signup
 } from './auth';
+
 export {
     filterOrders,
     newOrder,
@@ -21,12 +22,6 @@ export {
 } from './users';
 
 export {
-    getFoods,
-    getFoodsByCategory,
-    getCategoriesCommands
-} from './foods';
-
-export {
     getCategories,
     getCategoryById,
     createCategory,
@@ -40,5 +35,7 @@ export {
     createProduct,
     getProductById,
     editProduct,
-    getProductByIdForm
+    getProductByIdForm,
+    getProductsByCategory,
+    getCategoriesCommands
 } from './products';

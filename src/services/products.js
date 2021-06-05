@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 export const createProduct = ({ data, setLoading, setErrorMessage, history }) => {
     axios.post(
         `${process.env.REACT_APP_API_Connect}/productos/`, data, {
@@ -25,10 +24,10 @@ export const getProductById = ({ id, setProduct, setLoading }) => {
         }
     }).then(res => {
         setProduct(res.data.detail);
-        setLoading(false);
+        if (setLoading) setLoading(false);
     }).catch(err => {
         console.log(err);
-        setLoading(false);
+        if (setLoading) setLoading(false);
     });
 }
 
@@ -68,6 +67,38 @@ export const getCategoriesSelector = ({ editForm, setEditForm, setLoading, updat
                     }
                 })
             })
+        );
+        setLoading(false);
+    }).catch(err => {
+        setLoading(false)
+        console.log(err);
+    });
+}
+
+export const getProductsByCategory = ({ setProducts, setLoading, data }) => {
+    axios.post(
+        `${process.env.REACT_APP_API_Connect}/productos/filtrar`, { idCategoria: data }, {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        },
+    }).then(res => {
+        setProducts(res.data.detail);
+        setLoading(false);
+    }).catch(err => {
+        setLoading(false);
+        console.log(err);
+    });
+}
+
+export const getCategoriesCommands = ({ setCategories, setLoading }) => {
+    axios.get(
+        `${process.env.REACT_APP_API_Connect}/categoria`, {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        }
+    }).then(res => {
+        setCategories(
+            res.data.detail.map(el => ({ _id: el._id, name: el.name }))
         );
         setLoading(false);
     }).catch(err => {

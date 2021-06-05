@@ -7,7 +7,7 @@ export const getCategories = ({ setCategories, setLoading }) => {
             'Authorization': localStorage.getItem('token')
         }
     }).then(res => {
-        setCategories([...res.data.detail]);
+        setCategories(res.data.detail);
         setLoading(false)
     }).catch(err => {
         setLoading(false)

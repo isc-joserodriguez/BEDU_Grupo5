@@ -4,29 +4,29 @@ import PropTypes from 'prop-types';
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import Table from 'react-bootstrap/Table'
-import { createPedido } from '../../../../services/foods'
-import classes from './FoodModal.module.css'
+import { newOrder } from '../../../../services'
+import classes from './ProductModal.module.css'
 
-const FoodModal = (props) => {
+const ProductModal = (props) => {
     const [cart, setCart] = useState([]);
     const myFunc = (total, num) => total + num;
 
     const createOrder = (info, cost) => {
-        createPedido({ info, cost });
+        newOrder({ info, cost });
         props.handleClose();
         setCart([]);
     }
 
-    const addFood = () => {
+    const addProduct = () => {
         setCart(cart.concat({
-            _id: props.food._id,
-            name: props.food.name,
-            cost: props.food.cost
+            _id: props.product._id,
+            name: props.product.name,
+            cost: props.product.cost
         }
         ))
     }
 
-    const deleteFoodFromCart = (i) => {
+    const deleteProductFromCart = (i) => {
         var newarray = [...cart]
         if (i !== 0) {
             newarray.splice(i, 1);
@@ -37,12 +37,12 @@ const FoodModal = (props) => {
     }
 
 
-    const listItems = cart.map((food, index) => (
+    const listItems = cart.map((product, index) => (
         <tr key={index}>
             <td>{index + 1}</td>
-            <td>{food.name}</td>
-            <td>{food.cost}</td>
-            <td><Button variant='danger' className='float-left' onClick={() => { deleteFoodFromCart(index) }}>Eliminar De Carrito</Button></td>
+            <td>{product.name}</td>
+            <td>{product.cost}</td>
+            <td><Button variant='danger' className='float-left' onClick={() => { deleteProductFromCart(index) }}>Eliminar De Carrito</Button></td>
         </tr>
     ));
 
@@ -51,20 +51,20 @@ const FoodModal = (props) => {
         <Modal show={props.show} onHide={props.handleClose}>
 
             <Modal.Header closeButton>
-                <Modal.Title style={{color: '#FF8352'}}>{props.food.name}</Modal.Title>
+                <Modal.Title style={{color: '#FF8352'}}>{props.product.name}</Modal.Title>
             </Modal.Header>
             <Modal.Body >
                 <div>
-                    <img className={classes.FoodModalImage} src={props.food.image} alt="Platillo" />
+                    <img className={classes.ProductModalImage} src={props.product.image} alt="Platillo" />
                 </div>
-                <div className={classes.FoodModalBody}>
-                    <div className={classes.FoodModalBodyDescription}>
+                <div className={classes.ProductModalBody}>
+                    <div className={classes.ProductModalBodyDescription}>
                         <p style={{color: '#FF8352'}}><b>Descripción:</b></p>
-                        <p>{(props.food.description)}</p>
+                        <p>{(props.product.description)}</p>
                     </div>
-                    <div className={classes.FoodModalBodyCost}>
+                    <div className={classes.ProductModalBodyCost}>
                         <p style={{color: '#FF8352'}}><b>Costo:</b></p>
-                        <h4>${(props.food.cost)}</h4>
+                        <h4>${(props.product.cost)}</h4>
                     </div>
                 </div>
             </Modal.Body>
@@ -72,12 +72,12 @@ const FoodModal = (props) => {
             <Modal.Footer>
                 {
                     (cart.length < 2) &&
-                    <Button variant='primary' className={`${classes.orderThis} float-left`} onClick={() => { createOrder([props.food._id], props.food.cost) }}>
+                    <Button variant='primary' className={`${classes.orderThis} float-left`} onClick={() => { createOrder([props.product._id], props.product.cost) }}>
                         Ordenar Solo Este Platillo
                     </Button>
                 }
 
-                <Button variant='success' className={`${classes.addCart} float-left`} onClick={addFood}>
+                <Button variant='success' className={`${classes.addCart} float-left`} onClick={addProduct}>
                     Agregar a Carrito
                 </Button>
                 <Button className={classes.exitBtn}  variant='secondary' onClick={props.handleClose}> Salir </Button>
@@ -109,11 +109,11 @@ const FoodModal = (props) => {
     )
 }
 
-FoodModal.propTypes = {
-    food: PropTypes.object.isRequired,
+ProductModal.propTypes = {
+    product: PropTypes.object.isRequired,
     handleClose: PropTypes.func.isRequired,
     handleShow: PropTypes.func.isRequired,
     image: PropTypes.string.isRequired,
 }
 
-export default FoodModal;
+export default ProductModal;

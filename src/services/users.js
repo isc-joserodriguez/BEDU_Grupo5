@@ -7,7 +7,7 @@ export const getUsers = ({ setUsers, setLoading }) => {
             'Authorization': localStorage.getItem('token')
         }
     }).then(res => {
-        setUsers([...res.data.detail]);
+        setUsers(res.data.detail);
         setLoading(false);
     }).catch(err => {
         setLoading(false)

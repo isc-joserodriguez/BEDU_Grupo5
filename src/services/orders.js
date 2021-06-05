@@ -61,18 +61,20 @@ export const getPending = async ({ setOrders, setLoading }) => {
         console.log(err);
     });
 }
-export const newOrder = ({ setOrders, data, orders }) => {
+export const newOrder = ({ setLoading, info, cost }) => {
+    var payload = {
+        info: info,
+        cost: cost
+    };
     axios.post(
-        `${process.env.REACT_APP_API_Connect}/pedido`, data, {
+        `${process.env.REACT_APP_API_Connect}/pedido`, payload, {
         headers: {
             'Authorization': localStorage.getItem('token')
-        }
+        },
     }).then(res => {
-        let ordersArray = [...orders];
-        ordersArray.push({ task: res.data.detail.status !== 0 ? `hola ${res.data.detail._id}` : 'Pedido Cancelado', status: false, id: res.data.detail._id });
-        setOrders([...ordersArray]);
+        
     }).catch(err => {
-        console.log(err);
+        console.log(err.message);
     });
 }
 export const deleteOrder = ({ id, setOrders, ordersArray, setLoading }) => {

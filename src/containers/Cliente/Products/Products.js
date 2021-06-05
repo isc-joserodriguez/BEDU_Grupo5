@@ -1,41 +1,41 @@
 import React, { useState, useEffect } from 'react';
-import Food from './Food/Food';
-import { Button, Container, Form, Col } from 'react-bootstrap'
-import FoodModal from './FoodModal/FoodModal';
+import Product from './Product/Product';
+import { Button, Container, Form, Col } from 'react-bootstrap';
+import ProductModal from './ProductModal/ProductModal';
 import Spinner from '../../../components/UI/Spinner/Spinner';
-import classes from './Foods.module.css';
+import classes from './Products.module.css';
 
-import { getFoods, getFoodById, getFoodsByCategory, getCategoriesCommands } from '../../../services/foods'
-const Foods = () => {
+import { getProducts, getProductById, getProductsByCategory, getCategoriesCommands } from '../../../services';
+const Products = () => {
   const [show, setShow] = useState(false);
-  const [foods, setFoods] = useState([]);
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [food, setFood] = useState({});
+  const [product, setProduct] = useState({});
   const [categories, setCategories] = useState([]);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   useEffect(() => {
-    getFoods({ setFoods, setLoading });
+    getProducts({ setProducts, setLoading });
     getCategoriesCommands({ setCategories, setLoading })
   }, [])
-  const foodDetail = (foodId) => {
-    getFoodById(
+  const productDetail = (productId) => {
+    getProductById(
       {
-        id: foodId,
-        setFood
+        id: productId,
+        setProduct
       }
     )
   };
-  const foodsMap = foods.map(foods => (
-    <Food
-      key={foods._id}
-      idFood={foods._id.substring(foods._id.length - 7)}
-      name={foods.name}
-      descripcion={foods.description}
-      cost={foods.cost}
-      image={foods.image}
-      foodDetail={() => foodDetail(foods._id)}
+  const productMap = products.map(products => (
+    <Product
+      key={products._id}
+      idProduct={products._id.substring(products._id.length - 7)}
+      name={products.name}
+      descripcion={products.description}
+      cost={products.cost}
+      image={products.image}
+      productDetail={() => productDetail(products._id)}
       handleShow={() => handleShow()}
       handleClose={() => handleClose()}
     />
@@ -43,14 +43,14 @@ const Foods = () => {
   return (
     <Container className='mb-4'>
       <div className='col d-flex flex-wrap mb-4 align-content-center justify-content-center'>
-        <Button className={`${classes.CategoryBtn} p-2 m-2`} variant="outline-secondary" onClick={() => getFoods({ setFoods, setLoading })} >Todos</Button>
+        <Button className={`${classes.CategoryBtn} p-2 m-2`} variant="outline-secondary" onClick={() => getProducts({ setProducts, setLoading })} >Todos</Button>
         {
           categories.map((el, index) => (
             <Button
               key={index}
               variant='outline-primary'
               className='p-2 m-2'
-              onClick={() => getFoodsByCategory({ setFoods, setLoading, data: el._id })}
+              onClick={() => getProductsByCategory({ setProducts, setLoading, data: el._id })}
             >
               {el.name}
             </Button>
@@ -62,11 +62,11 @@ const Foods = () => {
           {loading ?
             <Spinner /> :
             <div className='row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 overflow-auto'>
-              {foodsMap}
+              {productMap}
             </div>}
         </Container>
-        <FoodModal
-          food={food}
+        <ProductModal
+          product={product}
           show={show}
           handleShow={() => handleShow()}
           handleClose={() => handleClose()}
@@ -75,4 +75,4 @@ const Foods = () => {
     </Container>
   );
 }
-export default Foods;
+export default Products;

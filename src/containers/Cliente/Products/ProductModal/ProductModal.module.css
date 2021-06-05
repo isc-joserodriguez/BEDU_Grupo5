@@ -31,7 +31,7 @@
     border-color: #9b9e9e !important;
   }
 
-  .FoodModalImage{
+  .ProductModalImage{
     display: block;
     max-width: 95%;
     margin: auto;
@@ -39,18 +39,18 @@
     max-height: 230px;
   }
 
-  .FoodModalBody{
+  .ProductModalBody{
     display: flex;
   }
 
 
-  .FoodModalBodyDescription{
+  .ProductModalBodyDescription{
     margin-top: 1rem;
     width: 75%;
     padding-right: 20px;
   }
 
-  .FoodModalBodyCost{
+  .ProductModalBodyCost{
     margin-top: 1rem;
   }
 

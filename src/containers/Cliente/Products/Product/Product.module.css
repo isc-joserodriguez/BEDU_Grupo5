@@ -3,7 +3,7 @@
    border-color: #00E1DF !important;
 }
 
-.FoodCard {
+.ProductCard {
    width: "50%";
    height: "20%";
    max-height: 100px;
@@ -12,17 +12,17 @@
    background-color: blueviolet;
 }
 
-.FoodCardBody{
+.ProductCardBody{
    height: 194px;
 }
 
-.FoodCardHeader{
+.ProductCardHeader{
    height: 94px;
    display: flex;
    
 }
 
-.FoodCardHeaderText{
+.ProductCardHeaderText{
    padding-bottom: 5px;
    margin: auto;
 }

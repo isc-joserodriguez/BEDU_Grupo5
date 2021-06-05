@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 
 import OrderCard from '../OrderCard/OrderCard'
-import Foods from './Foods/Foods';
+import Products from './Products/Products';
 import OrderHistory from '../OrderHistory/OrderHistory';
 import NotFound from '../../components/NotFound/NotFound';
 
@@ -37,7 +37,7 @@ const Client = () => {
             {orders.length !== 0 && <OrderCard changeStatusHandler={changeStatusHandler} order={orders[0]} />}
             <Switch>
                 <Route path={`${path}/`} exact>
-                    <Foods />
+                    <Products />
                 </Route>
                 <Route path={`${path}/my-orders`}>
                     <OrderHistory />
