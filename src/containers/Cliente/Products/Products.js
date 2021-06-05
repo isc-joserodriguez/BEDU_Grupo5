@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Product from './Product/Product';
-import { Button, Container, Form, Col } from 'react-bootstrap';
+import { Button, Container } from 'react-bootstrap';
 import ProductModal from './ProductModal/ProductModal';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import classes from './Products.module.css';
@@ -28,7 +28,7 @@ const Products = () => {
       setProduct={setProduct}
     />
   ));
-  
+
   return (
     <Container className='mb-4'>
       <div className='col d-flex flex-wrap mb-4 align-content-center justify-content-center'>

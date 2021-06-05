@@ -10,7 +10,6 @@ import { getProcessing, updateState } from '../../services';
 
 const Client = () => {
     const { path } = useRouteMatch();
-    const [order, setOrder] = useState({})
     const [orders, setOrders] = useState([]);
 
     const changeStatusHandler = async (id) => {
@@ -18,8 +17,7 @@ const Client = () => {
         let indexModif = ordersArray.findIndex(element => element._id === id);
         await updateState({
             id: ordersArray[indexModif]._id,
-            data: { status: 0 },
-            setOrder
+            data: { status: 0 }
         });
         await getProcessing({ setOrders });
     }

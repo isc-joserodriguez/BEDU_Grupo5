@@ -11,7 +11,6 @@ import { getProcessing, updateState } from '../../services';
 
 const Chef = () => {
     const { path } = useRouteMatch();
-    const [order, setOrder] = useState({})
     const [orders, setOrders] = useState([]);
 
     const changeStatusHandler = async (id) => {
@@ -20,8 +19,7 @@ const Chef = () => {
         ordersArray[indexModif].status++;
         await updateState({
             id: ordersArray[indexModif]._id,
-            data: { status: ordersArray[indexModif].status },
-            setOrder
+            data: { status: ordersArray[indexModif].status }
         })
         await getProcessing({ setOrders });
     }

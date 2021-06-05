@@ -3,15 +3,12 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { updateObject, checkValidity } from '../../../shared/utility';
-import { Container, Card, Form, Button } from 'react-bootstrap';
+import { Card, Form, Button } from 'react-bootstrap';
 import Spinner from '../../../components/UI/Spinner/Spinner'
 import Input from '../../../components/UI/Input/Input';
 import { CgMail, CgPassword } from 'react-icons/cg';
 import { login } from '../../../services';
-import LoginBackground from '../../../assets/images/backLogin.jpeg';
-import LoginBackground2 from '../../../assets/images/backLogin2.jpg';
 import LoginBackground4 from '../../../assets/images/backLogin4.jpg';
-import LoginBackground5 from '../../../assets/images/backLogin5.jpg';
 
 import classes from './Login.module.css';
 

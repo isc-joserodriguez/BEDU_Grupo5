@@ -72,7 +72,7 @@ export const newOrder = ({ setLoading, info, cost }) => {
             'Authorization': localStorage.getItem('token')
         },
     }).then(res => {
-        
+
     }).catch(err => {
         console.log(err.message);
     });
@@ -112,7 +112,7 @@ export const updateState = async ({ id, data, setLoading, setOrder }) => {
             'Authorization': localStorage.getItem('token')
         }
     }).then(res => {
-        setOrder(res.data.detail);
+        if (setOrder) setOrder(res.data.detail);
         if (setLoading) setLoading(false)
     }).catch(err => {
         if (setLoading) setLoading(false)
