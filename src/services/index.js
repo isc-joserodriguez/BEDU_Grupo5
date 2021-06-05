@@ -18,7 +18,8 @@ export {
     getUsers,
     getUserById,
     getUserByIdForm,
-    editUser
+    editUser,
+    filterUsers
 } from './users';
 
 export {
@@ -26,7 +27,8 @@ export {
     getCategoryById,
     createCategory,
     getCategoryByIdForm,
-    editCategory
+    editCategory,
+    filterCategories
 } from './categories';
 
 export {
@@ -37,5 +39,6 @@ export {
     editProduct,
     getProductByIdForm,
     getProductsByCategory,
-    getCategoriesCommands
+    getCategoriesCommands,
+    filterProducts
 } from './products';

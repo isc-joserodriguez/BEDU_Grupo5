@@ -15,6 +15,21 @@ export const getUsers = ({ setUsers, setLoading }) => {
     });
 }
 
+export const filterUsers = ({ setUsers, setLoading, filter }) => {
+    axios.post(
+        `${process.env.REACT_APP_API_Connect}/usuarios/filtrar`, filter, {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        },
+    }).then(res => {
+        setUsers(res.data.detail);
+        setLoading(false);
+    }).catch(err => {
+        setLoading(false);
+        console.log(err);
+    });
+}
+
 export const getUserById = ({ id, setUser, setLoading }) => {
     axios.get(
         `${process.env.REACT_APP_API_Connect}/usuarios/${id}`, {

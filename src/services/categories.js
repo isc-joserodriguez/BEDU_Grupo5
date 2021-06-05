@@ -15,6 +15,21 @@ export const getCategories = ({ setCategories, setLoading }) => {
     });
 }
 
+export const filterCategories = ({ setCategories, setLoading, filter }) => {
+    axios.post(
+        `${process.env.REACT_APP_API_Connect}/categoria/filtrar`, filter, {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        },
+    }).then(res => {
+        setCategories(res.data.detail);
+        setLoading(false);
+    }).catch(err => {
+        setLoading(false);
+        console.log(err);
+    });
+}
+
 export const getCategoryById = ({ id, setCategory, setLoading }) => {
     axios.get(
         `${process.env.REACT_APP_API_Connect}/categoria/${id}`, {
