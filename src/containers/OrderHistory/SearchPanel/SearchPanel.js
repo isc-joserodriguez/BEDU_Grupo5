@@ -6,6 +6,8 @@ import DateForm from './DateForm/DateForm';
 import InfoForm from './InfoForm/InfoForm';
 
 import classes from './SearchPanel.module.css';
+import Accordion from 'react-bootstrap/Accordion';
+import Card from 'react-bootstrap/Card';
 
 const SearchPanel = (props) => {
   const [checkForm, setCheckForm] = useState({
@@ -260,40 +262,55 @@ const SearchPanel = (props) => {
   }
 
   return (
-    <section className={classes.SearchPanel} id='Filters'>
-      <div className={classes.Filter}>
-        <div className={classes.DateCommands}>
-          <label className={classes.orange}>Fecha: </label>
-          <section className={classes.DateElements}>
-            <DateForm dateForm={dateForm} setDateForm={setDateForm} />
-          </section>
-        </div>
-        <div className={classes.StatusCommands}>
-          <label className={classes.orange}>Estatus: </label>
-          <CheckForm checkForm={checkForm} setCheckForm={setCheckForm} />
-        </div>
-        <div className={classes.PriceCommands}>
-          <label className={classes.orange}>Precio: </label>
-          <InfoForm infoForm={priceForm} setInfoForm={setPriceForm} />
-        </div>
-        <div className={classes.ChefCommands}>
-          <label className={classes.orange}>Chef: </label>
-          <InfoForm infoForm={chefForm} setInfoForm={setChefForm} />
-          <label className={classes.orange}>Mesero: </label>
-          <InfoForm infoForm={meseroForm} setInfoForm={setMeseroForm} />
-          <label className={classes.orange}>Cliente: </label>
-          <InfoForm infoForm={clienteForm} setInfoForm={setClienteForm} />
-        </div>
-        <div className={classes.DishCommands}>
-          <label className={classes.orange}>Platillo: </label>
-          <InfoForm infoForm={platilloForm} setInfoForm={setPlatilloForm} />
-        </div>
-      </div>
-      <div className="text-right">
-        <Button className={classes.orangeBtn} type='submit' size='sm' onClick={filterOrdersHandler}> Buscar </Button>
-        <Button className={classes.orangeBtn} type='submit' size='sm' onClick={clearFilter}> Limpiar </Button>
-      </div>
-    </section>
+    <Accordion className={classes.Accordion} >
+      <Card className={classes.AccordionCard}>
+      <Accordion.Toggle as={Card.Header} eventKey="0">
+        <h4>Búsqueda y Filtros</h4>
+      </Accordion.Toggle>
+      <Accordion.Collapse eventKey="0">
+        <section className={classes.SearchPanel} id='Filters'>
+          <div className={classes.Filter}>
+            <div className={classes.DateCommands}>
+              <label className={classes.orange}>Fecha: </label>
+              <section className={classes.DateElements}>
+                <DateForm dateForm={dateForm} setDateForm={setDateForm} />
+              </section>
+            </div>
+            <div className={classes.StatusCommands}>
+              <label className={classes.orange}>Estatus: </label>
+              <CheckForm checkForm={checkForm} setCheckForm={setCheckForm} />
+            </div>
+            <div className={classes.PriceCommands}>
+              <label className={classes.orange}>Precio: </label>
+              <InfoForm infoForm={priceForm} setInfoForm={setPriceForm} />
+            </div>
+            <div className={classes.ChefCommands}>
+              <span className={classes.SearchSpan}>
+              <label className={classes.orange2}>Chef: </label>
+              <InfoForm  infoForm={chefForm} setInfoForm={setChefForm} />
+              </span>
+              <span className={classes.SearchSpan}>
+              <label className={classes.orange2}>Mesero: </label>
+              <InfoForm  infoForm={meseroForm} setInfoForm={setMeseroForm} />
+              </span>
+              <span className={classes.SearchSpan}>
+              <label className={classes.orange2}>Cliente: </label>
+              <InfoForm  infoForm={clienteForm} setInfoForm={setClienteForm} />
+              </span>
+            </div>
+            <div className={classes.DishCommands}>
+              <label className={classes.orange}>Platillo: </label>
+              <InfoForm infoForm={platilloForm} setInfoForm={setPlatilloForm} />
+            </div>
+          </div>
+          <div className="text-right">
+            <Button className={classes.orangeBtn} type='submit' size='sm' onClick={filterOrdersHandler}> Buscar </Button>
+            <Button className={classes.orangeBtn} type='submit' size='sm' onClick={clearFilter}> Limpiar </Button>
+          </div>
+        </section>
+        </Accordion.Collapse>
+      </Card>
+    </Accordion>
   );
 };
 
