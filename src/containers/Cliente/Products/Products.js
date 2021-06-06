@@ -16,8 +16,8 @@ const Products = () => {
   const handleShow = () => setShow(true);
 
   useEffect(() => {
+    getCategoriesCommands({ setCategories });
     getProducts({ setProducts, setLoading });
-    getCategoriesCommands({ setCategories, setLoading })
   }, []);
 
   const productMap = products.map(product => (

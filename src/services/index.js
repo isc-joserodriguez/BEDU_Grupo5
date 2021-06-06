@@ -26,6 +26,7 @@ export {
     getCategories,
     getCategoryById,
     createCategory,
+    getCategoriesCommands,
     getCategoryByIdForm,
     editCategory,
     filterCategories
@@ -39,6 +40,5 @@ export {
     editProduct,
     getProductByIdForm,
     getProductsByCategory,
-    getCategoriesCommands,
     filterProducts
 } from './products';

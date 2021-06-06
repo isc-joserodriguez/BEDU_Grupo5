@@ -101,3 +101,23 @@ export const editCategory = ({ id, data, setLoading, setErrorMessage, history })
         setErrorMessage(true);
     });
 }
+
+export const getCategoriesCommands = ({ setCategories }) => {
+    axios.get(
+        `${process.env.REACT_APP_API_Connect}/productos`, {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        }
+    }).then(res => {
+        let datas = {}
+        res.data.detail.forEach(product => (datas = { ...datas, [product.idCategoria._id]: product.idCategoria.name }));
+        let ids = res.data.detail.map(product => (product.idCategoria._id))
+        ids = [...new Set(ids)];
+        setCategories(ids.map(id => ({
+            _id: id,
+            name: datas[id]
+        })))
+    }).catch(err => {
+        console.log(err);
+    });
+}

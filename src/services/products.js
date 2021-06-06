@@ -38,10 +38,10 @@ export const getProducts = ({ setProducts, setLoading }) => {
             'Authorization': localStorage.getItem('token')
         }
     }).then(res => {
-        setProducts(res.data.detail);
-        setLoading(false);
+        if (setProducts) setProducts(res.data.detail);
+        if (setLoading) setLoading(false);
     }).catch(err => {
-        setLoading(false);
+        if (setLoading) setLoading(false);
         console.log(err);
     });
 }
@@ -101,23 +101,6 @@ export const getProductsByCategory = ({ setProducts, setLoading, data }) => {
         setLoading(false);
     }).catch(err => {
         setLoading(false);
-        console.log(err);
-    });
-}
-
-export const getCategoriesCommands = ({ setCategories, setLoading }) => {
-    axios.get(
-        `${process.env.REACT_APP_API_Connect}/categoria`, {
-        headers: {
-            'Authorization': localStorage.getItem('token')
-        }
-    }).then(res => {
-        setCategories(
-            res.data.detail.map(el => ({ _id: el._id, name: el.name }))
-        );
-        setLoading(false);
-    }).catch(err => {
-        setLoading(false)
         console.log(err);
     });
 }
