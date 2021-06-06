@@ -15,58 +15,61 @@ import Category from './Categories/Category/Category';
 import EditCategory from './Categories/EditCategory/EditCategory';
 import NewCategory from './Categories/NewCategory/NewCategory';
 import NotFound from '../../components/NotFound/NotFound';
+import classes from './Admin.modules.css';
 
 const Admin = () => {
     const { path } = useRouteMatch();
 
     return (
-        <Switch>
-            <Route path={`${path}/`} exact>
-                <NewOrders />
-            </Route>
-            <Route path={`${path}/orders-history`} >
-                <OrderHistory />
-            </Route>
-            <Route path={`${path}/users/edit/:id`}>
-                <EditUser />
-            </Route>
-            <Route path={`${path}/users/new-user`}>
-                <NewUser />
-            </Route>
-            <Route path={`${path}/users/:id`}>
-                <User />
-            </Route>
-            <Route path={`${path}/users`}>
-                <Users />
-            </Route>
-            <Route path={`${path}/products/edit/:id`}>
-                <EditProduct />
-            </Route>
-            <Route path={`${path}/products/new-product`}>
-                <NewProduct />
-            </Route>
-            <Route path={`${path}/products/:id`}>
-                <Product />
-            </Route>
-            <Route path={`${path}/products`}>
-                <Products />
-            </Route>
-            <Route path={`${path}/categories/edit/:id`}>
-                <EditCategory />
-            </Route>
-            <Route path={`${path}/categories/new-category`}>
-                <NewCategory />
-            </Route>
-            <Route path={`${path}/categories/:id`}>
-                <Category />
-            </Route>
-            <Route path={`${path}/categories`}>
-                <Categories />
-            </Route>
-            <Route>
-                <NotFound />
-            </Route>
-        </Switch>
+        <div class={'AdminBg'}>
+            <Switch>
+                <Route path={`${path}/`} exact>
+                    <NewOrders />
+                </Route>
+                <Route path={`${path}/orders-history`} >
+                    <OrderHistory />
+                </Route>
+                <Route path={`${path}/users/edit/:id`}>
+                    <EditUser />
+                </Route>
+                <Route path={`${path}/users/new-user`}>
+                    <NewUser />
+                </Route>
+                <Route path={`${path}/users/:id`}>
+                    <User />
+                </Route>
+                <Route path={`${path}/users`}>
+                    <Users />
+                </Route>
+                <Route path={`${path}/products/edit/:id`}>
+                    <EditProduct />
+                </Route>
+                <Route path={`${path}/products/new-product`}>
+                    <NewProduct />
+                </Route>
+                <Route path={`${path}/products/:id`}>
+                    <Product />
+                </Route>
+                <Route path={`${path}/products`}>
+                    <Products />
+                </Route>
+                <Route path={`${path}/categories/edit/:id`}>
+                    <EditCategory />
+                </Route>
+                <Route path={`${path}/categories/new-category`}>
+                    <NewCategory />
+                </Route>
+                <Route path={`${path}/categories/:id`}>
+                    <Category />
+                </Route>
+                <Route path={`${path}/categories`}>
+                    <Categories />
+                </Route>
+                <Route>
+                    <NotFound />
+                </Route>
+            </Switch>
+        </div>
     )
 }
 

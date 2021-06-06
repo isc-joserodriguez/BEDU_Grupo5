@@ -16,3 +16,22 @@
   -moz-box-shadow: rgb(238, 172, 29);
   box-shadow: rgb(238, 172, 29);
 }
+
+.CardsContainer{
+  height: 70vh;
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 0.2rem;
+}
+
+.ButtonsContainer{
+  align-content: center !important;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 0.25rem;
+}
+
+.CardsOuterContainer{
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 0.25rem;
+}

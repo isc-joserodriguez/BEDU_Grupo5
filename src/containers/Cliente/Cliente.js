@@ -5,6 +5,7 @@ import OrderCard from '../OrderCard/OrderCard'
 import Products from './Products/Products';
 import OrderHistory from '../OrderHistory/OrderHistory';
 import NotFound from '../../components/NotFound/NotFound';
+import classes from './Cliente.module.css';
 
 import { getProcessing, updateState } from '../../services';
 
@@ -31,7 +32,8 @@ const Client = () => {
     }, [])
 
     return (
-        <>
+        <div className={classes.Clientebg}>
+        
             {orders.length !== 0 && <OrderCard changeStatusHandler={changeStatusHandler} order={orders[0]} />}
             <Switch>
                 <Route path={`${path}/`} exact>
@@ -44,7 +46,8 @@ const Client = () => {
                     <NotFound />
                 </Route>
             </Switch>
-        </>
+        
+        </div>
     )
 }
 

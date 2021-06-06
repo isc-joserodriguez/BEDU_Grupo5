@@ -8,6 +8,7 @@ import NewOrders from '../NewOrders/NewOrders';
 import NotFound from '../../components/NotFound/NotFound';
 
 import { getProcessing, updateState } from '../../services';
+import classes from './Chef.module.css';
 
 const Chef = () => {
     const { path } = useRouteMatch();
@@ -33,7 +34,7 @@ const Chef = () => {
     }, [])
 
     return (
-        <>
+        <div className={classes.background} style={{}}>
             {orders.length !== 0 && <OrderCard changeStatusHandler={changeStatusHandler} order={orders[0]} />}
             <Switch>
                 <Route path={`${path}/`} exact>
@@ -46,7 +47,7 @@ const Chef = () => {
                     <NotFound />
                 </Route>
             </Switch>
-        </>
+        </div>
     )
 };
 
