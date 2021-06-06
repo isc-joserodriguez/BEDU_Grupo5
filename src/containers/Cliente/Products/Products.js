@@ -31,7 +31,7 @@ const Products = () => {
 
   return (
     <Container className='mb-4'>
-      <div className='col d-flex flex-wrap mb-4 align-content-center justify-content-center'>
+      <div className={`${classes.ButtonsContainer} col d-flex flex-wrap mb-4 align-content-center justify-content-center`}>
         <Button className={`${classes.CategoryBtn} p-2 m-2`} variant="outline-secondary" onClick={() => getProducts({ setProducts, setLoading })} >Todos</Button>
         {
           categories.map((el, index) => (
@@ -46,19 +46,21 @@ const Products = () => {
           ))
         }
       </div>
-      <div className='overflow-auto'>
-        <Container className='overflow-auto vh-75'>
-          {loading ?
-            <Spinner /> :
-            <div className='row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 overflow-auto'>
-              {productMap}
-            </div>}
-        </Container>
-        <ProductModal
-          productID={product?._id}
-          show={show}
-          handleClose={handleClose}
-        />
+      <div className={classes.CardsOuterContainer}>
+        <div className={`${classes.CardsContainer} overflow-auto`}>
+          <Container className='overflow-auto vh-75'>
+            {loading ?
+              <Spinner /> :
+              <div className='row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 overflow-auto'>
+                {productMap}
+              </div>}
+          </Container>
+          <ProductModal
+            productID={product?._id}
+            show={show}
+            handleClose={handleClose}
+          />
+        </div>
       </div>
     </Container>
   );

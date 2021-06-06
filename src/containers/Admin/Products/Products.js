@@ -206,7 +206,7 @@ const Products = () => {
                             rows={products.map((el, index) => (
                                 <tr key={index}>
                                     <td>{el._id.substring(el._id.length - 7)}</td>
-                                    <td><Image style={{ maxWidth: '50%' }} src={el.image} thumbnail /></td>
+                                    <td><Image className={classes.ProductImage} style={{ }} src={el.image} thumbnail /></td>
                                     <td>{el.name}</td>
                                     <td>{el.description}</td>
                                     <td>{el.cost}</td>

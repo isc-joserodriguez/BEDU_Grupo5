@@ -9,11 +9,12 @@
 }
 
 .LoginBackground {
-    width: 100% !important;
-   height: 750px;
+   width: 100% !important;
+   min-height: 100%;
    padding-top: 7% !important;
    margin: 0;
    border:0;
    position: fixed;
    top: 10px;
+   background-size:cover;
  }

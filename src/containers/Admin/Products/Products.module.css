@@ -49,3 +49,8 @@
     font-size: 20px;
     display: inline;
 }
+
+.ProductImage{
+    max-height: 130px;
+    max-width: 200px;
+}
