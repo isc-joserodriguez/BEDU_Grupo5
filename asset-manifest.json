@@ -1,28 +1,32 @@
 {
   "files": {
-    "main.css": "/BEDU_Grupo5/static/css/main.94ea999f.chunk.css",
-    "main.js": "/BEDU_Grupo5/static/js/main.3499dcd4.chunk.js",
-    "main.js.map": "/BEDU_Grupo5/static/js/main.3499dcd4.chunk.js.map",
-    "runtime-main.js": "/BEDU_Grupo5/static/js/runtime-main.32a670a6.js",
-    "runtime-main.js.map": "/BEDU_Grupo5/static/js/runtime-main.32a670a6.js.map",
+    "main.css": "/BEDU_Grupo5/static/css/main.2241ed25.chunk.css",
+    "main.js": "/BEDU_Grupo5/static/js/main.45f21be7.chunk.js",
+    "main.js.map": "/BEDU_Grupo5/static/js/main.45f21be7.chunk.js.map",
+    "runtime-main.js": "/BEDU_Grupo5/static/js/runtime-main.96a2081d.js",
+    "runtime-main.js.map": "/BEDU_Grupo5/static/js/runtime-main.96a2081d.js.map",
     "static/css/2.01ca705e.chunk.css": "/BEDU_Grupo5/static/css/2.01ca705e.chunk.css",
-    "static/js/2.df4e186e.chunk.js": "/BEDU_Grupo5/static/js/2.df4e186e.chunk.js",
-    "static/js/2.df4e186e.chunk.js.map": "/BEDU_Grupo5/static/js/2.df4e186e.chunk.js.map",
-    "static/js/3.130f40b6.chunk.js": "/BEDU_Grupo5/static/js/3.130f40b6.chunk.js",
-    "static/js/3.130f40b6.chunk.js.map": "/BEDU_Grupo5/static/js/3.130f40b6.chunk.js.map",
+    "static/js/2.2ab3ace2.chunk.js": "/BEDU_Grupo5/static/js/2.2ab3ace2.chunk.js",
+    "static/js/2.2ab3ace2.chunk.js.map": "/BEDU_Grupo5/static/js/2.2ab3ace2.chunk.js.map",
+    "static/js/3.a01e2991.chunk.js": "/BEDU_Grupo5/static/js/3.a01e2991.chunk.js",
+    "static/js/3.a01e2991.chunk.js.map": "/BEDU_Grupo5/static/js/3.a01e2991.chunk.js.map",
     "index.html": "/BEDU_Grupo5/index.html",
     "static/css/2.01ca705e.chunk.css.map": "/BEDU_Grupo5/static/css/2.01ca705e.chunk.css.map",
-    "static/css/main.94ea999f.chunk.css.map": "/BEDU_Grupo5/static/css/main.94ea999f.chunk.css.map",
-    "static/js/2.df4e186e.chunk.js.LICENSE.txt": "/BEDU_Grupo5/static/js/2.df4e186e.chunk.js.LICENSE.txt",
+    "static/css/main.2241ed25.chunk.css.map": "/BEDU_Grupo5/static/css/main.2241ed25.chunk.css.map",
+    "static/js/2.2ab3ace2.chunk.js.LICENSE.txt": "/BEDU_Grupo5/static/js/2.2ab3ace2.chunk.js.LICENSE.txt",
     "static/media/Error404.260cc172.png": "/BEDU_Grupo5/static/media/Error404.260cc172.png",
     "static/media/backLogin4.6922ad1d.jpg": "/BEDU_Grupo5/static/media/backLogin4.6922ad1d.jpg",
+    "static/media/Admin.modules.css": "/BEDU_Grupo5/static/media/bg-admin.3f014cde.jpg",
+    "static/media/Chef.module.css": "/BEDU_Grupo5/static/media/bg-admin4.aceef1b6.jpg",
+    "static/media/Cliente.module.css": "/BEDU_Grupo5/static/media/bg-user.1f421dfd.jpg",
+    "static/media/Mesero.module.css": "/BEDU_Grupo5/static/media/bg-waiter.b528b3c5.jpg",
     "static/media/restaurant-logo.969e6013.jpg": "/BEDU_Grupo5/static/media/restaurant-logo.969e6013.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.32a670a6.js",
+    "static/js/runtime-main.96a2081d.js",
     "static/css/2.01ca705e.chunk.css",
-    "static/js/2.df4e186e.chunk.js",
-    "static/css/main.94ea999f.chunk.css",
-    "static/js/main.3499dcd4.chunk.js"
+    "static/js/2.2ab3ace2.chunk.js",
+    "static/css/main.2241ed25.chunk.css",
+    "static/js/main.45f21be7.chunk.js"
   ]
 }
