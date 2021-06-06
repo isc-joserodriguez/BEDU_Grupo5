@@ -46,6 +46,8 @@ export const getAction = (type, status) => {
     return actions[type];
 }
 
+
+
 export const getStatus = (status) => {
     let listStatus = {
         0: 'Cancelado',
@@ -56,34 +58,3 @@ export const getStatus = (status) => {
     }
     return listStatus[status]
 }
-/* export const getStatus = (status) => {
-    switch (status) {
-        case 0: return 'Cancelado';
-        case 1: return 'Pendiente';
-        case 2: return 'Preparando';
-        case 3: return 'Preparado';
-        default: return 'Entregado';
-    }
-} */
-
-/* export const getAction = (type, status) => {
-    switch (type) {
-        case 'admin':
-            if (status === 1) {
-                return 'Cancelar';
-            }
-            return 'NA'
-        case 'chef':
-            switch (status) {
-                case 1: return 'Preparar';
-                case 2: return 'Terminar';
-                default: return 'NA';
-            }
-        case 'mesero':
-            if (status === 3) {
-                return 'Entregar';
-            }
-        default:
-            return 'NA';
-    }
-} */
