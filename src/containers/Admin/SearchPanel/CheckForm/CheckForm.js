@@ -37,40 +37,6 @@ const CheckForm = ({ checkForm, setCheckForm }) => {
             touched={formElement.config.touched}
             changed={(event) => inputChangedHandler(event, formElement.id)} />
     ));
-    {/* <div>
-            <ul>
-                <li
-                    className={classes.orangeLink}
-                    onClick={props.showHide}
-                    size='sm'
-                >
-                    Cat 1
-            </li>
-                <li
-                    className={classes.orangeLink}
-                    onClick={props.showHide}
-                    size='sm'
-                >
-                    Cat 2
-            </li>
-                <li
-                    className={classes.orangeLink}
-                    onClick={props.showHide}
-                    size='sm'
-                >
-                    Cat 3
-            </li>
-                <li
-                    className={`${classes.orangeLink} ${classes.last}`}
-                    onClick={props.showHide}
-                    size='sm'
-                >
-                    Ver todas
-            </li>
-            </ul>
-            <p className={classes.orangeLink}></p>
-        </div>
-     */}
     return (
         < form className={classes.CatCommands}>
             {form}
