@@ -92,7 +92,7 @@ export const getCategoriesSelector = ({ editForm, setEditForm, setLoading, updat
 
 export const getProductsByCategory = ({ setProducts, setLoading, data }) => {
     axios.post(
-        `${process.env.REACT_APP_API_Connect}/productos/filtrar`, { idCategoria: data }, {
+        `${process.env.REACT_APP_API_Connect}/productos/filtrar`, { categoria: data }, {
         headers: {
             'Authorization': localStorage.getItem('token')
         },

@@ -1,3 +1,17 @@
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #8abcce;
+    border-radius: 20px;
+    border: 6px solid transparent;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
 .orderBtn{
     background-color: #00E1DF !important; 
     border-color: #00E1DF !important;
