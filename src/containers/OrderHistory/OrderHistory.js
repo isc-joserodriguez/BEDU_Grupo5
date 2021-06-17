@@ -93,6 +93,14 @@ const OrderHistory = () => {
                 <SearchPanel filterOrders={filterOrdersHandler} clearFilterOrdersHandler={clearFilterOrdersHandler} />
                 <br />
                 <Card className={classes.Card}>
+                    <div>
+                        <span>
+                            Pedidos: {orders.length}
+                        </span>
+                        <span>
+                            Total: ${orders.reduce((acc, nxt) => acc + nxt.cost, 0)}
+                        </span>
+                    </div>
                     {loading ?
                         <Spinner /> :
                         <div className={classes.Table}>
