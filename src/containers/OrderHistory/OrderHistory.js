@@ -5,13 +5,14 @@ import SearchPanel from './SearchPanel/SearchPanel';
 import OrderModal from '../OrderModal/OrderModal';
 import TableInfo from '../../components/UI/TableInfo/TableInfo';
 import Spinner from '../../components/UI/Spinner/Spinner';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 
 import {
     filterOrders,
     getOwners,
     deleteOrder,
     updateState,
+    generatePDF
 } from '../../services';
 
 import classes from './OrderHistory.module.css';
@@ -119,6 +120,9 @@ const OrderHistory = () => {
                                 )}
                             />
                         </div>}
+                    <Button type='submit' variant='primary' size='lg' block onClick={() => generatePDF(orders)}>
+                        Generar reporte
+                    </Button>
                 </Card>
             </div>
             <OrderModal

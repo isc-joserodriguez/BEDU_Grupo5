@@ -42,3 +42,7 @@ export {
     getProductsByCategory,
     filterProducts
 } from './products';
+
+export {
+    generatePDF
+} from './report';
