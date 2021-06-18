@@ -114,7 +114,7 @@ const EditCategory = props => {
         <Container>
             <Card className={classes.EditCategory}>
                 <Card.Body>
-                    <h4 className='card-title text-center mb-4 mt-1'>Editar Categoria</h4>
+                    <h4 className='card-title text-center mb-4 mt-1'>Editar Categoría</h4>
                     <hr />
                     <Form noValidate onSubmit={submitHandler}>
                         {form}
