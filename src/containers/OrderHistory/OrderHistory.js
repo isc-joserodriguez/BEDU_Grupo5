@@ -96,10 +96,10 @@ const OrderHistory = () => {
                 <Card className={classes.Card}>
                     <div>
                         <span>
-                            Pedidos: {orders.length}
+                           <p className={classes.orangeTxt}>Pedidos:</p> <p className={classes.orangeUnderlined}>{orders.length}</p>
                         </span>
                         <span>
-                            Total: ${orders.reduce((acc, nxt) => acc + nxt.cost, 0)}
+                        <p className={classes.orangeTxt}>Total:</p> <p className={classes.orangeUnderlined}>${orders.reduce((acc, nxt) => acc + nxt.cost, 0)}</p>
                         </span>
                     </div>
                     {loading ?
@@ -120,7 +120,7 @@ const OrderHistory = () => {
                                 )}
                             />
                         </div>}
-                    <Button type='submit' variant='primary' size='lg' block onClick={() => generatePDF(orders)}>
+                    <Button className={classes.orangeBtn} type='submit' variant='primary' size='lg' block onClick={() => generatePDF(orders)}>
                         Generar reporte
                     </Button>
                 </Card>
