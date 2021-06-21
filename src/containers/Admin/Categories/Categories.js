@@ -8,6 +8,7 @@ import Pagination from '../../../components/UI/Pagination/Pagination';
 import { ImEye as DetailIcon } from 'react-icons/im';
 import { Button } from 'react-bootstrap';
 import { Card } from 'react-bootstrap';
+import Toggle from 'react-toggle';
 
 import { getCategories, filterCategories } from '../../../services';
 
@@ -144,7 +145,17 @@ const Categories = () => {
                                     <td>{el._id.substring(el._id.length - 7)}</td>
                                     <td>{el.name}</td>
                                     <td>{el.description}</td>
-                                    <td>{el.status ? 'Activo' : 'Inactivo'}</td>
+                                    <td>
+                                        <Toggle
+                                            id='cheese-status'
+                                            checked={el.status}
+                                            onChange={() => {
+                                                const newCategories = [...categories];
+                                                newCategories[10 * (page - 1) + index].status = !categories[10 * (page - 1) + index].status;
+                                                setCategories(newCategories);
+                                                console.log(categories[10 * (page - 1) + index].name)
+                                            }} />
+                                    </td>
                                     <td><Link to={`/admin/categories/${el._id}`}><DetailIcon className={`${classes.blue}`} /></Link></td>
                                 </tr>
                             ))

@@ -9,6 +9,7 @@ import { ImEye as DetailIcon } from 'react-icons/im';
 import { Card, Image } from 'react-bootstrap';
 import { Button } from 'react-bootstrap'
 import { getProducts, filterProducts } from '../../../services';
+import Toggle from 'react-toggle';
 
 import classes from './Products.module.css';
 
@@ -208,12 +209,22 @@ const Products = () => {
                             rows={[...products].splice(10 * (page - 1), 10).map((el, index) => (
                                 <tr key={index}>
                                     <td>{el._id.substring(el._id.length - 7)}</td>
-                                    <td><Image className={classes.ProductImage} style={{ }} src={el.image} thumbnail /></td>
+                                    <td><Image className={classes.ProductImage} style={{}} src={el.image} thumbnail /></td>
                                     <td>{el.name}</td>
                                     <td>{el.description}</td>
                                     <td>{el.cost}</td>
                                     <td>{el.idCategoria.name}</td>
-                                    <td>{el.status ? 'Activo' : 'Inactivo'}</td>
+                                    <td>
+                                        <Toggle
+                                            id='cheese-status'
+                                            checked={el.status}
+                                            onChange={() => {
+                                                const newProducts = [...products];
+                                                newProducts[10 * (page - 1) + index].status = !products[10 * (page - 1) + index].status;
+                                                setProducts(newProducts);
+                                                console.log(products[10 * (page - 1) + index].name)
+                                            }} />
+                                    </td>
                                     <td><Link to={`/admin/products/${el._id}`}><DetailIcon className={`${classes.blue}`} /></Link></td>
                                 </tr>
 

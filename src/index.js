@@ -10,6 +10,7 @@ import reportWebVitals from './reportWebVitals';
 //Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-datepicker/dist/react-datepicker.css';
+import 'react-toggle/style.css';
 
 //Pendiente agregar .env const NODE_ENV = 'development';
 const NODE_ENV = false;
