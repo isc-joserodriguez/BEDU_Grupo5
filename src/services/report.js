@@ -5,7 +5,7 @@ import {getStatus} from '../shared/utility';
 export const generatePDF = orders => {
     const doc = new jsPDF();
 
-    doc.text("Closed tickets within the last one month.", 14, 15);
+    doc.text("Reporte de Ordenes.", 14, 15);
 
     const tableColumn = [
         'ID',

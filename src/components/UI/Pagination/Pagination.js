@@ -1,6 +1,5 @@
 import React from 'react';
 import { Pagination } from 'react-bootstrap';
-import PropTypes from 'prop-types';
 
 const PaginationComponent = (props) => {
     let {
@@ -22,13 +21,13 @@ const PaginationComponent = (props) => {
 
     return (
         <Pagination size="md">
-            <Pagination.First />
-            <Pagination.Prev />
+            <Pagination.First disabled={active === 1} onClick={() => props.setActive(1)} />
+            <Pagination.Prev disabled={active === 1} onClick={() => props.setActive(active - 1)} />
 
             {items}
 
-            <Pagination.Next />
-            <Pagination.Last />
+            <Pagination.Next disabled={active === pages} onClick={() => props.setActive(active + 1)} />
+            <Pagination.Last disabled={active === pages} onClick={() => props.setActive(pages)} />
         </Pagination>
     )
 }
