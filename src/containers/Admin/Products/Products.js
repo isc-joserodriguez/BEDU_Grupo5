@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import SearchPanel from '../SearchPanel/SearchPanel';
 import TableInfo from '../../../components/UI/TableInfo/TableInfo';
 import Spinner from '../../../components/UI/Spinner/Spinner';
+import Pagination from '../../../components/UI/Pagination/Pagination';
 import { ImEye as DetailIcon } from 'react-icons/im';
 import { Card, Image } from 'react-bootstrap';
 import { Button } from 'react-bootstrap'
@@ -83,6 +84,7 @@ const Products = () => {
             valid: true
         }
     });
+    const [page, setPage] = useState(1);
     const filterHandler = () => {
         const filter = {};
         const forms = [
@@ -203,7 +205,7 @@ const Products = () => {
                     <div className={classes.Table}>
                         <TableInfo
                             headers={['ID', 'Foto', 'Nombre', 'Descripción', 'Costo', 'Categoria', 'Estado', 'Ver']}
-                            rows={products.map((el, index) => (
+                            rows={[...products].splice(10 * (page - 1), 10).map((el, index) => (
                                 <tr key={index}>
                                     <td>{el._id.substring(el._id.length - 7)}</td>
                                     <td><Image className={classes.ProductImage} style={{ }} src={el.image} thumbnail /></td>
@@ -220,6 +222,13 @@ const Products = () => {
                         />
                     </div>
                 }
+                <div className="d-flex justify-content-center mt-3">
+                    <Pagination
+                        elements={products}
+                        active={page}
+                        setActive={setPage}
+                    />
+                </div>
 
             </Card>
         </div>
