@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import SearchPanel from '../SearchPanel/SearchPanel';
 import TableInfo from '../../../components/UI/TableInfo/TableInfo';
 import Spinner from '../../../components/UI/Spinner/Spinner';
+import Pagination from '../../../components/UI/Pagination/Pagination';
 import { ImEye as DetailIcon } from 'react-icons/im';
 import { Button } from 'react-bootstrap';
 import { Card } from 'react-bootstrap';
@@ -53,6 +54,7 @@ const Categories = () => {
             valid: true
         }
     });
+    const [page, setPage] = useState(1);
 
     const filterHandler = () => {
         const filter = {};
@@ -137,7 +139,7 @@ const Categories = () => {
                     <div className={classes.Table}>
                         <TableInfo
                             headers={['ID', 'Nombre', 'Descripción', 'Estado', 'Ver']}
-                            rows={categories.map((el, index) => (
+                            rows={[...categories].splice(10 * (page - 1), 10).map((el, index) => (
                                 <tr key={index}>
                                     <td>{el._id.substring(el._id.length - 7)}</td>
                                     <td>{el.name}</td>
@@ -150,6 +152,13 @@ const Categories = () => {
                         />
                     </div>
                 }
+                <div className="d-flex justify-content-center mt-3">
+                    <Pagination
+                        elements={categories}
+                        active={page}
+                        setActive={setPage}
+                    />
+                </div>
 
             </Card>
         </div>
