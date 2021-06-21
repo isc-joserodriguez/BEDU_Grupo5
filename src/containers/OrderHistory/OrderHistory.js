@@ -4,6 +4,7 @@ import Order from './Order/Order.js';
 import SearchPanel from './SearchPanel/SearchPanel';
 import OrderModal from '../OrderModal/OrderModal';
 import TableInfo from '../../components/UI/TableInfo/TableInfo';
+import Pagination from '../../components/UI/Pagination/Pagination';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import { Card, Button } from 'react-bootstrap';
 
@@ -21,6 +22,7 @@ const OrderHistory = () => {
     const [show, setShow] = useState(false);
     const [orders, setOrders] = useState([]);
     const [order, setOrder] = useState({});
+    const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(true);
 
     const headers = ['Listo', 'ID', 'Fecha', 'Cliente', 'Cant.productos', 'Costo', 'Detalles'];
@@ -96,10 +98,10 @@ const OrderHistory = () => {
                 <Card className={classes.Card}>
                     <div>
                         <span>
-                           <p className={classes.orangeTxt}>Pedidos:</p> <p className={classes.orangeUnderlined}>{orders.length}</p>
+                            <p className={classes.orangeTxt}>Pedidos:</p> <p className={classes.orangeUnderlined}>{orders.length}</p>
                         </span>
                         <span>
-                        <p className={classes.orangeTxt}>Total:</p> <p className={classes.orangeUnderlined}>${orders.reduce((acc, nxt) => acc + nxt.cost, 0)}</p>
+                            <p className={classes.orangeTxt}>Total:</p> <p className={classes.orangeUnderlined}>${orders.reduce((acc, nxt) => acc + nxt.cost, 0)}</p>
                         </span>
                     </div>
                     {loading ?
@@ -107,7 +109,7 @@ const OrderHistory = () => {
                         <div className={classes.Table}>
                             <TableInfo
                                 headers={headers}
-                                rows={orders.map(order => (
+                                rows={[...orders].splice(10 * (page - 1), 10).map(order => (
                                     < Order
                                         key={order._id}
                                         order={order}
@@ -120,6 +122,13 @@ const OrderHistory = () => {
                                 )}
                             />
                         </div>}
+                    <div className="d-flex justify-content-center mt-3">
+                        <Pagination
+                            elements={orders}
+                            active={page}
+                            setActive={setPage}
+                        />
+                    </div>
                     <Button className={classes.orangeBtn} type='submit' variant='primary' size='lg' block onClick={() => generatePDF(orders)}>
                         Generar reporte
                     </Button>
