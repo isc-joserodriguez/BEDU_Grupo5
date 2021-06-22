@@ -121,3 +121,16 @@ export const getCategoriesCommands = ({ setCategories }) => {
         console.log(err);
     });
 }
+
+export const toggleStatusCategory = ({ id, status }) => {
+    axios.put(
+        `${process.env.REACT_APP_API_Connect}/categoria/cambiarEstatus/${id}`, { status }, {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        }
+    }).then(res => {
+
+    }).catch(err => {
+        console.log(err);
+    });
+}

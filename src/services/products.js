@@ -158,7 +158,6 @@ export const getProductByIdForm = ({ id, editForm, setEditForm, updateObject, se
 }
 
 export const toggleStatusProduct = ({ id, status }) => {
-    console.log(status);
     axios.put(
         `${process.env.REACT_APP_API_Connect}/productos/cambiarEstatus/${id}`, { status }, {
         headers: {

@@ -10,7 +10,7 @@ import { Button } from 'react-bootstrap';
 import { Card } from 'react-bootstrap';
 import Toggle from 'react-toggle';
 
-import { getCategories, filterCategories } from '../../../services';
+import { getCategories, filterCategories, toggleStatusCategory } from '../../../services';
 
 import classes from './Categories.module.css';
 
@@ -155,7 +155,7 @@ const Categories = () => {
                                                 const newCategories = [...categories];
                                                 newCategories[10 * (page - 1) + index].status = !categories[10 * (page - 1) + index].status;
                                                 setCategories(newCategories);
-                                                console.log(categories[10 * (page - 1) + index].name)
+                                                toggleStatusCategory({ id: el._id, status: el.status })
                                             }} />
                                     </td>
                                     <td><Link to={`/admin/categories/${el._id}`}><DetailIcon className={`${classes.blue}`} /></Link></td>

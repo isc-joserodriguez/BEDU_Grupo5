@@ -224,7 +224,6 @@ const Products = () => {
                                                 const newProducts = [...products];
                                                 newProducts[10 * (page - 1) + index].status = !products[10 * (page - 1) + index].status;
                                                 setProducts(newProducts);
-                                                console.log(el.status);
                                                 toggleStatusProduct({ id: el._id, status: el.status })
                                             }} />
                                     </td>

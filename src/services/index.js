@@ -29,7 +29,8 @@ export {
     getCategoriesCommands,
     getCategoryByIdForm,
     editCategory,
-    filterCategories
+    filterCategories,
+    toggleStatusCategory
 } from './categories';
 
 export {
