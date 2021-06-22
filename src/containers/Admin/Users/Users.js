@@ -10,7 +10,7 @@ import { Button } from 'react-bootstrap';
 import { Card } from 'react-bootstrap'
 import Toggle from 'react-toggle';
 
-import { getUsers, filterUsers } from '../../../services';
+import { getUsers, filterUsers, toggleStatusUser } from '../../../services';
 
 import classes from './Users.module.css';
 
@@ -234,11 +234,12 @@ const Users = () => {
                                         <Toggle
                                             id='cheese-status'
                                             checked={el.status}
+                                            disabled={el._id===localStorage.getItem('id')}
                                             onChange={() => {
                                                 const newUsers = [...users];
                                                 newUsers[10 * (page - 1) + index].status = !users[10 * (page - 1) + index].status;
                                                 setUsers(newUsers);
-                                                console.log(users[10 * (page - 1) + index].firstName)
+                                                toggleStatusUser({ id: el._id, status: el.status })
                                             }} />
                                     </td>
                                     <td><Link to={`/admin/users/${el._id}`}><DetailIcon className={`${classes.blue}`} /></Link></td>

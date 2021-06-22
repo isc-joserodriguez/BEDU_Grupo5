@@ -19,7 +19,8 @@ export {
     getUserById,
     getUserByIdForm,
     editUser,
-    filterUsers
+    filterUsers,
+    toggleStatusUser
 } from './users';
 
 export {
