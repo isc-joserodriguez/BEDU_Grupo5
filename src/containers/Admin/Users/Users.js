@@ -109,6 +109,7 @@ const Users = () => {
             }
         });
         setLoading(true)
+        setPage(1);
         filterUsers({ setUsers, setLoading, filter });
     }
 
@@ -187,6 +188,7 @@ const Users = () => {
             }
         });
         setLoading(true)
+        setPage(1);
         getUsers({ setUsers, setLoading });
     }
 

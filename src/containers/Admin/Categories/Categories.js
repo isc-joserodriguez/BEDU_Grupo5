@@ -70,6 +70,7 @@ const Categories = () => {
             }
         });
         setLoading(true)
+        setPage(1);
         filterCategories({ setCategories, setLoading, filter });
     }
 
@@ -111,6 +112,7 @@ const Categories = () => {
             }
         });
         setLoading(true)
+        setPage(1);
         getCategories({ setCategories, setLoading });
     }
 

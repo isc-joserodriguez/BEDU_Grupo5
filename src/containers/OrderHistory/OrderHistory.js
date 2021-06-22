@@ -39,6 +39,7 @@ const OrderHistory = () => {
 
     const filterOrdersHandler = (filter) => {
         setLoading(true);
+        setPage(1);
         filterOrders({
             setOrders,
             setLoading,
@@ -48,6 +49,7 @@ const OrderHistory = () => {
 
     const clearFilterOrdersHandler = () => {
         setLoading(true);
+        setPage(1);
         getOwners({
             setOrders,
             setLoading

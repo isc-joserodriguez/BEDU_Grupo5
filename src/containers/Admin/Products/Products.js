@@ -101,6 +101,7 @@ const Products = () => {
             }
         });
         setLoading(true)
+        setPage(1);
         filterProducts({ setProducts, setLoading, filter });
     }
 
@@ -173,6 +174,7 @@ const Products = () => {
             }
         });
         setLoading(true)
+        setPage(1);
         getProducts({ setProducts, setLoading });
     }
 
