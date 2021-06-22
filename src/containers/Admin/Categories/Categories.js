@@ -149,7 +149,7 @@ const Categories = () => {
                                     <td>{el.description}</td>
                                     <td>
                                         <Toggle
-                                            id='cheese-status'
+                                            
                                             checked={el.status}
                                             onChange={() => {
                                                 const newCategories = [...categories];

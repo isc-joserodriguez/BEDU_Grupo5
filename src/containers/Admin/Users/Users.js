@@ -232,7 +232,7 @@ const Users = () => {
                                     <td>{el.email}</td>
                                     <td>
                                         <Toggle
-                                            id='cheese-status'
+                                            
                                             checked={el.status}
                                             disabled={el._id===localStorage.getItem('id')}
                                             onChange={() => {
