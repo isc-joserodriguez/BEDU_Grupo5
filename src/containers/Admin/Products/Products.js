@@ -8,7 +8,7 @@ import Pagination from '../../../components/UI/Pagination/Pagination';
 import { ImEye as DetailIcon } from 'react-icons/im';
 import { Card, Image } from 'react-bootstrap';
 import { Button } from 'react-bootstrap'
-import { getProducts, filterProducts } from '../../../services';
+import { getProducts, filterProducts, toggleStatusProduct } from '../../../services';
 import Toggle from 'react-toggle';
 
 import classes from './Products.module.css';
@@ -224,7 +224,8 @@ const Products = () => {
                                                 const newProducts = [...products];
                                                 newProducts[10 * (page - 1) + index].status = !products[10 * (page - 1) + index].status;
                                                 setProducts(newProducts);
-                                                console.log(products[10 * (page - 1) + index].name)
+                                                console.log(el.status);
+                                                toggleStatusProduct({ id: el._id, status: el.status })
                                             }} />
                                     </td>
                                     <td><Link to={`/admin/products/${el._id}`}><DetailIcon className={`${classes.blue}`} /></Link></td>

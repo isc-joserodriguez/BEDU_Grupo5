@@ -40,7 +40,8 @@ export {
     editProduct,
     getProductByIdForm,
     getProductsByCategory,
-    filterProducts
+    filterProducts,
+    toggleStatusProduct
 } from './products';
 
 export {
