@@ -8,14 +8,9 @@
 .Products .Card {
     width: 100%;
     max-width: 95%;
-    height: 70vh;
     padding: 20px;
 }
 
-.Products .Card .Table {
-    max-height: 60vh;
-    overflow-y: auto;
-}
 
 .Products .blue {
     color: #00E1DF;

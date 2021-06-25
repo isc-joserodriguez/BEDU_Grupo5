@@ -8,14 +8,9 @@
 .Users .Card {
   width: 100%;
   max-width: 95%;
-  height: 70vh;
   padding: 20px;
 }
 
-.Users .Card .Table {
-  max-height: 60vh;
-  overflow-y: auto;
-}
 
 .Users .blue {
   color: #00E1DF;

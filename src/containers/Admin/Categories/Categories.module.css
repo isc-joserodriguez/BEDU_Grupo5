@@ -8,13 +8,7 @@
 .Categories .Card {
     width: 100%;
     max-width: 95%;
-    height: 70vh;
     padding: 20px;
-}
-
-.Categories .Card .Table {
-    max-height: 60vh;
-    overflow-y: auto;
 }
 
 .Categories .blue {
