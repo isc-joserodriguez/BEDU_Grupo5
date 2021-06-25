@@ -215,10 +215,10 @@ const Products = () => {
                                     <td>{el.name}</td>
                                     <td>{el.description}</td>
                                     <td>{el.cost}</td>
-                                    <td>{el.idCategoria.name}</td>
+                                    <td className={!!!el.idCategoria.status ? 'text-muted' : ''}>{el.idCategoria.name}</td>
                                     <td>
                                         <Toggle
-                                            
+
                                             checked={el.status}
                                             onChange={() => {
                                                 const newProducts = [...products];
