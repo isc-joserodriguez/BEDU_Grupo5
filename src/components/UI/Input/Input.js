@@ -76,6 +76,7 @@ const Input = (props) => {
         case ('datepicker'):
             inputElement = (
                 <DatePicker
+                    dateFormat='dd MMMM  yyyy'
                     className={`${inputClasses.join(' ')} mb-3 form-control`}
                     placeholderText={props.elementConfig.placeholder}
                     locale='es'
