@@ -235,13 +235,16 @@ const Products = () => {
                         />
                     </div>
                 }
-                <div className="d-flex justify-content-center mt-3">
+                {!loading &&
+                    <div className="d-flex justify-content-center mt-3">
                     <Pagination
                         elements={products}
                         active={page}
                         setActive={setPage}
                     />
                 </div>
+                }
+                
 
             </Card>
         </div>

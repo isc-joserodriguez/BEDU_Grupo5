@@ -30,13 +30,13 @@ const PaginationComponent = (props) => {
     return (
         <Pagination size="md">
             <Pagination.First disabled={active === 1} onClick={() => { window.scrollTo(0, 0); props.setActive(1); }} />
-            ;            <Pagination.Prev disabled={active === 1} onClick={() => { window.scrollTo(0, 0); props.setActive(active - 1); }} />
+            <Pagination.Prev disabled={active === 1} onClick={() => { window.scrollTo(0, 0); props.setActive(active - 1); }} />
 
             {items}
 
             <Pagination.Next disabled={active === pages} onClick={() => { window.scrollTo(0, 0); props.setActive(active + 1); }} />
             <Pagination.Last disabled={active === pages} onClick={() => { window.scrollTo(0, 0); props.setActive(pages); }} />
-            ;        </Pagination>
+        </Pagination>
     )
 }
 

@@ -149,7 +149,7 @@ const Categories = () => {
                                     <td>{el.description}</td>
                                     <td>
                                         <Toggle
-                                            
+
                                             checked={el.status}
                                             onChange={() => {
                                                 const newCategories = [...categories];
@@ -165,13 +165,15 @@ const Categories = () => {
                         />
                     </div>
                 }
-                <div className="d-flex justify-content-center mt-3">
-                    <Pagination
-                        elements={categories}
-                        active={page}
-                        setActive={setPage}
-                    />
-                </div>
+                {!loading &&
+                    <div className="d-flex justify-content-center mt-3">
+                        <Pagination
+                            elements={categories}
+                            active={page}
+                            setActive={setPage}
+                        />
+                    </div>
+                }
 
             </Card>
         </div>

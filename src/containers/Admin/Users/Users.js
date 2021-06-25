@@ -232,9 +232,9 @@ const Users = () => {
                                     <td>{el.email}</td>
                                     <td>
                                         <Toggle
-                                            
+
                                             checked={el.status}
-                                            disabled={el._id===localStorage.getItem('id')}
+                                            disabled={el._id === localStorage.getItem('id')}
                                             onChange={() => {
                                                 const newUsers = [...users];
                                                 newUsers[10 * (page - 1) + index].status = !users[10 * (page - 1) + index].status;
@@ -249,13 +249,15 @@ const Users = () => {
                         />
                     </div>
                 }
-                <div className="d-flex justify-content-center mt-3">
-                    <Pagination
-                        elements={users}
-                        active={page}
-                        setActive={setPage}
-                    />
-                </div>
+                {!loading &&
+                    <div className="d-flex justify-content-center mt-3">
+                        <Pagination
+                            elements={users}
+                            active={page}
+                            setActive={setPage}
+                        />
+                    </div>
+                }
 
             </Card>
         </div>
