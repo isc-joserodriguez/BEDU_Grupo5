@@ -19,7 +19,8 @@ export {
     getUserById,
     getUserByIdForm,
     editUser,
-    filterUsers
+    filterUsers,
+    toggleStatusUser
 } from './users';
 
 export {
@@ -29,7 +30,8 @@ export {
     getCategoriesCommands,
     getCategoryByIdForm,
     editCategory,
-    filterCategories
+    filterCategories,
+    toggleStatusCategory
 } from './categories';
 
 export {
@@ -40,7 +42,8 @@ export {
     editProduct,
     getProductByIdForm,
     getProductsByCategory,
-    filterProducts
+    filterProducts,
+    toggleStatusProduct
 } from './products';
 
 export {

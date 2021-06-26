@@ -15,13 +15,14 @@ import Category from './Categories/Category/Category';
 import EditCategory from './Categories/EditCategory/EditCategory';
 import NewCategory from './Categories/NewCategory/NewCategory';
 import NotFound from '../../components/NotFound/NotFound';
-import classes from './Admin.modules.css';
+
+import classes from './Admin.module.css';
 
 const Admin = () => {
     const { path } = useRouteMatch();
 
     return (
-        <div class={'AdminBg'}>
+        <div className={classes.AdminBg}>
             <Switch>
                 <Route path={`${path}/`} exact>
                     <NewOrders />

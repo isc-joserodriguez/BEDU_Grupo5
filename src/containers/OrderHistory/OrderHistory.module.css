@@ -15,10 +15,6 @@
   margin: 0 auto;
 }
 
-.OrderHistory .Card .Table {
-  max-height: 60vh;
-  overflow-y: auto;
-}
 
 .orangeBtn {
   color: white !important;

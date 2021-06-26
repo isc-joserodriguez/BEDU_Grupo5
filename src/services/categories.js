@@ -52,7 +52,7 @@ export const createCategory = ({ data, setLoading, setErrorMessage, history }) =
         }
     }).then(res => {
         setLoading(false);
-        history.push(`/admin/categories`);
+        history.push(`/${localStorage.getItem('type')}/categories/${res.data.detail._id}`)
     }).catch(err => {
         setErrorMessage(true)
         setLoading(false);
@@ -94,7 +94,7 @@ export const editCategory = ({ id, data, setLoading, setErrorMessage, history })
         }
     }).then(res => {
         setLoading(false);
-        history.push(`/${localStorage.getItem('type')}/categories`)
+        history.push(`/${localStorage.getItem('type')}/categories/${res.data.detail._id}`)
     }).catch(err => {
         console.log(err);
         setLoading(false);
@@ -117,6 +117,19 @@ export const getCategoriesCommands = ({ setCategories }) => {
             _id: id,
             name: datas[id]
         })))
+    }).catch(err => {
+        console.log(err);
+    });
+}
+
+export const toggleStatusCategory = ({ id, status }) => {
+    axios.put(
+        `${process.env.REACT_APP_API_Connect}/categoria/cambiarEstatus/${id}`, { status }, {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        }
+    }).then(res => {
+
     }).catch(err => {
         console.log(err);
     });

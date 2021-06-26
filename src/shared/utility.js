@@ -58,3 +58,5 @@ export const getStatus = (status) => {
     }
     return listStatus[status]
 }
+
+export const timeInterval = 2500;

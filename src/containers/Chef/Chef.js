@@ -7,6 +7,8 @@ import OrderHistory from '../OrderHistory/OrderHistory';
 import NewOrders from '../NewOrders/NewOrders';
 import NotFound from '../../components/NotFound/NotFound';
 
+import { timeInterval } from '../../shared/utility';
+
 import { getProcessing, updateState } from '../../services';
 import classes from './Chef.module.css';
 
@@ -29,7 +31,7 @@ const Chef = () => {
         getProcessing({ setOrders });
         const interval = setInterval(() => {
             getProcessing({ setOrders });
-        }, 5000);
+        }, timeInterval);
         return () => clearInterval(interval);
     }, [])
 

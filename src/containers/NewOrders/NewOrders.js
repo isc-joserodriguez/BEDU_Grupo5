@@ -3,7 +3,10 @@ import Order from './Order/Order';
 import Container from 'react-bootstrap/Container';
 import OrderModal from '../OrderModal/OrderModal';
 import Spinner from '../../components/UI/Spinner/Spinner';
-import { getPending, updateState } from '../../services'
+import { getPending, updateState } from '../../services';
+
+import { timeInterval } from '../../shared/utility';
+
 
 import classes from './NewOrders.module.css';
 
@@ -18,7 +21,11 @@ const NewOrders = () => {
     const handleShow = () => setShow(true);
     useEffect(() => {
         getPending({ setOrders, setLoading });
-    }, [])
+        const interval = setInterval(() => {
+            getPending({ setOrders, setLoading });
+        }, timeInterval);
+        return () => clearInterval(interval);
+    }, []);
 
     const changeStatusHandler = async (id) => {
         let ordersArray = [...orders];
@@ -50,10 +57,10 @@ const NewOrders = () => {
     ));
 
     function noOrders() {
-        return ordersMap.length === 0 ? 
-        <h2 className={classes.cardsMessage}>No hay órdenes pendientes.<br></br>¡Buen trabajo!</h2>
-        :  
-        ''
+        return ordersMap.length === 0 ?
+            <h2 className={classes.cardsMessage}>No hay órdenes pendientes.<br></br>¡Buen trabajo!</h2>
+            :
+            ''
     }
 
     return (

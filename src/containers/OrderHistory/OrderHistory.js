@@ -39,6 +39,7 @@ const OrderHistory = () => {
 
     const filterOrdersHandler = (filter) => {
         setLoading(true);
+        setPage(1);
         filterOrders({
             setOrders,
             setLoading,
@@ -48,6 +49,7 @@ const OrderHistory = () => {
 
     const clearFilterOrdersHandler = () => {
         setLoading(true);
+        setPage(1);
         getOwners({
             setOrders,
             setLoading
@@ -97,12 +99,19 @@ const OrderHistory = () => {
                 <br />
                 <Card className={classes.Card}>
                     <div>
-                        <span>
-                            <p className={classes.orangeTxt}>Pedidos:</p> <p className={classes.orangeUnderlined}>{orders.length}</p>
-                        </span>
-                        <span>
-                            <p className={classes.orangeTxt}>Total:</p> <p className={classes.orangeUnderlined}>${orders.reduce((acc, nxt) => acc + nxt.cost, 0)}</p>
-                        </span>
+                        {!loading &&
+                            <>
+                                <span>
+
+                                    <p className={classes.orangeTxt}>Pedidos:</p>
+                                    <p className={classes.orangeUnderlined}>{orders.length}</p>
+                                </span>
+                                <span>
+                                    <p className={classes.orangeTxt}>Total:</p>
+                                    <p className={classes.orangeUnderlined}>${orders.reduce((acc, nxt) => acc + nxt.cost, 0)}</p>
+                                </span>
+                            </>
+                        }
                     </div>
                     {loading ?
                         <Spinner /> :
@@ -122,16 +131,20 @@ const OrderHistory = () => {
                                 )}
                             />
                         </div>}
-                    <div className="d-flex justify-content-center mt-3">
-                        <Pagination
-                            elements={orders}
-                            active={page}
-                            setActive={setPage}
-                        />
-                    </div>
-                    <Button className={classes.orangeBtn} type='submit' variant='primary' size='lg' block onClick={() => generatePDF(orders)}>
-                        Generar reporte
-                    </Button>
+                    {!loading &&
+                        <>
+                            <div className="d-flex justify-content-center mt-3">
+                                <Pagination
+                                    elements={orders}
+                                    active={page}
+                                    setActive={setPage}
+                                />
+                            </div>
+                            <Button className={classes.orangeBtn} type='submit' variant='primary' size='lg' block onClick={() => generatePDF(orders)}>
+                                Generar reporte
+                            </Button>
+                        </>
+                    }
                 </Card>
             </div>
             <OrderModal

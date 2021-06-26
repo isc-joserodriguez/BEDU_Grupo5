@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom'
 
 import { updateObject, checkValidity } from '../../../../shared/utility';
-import { Container, Card, Form, Button } from 'react-bootstrap';
+import { Container, Card, Form, Button, Col, Row } from 'react-bootstrap';
 import Spinner from '../../../../components/UI/Spinner/Spinner'
 import Input from '../../../../components/UI/Input/Input';
 import { IoFastFoodOutline } from 'react-icons/io5';
@@ -106,16 +106,30 @@ const NewCategory = props => {
                     <hr />
                     <Form noValidate onSubmit={submitHandler} className='d-flex flex-column'>
                         {form}
-                        <Button
-                            className = {classes.saveBtn}
-                            type='submit'
-                            variant='primary'
-                            size='lg'
-                            block
-                            disabled={!newCategoryForm.name.valid || !newCategoryForm.description.valid}
-                        >
-                            Guardar
-                        </Button>
+                        <Row>
+                            <Col>
+                                <Button
+                                    className={classes.saveBtn}
+                                    type='submit'
+                                    variant='primary'
+                                    size='lg'
+                                    block
+                                    disabled={!newCategoryForm.name.valid || !newCategoryForm.description.valid}
+                                >
+                                    Guardar
+                                </Button>
+                            </Col>
+                            <Col>
+                                <Button
+                                    variant='danger'
+                                    size='lg'
+                                    block
+                                    onClick={() => props.history.push(`/${localStorage.getItem('type')}/categories`)}>
+                                    Cancelar
+                                </Button>
+                            </Col>
+                        </Row>
+
                         {errorMessage && <p className={`${classes.ErrorMessage} text-center mt-2`}>Error: Verifica los datos ingresados</p>}
                     </Form>
                 </Card.Body>

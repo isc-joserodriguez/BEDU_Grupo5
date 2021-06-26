@@ -8,8 +8,9 @@ import Pagination from '../../../components/UI/Pagination/Pagination';
 import { ImEye as DetailIcon } from 'react-icons/im';
 import { Button } from 'react-bootstrap';
 import { Card } from 'react-bootstrap';
+import Toggle from 'react-toggle';
 
-import { getCategories, filterCategories } from '../../../services';
+import { getCategories, filterCategories, toggleStatusCategory } from '../../../services';
 
 import classes from './Categories.module.css';
 
@@ -69,6 +70,7 @@ const Categories = () => {
             }
         });
         setLoading(true)
+        setPage(1);
         filterCategories({ setCategories, setLoading, filter });
     }
 
@@ -110,6 +112,7 @@ const Categories = () => {
             }
         });
         setLoading(true)
+        setPage(1);
         getCategories({ setCategories, setLoading });
     }
 
@@ -144,7 +147,17 @@ const Categories = () => {
                                     <td>{el._id.substring(el._id.length - 7)}</td>
                                     <td>{el.name}</td>
                                     <td>{el.description}</td>
-                                    <td>{el.status ? 'Activo' : 'Inactivo'}</td>
+                                    <td>
+                                        <Toggle
+
+                                            checked={el.status}
+                                            onChange={() => {
+                                                const newCategories = [...categories];
+                                                newCategories[10 * (page - 1) + index].status = !categories[10 * (page - 1) + index].status;
+                                                setCategories(newCategories);
+                                                toggleStatusCategory({ id: el._id, status: el.status })
+                                            }} />
+                                    </td>
                                     <td><Link to={`/admin/categories/${el._id}`}><DetailIcon className={`${classes.blue}`} /></Link></td>
                                 </tr>
                             ))
@@ -152,13 +165,15 @@ const Categories = () => {
                         />
                     </div>
                 }
-                <div className="d-flex justify-content-center mt-3">
-                    <Pagination
-                        elements={categories}
-                        active={page}
-                        setActive={setPage}
-                    />
-                </div>
+                {!loading &&
+                    <div className="d-flex justify-content-center mt-3">
+                        <Pagination
+                            elements={categories}
+                            active={page}
+                            setActive={setPage}
+                        />
+                    </div>
+                }
 
             </Card>
         </div>

@@ -8,8 +8,9 @@ import Pagination from '../../../components/UI/Pagination/Pagination';
 import { ImEye as DetailIcon } from 'react-icons/im';
 import { Button } from 'react-bootstrap';
 import { Card } from 'react-bootstrap'
+import Toggle from 'react-toggle';
 
-import { getUsers, filterUsers } from '../../../services';
+import { getUsers, filterUsers, toggleStatusUser } from '../../../services';
 
 import classes from './Users.module.css';
 
@@ -108,6 +109,7 @@ const Users = () => {
             }
         });
         setLoading(true)
+        setPage(1);
         filterUsers({ setUsers, setLoading, filter });
     }
 
@@ -186,6 +188,7 @@ const Users = () => {
             }
         });
         setLoading(true)
+        setPage(1);
         getUsers({ setUsers, setLoading });
     }
 
@@ -220,14 +223,25 @@ const Users = () => {
                     <div className={classes.Table}>
                         <TableInfo
                             headers={['ID', 'Tipo', 'Nombre(s)', 'Apellido(s)', 'Email', 'Estado', 'Detalles']}
-                            rows={[...users].splice(10 * (page - 1), 10).map(el => (
-                                <tr key={el._id}>
+                            rows={[...users].splice(10 * (page - 1), 10).map((el, index) => (
+                                <tr key={index}>
                                     <td>{el._id.substring(el._id.length - 7)}</td>
                                     <td>{el.type}</td>
                                     <td>{el.firstName}</td>
                                     <td>{el.lastName}</td>
                                     <td>{el.email}</td>
-                                    <td>{el.status ? 'Activo' : 'Desactivado'}</td>
+                                    <td>
+                                        <Toggle
+
+                                            checked={el.status}
+                                            disabled={el._id === localStorage.getItem('id')}
+                                            onChange={() => {
+                                                const newUsers = [...users];
+                                                newUsers[10 * (page - 1) + index].status = !users[10 * (page - 1) + index].status;
+                                                setUsers(newUsers);
+                                                toggleStatusUser({ id: el._id, status: el.status })
+                                            }} />
+                                    </td>
                                     <td><Link to={`/admin/users/${el._id}`}><DetailIcon className={`${classes.blue}`} /></Link></td>
                                 </tr>
                             ))
@@ -235,13 +249,15 @@ const Users = () => {
                         />
                     </div>
                 }
-                <div className="d-flex justify-content-center mt-3">
-                    <Pagination
-                        elements={users}
-                        active={page}
-                        setActive={setPage}
-                    />
-                </div>
+                {!loading &&
+                    <div className="d-flex justify-content-center mt-3">
+                        <Pagination
+                            elements={users}
+                            active={page}
+                            setActive={setPage}
+                        />
+                    </div>
+                }
 
             </Card>
         </div>

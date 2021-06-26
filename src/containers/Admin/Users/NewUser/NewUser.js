@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { updateObject, checkValidity } from '../../../../shared/utility';
-import { Container, Card, Form, Button } from 'react-bootstrap';
+import { Container, Card, Form, Button, Col, Row } from 'react-bootstrap';
 import Spinner from '../../../../components/UI/Spinner/Spinner'
 import Input from '../../../../components/UI/Input/Input';
 import { CgUser, CgMail, CgPassword } from 'react-icons/cg';
@@ -144,7 +144,7 @@ const NewUser = props => {
             register: true,
             history: props.history
         });
-        
+
     }
 
     const formElementsArray = [];
@@ -177,7 +177,17 @@ const NewUser = props => {
                     <hr />
                     <Form noValidate onSubmit={submitHandler}>
                         {form}
-                        <Button className = {classes.saveBtn} type='submit' variant='primary' size='lg' block disabled={!newUserForm.firstName.valid || !newUserForm.lastName.valid || !newUserForm.email.valid || !newUserForm.password.valid || !newUserForm.confirmPassword.valid}> Registrar  </Button>
+
+                        <Row>
+                            <Col>
+                                <Button className={classes.saveBtn} type='submit' variant='primary' size='lg' block disabled={!newUserForm.firstName.valid || !newUserForm.lastName.valid || !newUserForm.email.valid || !newUserForm.password.valid || !newUserForm.confirmPassword.valid}> Registrar  </Button>
+                            </Col>
+                            <Col>
+                                <Button variant='danger' size='lg' block onClick={() => props.history.push(`/${localStorage.getItem('type')}/users`)}>
+                                    Cancelar
+                                </Button>
+                            </Col>
+                        </Row>
                         {errorMessage && <p className={`${classes.ErrorMessage} text-center mt-2`}>Error: Verifica los datos ingresados</p>}
                     </Form>
                 </Card.Body>

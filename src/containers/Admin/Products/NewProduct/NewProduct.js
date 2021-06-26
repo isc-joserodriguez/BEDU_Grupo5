@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { updateObject, checkValidity } from '../../../../shared/utility';
-import { Container, Card, Form, Button } from 'react-bootstrap';
+import { Container, Card, Form, Button, Col, Row } from 'react-bootstrap';
 import Spinner from '../../../../components/UI/Spinner/Spinner'
 import Input from '../../../../components/UI/Input/Input';
 import { IoFastFoodOutline } from 'react-icons/io5';
@@ -160,16 +160,29 @@ const NewProduct = (props) => {
                     <Form noValidate onSubmit={submitHandler} className='d-flex flex-column'>
                         {form}
                         <Image style={{ maxWidth: '50%', margin: '5px auto' }} src={newProductForm.image.value} onError={imageErrorHandler} thumbnail />
-                        <Button
-                            className = {classes.saveBtn}
-                            type='submit'
-                            variant='primary'
-                            size='lg'
-                            block
-                            disabled={!newProductForm.name.valid || !newProductForm.category.valid || !newProductForm.description.valid || !newProductForm.cost.valid || !newProductForm.image.valid}
-                        >
-                            Guardar
-                        </Button>
+                        <Row>
+                            <Col>
+                                <Button
+                                    className={classes.saveBtn}
+                                    type='submit'
+                                    variant='primary'
+                                    size='lg'
+                                    block
+                                    disabled={!newProductForm.name.valid || !newProductForm.category.valid || !newProductForm.description.valid || !newProductForm.cost.valid || !newProductForm.image.valid}
+                                >
+                                    Guardar
+                                </Button>
+                            </Col>
+                            <Col>
+                                <Button
+                                    variant='danger'
+                                    size='lg'
+                                    block
+                                    onClick={() => props.history.push(`/${localStorage.getItem('type')}/products`)}>
+                                    Cancelar
+                                </Button>
+                            </Col>
+                        </Row>
                         {errorMessage && <p className={`${classes.ErrorMessage} text-center mt-2`}>Error: Verifica los datos ingresados</p>}
                     </Form>
                 </Card.Body>

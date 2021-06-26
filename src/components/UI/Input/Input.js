@@ -61,7 +61,6 @@ const Input = (props) => {
                     as='select'
                     className={`${inputClasses.join(' ')} mb-3`}
                     {...props.elementConfig}
-                    value={props.value}
                     onChange={props.changed}>
                     {props.elementConfig.options.map(option => (
                         <option
@@ -76,6 +75,8 @@ const Input = (props) => {
         case ('datepicker'):
             inputElement = (
                 <DatePicker
+                    dateFormat='dd MMMM  yyyy'
+                    maxDate={new Date()}
                     className={`${inputClasses.join(' ')} mb-3 form-control`}
                     placeholderText={props.elementConfig.placeholder}
                     locale='es'
@@ -104,12 +105,7 @@ Input.propTypes = {
     icon: PropTypes.func,
     invalid: PropTypes.bool.isRequired,
     shouldValidate: PropTypes.object,
-    touched: PropTypes.bool,
-    value: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.bool,
-        PropTypes.instanceOf(Date)
-    ])
+    touched: PropTypes.bool
 }
 
 export default Input;

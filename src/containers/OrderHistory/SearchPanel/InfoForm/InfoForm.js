@@ -7,9 +7,17 @@ import classes from './InfoForm.module.css';
 
 const InfoForm = ({ infoForm, setInfoForm }) => {
     const inputChangedHandler = (event, controlName) => {
+        let value = event.target.value;
+        if (controlName === 'minPrice' && infoForm.maxPrice.value !== '') {
+            if (+infoForm.maxPrice.value < +value) value = infoForm.maxPrice.value;
+        }
+        if (controlName === 'maxPrice' && infoForm.minPrice.value !== '') {
+            if (+infoForm.minPrice.value > +value) value = infoForm.minPrice.value;
+        }
+        if (+value < 0) value = '0';
         const updatedControls = updateObject(infoForm, {
             [controlName]: updateObject(infoForm[controlName], {
-                value: event.target.value,
+                value,
                 touched: true
             })
         });

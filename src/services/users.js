@@ -107,10 +107,23 @@ export const editUser = ({ id, data, setLoading, setErrorMessage, history }) => 
         }
     }).then(res => {
         setLoading(false);
-        history.push(`/${localStorage.getItem('type')}/users`)
+        history.push(`/${localStorage.getItem('type')}/users/${res.data.detail._id}`)
     }).catch(err => {
         console.log(err);
         setLoading(false);
         setErrorMessage(true);
+    });
+}
+
+export const toggleStatusUser = ({ id, status }) => {
+    axios.put(
+        `${process.env.REACT_APP_API_Connect}/usuarios/cambiarEstatus/${id}`, { status }, {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        }
+    }).then(res => {
+
+    }).catch(err => {
+        console.log(err);
     });
 }

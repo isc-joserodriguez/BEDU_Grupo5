@@ -8,7 +8,8 @@ import Pagination from '../../../components/UI/Pagination/Pagination';
 import { ImEye as DetailIcon } from 'react-icons/im';
 import { Card, Image } from 'react-bootstrap';
 import { Button } from 'react-bootstrap'
-import { getProducts, filterProducts } from '../../../services';
+import { getProductsByCategory, filterProducts, toggleStatusProduct } from '../../../services';
+import Toggle from 'react-toggle';
 
 import classes from './Products.module.css';
 
@@ -100,6 +101,7 @@ const Products = () => {
             }
         });
         setLoading(true)
+        setPage(1);
         filterProducts({ setProducts, setLoading, filter });
     }
 
@@ -172,11 +174,12 @@ const Products = () => {
             }
         });
         setLoading(true)
-        getProducts({ setProducts, setLoading });
+        setPage(1);
+        getProductsByCategory({ setProducts, setLoading, filter: { } });
     }
 
     useEffect(() => {
-        getProducts({ setProducts, setLoading });
+        getProductsByCategory({ setProducts, setLoading, filter: { } });
     }, []);
 
     return (
@@ -208,12 +211,22 @@ const Products = () => {
                             rows={[...products].splice(10 * (page - 1), 10).map((el, index) => (
                                 <tr key={index}>
                                     <td>{el._id.substring(el._id.length - 7)}</td>
-                                    <td><Image className={classes.ProductImage} style={{ }} src={el.image} thumbnail /></td>
+                                    <td><Image className={classes.ProductImage} style={{}} src={el.image} thumbnail /></td>
                                     <td>{el.name}</td>
                                     <td>{el.description}</td>
                                     <td>{el.cost}</td>
-                                    <td>{el.idCategoria.name}</td>
-                                    <td>{el.status ? 'Activo' : 'Inactivo'}</td>
+                                    <td className={!!!el.idCategoria.status ? 'text-muted' : ''}>{el.idCategoria.name}</td>
+                                    <td>
+                                        <Toggle
+
+                                            checked={el.status}
+                                            onChange={() => {
+                                                const newProducts = [...products];
+                                                newProducts[10 * (page - 1) + index].status = !products[10 * (page - 1) + index].status;
+                                                setProducts(newProducts);
+                                                toggleStatusProduct({ id: el._id, status: el.status })
+                                            }} />
+                                    </td>
                                     <td><Link to={`/admin/products/${el._id}`}><DetailIcon className={`${classes.blue}`} /></Link></td>
                                 </tr>
 
@@ -222,13 +235,16 @@ const Products = () => {
                         />
                     </div>
                 }
-                <div className="d-flex justify-content-center mt-3">
+                {!loading &&
+                    <div className="d-flex justify-content-center mt-3">
                     <Pagination
                         elements={products}
                         active={page}
                         setActive={setPage}
                     />
                 </div>
+                }
+                
 
             </Card>
         </div>
