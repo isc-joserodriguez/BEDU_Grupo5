@@ -76,35 +76,6 @@ export const filterProducts = ({ setProducts, setLoading, filter }) => {
     });
 }
 
-export const getCategoriesSelector = ({ editForm, setEditForm, setLoading, updateObject }) => {
-    axios.get(
-        `${process.env.REACT_APP_API_Connect}/categoria`, {
-        headers: {
-            'Authorization': localStorage.getItem('token')
-        }
-    }).then(res => {
-        let categories = res.data.detail.map((category) => ({
-            value: category._id,
-            displayValue: category.name
-        }))
-
-        setEditForm(
-            updateObject(editForm, {
-                category: updateObject(editForm.category, {
-                    value: categories[0].value,
-                    elementConfig: {
-                        options: categories
-                    }
-                })
-            })
-        );
-        setLoading(false);
-    }).catch(err => {
-        setLoading(false)
-        console.log(err);
-    });
-}
-
 export const editProduct = ({ id, data, setLoading, setErrorMessage, history }) => {
     axios.put(
         `${process.env.REACT_APP_API_Connect}/productos/editar/${id}`, data, {
@@ -150,7 +121,52 @@ export const getProductByIdForm = ({ id, editForm, setEditForm, updateObject, se
                 touched: true
             })
         });
-        getCategoriesSelector({ editForm: updatedControls, setEditForm, setLoading, updateObject })
+        let init = {
+            displayValue: res.data.detail.idCategoria.name,
+            value: res.data.detail.idCategoria._id
+        }
+        getCategoriesSelector({ editForm: updatedControls, setEditForm, setLoading, updateObject, init })
+    }).catch(err => {
+        setLoading(false)
+        console.log(err);
+    });
+}
+
+export const getCategoriesSelector = ({ editForm, setEditForm, setLoading, updateObject, init = false }) => {
+    axios.get(
+        `${process.env.REACT_APP_API_Connect}/categoria`, {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        }
+    }).then(res => {
+
+        let categories = {};
+        res.data.detail.forEach((category) => {
+            categories[category.name] = category._id
+        })
+
+        let ordenedCategories = Object.keys(categories).sort()
+
+
+        categories = ordenedCategories.map(category => ({
+            value: categories[category],
+            displayValue: category,
+        }))
+
+        if (init) {
+            categories.unshift(init)
+        }
+
+        setEditForm(
+            updateObject(editForm, {
+                category: updateObject(editForm.category, {
+                    elementConfig: {
+                        options: categories
+                    }
+                })
+            })
+        );
+        setLoading(false);
     }).catch(err => {
         setLoading(false)
         console.log(err);
