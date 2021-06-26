@@ -7,25 +7,17 @@ import classes from './DateForm.module.css';
 
 const DateForm = ({ dateForm, setDateForm }) => {
     const inputChangedHandler = (date, controlName) => {
-        if (controlName === 'maxDate') {
-            let d1 = new Date(date);
-            if (!!dateForm.minDate.value) {
-                let d2 = new Date(dateForm.minDate.value);
-
-                if (d1.getTime() < d2.getTime()) date = d2;
-            } else {
-                let d3 = new Date();
-                if (d1.getTime() > d3.getTime()) date = d3;
-            }
-        }
+        let d1 = new Date(date);
         if (controlName === 'minDate') {
-            let d1 = new Date(date);
             if (!!dateForm.maxDate.value) {
                 let d2 = new Date(dateForm.maxDate.value);
                 if (d1.getTime() > d2.getTime()) date = d2;
-            } else {
-                let d3 = new Date();
-                if (d1.getTime() > d3.getTime()) date = d3;
+            }
+        }
+        if (controlName === 'maxDate') {
+            if (!!dateForm.minDate.value) {
+                let d2 = new Date(dateForm.minDate.value);
+                if (d1.getTime() < d2.getTime()) date = d2;
             }
         }
         const updatedControls = updateObject(dateForm, {

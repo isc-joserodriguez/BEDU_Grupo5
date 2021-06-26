@@ -5,20 +5,32 @@ import ProductModal from './ProductModal/ProductModal';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import classes from './Products.module.css';
 
-import { getProducts, getProductsByCategory, getCategoriesCommands } from '../../../services';
+import { timeInterval } from '../../../shared/utility';
+
+import { getProductsByCategory, getCategoriesCommands } from '../../../services';
 const Products = () => {
   const [show, setShow] = useState(false);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState({});
   const [categories, setCategories] = useState([]);
+  const [bandera, setBandera] = useState({});
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+
   useEffect(() => {
     getCategoriesCommands({ setCategories });
-    getProducts({ setProducts, setLoading });
+    getProductsByCategory({ setProducts, setLoading, filter: bandera });
   }, []);
+
+  useEffect(()=>{
+    const interval = setInterval(() => {
+      getCategoriesCommands({ setCategories });
+      getProductsByCategory({ setProducts, setLoading, filter: bandera });
+    }, timeInterval);
+    return () => clearInterval(interval);
+  },[bandera])
 
   const productMap = products.map(product => (
     <Product
@@ -32,14 +44,21 @@ const Products = () => {
   return (
     <Container className='mb-4'>
       <div className={`${classes.ButtonsContainer} col d-flex flex-wrap mb-4 align-content-center justify-content-center`}>
-        <Button className={`${classes.CategoryBtn} p-2 m-2`} variant="outline-secondary" onClick={() => getProducts({ setProducts, setLoading })} >Todos</Button>
+        <Button className={`${classes.CategoryBtn} p-2 m-2`} variant="outline-secondary" onClick={() => {
+          setBandera({});
+          getProductsByCategory({ setProducts, setLoading, filter: {} });
+        }} >Todos</Button>
         {
           categories.map((el, index) => (
             <Button
               key={index}
               variant='outline-primary'
               className='p-2 m-2'
-              onClick={() => getProductsByCategory({ setProducts, setLoading, data: el._id })}
+              onClick={() => {
+                setBandera({ categoria: el._id });
+                getProductsByCategory({ setProducts, setLoading, filter: { categoria: el._id } });
+              }
+              }
             >
               {el.name}
             </Button>
@@ -62,7 +81,7 @@ const Products = () => {
           />
         </div>
       </div>
-    </Container>
+    </Container >
   );
 }
 export default Products;

@@ -13,13 +13,11 @@
     display: block;
 }
 
-.NavigationItem a:hover,
-.NavigationItem a:hover,
-.NavigationItem a.active {
+.NavigationItem a:hover, .NavigationItem a:hover, .NavigationItem a.active {
     color: #DEE500;
 }
 
-@media (min-width:500px) {
+@media (min-width: 500px) {
     .NavigationItem {
         margin: 0;
         display: flex;
@@ -27,17 +25,13 @@
         width: auto;
         align-items: center;
     }
-
     .NavigationItem a {
         color: white;
         height: 100%;
         padding: 16px 10px;
         border-bottom: 4px solid transparent;
     }
-
-    .NavigationItem a:hover,
-    .NavigationItem a:hover,
-    .NavigationItem a.active {
+    .NavigationItem a:hover, .NavigationItem a:hover, .NavigationItem a.active {
         background-color: #00C3AF;
         ;
         border-bottom: 4px solid #DEE500;

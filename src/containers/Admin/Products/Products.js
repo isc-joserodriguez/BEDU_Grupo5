@@ -8,7 +8,7 @@ import Pagination from '../../../components/UI/Pagination/Pagination';
 import { ImEye as DetailIcon } from 'react-icons/im';
 import { Card, Image } from 'react-bootstrap';
 import { Button } from 'react-bootstrap'
-import { getProducts, filterProducts, toggleStatusProduct } from '../../../services';
+import { getProductsByCategory, filterProducts, toggleStatusProduct } from '../../../services';
 import Toggle from 'react-toggle';
 
 import classes from './Products.module.css';
@@ -175,11 +175,11 @@ const Products = () => {
         });
         setLoading(true)
         setPage(1);
-        getProducts({ setProducts, setLoading });
+        getProductsByCategory({ setProducts, setLoading, filter: { } });
     }
 
     useEffect(() => {
-        getProducts({ setProducts, setLoading });
+        getProductsByCategory({ setProducts, setLoading, filter: { } });
     }, []);
 
     return (

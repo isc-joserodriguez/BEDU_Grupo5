@@ -46,6 +46,21 @@ export const getProducts = ({ setProducts, setLoading }) => {
     });
 }
 
+export const getProductsByCategory = ({ setProducts, setLoading, filter }) => {
+    axios.post(
+        `${process.env.REACT_APP_API_Connect}/productos/filtrar`, filter, {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        },
+    }).then(res => {
+        setProducts(res.data.detail);
+        setLoading(false);
+    }).catch(err => {
+        setLoading(false);
+        console.log(err);
+    });
+}
+
 export const filterProducts = ({ setProducts, setLoading, filter }) => {
     axios.post(
         `${process.env.REACT_APP_API_Connect}/productos/filtrar`, filter, {
@@ -86,21 +101,6 @@ export const getCategoriesSelector = ({ editForm, setEditForm, setLoading, updat
         setLoading(false);
     }).catch(err => {
         setLoading(false)
-        console.log(err);
-    });
-}
-
-export const getProductsByCategory = ({ setProducts, setLoading, data }) => {
-    axios.post(
-        `${process.env.REACT_APP_API_Connect}/productos/filtrar`, { categoria: data }, {
-        headers: {
-            'Authorization': localStorage.getItem('token')
-        },
-    }).then(res => {
-        setProducts(res.data.detail);
-        setLoading(false);
-    }).catch(err => {
-        setLoading(false);
         console.log(err);
     });
 }

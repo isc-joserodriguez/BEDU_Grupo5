@@ -77,6 +77,7 @@ const Input = (props) => {
             inputElement = (
                 <DatePicker
                     dateFormat='dd MMMM  yyyy'
+                    maxDate={new Date()}
                     className={`${inputClasses.join(' ')} mb-3 form-control`}
                     placeholderText={props.elementConfig.placeholder}
                     locale='es'

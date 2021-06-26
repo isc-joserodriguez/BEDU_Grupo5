@@ -7,6 +7,8 @@ import OrderHistory from '../OrderHistory/OrderHistory';
 import NotFound from '../../components/NotFound/NotFound';
 import classes from './Cliente.module.css';
 
+import { timeInterval } from '../../shared/utility';
+
 import { getProcessing, updateState } from '../../services';
 
 const Client = () => {
@@ -27,7 +29,7 @@ const Client = () => {
         getProcessing({ setOrders });
         const interval = setInterval(() => {
             getProcessing({ setOrders });
-        }, 5000);
+        }, timeInterval);
         return () => clearInterval(interval);
     }, [])
 
