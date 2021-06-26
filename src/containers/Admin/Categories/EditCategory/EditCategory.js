@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { withRouter, useParams } from 'react-router-dom';
 
 import { updateObject, checkValidity } from '../../../../shared/utility';
-import { Container, Card, Form, Button } from 'react-bootstrap';
+import { Container, Card, Form, Button, Col, Row } from 'react-bootstrap';
 import Spinner from '../../../../components/UI/Spinner/Spinner'
 import Input from '../../../../components/UI/Input/Input';
 import { IoFastFoodOutline } from 'react-icons/io5';
@@ -118,9 +118,18 @@ const EditCategory = props => {
                     <hr />
                     <Form noValidate onSubmit={submitHandler}>
                         {form}
-                        <Button type='submit' className={classes.saveBtn} variant='primary' size='lg' block disabled={!editForm?.name?.valid || !editForm?.description?.valid} >
-                            Guardar
-                        </Button>
+                        <Row>
+                            <Col>
+                                <Button type='submit' className={classes.saveBtn} variant='primary' size='lg' block disabled={!editForm?.name?.valid || !editForm?.description?.valid} >
+                                    Guardar
+                                </Button>
+                            </Col>
+                            <Col>
+                                <Button variant='danger' size='lg' block onClick={() => props.history.push(`/${localStorage.getItem('type')}/categories/${id}`)}>
+                                    Cancelar
+                                </Button>
+                            </Col>
+                        </Row>
                         {errorMessage && <p className={`${classes.ErrorMessage} text-center mt-2`}>Error: Verifica los datos ingresados</p>}
                     </Form>
                 </Card.Body>

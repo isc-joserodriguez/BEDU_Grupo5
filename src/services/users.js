@@ -107,7 +107,7 @@ export const editUser = ({ id, data, setLoading, setErrorMessage, history }) => 
         }
     }).then(res => {
         setLoading(false);
-        history.push(`/${localStorage.getItem('type')}/users`)
+        history.push(`/${localStorage.getItem('type')}/users/${res.data.detail._id}`)
     }).catch(err => {
         console.log(err);
         setLoading(false);

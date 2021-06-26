@@ -7,6 +7,16 @@
     color: #FF8352;
     font-weight: 600;
 }
+
 .Category .orange:hover {
-    color:  #ff9f7a;
-  }
+    color: #ff9f7a;
+}
+
+.Category .Red {
+    color: red;
+    font-weight: 600;
+}
+
+.Category .Red:hover {
+    color: rgb(255, 72, 0);
+}

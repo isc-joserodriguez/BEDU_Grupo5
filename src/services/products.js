@@ -8,7 +8,7 @@ export const createProduct = ({ data, setLoading, setErrorMessage, history }) =>
     }).then(res => {
         setLoading(false);
         setErrorMessage(false)
-        history.push('/admin/products');
+        history.push(`/admin/products/${res.data.detail._id}`);
     }).catch(err => {
         console.log(err);
         setErrorMessage(true)
@@ -113,7 +113,7 @@ export const editProduct = ({ id, data, setLoading, setErrorMessage, history }) 
         }
     }).then(res => {
         setLoading(false);
-        history.push(`/${localStorage.getItem('type')}/products`)
+        history.push(`/${localStorage.getItem('type')}/products/${res.data.detail._id}`)
     }).catch(err => {
         console.log(err);
         setLoading(false);

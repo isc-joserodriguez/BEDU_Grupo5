@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import Spinner from '../../../../components/UI/Spinner/Spinner';
 import { getProductById } from '../../../../services';
 import { FiEdit3 } from 'react-icons/fi';
+import { IoReturnUpBackOutline } from 'react-icons/io5'
 import { Card } from 'react-bootstrap';
 
 import classes from './Product.module.css';
@@ -35,7 +36,10 @@ const Product = () => {
                     <small className='text-muted'>
                         {`Ultima actualización el ${new Date(product.updatedAt).getDate()}/${new Date(product.updatedAt).getMonth() + 1}/${new Date(product.updatedAt).getFullYear()}`}
                         <br />
-                        <Link className={classes.orange}  to={`/admin/products/edit/${product._id}`}>Editar <FiEdit3/></Link>
+                        <div className="d-flex justify-content-around">
+                            <Link className={classes.orange} to={`/admin/products/edit/${product._id}`}>Editar <FiEdit3 /></Link>
+                            <Link className={classes.Red} to={`/admin/products`}>Volver <IoReturnUpBackOutline /></Link>
+                        </div>
                     </small>
                 </Card.Footer>
             </Card>
