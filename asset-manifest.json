@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/BEDU_Grupo5/static/css/main.450e68d5.chunk.css",
-    "main.js": "/BEDU_Grupo5/static/js/main.25604f2c.chunk.js",
-    "main.js.map": "/BEDU_Grupo5/static/js/main.25604f2c.chunk.js.map",
+    "main.css": "/BEDU_Grupo5/static/css/main.9e683d2c.chunk.css",
+    "main.js": "/BEDU_Grupo5/static/js/main.44600637.chunk.js",
+    "main.js.map": "/BEDU_Grupo5/static/js/main.44600637.chunk.js.map",
     "runtime-main.js": "/BEDU_Grupo5/static/js/runtime-main.48b28012.js",
     "runtime-main.js.map": "/BEDU_Grupo5/static/js/runtime-main.48b28012.js.map",
     "static/js/2.a5076dcd.chunk.js": "/BEDU_Grupo5/static/js/2.a5076dcd.chunk.js",
@@ -18,24 +18,24 @@
     "static/js/6.0704e1d3.chunk.js.map": "/BEDU_Grupo5/static/js/6.0704e1d3.chunk.js.map",
     "index.html": "/BEDU_Grupo5/index.html",
     "static/css/3.3fdc614c.chunk.css.map": "/BEDU_Grupo5/static/css/3.3fdc614c.chunk.css.map",
-    "static/css/main.450e68d5.chunk.css.map": "/BEDU_Grupo5/static/css/main.450e68d5.chunk.css.map",
+    "static/css/main.9e683d2c.chunk.css.map": "/BEDU_Grupo5/static/css/main.9e683d2c.chunk.css.map",
     "static/js/2.a5076dcd.chunk.js.LICENSE.txt": "/BEDU_Grupo5/static/js/2.a5076dcd.chunk.js.LICENSE.txt",
     "static/js/3.917c80c4.chunk.js.LICENSE.txt": "/BEDU_Grupo5/static/js/3.917c80c4.chunk.js.LICENSE.txt",
     "static/js/4.111d9980.chunk.js.LICENSE.txt": "/BEDU_Grupo5/static/js/4.111d9980.chunk.js.LICENSE.txt",
     "static/js/5.39de9fde.chunk.js.LICENSE.txt": "/BEDU_Grupo5/static/js/5.39de9fde.chunk.js.LICENSE.txt",
     "static/media/Error404.260cc172.png": "/BEDU_Grupo5/static/media/Error404.260cc172.png",
-    "static/media/backLogin4.dba2952a.jpg": "/BEDU_Grupo5/static/media/backLogin4.dba2952a.jpg",
     "static/media/Admin.module.css": "/BEDU_Grupo5/static/media/bg-admin.d71cde14.jpg",
-    "static/media/Chef.module.css": "/BEDU_Grupo5/static/media/bg-admin4.b2e0fc2a.jpg",
+    "static/media/Chef.module.css": "/BEDU_Grupo5/static/media/bg-chef.b2e0fc2a.jpg",
+    "static/media/bg-login.dba2952a.jpg": "/BEDU_Grupo5/static/media/bg-login.dba2952a.jpg",
     "static/media/Cliente.module.css": "/BEDU_Grupo5/static/media/bg-user.8182872a.jpg",
     "static/media/Mesero.module.css": "/BEDU_Grupo5/static/media/bg-waiter.6ce63148.jpg",
-    "static/media/restaurant-logo.969e6013.jpg": "/BEDU_Grupo5/static/media/restaurant-logo.969e6013.jpg"
+    "static/media/restaurant-logo.f91977f6.png": "/BEDU_Grupo5/static/media/restaurant-logo.f91977f6.png"
   },
   "entrypoints": [
     "static/js/runtime-main.48b28012.js",
     "static/css/3.3fdc614c.chunk.css",
     "static/js/3.917c80c4.chunk.js",
-    "static/css/main.450e68d5.chunk.css",
-    "static/js/main.25604f2c.chunk.js"
+    "static/css/main.9e683d2c.chunk.css",
+    "static/js/main.44600637.chunk.js"
   ]
 }
