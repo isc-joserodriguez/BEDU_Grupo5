@@ -8,7 +8,7 @@ import Spinner from '../../../components/UI/Spinner/Spinner'
 import Input from '../../../components/UI/Input/Input';
 import { CgUser, CgMail, CgPassword } from 'react-icons/cg';
 import { signup } from '../../../services';
-import LoginBackground4 from '../../../assets/images/backLogin4.jpg';
+import LoginBackground4 from '../../../assets/images/bg-login.jpg';
 
 import classes from './SignUp.module.css';
 

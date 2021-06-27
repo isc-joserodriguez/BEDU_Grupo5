@@ -7,27 +7,27 @@ import NavigationItem from './NavigationItem/NavigationItem';
 const NavigationItems = (props) => {
     const authenticatedLinks = {
         'admin': [
-            { route: '/admin', displayName: 'Ver Pedidos' },
+            { route: '/admin', displayName: 'Pedidos' },
             { route: '/admin/products', displayName: 'Productos' },
             { route: '/admin/categories', displayName: 'Categorías' },
             { route: '/admin/users', displayName: 'Usuarios' },
-            { route: '/admin/orders-history', displayName: 'Ver Historial' },
-            { route: '/logout', displayName: 'Cerrar Sesión' }
+            { route: '/admin/orders-history', displayName: 'Historial' },
+            { route: '/logout', displayName: 'Salir' }
         ],
         'chef': [
             { route: '/chef', displayName: 'Ordenes nuevas' },
             { route: '/chef/my-orders', displayName: 'Mis pedidos' },
-            { route: '/logout', displayName: 'Cerrar Sesión' }
+            { route: '/logout', displayName: 'Salir' }
         ],
         'mesero': [
             { route: '/mesero', displayName: 'Ordenes nuevas' },
             { route: '/mesero/my-orders', displayName: 'Mis pedidos' },
-            { route: '/logout', displayName: 'Cerrar Sesión' }
+            { route: '/logout', displayName: 'Salir' }
         ],
         'cliente': [
             { route: '/cliente', displayName: 'Menú' },
             { route: '/cliente/my-orders', displayName: 'Mis pedidos' },
-            { route: '/logout', displayName: 'Cerrar Sesión' }
+            { route: '/logout', displayName: 'Salir' }
         ]
 
     }
