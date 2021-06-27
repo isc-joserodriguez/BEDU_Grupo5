@@ -4,19 +4,18 @@
 }
 
 .Product .orange {
-    color: #FF8352;
+    background-color: #FF8352;
+    color: white;
     font-weight: 600;
+    padding: 7px;
+    border-radius: 5px;
 }
 
-.Product .orange:hover {
-    color: #ff9f7a;
-}
-
-.Product .Red {
-    color: red;
+.Product .blue {
+    background-color: #00e1df;
+    color: white;
     font-weight: 600;
-}
-
-.Product .Red:hover {
-    color: rgb(255, 72, 0);
+    padding: 7px;
+    border-radius: 5px;
+    margin-left: 3%;
 }

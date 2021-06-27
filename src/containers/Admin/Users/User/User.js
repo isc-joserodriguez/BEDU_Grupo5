@@ -44,9 +44,9 @@ const User = () => {
                     <small className='text-muted'>
                         {`Ultima actualización el ${new Date(user.updatedAt).getDate()}/${new Date(user.updatedAt).getMonth() + 1}/${new Date(user.updatedAt).getFullYear()}`}
                         <br />
-                        <div className="d-flex justify-content-around">
+                        <div className="d-flex">
                             <Link className={classes.orange} to={`/admin/users/edit/${user._id}`}>Editar <FiEdit3 /></Link>
-                            <Link className={classes.Red} to={`/admin/users`}>Volver <IoReturnUpBackOutline /></Link>
+                            <Link className={classes.blue} to={`/admin/users`}>Volver <IoReturnUpBackOutline /></Link>
                         </div>
                     </small>
                 </Card.Footer>

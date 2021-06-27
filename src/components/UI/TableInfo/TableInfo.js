@@ -2,10 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types';
 
 import { Table } from 'react-bootstrap';
+import classes from './TableInfo.css';
 
 const TableInfo = ({ headers, rows }) => (
     rows.length === 0 ?
-        <h1 className='text-center'>No hay datos para mostrar</h1> :
+        <h1 className='MessageD'>No hay datos para mostrar</h1> :
         <Table responsive bordered hover className='text-center'>
             <thead>
                 <tr>

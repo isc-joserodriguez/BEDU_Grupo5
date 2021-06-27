@@ -35,3 +35,12 @@
   padding: 20px;
   border-radius: 0.25rem;
 }
+
+.MessageD {
+  text-align: center;
+  color: white;
+  background-color: #FF8352 ;
+  padding: 5px;
+  border-radius: 3px;
+  
+}

@@ -4,17 +4,20 @@
 }
 
 .Category .orange {
-    color: #FF8352;
+    background-color: #FF8352;
+    color: white;
     font-weight: 600;
+    padding: 7px;
+    border-radius: 5px;
 }
 
-.Category .orange:hover {
-    color: #ff9f7a;
-}
-
-.Category .Red {
-    color: red;
+.Category .blue {
+    background-color: #00e1df;
+    color: white;
     font-weight: 600;
+    padding: 7px;
+    border-radius: 5px;
+    margin-left: 3%;
 }
 
 .Category .Red:hover {

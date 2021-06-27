@@ -33,9 +33,9 @@ const Category = () => {
                 <Card.Footer>
                     <small className='text-muted'>
                         {`Ultima actualización el ${new Date(category.updatedAt).getDate()}/${new Date(category.updatedAt).getMonth() + 1}/${new Date(category.updatedAt).getFullYear()}`}
-                        <div className="d-flex justify-content-around">
+                        <div className="d-flex">
                             <Link className={classes.orange} to={`/admin/categories/edit/${category._id}`}>Editar <FiEdit3 /></Link>
-                            <Link className={classes.Red} to={`/admin/categories`}>Volver <IoReturnUpBackOutline /></Link>
+                            <Link className={classes.blue} to={`/admin/categories`}>Volver <IoReturnUpBackOutline /></Link>
                         </div>
                     </small>
                 </Card.Footer>

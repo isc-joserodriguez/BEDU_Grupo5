@@ -36,9 +36,9 @@ const Product = () => {
                     <small className='text-muted'>
                         {`Ultima actualización el ${new Date(product.updatedAt).getDate()}/${new Date(product.updatedAt).getMonth() + 1}/${new Date(product.updatedAt).getFullYear()}`}
                         <br />
-                        <div className="d-flex justify-content-around">
+                        <div className="d-flex">
                             <Link className={classes.orange} to={`/admin/products/edit/${product._id}`}>Editar <FiEdit3 /></Link>
-                            <Link className={classes.Red} to={`/admin/products`}>Volver <IoReturnUpBackOutline /></Link>
+                            <Link className={classes.blue} to={`/admin/products`}>Volver <IoReturnUpBackOutline /></Link>
                         </div>
                     </small>
                 </Card.Footer>
