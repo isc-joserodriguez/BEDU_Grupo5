@@ -162,7 +162,7 @@ const EditProduct = props => {
                     <hr />
                     <Form noValidate onSubmit={submitHandler} className='d-flex flex-column'>
                         {form}
-                        <Image style={{ maxWidth: '50%', margin: '5px auto' }} src={editForm.image.value} onError={imageErrorHandler} thumbnail />
+                        <Image className='w-50 my-3 mx-auto' src={editForm.image.value} onError={imageErrorHandler} thumbnail />
                         <Row>
                             <Col>
                                 <Button className={classes.saveBtn}

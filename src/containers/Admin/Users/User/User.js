@@ -35,7 +35,7 @@ const User = () => {
                     }
                 />
                 <Card.Body>
-                    <Card.Title style={{ textTransform: 'capitalize' }}>{`${user.type}: ${user.firstName} ${user.lastName}`}</Card.Title>
+                    <Card.Title className='text-capitalize'>{`${user.type}: ${user.firstName} ${user.lastName}`}</Card.Title>
                     <Card.Text>
                         {`Email: ${user.email}`}
                     </Card.Text>

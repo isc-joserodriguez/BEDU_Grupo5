@@ -211,7 +211,7 @@ const Products = () => {
                             rows={[...products].splice(10 * (page - 1), 10).map((el, index) => (
                                 <tr key={index}>
                                     <td>{el._id.substring(el._id.length - 7)}</td>
-                                    <td><Image className={classes.ProductImage} style={{}} src={el.image} thumbnail /></td>
+                                    <td><Image className={classes.ProductImage} src={el.image} thumbnail /></td>
                                     <td>{el.name}</td>
                                     <td>{el.description}</td>
                                     <td>{el.cost}</td>

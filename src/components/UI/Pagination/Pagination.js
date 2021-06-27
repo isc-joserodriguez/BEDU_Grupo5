@@ -28,6 +28,7 @@ const PaginationComponent = (props) => {
     }
 
     return (
+        elements.length!==0 &&
         <Pagination size="md">
             <Pagination.First disabled={active === 1} onClick={() => { window.scrollTo(0, 0); props.setActive(1); }} />
             <Pagination.Prev disabled={active === 1} onClick={() => { window.scrollTo(0, 0); props.setActive(active - 1); }} />

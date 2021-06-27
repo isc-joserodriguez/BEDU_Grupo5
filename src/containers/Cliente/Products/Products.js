@@ -24,13 +24,13 @@ const Products = () => {
     getProductsByCategory({ setProducts, setLoading, filter: bandera });
   }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     const interval = setInterval(() => {
       getCategoriesCommands({ setCategories });
       getProductsByCategory({ setProducts, setLoading, filter: bandera });
     }, timeInterval);
     return () => clearInterval(interval);
-  },[bandera])
+  }, [bandera])
 
   const productMap = products.map(product => (
     <Product
@@ -70,9 +70,11 @@ const Products = () => {
           <Container className='overflow-auto vh-75'>
             {loading ?
               <Spinner /> :
-              <div className='row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 overflow-auto'>
-                {productMap}
-              </div>}
+              productMap.length === 0 ?
+                <h1 className='text-center mt-5'>Seleccione una categoría</h1> :
+                <div className='row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 overflow-auto'>
+                  {productMap}
+                </div>}
           </Container>
           <ProductModal
             productID={product?._id}

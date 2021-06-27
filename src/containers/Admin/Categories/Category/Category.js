@@ -23,7 +23,7 @@ const Category = () => {
             <Spinner /> :
             <Card className={classes.Category}>
                 <Card.Header>
-                    <Card.Title style={{ textTransform: 'capitalize' }}>{category.name}</Card.Title>
+                    <Card.Title className='text-capitalize'>{category.name}</Card.Title>
                 </Card.Header>
                 <Card.Body>
                     <Card.Text>

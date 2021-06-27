@@ -27,7 +27,7 @@ const Product = () => {
                     src={product.image}
                 />
                 <Card.Body>
-                    <Card.Title style={{ textTransform: 'capitalize' }}>{product.name}</Card.Title>
+                    <Card.Title className='text-capitalize'>{product.name}</Card.Title>
                     <Card.Text>
                         {product.description}
                     </Card.Text>

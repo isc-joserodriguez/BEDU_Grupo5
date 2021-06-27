@@ -59,7 +59,7 @@ const OrderCard = (props) => {
                     </Accordion.Collapse>
 
                     {'NA' !== status &&
-                        <Card.Footer className={classes.orderFooter} style={{ width: '100%' }}>
+                        <Card.Footer className={`${classes.orderFooter} w-100`} >
                             <Button className={classes.actionButton} onClick={() => props.changeStatusHandler(props.order._id)} disabled={props.loading}>
                                 {status}
                             </Button>

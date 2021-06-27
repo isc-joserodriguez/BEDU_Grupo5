@@ -36,7 +36,7 @@ const Chef = () => {
     }, [])
 
     return (
-        <div className={classes.background} style={{}}>
+        <div className={classes.background}>
             {orders.length !== 0 && <OrderCard changeStatusHandler={changeStatusHandler} order={orders[0]} />}
             <Switch>
                 <Route path={`${path}/`} exact>

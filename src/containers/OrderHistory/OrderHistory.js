@@ -98,21 +98,23 @@ const OrderHistory = () => {
                 <SearchPanel filterOrders={filterOrdersHandler} clearFilterOrdersHandler={clearFilterOrdersHandler} />
                 <br />
                 <Card className={classes.Card}>
-                    <div>
-                        {!loading &&
-                            <>
-                                <span>
+                    {!loading &&
+                        <div>
+                            {orders.length !== 0 &&
+                                <>
+                                    <span>
 
-                                    <p className={classes.orangeTxt}>Pedidos:</p>
-                                    <p className={classes.orangeUnderlined}>{orders.length}</p>
-                                </span>
-                                <span>
-                                    <p className={classes.orangeTxt}>Total:</p>
-                                    <p className={classes.orangeUnderlined}>${orders.reduce((acc, nxt) => acc + nxt.cost, 0)}</p>
-                                </span>
-                            </>
-                        }
-                    </div>
+                                        <p className={classes.orangeTxt}>Pedidos:</p>
+                                        <p className={classes.orangeUnderlined}>{orders.length}</p>
+                                    </span>
+                                    <span>
+                                        <p className={classes.orangeTxt}>Total:</p>
+                                        <p className={classes.orangeUnderlined}>${orders.reduce((acc, nxt) => acc + nxt.cost, 0)}</p>
+                                    </span>
+                                </>
+                            }
+                        </div>
+                    }
                     {loading ?
                         <Spinner /> :
                         <div className={classes.Table}>
@@ -140,9 +142,11 @@ const OrderHistory = () => {
                                     setActive={setPage}
                                 />
                             </div>
-                            <Button className={classes.orangeBtn} type='submit' variant='primary' size='lg' block onClick={() => generatePDF(orders)}>
-                                Generar reporte
-                            </Button>
+                            {orders.length !== 0 &&
+                                <Button className={classes.orangeBtn} type='submit' variant='primary' size='lg' block onClick={() => generatePDF(orders)}>
+                                    Generar reporte
+                                </Button>
+                            }
                         </>
                     }
                 </Card>
