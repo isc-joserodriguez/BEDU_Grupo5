@@ -33,7 +33,8 @@ const NavigationItems = (props) => {
     }
     let links = [
         { route: '/', displayName: 'Iniciar sesión' },
-        { route: '/signup', displayName: 'Registrarse' }
+        { route: '/signup', displayName: 'Registrarse' },
+        { route: '/about-us', displayName: 'Acerca de...' }
     ];
 
     if (props.isAuthenticated) {
