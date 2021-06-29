@@ -1,9 +1,11 @@
 .Clientebg {
-    min-width: 100%;
-    min-height: 100%;
-    padding-top: 90px;
-    position: absolute;
-    top: 0px;
     background-image: url('../../assets/images/bg-user.jpg');
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
 }
