@@ -3,6 +3,7 @@ import React from 'react';
 import Links from './Links/Links';
 
 import { Row, Col, Card } from 'react-bootstrap';
+import { RiGithubFill } from "react-icons/ri";
 
 import classes from './AboutUs.module.css';
 
@@ -62,17 +63,26 @@ const AboutUs = () => {
         <>
             <Row className={classes.AboutUs}>
                 <Col className='text-center py-5'>
-                    <h3>Grupo 5 | Restaurant Manager</h3>
+                    <h3>Restaurant Manager</h3>
                     <p>
                         Este proyecto fue hecho con React.js en el front y con mongo, express y node en el back (MERN Stack).
                         <br />
                         El objetivo de este proyecto es llevar a cabo todas las fases de un restaurante, tomando los roles de Administrador, Chef, Mesero y Cliente.
                     </p>
+                    <h5 className='my-4'>Repositorios</h5>
+                    <Row>
+                        <Col className='text-right px-5'>
+                            <a className={classes.Repo} href='https://github.com/joanrodriguezhe/BEDU_Grupo5' target='_blank'>Front-end <RiGithubFill className='my-auto' /></a>
+                        </Col>
+                        <Col className='text-left px-5'>
+                            <a className={classes.Repo} href='https://github.com/joanrodriguezhe/BEDU_Grupo11_Backend' target='_blank'>Back-end <RiGithubFill className='my-auto' /></a>
+                        </Col>
+                    </Row>
                 </Col>
             </Row>
-            <Row className='w-100'>
+            <Row className='w-100 m-0'>
                 <Col className='text-center mt-3'>
-                    <h3>Equipo</h3>
+                    <h3>Grupo 5</h3>
                 </Col>
             </Row>
             <Row className='w-100 m-0'>
