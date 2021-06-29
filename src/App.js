@@ -10,7 +10,7 @@ import Cliente from './containers/Cliente/Cliente';
 import Chef from './containers/Chef/Chef';
 import Mesero from './containers/Mesero/Mesero';
 import NotFound from './components/NotFound/NotFound';
-
+import AboutUs from './components/AboutUs/AboutUs';
 
 function App(props) {
   const [token, setToken] = useState(null);
@@ -48,6 +48,9 @@ function App(props) {
       <Route path='/signup'>
         <SignUp setToken={setToken} isAuthenticated={!!token} />
       </Route>
+      <Route path='/about-us'>
+        <AboutUs />
+      </Route>
       <Route>
         <NotFound />
       </Route>
@@ -56,7 +59,7 @@ function App(props) {
 
   if (!!token) {
     component = components[localStorage.getItem('type')];
-    
+
     routes = (
       <Switch>
         <Route path={`/${localStorage.getItem('type')}`}>
