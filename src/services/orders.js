@@ -11,7 +11,6 @@ export const filterOrders = async ({ setOrders, setLoading, filter }) => {
         if (setLoading) setLoading(false);
     }).catch(err => {
         if (setLoading) setLoading(false);
-        console.log(err);
     });
 }
 export const getProcessing = async ({ setOrders, setLoading }) => {
@@ -26,7 +25,6 @@ export const getProcessing = async ({ setOrders, setLoading }) => {
         if (setLoading) setLoading(false);
     }).catch(err => {
         if (setLoading) setLoading(false);
-        console.log(err);
     });
 }
 
@@ -42,7 +40,6 @@ export const getOwners = async ({ setOrders, setLoading }) => {
         if (setLoading) setLoading(false);
     }).catch(err => {
         if (setLoading) setLoading(false);
-        console.log(err);
     });
 }
 
@@ -58,7 +55,6 @@ export const getPending = async ({ setOrders, setLoading }) => {
         if (setLoading) setLoading(false);
     }).catch(err => {
         if (setLoading) setLoading(false);
-        console.log(err);
     });
 }
 export const newOrder = ({ setLoading, info, cost }) => {
@@ -71,11 +67,7 @@ export const newOrder = ({ setLoading, info, cost }) => {
         headers: {
             'Authorization': localStorage.getItem('token')
         },
-    }).then(res => {
-
-    }).catch(err => {
-        console.log(err.message);
-    });
+    }).then().catch();
 }
 export const deleteOrder = ({ id, setOrders, ordersArray, setLoading }) => {
     axios.delete(
@@ -87,7 +79,6 @@ export const deleteOrder = ({ id, setOrders, ordersArray, setLoading }) => {
         setOrders([...ordersArray]);
         setLoading(false)
     }).catch(err => {
-        /* console.log(err.toJSON()); */
         alert('No se puede eliminar un pedido que no está cancelado')
     });
 }
@@ -102,7 +93,6 @@ export const getOrderById = ({ id, setOrder, setLoading }) => {
         setLoading(false);
     }).catch(err => {
         setLoading(false);
-        console.log(err);
     });
 }
 export const updateState = async ({ id, data, setLoading, setOrder }) => {
@@ -113,9 +103,8 @@ export const updateState = async ({ id, data, setLoading, setOrder }) => {
         }
     }).then(res => {
         if (setOrder) setOrder(res.data.detail);
-        if (setLoading) setLoading(false)
+        if (setLoading) setLoading(false);
     }).catch(err => {
-        if (setLoading) setLoading(false)
-        console.log(err);
+        if (setLoading) setLoading(false);
     });
 }

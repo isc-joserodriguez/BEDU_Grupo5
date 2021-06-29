@@ -10,8 +10,7 @@ export const getUsers = ({ setUsers, setLoading }) => {
         setUsers(res.data.detail);
         setLoading(false);
     }).catch(err => {
-        setLoading(false)
-        console.log(err);
+        setLoading(false);
     });
 }
 
@@ -26,7 +25,6 @@ export const filterUsers = ({ setUsers, setLoading, filter }) => {
         setLoading(false);
     }).catch(err => {
         setLoading(false);
-        console.log(err);
     });
 }
 
@@ -40,8 +38,7 @@ export const getUserById = ({ id, setUser, setLoading }) => {
         setUser(res.data.detail);
         setLoading(false);
     }).catch(err => {
-        setLoading(false)
-        console.log(err);
+        setLoading(false);
     });
 }
 
@@ -94,8 +91,7 @@ export const getUserByIdForm = ({ id, editForm, setEditForm, updateObject, setLo
         setEditForm(updatedControls);
         setLoading(false);
     }).catch(err => {
-        setLoading(false)
-        console.log(err);
+        setLoading(false);
     });
 }
 
@@ -109,7 +105,6 @@ export const editUser = ({ id, data, setLoading, setErrorMessage, history }) => 
         setLoading(false);
         history.push(`/${localStorage.getItem('type')}/users/${res.data.detail._id}`)
     }).catch(err => {
-        console.log(err);
         setLoading(false);
         setErrorMessage(true);
     });
@@ -121,9 +116,5 @@ export const toggleStatusUser = ({ id, status }) => {
         headers: {
             'Authorization': localStorage.getItem('token')
         }
-    }).then(res => {
-
-    }).catch(err => {
-        console.log(err);
-    });
+    }).then().catch();
 }

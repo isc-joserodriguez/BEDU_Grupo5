@@ -11,7 +11,6 @@ export const getCategories = ({ setCategories, setLoading }) => {
         setLoading(false)
     }).catch(err => {
         setLoading(false)
-        console.log(err);
     });
 }
 
@@ -26,7 +25,6 @@ export const filterCategories = ({ setCategories, setLoading, filter }) => {
         setLoading(false);
     }).catch(err => {
         setLoading(false);
-        console.log(err);
     });
 }
 
@@ -40,8 +38,7 @@ export const getCategoryById = ({ id, setCategory, setLoading }) => {
         setCategory(res.data.detail);
         setLoading(false)
     }).catch(err => {
-        setLoading(false)
-        console.log(err);
+        setLoading(false);
     });
 }
 
@@ -81,8 +78,7 @@ export const getCategoryByIdForm = ({ id, editForm, setEditForm, updateObject, s
         setEditForm(updatedControls);
         setLoading(false);
     }).catch(err => {
-        setLoading(false)
-        console.log(err);
+        setLoading(false);
     });
 }
 
@@ -96,7 +92,6 @@ export const editCategory = ({ id, data, setLoading, setErrorMessage, history })
         setLoading(false);
         history.push(`/${localStorage.getItem('type')}/categories/${res.data.detail._id}`)
     }).catch(err => {
-        console.log(err);
         setLoading(false);
         setErrorMessage(true);
     });
@@ -117,9 +112,7 @@ export const getCategoriesCommands = ({ setCategories }) => {
             _id: id,
             name: datas[id]
         })))
-    }).catch(err => {
-        console.log(err);
-    });
+    }).catch();
 }
 
 export const toggleStatusCategory = ({ id, status }) => {
@@ -128,9 +121,5 @@ export const toggleStatusCategory = ({ id, status }) => {
         headers: {
             'Authorization': localStorage.getItem('token')
         }
-    }).then(res => {
-
-    }).catch(err => {
-        console.log(err);
-    });
+    }).then().catch();
 }

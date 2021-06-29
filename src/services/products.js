@@ -10,7 +10,6 @@ export const createProduct = ({ data, setLoading, setErrorMessage, history }) =>
         setErrorMessage(false)
         history.push(`/admin/products/${res.data.detail._id}`);
     }).catch(err => {
-        console.log(err);
         setErrorMessage(true)
         setLoading(false);
     });
@@ -26,7 +25,6 @@ export const getProductById = ({ id, setProduct, setLoading }) => {
         setProduct(res.data.detail);
         if (setLoading) setLoading(false);
     }).catch(err => {
-        console.log(err);
         if (setLoading) setLoading(false);
     });
 }
@@ -42,7 +40,6 @@ export const getProducts = ({ setProducts, setLoading }) => {
         if (setLoading) setLoading(false);
     }).catch(err => {
         if (setLoading) setLoading(false);
-        console.log(err);
     });
 }
 
@@ -57,7 +54,6 @@ export const getProductsByCategory = ({ setProducts, setLoading, filter }) => {
         setLoading(false);
     }).catch(err => {
         setLoading(false);
-        console.log(err);
     });
 }
 
@@ -72,7 +68,6 @@ export const filterProducts = ({ setProducts, setLoading, filter }) => {
         setLoading(false);
     }).catch(err => {
         setLoading(false);
-        console.log(err);
     });
 }
 
@@ -86,7 +81,6 @@ export const editProduct = ({ id, data, setLoading, setErrorMessage, history }) 
         setLoading(false);
         history.push(`/${localStorage.getItem('type')}/products/${res.data.detail._id}`)
     }).catch(err => {
-        console.log(err);
         setLoading(false);
         setErrorMessage(true);
     });
@@ -127,8 +121,7 @@ export const getProductByIdForm = ({ id, editForm, setEditForm, updateObject, se
         }
         getCategoriesSelector({ editForm: updatedControls, setEditForm, setLoading, updateObject, init })
     }).catch(err => {
-        setLoading(false)
-        console.log(err);
+        setLoading(false);
     });
 }
 
@@ -162,14 +155,14 @@ export const getCategoriesSelector = ({ editForm, setEditForm, setLoading, updat
                 category: updateObject(editForm.category, {
                     elementConfig: {
                         options: categories
-                    }
+                    },
+                    value: categories[0].value
                 })
             })
         );
         setLoading(false);
     }).catch(err => {
-        setLoading(false)
-        console.log(err);
+        setLoading(false);
     });
 }
 
@@ -179,9 +172,5 @@ export const toggleStatusProduct = ({ id, status }) => {
         headers: {
             'Authorization': localStorage.getItem('token')
         }
-    }).then(res => {
-
-    }).catch(err => {
-        console.log(err);
-    });
+    }).then().catch();
 }
