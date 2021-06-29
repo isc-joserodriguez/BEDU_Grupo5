@@ -71,7 +71,7 @@ const Products = () => {
             {loading ?
               <Spinner /> :
               productMap.length === 0 ?
-                <h1 className='text-center mt-5 MessageD'>Seleccione una categoría</h1> :
+                <h1 className={`${classes.MessageD} text-center mt-5`}>Seleccione una categoría</h1> :
                 <div className='row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 overflow-auto'>
                   {productMap}
                 </div>}

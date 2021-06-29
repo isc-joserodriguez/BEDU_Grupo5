@@ -120,17 +120,17 @@ const EditCategory = props => {
                         {form}
                         <Row>
                             <Col>
-                                <Button type='submit' className={classes.saveBtn} variant='primary' size='lg' block disabled={!editForm?.name?.valid || !editForm?.description?.valid} >
-                                    Guardar
-                                </Button>
-                            </Col>
-                            <Col>
                                 <Button variant='danger' size='lg' block onClick={() => props.history.push(`/${localStorage.getItem('type')}/categories/${id}`)}>
                                     Cancelar
                                 </Button>
                             </Col>
+                            <Col>
+                                <Button type='submit' className={classes.saveBtn} variant='primary' size='lg' block disabled={!editForm?.name?.valid || !editForm?.description?.valid} >
+                                    Guardar
+                                </Button>
+                            </Col>
                         </Row>
-                        {errorMessage && <p className={`${classes.ErrorMessage} text-center mt-2`}>Error: Verifica los datos ingresados</p>}
+                        {errorMessage && <p className={`${classes.ErrorMessage} text-center mt-2`}>Error: Ya existe una categoría con ese nombre</p>}
                     </Form>
                 </Card.Body>
             </Card>

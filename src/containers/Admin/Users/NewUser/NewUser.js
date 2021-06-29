@@ -180,15 +180,15 @@ const NewUser = props => {
 
                         <Row>
                             <Col>
-                                <Button className={classes.saveBtn} type='submit' variant='primary' size='lg' block disabled={!newUserForm.firstName.valid || !newUserForm.lastName.valid || !newUserForm.email.valid || !newUserForm.password.valid || !newUserForm.confirmPassword.valid}> Registrar  </Button>
-                            </Col>
-                            <Col>
                                 <Button variant='danger' size='lg' block onClick={() => props.history.push(`/${localStorage.getItem('type')}/users`)}>
                                     Cancelar
                                 </Button>
                             </Col>
+                            <Col>
+                                <Button className={classes.saveBtn} type='submit' variant='primary' size='lg' block disabled={!newUserForm.firstName.valid || !newUserForm.lastName.valid || !newUserForm.email.valid || !newUserForm.password.valid || !newUserForm.confirmPassword.valid}> Registrar  </Button>
+                            </Col>
                         </Row>
-                        {errorMessage && <p className={`${classes.ErrorMessage} text-center mt-2`}>Error: Verifica los datos ingresados</p>}
+                        {errorMessage && <p className={`${classes.ErrorMessage} text-center mt-2`}>Error: Ya existe una cuenta con ese correo.</p>}
                     </Form>
                 </Card.Body>
             </Card>

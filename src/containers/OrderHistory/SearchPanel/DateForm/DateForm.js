@@ -3,8 +3,6 @@ import React from 'react'
 import { updateObject } from '../../../../shared/utility';
 import Input from '../../../../components/UI/Input/Input';
 
-import classes from './DateForm.module.css';
-
 const DateForm = ({ dateForm, setDateForm }) => {
     const inputChangedHandler = (date, controlName) => {
         let d1 = new Date(date);
@@ -26,7 +24,6 @@ const DateForm = ({ dateForm, setDateForm }) => {
                 touched: true
             })
         });
-        console.log(dateForm)
         setDateForm(updatedControls);
     }
 

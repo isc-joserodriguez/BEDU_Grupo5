@@ -185,15 +185,15 @@ const EditUser = props => {
                         {form}
                         <Row>
                             <Col>
+                                <Button variant='danger' size='lg' block onClick={() => props.history.push(`/${localStorage.getItem('type')}/users/${id}`)}>
+                                    Cancelar
+                                </Button>
+                            </Col>
+                            <Col>
                                 <Button className={classes.saveBtn} type='submit' variant='primary' size='lg' block disabled={
                                     owner ?
                                         (!editForm?.firstName?.valid || !editForm?.lastName?.valid || !editForm?.email?.valid || !editForm?.password?.valid || !editForm?.confirmPassword?.valid) :
                                         (!editForm?.password?.valid || !editForm?.confirmPassword?.valid)}> Guardar
-                                </Button>
-                            </Col>
-                            <Col>
-                                <Button variant='danger' size='lg' block onClick={() => props.history.push(`/${localStorage.getItem('type')}/users/${id}`)}>
-                                    Cancelar
                                 </Button>
                             </Col>
                         </Row>

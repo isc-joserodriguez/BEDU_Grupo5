@@ -9,12 +9,13 @@
 }
 
 .LoginBackground {
-   width: 100% !important;
-   min-height: 100%;
-   padding-top: 7% !important;
-   margin: 0;
-   border:0;
-   position: fixed;
-   top: 10px;
-   background-size:cover;
- }
+    min-width: 100%;
+    min-height: 100%;
+    padding-top: 7%;
+    margin: 0;
+    border: 0;
+    position: fixed;
+    top: 10px;
+    background-size: cover;
+    background-image: url('../../../assets/images/bg-login.jpg')
+}

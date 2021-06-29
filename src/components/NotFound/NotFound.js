@@ -8,7 +8,7 @@ const NotFound = (props) => {
     return (
         <Container>
             <div className='text-right'>
-                <Button variant='danger' className='ml-auto' onClick={() => { props.history.goBack(); }}>Ir atrás</Button>
+                <Button variant='danger' className='mt-3' onClick={() => { props.history.goBack(); }}>Ir atrás</Button>
             </div>
             <div className='text-center'>
                 <Image src={Error404} alt='Error 404' />

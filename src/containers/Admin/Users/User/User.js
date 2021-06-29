@@ -45,8 +45,8 @@ const User = () => {
                         {`Ultima actualización el ${new Date(user.updatedAt).getDate()}/${new Date(user.updatedAt).getMonth() + 1}/${new Date(user.updatedAt).getFullYear()}`}
                         <br />
                         <div className="d-flex">
+                            <Link className={`${classes.blue} ml-auto`} to={`/admin/users`}>Volver <IoReturnUpBackOutline /></Link>
                             <Link className={classes.orange} to={`/admin/users/edit/${user._id}`}>Editar <FiEdit3 /></Link>
-                            <Link className={classes.blue} to={`/admin/users`}>Volver <IoReturnUpBackOutline /></Link>
                         </div>
                     </small>
                 </Card.Footer>

@@ -163,6 +163,15 @@ const NewProduct = (props) => {
                         <Row>
                             <Col>
                                 <Button
+                                    variant='danger'
+                                    size='lg'
+                                    block
+                                    onClick={() => props.history.push(`/${localStorage.getItem('type')}/products`)}>
+                                    Cancelar
+                                </Button>
+                            </Col>
+                            <Col>
+                                <Button
                                     className={classes.saveBtn}
                                     type='submit'
                                     variant='primary'
@@ -171,15 +180,6 @@ const NewProduct = (props) => {
                                     disabled={!newProductForm.name.valid || !newProductForm.category.valid || !newProductForm.description.valid || !newProductForm.cost.valid || !newProductForm.image.valid}
                                 >
                                     Guardar
-                                </Button>
-                            </Col>
-                            <Col>
-                                <Button
-                                    variant='danger'
-                                    size='lg'
-                                    block
-                                    onClick={() => props.history.push(`/${localStorage.getItem('type')}/products`)}>
-                                    Cancelar
                                 </Button>
                             </Col>
                         </Row>

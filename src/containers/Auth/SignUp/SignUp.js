@@ -8,7 +8,6 @@ import Spinner from '../../../components/UI/Spinner/Spinner'
 import Input from '../../../components/UI/Input/Input';
 import { CgUser, CgMail, CgPassword } from 'react-icons/cg';
 import { signup } from '../../../services';
-import LoginBackground4 from '../../../assets/images/bg-login.jpg';
 
 import classes from './SignUp.module.css';
 
@@ -159,7 +158,7 @@ const SignUp = props => {
     )) : <Spinner />;
 
     return (
-        <section className={classes.LoginBackground} style={{ backgroundImage: `url(${LoginBackground4})` }}>
+        <section className={classes.LoginBackground}>
             <Container>
                 <Card className={classes.Signup}>
                     <Card.Body>
@@ -168,7 +167,7 @@ const SignUp = props => {
                         <Form noValidate onSubmit={submitHandler}>
                             {form}
                             <Button type='submit' variant='primary' size='lg' block disabled={!signupForm.firstName.valid || !signupForm.lastName.valid || !signupForm.email.valid || !signupForm.password.valid || !signupForm.confirmPassword.valid}> Registrarse  </Button>
-                            {errorMessage && <p className={`${classes.ErrorMessage} text-center mt-2`}>Error: Verifica los datos ingresados</p>}
+                            {errorMessage && <p className={`${classes.ErrorMessage} text-center mt-2`}>Error: Ya existe una cuenta con ese correo.</p>}
                             <p className='text-center mt-4'>Ya estás registrado? <Link to='/'>Inicia sesión</Link></p>
                         </Form>
                     </Card.Body>

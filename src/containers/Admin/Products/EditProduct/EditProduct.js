@@ -93,7 +93,6 @@ const EditProduct = props => {
 
     useEffect(() => {
         getProductByIdForm({ id, editForm, setEditForm, updateObject, setLoading })
-
     }, [])
 
     const inputChangedHandler = (event, controlName) => {
@@ -165,6 +164,11 @@ const EditProduct = props => {
                         <Image className='w-50 my-3 mx-auto' src={editForm.image.value} onError={imageErrorHandler} thumbnail />
                         <Row>
                             <Col>
+                                <Button variant='danger' size='lg' block onClick={() => props.history.push(`/${localStorage.getItem('type')}/products/${id}`)}>
+                                    Cancelar
+                                </Button>
+                            </Col>
+                            <Col>
                                 <Button className={classes.saveBtn}
                                     type='submit'
                                     variant='primary'
@@ -173,11 +177,6 @@ const EditProduct = props => {
                                     disabled={!editForm.name.valid || !editForm.description.valid || !editForm.cost.valid || !editForm.image.valid}
                                 >
                                     Guardar
-                                </Button>
-                            </Col>
-                            <Col>
-                                <Button variant='danger' size='lg' block onClick={() => props.history.push(`/${localStorage.getItem('type')}/products/${id}`)}>
-                                    Cancelar
                                 </Button>
                             </Col>
                         </Row>

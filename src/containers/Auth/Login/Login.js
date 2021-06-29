@@ -8,7 +8,6 @@ import Spinner from '../../../components/UI/Spinner/Spinner'
 import Input from '../../../components/UI/Input/Input';
 import { CgMail, CgPassword } from 'react-icons/cg';
 import { login } from '../../../services';
-import LoginBackground4 from '../../../assets/images/bg-login.jpg';
 
 import classes from './Login.module.css';
 
@@ -48,7 +47,7 @@ const Login = props => {
         }
     });
     const [loading, setLoading] = useState(false);
-    const [errorMessage, setErrorMessage] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
     if (props.isAuthenticated) props.history.push(`/${localStorage.getItem('type')}`);
 
@@ -101,7 +100,7 @@ const Login = props => {
 
     return (
         
-            <div className={classes.LoginBackground} style={{ backgroundImage: `url(${LoginBackground4})`}}>
+            <div className={classes.LoginBackground}>
                 <Card className={classes.Login} >
                     <Card.Body>
                         <h4 className='card-title text-center mb-4 mt-1'>Inicio de sesión</h4>
@@ -109,7 +108,7 @@ const Login = props => {
                         <Form noValidate onSubmit={submitHandler}>
                             {form}
                             <Button type='submit' variant='primary' size='lg' block disabled={!loginForm.email.valid || !loginForm.password.valid}> Iniciar Sesión  </Button>
-                            {errorMessage && <p className={`${classes.ErrorMessage} text-center mt-2`}>Error: Verifica las credenciales</p>}
+                            {errorMessage && <p className={`${classes.ErrorMessage} text-center mt-2`}>{errorMessage}</p>}
                             <p className='text-center mt-4'>¿No tienes cuenta? <Link to='/signup'>Registrate</Link></p>
                         </Form>
                     </Card.Body>
