@@ -18,11 +18,11 @@ const AboutUs = () => {
         {
             id: 1,
             name: 'Adrian Barros',
-            resume: 'Ingeniero Industrial',
+            resume: 'Ingeniero industrial. Este es mi primer bootcamp, busco aprender y especializarme en desarrollo web para fortalecer mi perfil profesional.',
             img: imgAdrian,
             sites: [
                 { site: 'linkedin', url: 'https://www.linkedin.com/in/adrian-barros-175b26162/' },
-                { site: 'github', url: '' }
+                { site: 'github', url: 'https://github.com/Adrian-BT' }
             ]
         },
         {
@@ -32,7 +32,7 @@ const AboutUs = () => {
             img: imgNathaly,
             sites: [
                 { site: 'linkedin', url: 'https://www.linkedin.com/in/nathaly-narajham-dimas-cisneros-5472a7133/' },
-                { site: 'github', url: 'https://www.github.com' }
+                { site: 'github', url: 'https://github.com/NathalyNDC' }
             ]
         },
         {
@@ -49,7 +49,7 @@ const AboutUs = () => {
         {
             id: 4,
             name: 'Diego Sandoval',
-            resume: 'Ingeniero en Sistemas Computacionales',
+            resume: 'Licenciado en Informática. He participado en desarrollos web con un enfoque más dirigido al Backend.',
             img: imgDiego,
             sites: [
                 { site: 'linkedin', url: 'https://www.linkedin.com/in/diego-sandoval-vargas-8685b5192/' },
