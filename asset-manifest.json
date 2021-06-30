@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/BEDU_Grupo5/static/css/main.27b3983a.chunk.css",
-    "main.js": "/BEDU_Grupo5/static/js/main.460e030c.chunk.js",
-    "main.js.map": "/BEDU_Grupo5/static/js/main.460e030c.chunk.js.map",
+    "main.js": "/BEDU_Grupo5/static/js/main.9e8f1eea.chunk.js",
+    "main.js.map": "/BEDU_Grupo5/static/js/main.9e8f1eea.chunk.js.map",
     "runtime-main.js": "/BEDU_Grupo5/static/js/runtime-main.7bf0edaf.js",
     "runtime-main.js.map": "/BEDU_Grupo5/static/js/runtime-main.7bf0edaf.js.map",
     "static/js/2.e8b9e109.chunk.js": "/BEDU_Grupo5/static/js/2.e8b9e109.chunk.js",
@@ -32,7 +32,7 @@
     "static/media/SignUp.module.css": "/BEDU_Grupo5/static/media/bg-login.dba2952a.jpg",
     "static/media/Cliente.module.css": "/BEDU_Grupo5/static/media/bg-user.8182872a.jpg",
     "static/media/Mesero.module.css": "/BEDU_Grupo5/static/media/bg-waiter.6ce63148.jpg",
-    "static/media/diego.dee6b693.jpg": "/BEDU_Grupo5/static/media/diego.dee6b693.jpg",
+    "static/media/diego.136bf269.jpg": "/BEDU_Grupo5/static/media/diego.136bf269.jpg",
     "static/media/joserodriguez.dfe39a12.jpg": "/BEDU_Grupo5/static/media/joserodriguez.dfe39a12.jpg",
     "static/media/nathaly.fdf12f70.jpeg": "/BEDU_Grupo5/static/media/nathaly.fdf12f70.jpeg"
   },
@@ -41,6 +41,6 @@
     "static/css/3.3fdc614c.chunk.css",
     "static/js/3.925b5bd7.chunk.js",
     "static/css/main.27b3983a.chunk.css",
-    "static/js/main.460e030c.chunk.js"
+    "static/js/main.9e8f1eea.chunk.js"
   ]
 }
