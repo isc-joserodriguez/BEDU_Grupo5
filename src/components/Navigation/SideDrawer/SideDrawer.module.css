@@ -29,4 +29,7 @@
 .Logo {
     height: 11%;
     margin-bottom: 32px;
+    background-color:#FF8352;
+    border-radius:50px;
+    text-align: center;
 }

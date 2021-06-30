@@ -1,6 +1,6 @@
 import React from 'react';
 
-import restaurantLogo from '../../assets/images/restaurant-logo.png';
+import restaurantLogo from '../../assets/images/LogoNav.svg';
 import classes from './Logo.module.css';
 
 const logo = () => (

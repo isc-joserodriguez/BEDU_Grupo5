@@ -2,15 +2,16 @@ import React from 'react';
 
 import Links from './Links/Links';
 
-import { Row, Col, Card } from 'react-bootstrap';
+import { Row, Col, Card, Image } from 'react-bootstrap';
 import { RiGithubFill } from "react-icons/ri";
 
 import classes from './AboutUs.module.css';
 
-import imgAdrian from '../../assets/images/man1.jpg';
-import imgNathaly from '../../assets/images/woman.jpg';
+import imgAdrian from '../../assets/images/adrian.jpeg';
+import imgNathaly from '../../assets/images/nathaly.jpeg';
 import imgJose from '../../assets/images/joserodriguez.jpg';
-import imgDiego from '../../assets/images/man2.jpg';
+import imgDiego from '../../assets/images/diego.jpg';
+import Logo from '../../assets/images/Logo.svg';
 
 const AboutUs = () => {
     const info = [
@@ -20,20 +21,18 @@ const AboutUs = () => {
             resume: 'Ingeniero Industrial',
             img: imgAdrian,
             sites: [
-                { site: 'linkedin', url: 'https://www.github.com' },
-                { site: 'github', url: 'https://www.github.com' },
-                { site: 'web', url: 'https://www.github.com' }
+                { site: 'linkedin', url: 'https://www.linkedin.com/in/adrian-barros-175b26162/' },
+                { site: 'github', url: '' }
             ]
         },
         {
             id: 2,
             name: 'Nathaly Dimas',
-            resume: 'Ingeniero en Sistemas Computacionales',
+            resume: 'Ingeniera en sistemas computacionales, actualmente project manager en una empresa de desarrollo de software, también he participado en otros proyectos como desarrolladora web.',
             img: imgNathaly,
             sites: [
-                { site: 'linkedin', url: 'https://www.github.com' },
-                { site: 'github', url: 'https://www.github.com' },
-                { site: 'web', url: 'https://www.github.com' }
+                { site: 'linkedin', url: 'https://www.linkedin.com/in/nathaly-narajham-dimas-cisneros-5472a7133/' },
+                { site: 'github', url: 'https://www.github.com' }
             ]
         },
         {
@@ -53,9 +52,8 @@ const AboutUs = () => {
             resume: 'Ingeniero en Sistemas Computacionales',
             img: imgDiego,
             sites: [
-                { site: 'linkedin', url: 'https://www.github.com' },
-                { site: 'github', url: 'https://www.github.com' },
-                { site: 'web', url: 'https://www.github.com' }
+                { site: 'linkedin', url: 'https://www.linkedin.com/in/diego-sandoval-vargas-8685b5192/' },
+                { site: 'github', url: 'https://github.com/diegosv6910' }
             ]
         },
     ]
@@ -63,7 +61,7 @@ const AboutUs = () => {
         <>
             <Row className={classes.AboutUs}>
                 <Col className='text-center py-5'>
-                    <h3>Restaurant Manager</h3>
+                    <Image className='mb-3' src={Logo} style={{width:'120px',heigth:'120px'}} />
                     <p>
                         Este proyecto fue hecho con React.js en el front y con mongo, express y node en el back (MERN Stack).
                         <br />
