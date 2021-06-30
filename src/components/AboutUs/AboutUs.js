@@ -69,12 +69,10 @@ const AboutUs = () => {
                     </p>
                     <h5 className='my-4'>Repositorios</h5>
                     <Row>
-                        <Col className='text-right px-5'>
+                        <div className={classes.RepoDiv}>
                             <a className={classes.Repo} href='https://github.com/joanrodriguezhe/BEDU_Grupo5' target='_blank'>Front-end <RiGithubFill className='my-auto' /></a>
-                        </Col>
-                        <Col className='text-left px-5'>
                             <a className={classes.Repo} href='https://github.com/joanrodriguezhe/BEDU_Grupo11_Backend' target='_blank'>Back-end <RiGithubFill className='my-auto' /></a>
-                        </Col>
+                        </div>
                     </Row>
                 </Col>
             </Row>

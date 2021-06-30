@@ -4,6 +4,13 @@
     margin: 0;
 }
 
+.RepoDiv {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    padding: 0 20%
+}
+
 .Repo {
     color: white;
     font-size: 20px;
@@ -15,4 +22,15 @@
 
 .Repo:hover {
     color: white;
+}
+
+@media (max-width: 600px) {
+    .RepoDiv {
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 0 25%
+    }
+    .RepoDiv>* {
+        margin: 10px auto;
+    }
 }
