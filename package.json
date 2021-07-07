@@ -2,7 +2,7 @@
   "name": "restaurant-front",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://joanrodriguezhe.github.io/BEDU_Grupo5",
+  "homepage": "http://isc-joserodriguez.github.io/BEDU_Grupo5",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",

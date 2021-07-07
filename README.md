@@ -10,7 +10,7 @@
 
 ### Descripción del proyecto
 
-Este proyecto fue hecho con React.js en el front y con mongo, express y node en el back (Retomando la [API de la fase anterior](https://github.com/joanrodriguezhe/BEDU_Grupo11_Backend)).
+Este proyecto fue hecho con React.js en el front y con mongo, express y node en el back (Retomando la [API de la fase anterior](https://github.com/isc-joserodriguez/BEDU_Grupo11_Backend)).
 
 El objetivo de este proyecto es llevar a cabo todas las fases de un restaurante, tomando los roles de Administrador, Chef, Mesero y Cliente.
 
@@ -30,7 +30,7 @@ El objetivo de este proyecto es llevar a cabo todas las fases de un restaurante,
 
 ### Entregables
 
-[Deploy](https://joanrodriguezhe.github.io/BEDU_Grupo5)
+[Deploy](https://isc-joserodriguez.github.io/BEDU_Grupo5)
 
 [Video](https://youtu.be/GhKABlcTc2c)
 
@@ -40,4 +40,4 @@ El objetivo de este proyecto es llevar a cabo todas las fases de un restaurante,
 - ##### [Adrian-BT](https://github.com/Adrian-BT)
 - ##### [diegosv6910](https://github.com/diegosv6910)
 - ##### [NathalyNDC](https://github.com/NathalyNDC)
-- ##### [joanrodriguezhe](https://github.com/joanrodriguezhe)
+- ##### [isc-joserodriguez](https://github.com/isc-joserodriguez)

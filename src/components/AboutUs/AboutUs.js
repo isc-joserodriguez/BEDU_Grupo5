@@ -42,8 +42,8 @@ const AboutUs = () => {
             img: imgJose,
             sites: [
                 { site: 'linkedin', url: 'https://www.linkedin.com/in/isc-joserodriguez/' },
-                { site: 'github', url: 'https://github.com/joanrodriguezhe' },
-                { site: 'web', url: 'https://joanrodriguezhe.github.io/' }
+                { site: 'github', url: 'https://github.com/isc-joserodriguez' },
+                { site: 'web', url: 'https://isc-joserodriguez.github.io/' }
             ]
         },
         {
@@ -70,8 +70,8 @@ const AboutUs = () => {
                     <h5 className='my-4'>Repositorios</h5>
                     <Row>
                         <div className={classes.RepoDiv}>
-                            <a className={classes.Repo} href='https://github.com/joanrodriguezhe/BEDU_Grupo5' target='_blank'>Front-end <RiGithubFill className='my-auto' /></a>
-                            <a className={classes.Repo} href='https://github.com/joanrodriguezhe/BEDU_Grupo11_Backend' target='_blank'>Back-end <RiGithubFill className='my-auto' /></a>
+                            <a className={classes.Repo} href='https://github.com/isc-joserodriguez/BEDU_Grupo5' target='_blank'>Front-end <RiGithubFill className='my-auto' /></a>
+                            <a className={classes.Repo} href='https://github.com/isc-joserodriguez/BEDU_Grupo11_Backend' target='_blank'>Back-end <RiGithubFill className='my-auto' /></a>
                         </div>
                     </Row>
                 </Col>
